@@ -485,6 +485,12 @@ Besides the ability to carry information, LSTM can also manipulate the cell stat
 that interact with the cell state. Each gate can alter the information on cell state like
 forgetting some data or to determine which information needs to be remembered. 
 
+\subsection{MaLSTM similarity function}
+\[\exp(-\|h^{(left)} - h^{(right)}\|1)\]
+In MaLSTM the identical sub-network is the way from the embedding up to the last LSTM hidden
+state (Primo.ai, 2020; Brown, 2020). using a LSTM to read in word-vectors that represent each
+input sentence and employs final hidden state as a vector representation for each sentence.
+The similarities among these representations are employed as predictors of semantic similarity.
 
 \section{Development Tools}
 
