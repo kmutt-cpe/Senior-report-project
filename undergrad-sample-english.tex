@@ -4,6 +4,7 @@
 \documentclass[12pt,oneside,openright,a4paper]{cpe-english-project}
 
 \usepackage{polyglossia}
+\usepackage{caption}
 \setdefaultlanguage{english}
 \setotherlanguage{thai}
 \newfontfamily\thaifont[Script=Thai,Scale=1.23]{TH Sarabun New}
@@ -745,6 +746,40 @@ from database and send answer back to the user.
   Universal Virtual Front-Office Implement Neural Networks.}
   \label{fig:ch3_lr_activity_dg_self_learning_chatbot}
 \end{figure}
+
+\section{Summary}
+KMUTT CPE Chatbot System is a neural network based chatbot with model prediction which use
+Siamese neural network to learn the similarity of question in Thai language with knowledge
+management that can learn by it-self overtime not a rule based chatbot like in the existing
+chatbot in the market. So, if we compare Rule-based chatbot and neural network based chatbot.
+\begin{itemize}
+  \item Rule-based Chatbot: The data must be entered verbatim — one sentence at a time. If the
+  user asks more than that, the answer will not be answered immediately or cannot answer.
+  \item Neural network based Chatbot: Understand a variety of sentence patterns. Can understand
+  a wider range of questions. The users do not have to ask directly but the model can understand.
+\end{itemize}
+Our project can help in answering the FAQ and general inquiries of the Computer Engineering
+department in KMUTT to outsiders and insiders via Facebook Messenger platform by prediction
+model from knowledge management. It can reduce the over workload of KMUTT CPE staff that they
+have to reply to the same answer to same questions to insiders or outsiders as quickly as they
+can and repeatedly every day. So, if we compare or solution with the existing solution which is
+the CPE staff have to answer by themselves (Table \ref*{table:ch3_solution_compare}).
+\begin{figure}[h!]
+  \centering
+  \fbox{\includegraphics[width=15cm]{./img/ch3/solution_compare.png}}
+  \captionof{table}{Compare KMUTT CPE chatbot with the existing solution which is the CPE
+  staff have to answer by themselves.}
+  \label{table:ch3_solution_compare}
+\end{figure}
+
+Overall KMUTT CPE Chatbot system can reduce the workload of document workers and reduce human
+error when answering the question. Also, can reply to outsiders and insiders correctly and
+immediately. It will serve either the computer engineering insiders or people interested in
+computer engineering to answer the question about the department and CPE staff can use
+knowledge management to manage FAQ in the department.
+Moreover, our chatbot systems can scalable, the chatbot can automatically build models
+when knowledge management receives new data.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Proposed Work}
