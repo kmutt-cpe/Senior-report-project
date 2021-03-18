@@ -669,6 +669,24 @@ can also be used for many different types of programming. Without being limited 
 job (General-purpose language), it is widely used in many large global organizations such as
 Google, YouTube, Instagram, Dropbox, and NASA, etc.
 
+\section{Related Chatbot}
+\subsection{Eliza}
+Eliza is a rule-based chatbot. It simulates a Rogerian psychologist by reflecting the patient’s
+statement back at them to continue the conversation. In the ELIZA system, there are rules. Each
+rule captures some keywords. When the rules are matched, the incoming sentence is transformed
+by transformation written for the rule %todo:(Johnson, 2019)
+. Each rule might have multiple
+transformations to reduce repetitiveness of returning sentences.\\
+Keywords in the rules are ranked. Specific meaning keywords have higher priority than general
+keywords. But universal keywords such as “everybody” are exceptions. As the universal keywords
+are highly probably referring to some specific event or person, universal keywords are ranked
+highest.\\
+Aside from rules, ELIZA also contains memory. Some rules cause ELIZA to store the topic in the
+memory stack. Afterward, if no keyword match to the incoming sentence is found, content in the
+memory stack is retrieved to continue the conversation.\\
+Aside from rule-based transformation, there are also transformations that switch 1st person
+words with 2nd persons words and vice versa.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Proposed Work}
