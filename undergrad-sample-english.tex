@@ -372,8 +372,46 @@ $\mu$ & Service rate\hfill & jobs/second \\ \hline
 %%%%%%%%%%%%%%%%%%%% Experiments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Implementation Results}
+\section{Chatbot Subsystem and Storage Subsystem Result}
+Now our chatbot subsystem which we implement in dialog flow can greeting and understand what is the question and for storage subsystem which we implement in GraphQL query category from backend API. Now our system can category of FAQs by ID and can query FAQs from all category.
 
-You can title this chapter as \textbf{Preliminary Results} or \textbf{Work Progress} for the progress reports. Present implementation or experimental results here and discuss them.
+
+\section{Model Prediction Subsystem Result}
+\subsection{Training Siamese Neural Network with MaLSTM Result}
+After preprocessing the data, we split the data into train, validate, and test data. Then separate the data into left inputs and right inputs, one for each side of MaLSTM. Then train the model with 100 epochs and use batch sizes 128. In addition to using early stops to prevent the model too overfitting and model checkpoint to save the model. Even our group set 100 epochs, but the model was trained only 17 epochs before stopping from early stop. Loss of training data is 0.4116 and loss of validation data is 0.4358. Also, accuracy of training data is 0.5487 and accuracy of validation data is 0.4358. Graphs below are the result from training.
+
+
+\subsection{Evaluation Model Result}
+The result from the model is the real number from 0 to 1. We interpret both questions are similar (result = 1) if the model predicted score is more than 0.3. If the model predicted score is less than 0.3, both questions are not similar (result = 0). We pick 0.3 to be a criterion for similar or not similar because we have picked 0.6 and 0.5 already but accuracy is very low. After the model predicts the test data, we convert from a similar score (0 to 1)  to binary (0 or 1) instead before evaluating. As you can see in the training topic, we use accuracy and loss to be the main criteria to evaluate the model while training. But in this process we will also use accuracy, precision, and F1-score to evaluate the model. The picture below is the result after evaluating the model with test data.
+
+
+The accuracy after evaluating with test data is 0.527. From the confusion matrix and classification report, the overall model performs accuracy with 52.7\%. There are two classes and we got class o with less precision around 25\%. but we have got class 1 with high precision with 76\%.
+\subsection{Siamese Neural Network with MaLSTM Model Result}
+The picture below shows an example result from playing with the model. The Input questions are
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+'วิศวะคอมเรียนหลักสูตรอะไรบ้างคะ' }
+and
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ' วิศวะคอมมีหลักสูตรอะไรบ้าง'. 
+}Both questions are similar and our model can predict both questions are similar for 83.33\%.
+
+
+From others example from playing with model.The Input questions are
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ วิศวะคอมเรียนเกี่ยวกับอะไรบ้าง’ }and 
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont ‘ วิศวะคอมมีเรียนหลักสูตรอะไรบ้าง’.}
+ Both questions are not similar and our model can predict both questions are not similar for 57.14\%
+
+
+Even the model can predict, but the overall performance of the model is quite not good. Because we think the model should return similar questions from MaLSTM more than 0.5 scores not 0.3 scores. We think that the problem comes from not enough data. If we can gather more dataset and have more cases about question pairs that are similar or not similar, especially not similar that we got less precision, we can increase our model's performance. Also we have to integrate all subsystem to be one system in the production environment.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Conclusions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
