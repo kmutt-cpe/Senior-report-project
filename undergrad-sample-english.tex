@@ -370,6 +370,13 @@ The turn searching is not limited to the receiving text, but rather the whole co
 can be used for response searching. Downside of this approach is that the text that chatbot produces
 might not be consistent. Chatbot might say something that conflicts with what the chatbot has said
 before.
+\subsubsection{Neural Network Based Chatbot}
+Neural network based chatbot sees its response as a transformation of the incoming text. This chatbot
+provides responses by training an encoder-decoder neural network with pairs of turns\\ %todo: (Savina, 2019; flow.ai, n.d.).
+An encoder-decoder neural network has an encoder and a decoder. The encoder transforms incoming
+text into some abstract representation, and the decoder transforms that abstract representation
+into response text. The encoder and the decoder usually have RNN structure, as they are capable
+of handling variable length of input text and return variable length response text.
 
 
 \section{Text Processing Algorithms}
