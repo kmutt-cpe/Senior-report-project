@@ -345,16 +345,31 @@ NLP currently has a 6-step language learning process:
   \end{itemize}
 \end{enumerate}
 
-\begin{table}[!h]
-\caption{test table method1}\label{tbl:method1}
-\begin{tabular}{c|c|l|rr} \hline\hline
-Center & Center & left aligned & Right & Right aligned \\ \hline\hline
-Center & Center & left aligned & Right & Right aligned \\ \hline
-Center & Center & left aligned & Right & Right aligned \\ 
-Center & Center & left aligned & Right & Right aligned \\ \hline
-Center & Center & left aligned & Right & Right aligned \\ \hline\hline
-\end{tabular}
-\end{table}
+\subsection{Chatbot}
+Chatbot is an artificial intelligence software used to communicate by talking to humans (Team, 2020).
+For the benefit of one way or another through messaging applications, websites, mobile apps or through
+the telephone. Creating or using chatbot is fun, can be used for counselling or contact interface.\\
+Chatbot might have cons as
+\begin{itemize}
+  \item The chatbot itself does not really understand the conversation
+  \item Scripting the chatbot with rules is fragile and hard to be fully written
+  \item Conversation quality is limited to the data.
+\end{itemize}
+There are two type of chatbot are IR based Chatbot and Neural Network Based Chatbot % todo: (Team, 2020; Savina, 2019).
+\subsubsection{IR Based Chatbot}
+IR based chatbot uses collections of conversations in order to produce responses to conversation %todo; (Savina, 2019; flow.ai, n.d.).
+Collections of conversations are stored in sequence of turns. When the chatbot receives a text,
+the chatbot can produce its turn of conversation by
+/\begin{itemize}
+  \item Using the received text to search for a turn with the closest match in the collection,
+  then return the next turn as response (most initiative).
+  \item Using the received text to search for a turn with the closest match in the collection,
+  then return that matching turn as response (not initiative, but actually provide better result).
+\end{itemize}
+The turn searching is not limited to the receiving text, but rather the whole conversation so far
+can be used for response searching. Downside of this approach is that the text that chatbot produces
+might not be consistent. Chatbot might say something that conflicts with what the chatbot has said
+before.
 
 
 \section{Text Processing Algorithms}
