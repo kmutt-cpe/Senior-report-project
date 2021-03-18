@@ -464,11 +464,26 @@ used in the later state. The figure above can transform into the formula below.
 
 Because of this method, many consider RNN to use whenever they need context from the past,
 such as speech recognition, video analysis, and music composition.
+
+\subsection{Long Short-Term Memory (LSTM)}
+Like RNN the Long Short-Term Memory network is also a recurrent neural network but with
+different architecture designs %todo:(Shekhar, 2019; Olah, 2015)
+, as seen in Figure \ref*{fig:lstm_arch_design}. LSTM is specifically used to avoid the long-term dependency problem
+or the vanishing gradient.
+
+\begin{figure}[!h] \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=14cm]{./img/ch3/lstm_arch_design.jpg}}
+  \caption{LSTM architecture design}
+  \label{fig:lstm_arch_design}
 \end{figure}
 
- 
-\subsection{Algorithm II}
-Add more subsections as you want.
+The core idea of LSTM is the cell state, the horizontal line that goes between each state. The
+cell state is like a bridge to carry out information from the first state throughout the model.
+Besides the ability to carry information, LSTM can also manipulate the cell state by adding gates
+that interact with the cell state. Each gate can alter the information on cell state like
+forgetting some data or to determine which information needs to be remembered. 
 
 
 \section{Development Tools}
