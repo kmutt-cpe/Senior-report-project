@@ -508,6 +508,167 @@ same model and shares the same architecture and weights (twin networks)%todo:(Br
 for example Zero or One-shot learning tasks. They work in parallel and are responsible for creating vector
 representations for the input and producing better vector representations by measuring similarities between vectors. 
 
+\section{Tools}
+Figure \ref*{fig:ch3_tools} is an overview of tools that are used in KMUTT CPE Chatbot in each subsystem.
+\begin{figure}[h!]
+  \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=14cm]{./img/ch3/tools.png}}
+  \caption{All tools that are used in KMUTT CPE Chatbot System.}
+  \label{fig:ch3_tools}
+\end{figure}
+
+\subsection{Knowledge Management Subsystem}
+\subsubsection{React JS}
+React is a JavaScript library, or it can be called a JavaScript Framework that we use for building
+our web pages to look interesting. The strength of React that makes it worth using is that It has
+a built-in caching system that makes our web pages responsive. It is very suitable for SPA
+implementation. Writing React, we can also separate the elements of our web page into parts,
+called as a component, and assemble it into a web page. This allows us to reuse our components
+elsewhere %todo:(Programmer, 2019)
+. Do not waste time rewriting.
+
+\subsubsection{GraphQL}
+GraphQL is a language for accessing data (Query Language) for the use of APIs of the system %todo: (Athiwat, 2017)
+and will execute commands on the server side, also known as server-side runtime, using our defined
+data structures.
+
+\subsection{Prediction Model Subsystem}
+\subsubsection{Keras}
+Keras is an open-source neural network library written in python. It uses Tensorflow as one of the
+backends using both CPU and GPU %todo:(Keras: the Python deep learning API, 2015)
+. It is designed for a fast experiment with Deep Neural Network. It was developed as part of
+the research effort of project ONEIROS (Open-ended Neuro-Electronic Intelligent Robot Operating
+System). Keras library is commonly used to build neural networks such as network layers,
+activation functions, optimizers, etc.
+
+\subsubsection{TensorFlow}
+Tensorflow is an open-source library for numerical computation and large-scale machine learning.
+It uses Python to provide a convenient front-end API for building applications with the framework
+while executing those applications in C++ %todo:(Yegulalp, 2019)
+.  TensorFlow can train and run deep neural networks for handwritten digit classification,
+image recognition, word embeddings, recurrent neural networks, and is the backend for other
+libraries.
+
+\subsubsection{PyThaiNLP}
+PyThaiNLP is a library package of Python languages used to process text. And language analysis,
+similar to NLTK, but especially for the Thai language %todo: (Surapong, 2020)
+. There are a variety of functions such as character set, Thai alphabet, Thai words,
+stop words in Thai, cut Thai words, Type of grammatical words, spell check, correct words,
+and much more.
+
+\subsubsection{Apache Airflow}
+Apache Airflow is an Open Source that manages various tasks by writing a Configuration in
+the Python Code, which is suitable for Python programmers. Each task can see the workflow
+in detail. When there is a problem, such as a bottleneck, it can be analyzed easily %todo: (Apache Airflow, 2019)
+. We can set the working time like a Cronjob. For example, when running Job, A at 1:00 am
+every day, Run Job B at 8:00 am, once a week on Sunday. Job is called DAGs
+(Directed Acyclic Graphs) in Airflow is a web UI for us to monitor Task Failure
+that occurred, or Duration Time caused by each work.
+
+\subsection{Chatbot System}
+\subsubsection{Dialogflow}
+Dialogflow is a chatbot builder from Google which provide flexible integration to many platforms,
+unique to Natural Language Processing, or NLP %todo: (Rouse, 2019)
+which means that chatbot can accurately understand the meaning of user-typed sentences,
+enabling chatbot to interact with people. Use it precisely and to the point.
+
+\subsubsection{Facebook Messenger}
+Facebook Messenger is an application through a smartphone and desktop PC. It connects information
+and information, extending from the inbox system, sending messages on Facebook, and creating data
+storage to facilitate communication %todo:(Facebook Messenger, 2020)
+.\\
+We decide this application to be our chat platform because from our survey (Figure \ref*{fig:ch3_result_survey})
+through insiders and outsiders, they prefer to use the Facebook Messenger platform the most.
+
+\begin{figure}[h!]
+  \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=14cm]{./img/ch3/result_survey.png}}
+  \caption{The result of our survey from 108 people.}
+  \label{fig:ch3_result_survey}
+\end{figure}
+\subsection{ Storage Subsystem}
+\subsubsection{NestJS}
+NestJS is a framework for building Node.js server-side applications that scalable and very
+efficient %todo: (Mateusz, 2018)
+. NestJS uses progressive JavaScript which means NestJS updated
+features inside follow latest JavaScript. In addition, NestJS is very flexible from giving
+a freedom to easily plug the third party or another module to NestJS application. This reason
+makes NestJS extensible and can be scalable to big size project.\\
+Moreover, NestJS supports TypeScript and comes up with idea combinantion of Object-Oriented
+Programming (OOP), Functional Programming (FP), and Functional Reactive Programming (FRP)
+to makes more friendly to develop the application %todo: (Mateusz, 2018)
+. Also, NestJS provides a level of abstraction above common Node.js framework like Express or
+Fastify by adding more level such as controller, provider, module, etc.
+
+\subsubsection{MySQL}
+It is a popular program used to manage database systems nowadays because of its free instruction
+set. MySQL is a relational database (RDBMS: Relational Database Management System) that can
+simultaneously work with multiple tables %todo: (Herawan, 2020)
+. Those tables with shared fields MySQL are a capable database server. Standard database language
+like ANSI SQL (Structured Queries Language).
+
+\subsubsection{TypeORM}
+TypeORM is Object Relational Mapping (ORM), which facilitates and simplifies database connection %todo:(TypeORM, 2019)
+. We chose TypeORM because it supports TypeScript, which is suitable for NestJS.
+
+\subsubsection{Bull}
+Bull is a Node library that manages a queue system based on Redis, which benefits from the queue %todo: (NUIISAN, 2019)
+. It can solve many problems elegantly, from smoothing out processing peaks to creating
+robust communication channels between microservices or offloading heavy work from one server to
+many smaller workers, etc.
+
+\subsection{Deployment System}
+\subsubsection{Docker}
+Docker is an engine that works in a simulated environment on the server to run the required service.
+It works similarly to Virtual Machines such as VMWare, VirtualBox, XEN, KVM, but the main difference
+is Virtual %todo:(What is Docker, n.d.)
+. Previously known machine It simulates the entire OS for use.
+
+\subsubsection{Kubernetes}
+Kubernetes, or k8s is an open-source platform that allows operations to Linux Containers
+can be done automatically. Minimize the process of installing or extending applications
+running on containers that developers have to do manually %todo: (Casey, 2020)
+. Or it can be said that This enables developers to cluster a cluster of hosts
+running Linux containers, and Kubernetes can quickly and efficiently manage them
+for public, private, and hybrid cloud deployments.
+
+\subsection{Languages}
+\subsubsection{TypeScript}
+TypeScript is a programming language that combines the capabilities that ES2015 itself has.
+What is added is support for Type System and additional features such as Enum and the expanded
+capabilities of object-oriented programming. TypeScript is a Babel-like transpiler %todo: (Tate, 2015)
+. This means that the TypeScript translator will translate the code we write into JavaScript one more
+time, ensuring that the result will be usable in a regular web browser.
+
+\subsubsection{HTML}
+HTML is the primary language used for writing web pages using Tag to define their display.
+HTML stands for Hypertext Markup Language, where Hypertext refers to hyperlinked text.
+Markup language refers to the language in which a tag is used.
+HTML is defined as a language in which a tag is used to designate a web page connected
+in hyperspace via Hyperlink %todo: (Anon, 2019)
+. It is now developed and standardized by the World Wide Web Consortium (W3C).
+
+\subsubsection{CSS}
+CSS is a language used to decorate HTML / XHTML documents with appearance, colors, spacing,
+backgrounds, borders, and more %todo: (Morris, 2020)
+. As requested, CSS stands for Cascading Style Sheets. It is a syntax-specific programming
+language standardized by W3C as one of the web site decoration languages. It has been widely
+popular.
+
+\subsubsection{Python}
+The Python programming language is a high-level computer programming language %todo: (Keras: the Python deep learning API, 2015)
+. It is designed as an easy-to-read scripting language. By eliminating the complexity
+of the structure and grammar of the language. In the part of converting the instruction
+set to the machine, language Python has a function Interpreter is a line-by-line translation.
+To enter into the processor for the computer to work as we want. Python programming language
+can also be used for many different types of programming. Without being limited to a particular
+job (General-purpose language), it is widely used in many large global organizations such as
+Google, YouTube, Instagram, Dropbox, and NASA, etc.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Proposed Work}
