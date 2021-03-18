@@ -113,7 +113,7 @@
 \let\MakeUppercase\relax
 }
 \begin{center}
-  \includegraphics[width=2.8cm]{logo02.jpg}
+  \includegraphics[width=2.8cm]{./img/cover/logo02.jpg}
 \end{center}
 \vspace*{-1cm}
 
@@ -287,45 +287,227 @@ Explain the scope of your works.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Background Theory and Related Work}
 
-\url{http://www.cpe.kmutt.ac.th}
-Explain theory, algorithms, protocols, or existing research works and tools related to your work. \cite{bworld}
+\section{Introduction}
+This chapter, we are going to demonstrate the theory, core concept, tools, and related research to be background 
+and terminology before deep down into methodology and result.
 
-\section{Recommender Systems}
+\section{Theory and Core Concepts}
+\subsection{Knowledge Management}
+Knowledge Management is the process of creating, sharing, gathering, using and managing the knowledge 
+and information in organization (Koenig, 2018). It refers to a multidisciplinary approach to achieve organizational 
+objectives by making the best use of knowledge.\\
+In terms of our project, knowledge management is the website to keep the knowledge and information about 
+computer engineering in question and answer format. Questions in knowledge management can group in category 
+such as basic information, curriculum, frequently asked questions (FAQ), and registration. Also, in each category 
+has subcategory to be more specific the question. Only staff in Computer Engineering department can use the knowledge 
+management.
+ 
+\subsection{Natural Language Processing}
+Natural language processing (NLP) is a subfield of linguistics, computer science, and artificial
+intelligence concerned with computers and human language interactions, mainly how to program
+computers to process and analyze large amounts of natural language data.\\
+The reason for the development of NLP was that computers were originally designed to be more suited
+to understand numeric information or code (VENTURES, 2020). Which does not match the way of human
+communication which relies on language and language is significantly more complex than computer-based
+code. So, NLP emerged to bridge the gap in human-computer communication.\\
+NLP supports both reading and listening by using other technologies such as Visual Recognition. For
+reading text and using voice recognition for listening Including other technologies to show results
+to humans Including being able to convey information back to us in both text and voice form as well.\\
+NLP currently has a 6-step language learning process:
+\begin{enumerate}
+  \item Morphological Level — Understand letters. NLP will remove words into messages, find consonants,
+  vowels, and spelling for the next step.
+  \item Lexical Level — Understand the word after mixing the letters. It will start to find the meaning
+  of that word to prepare for understanding the whole sentence.
+  \item Syntactic Level — Understand sentences. Based on understanding the common word and structural
+  order specified by experts or schemes learned.
+  \item Semantic Level — Understand the context of words in a sentence. Understand the meaning of terms
+  used in sentences that are outside the standard language structure.
+  \item Discourse Level — Understand the syntax. Understand the effect of the previous sentence on the
+  meaning of the sentence that being read. This includes understanding the order of words used in sentences
+  that give different meanings.
+  \item Pragmatic Level — Understand the meaning of words and sentences based on the actual situation
+  or knowledge base, which may not be specified in the content. So, it can be interpreted as close to
+  human beings that can always relate the new information with the old knowledge. In addition to
+  understanding each point, NLP has three other language learning channels modeled after human language learning:
+  \begin{itemize}
+    \item Symbolic  — Symbolic is the basis of human language understanding where AI has to understand vocabulary up
+    to that language's structure. Developers can now apply expert knowledge directly into AI.
+    \item Statistical — After learning the basics of the language, the next step will be to collect information
+    on using the language in different places. The patterns were analyzed by statistical methods such as the
+    frequency of words used. Find out how to sort common sentences. Then bring to synthesize new knowledge.
+    This will help AI improve the language based on its current popularity. And understand the use of language
+    in a particular field such as science, finance, or various academic documents, etc.
+    \item Connectionist AI — Connectionist AI combines a statistical language learning process with a symbolic level for complete
+    communication and understanding. This is based on the Symbolic stage's actual knowledge and adapted with new
+    information received from the statistical stage.
+    
+  \end{itemize}
+\end{enumerate}
 
-\begin{table}[!h]
-\caption{test table method1}\label{tbl:method1}
-\begin{tabular}{c|c|l|rr} \hline\hline
-Center & Center & left aligned & Right & Right aligned \\ \hline\hline
-Center & Center & left aligned & Right & Right aligned \\ \hline
-Center & Center & left aligned & Right & Right aligned \\ 
-Center & Center & left aligned & Right & Right aligned \\ \hline
-Center & Center & left aligned & Right & Right aligned \\ \hline\hline
-\end{tabular}
-\end{table}
+\subsection{Chatbot}
+Chatbot is an artificial intelligence software used to communicate by talking to humans (Team, 2020).
+For the benefit of one way or another through messaging applications, websites, mobile apps or through
+the telephone. Creating or using chatbot is fun, can be used for counselling or contact interface.\\
+Chatbot might have cons as
+\begin{itemize}
+  \item The chatbot itself does not really understand the conversation
+  \item Scripting the chatbot with rules is fragile and hard to be fully written
+  \item Conversation quality is limited to the data.
+\end{itemize}
+There are two type of chatbot are IR based Chatbot and Neural Network Based Chatbot % todo: (Team, 2020; Savina, 2019).
+\subsubsection{IR Based Chatbot}
+IR based chatbot uses collections of conversations in order to produce responses to conversation %todo; (Savina, 2019; flow.ai, n.d.).
+Collections of conversations are stored in sequence of turns. When the chatbot receives a text,
+the chatbot can produce its turn of conversation by
+/\begin{itemize}
+  \item Using the received text to search for a turn with the closest match in the collection,
+  then return the next turn as response (most initiative).
+  \item Using the received text to search for a turn with the closest match in the collection,
+  then return that matching turn as response (not initiative, but actually provide better result).
+\end{itemize}
+The turn searching is not limited to the receiving text, but rather the whole conversation so far
+can be used for response searching. Downside of this approach is that the text that chatbot produces
+might not be consistent. Chatbot might say something that conflicts with what the chatbot has said
+before.
+\subsubsection{Neural Network Based Chatbot}
+Neural network based chatbot sees its response as a transformation of the incoming text. This chatbot
+provides responses by training an encoder-decoder neural network with pairs of turns\\ %todo: (Savina, 2019; flow.ai, n.d.).
+An encoder-decoder neural network has an encoder and a decoder. The encoder transforms incoming
+text into some abstract representation, and the decoder transforms that abstract representation
+into response text. The encoder and the decoder usually have RNN structure, as they are capable
+of handling variable length of input text and return variable length response text.
 
+\subsection{Artificial Intelligence (AI)}
+AI is a computing system that provides deep analysis like human intelligence and can produce
+actionable results. For example, translation is due to the processing of incoming messages
+and convert it into another language and so on.\\
+AI learning is not different from human learning which “remember” and “think” like a human.
+For example, children who see their parents' faces repeatedly every day and try to know whose
+person is “dad” or “mother” for a long time. So children will be able to look at their face and
+call “Dad” or “Mom” correctly.\\
+The stimulus used to train AI is “data”, which teaches children to call “parents” must be trained
+many times and must use information that has the same repetitive characteristics.\\ %todo: (Coraline, n.d.).
+The AI mechanism is a computer processing system, and Machine learning is a component in AI.
+This machine learning has a variety of algorithms depending on the problem. Most data that used to
+trend such as deep learning is an algorithm that is suitable for large complex data or Random Forests
+is an algorithm that used for supervised problems, etc.\\
+In summary, Artificial Intelligence (AI) is like a tool, a robot, or whatever the action takes place.
+For example a smart vacuum cleaner with sensors to prevent stairs fall and detect unmanned dust
+vehicles. Or even the Facebook that we are using, we can suggest new media that the customer is
+interested. Let us learn from what we are interested in. The brain of AI is machine learning (ML),
+learning from what we stimulate and the output is a number or code that is forwarded to display
+the result or allow the AI to show action. ML can be used in various ways, from credit scoring
+to analyzing a person's financial credibility, weather forecast sound analysis, or even the
+translation of the language that ML is learned. It requires a programmatic mechanism or a variety
+of algorithms, with data scientist designing is one of the most popular algorithms.\\
+Deep learning is intended to be easy to use. However, in real work, data scientist needs to
+design variables in the deep learning and need to find other algorithms as a comparison pair
+to look for the most suitable algorithm in actual use.
 
-\section{Text Processing Algorithms}
-\subsection{Algorithm I}
+\subsection{Deep Neural network}
+Deep learning algorithms must use Artificial Neural Networks (ANN), which is the same as how
+the nervous system works in the human brain (Coraline, n.d.). These networks have neurons that
+connect from the nervous system and communicate. It uses parallel processing to understand and
+learn from the vast amount of information it continually receives.\\
+The general principle of deep learning is to have multiple processors. The input data for each
+layer is obtained through interaction with the other layers. Deep learning seeks to find deeper
+relationships as the number of layers and processors in it increases. The higher the data, the
+deeper and more complex (abstract).\\
+The deep learning structure architecture is based on the greedy method to find things in each
+layer that make deep learning more efficient than other methods. For example, early information
+might learn that an incoming image consists of lines. The high floor brings together the lines
+to form a rectangle. And the next layer is to find the correlation of the squares until the
+computer recognizes that the image is the image of flag, etc.
 
-% Can define this in the preamble..
-You can place the figure and refer to it as Figure~\ref{fig:model2}.
-The figure and table numbering will be run and updated automatically when you add/remove tables/figures from the document.
+\subsection{Recurrent Neural network (RNN)}
+RNN is a class of artificial neural networks, but the difference is there is a connection between
+each state to form a memory called “Internal memory” %todo: (Shekhar, 2019)
+. Unlike the feedforward neural network, RNN can use the internal memory to process the input that is sequential data.
 
-\begin{figure}[!h]\centering
-\setlength{\fboxrule}{0.2mm} % can define this in the preamble
-\setlength{\fboxsep}{1cm}
-\fbox{\includegraphics[width=5cm]{./model2.pdf}}
-\caption{The network model}\label{fig:model2}
+\begin{figure}[!h] \centering
+  \setlength{\fboxrule}{0.2mm} % line border
+  \setlength{\fboxsep}{0.5cm} % space between picture and line border
+  \fbox{\includegraphics[width=14cm]{./img/ch3/example_rnn.png}}  %width=14cm equal to width of paragraph
+  \caption{An example of RNN} % Caption under figure
+  \label{fig:example_rnn} % Used for ref in paragraph
 \end{figure}
 
- 
-\subsection{Algorithm II}
-Add more subsections as you want.
+Figure \ref*{fig:example_rnn} the method that RNN uses to create the internal memory is
+creating a loop within it. Figure A is activated, gets the input $X_t$ in the state of time,
+and output value to the hidden layer. The loop allows the information to be passed into the
+next state. Therefore, the first input will affect the output in the last state.
 
+\begin{figure}[!h] \centering
+  \setlength{\fboxrule}{0.2mm} % line border
+  \setlength{\fboxsep}{0.5cm} % space between picture and line border
+  \fbox{\includegraphics[width=14cm]{./img/ch3/standard_rnn.png}}  %width=14cm equal to width of paragraph
+  \caption{A standard RNN method} % Caption under figure
+  \label{fig:standard_rnn} % Used for ref in paragraph
+\end{figure}
 
-\section{Development Tools}
+Inside the RNN layer, the methods are different for each type as you can see from Figure
+\ref*{fig:standard_rnn}, standard RNN method. It takes the output value from the previous
+state and then combines with the present state’s input. After combining the result will go
+to the nonlinear function, in this case is Tanh. Then the output from this state will be
+used in the later state. The figure above can transform into the formula below.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+\[h_t = \Phi(Wx_t + Uh_{t-1})\]
+\begin{align*}
+&h(t) = \text{A hidden layer or output value of this state.}\\
+&\Phi = \text{An activation function, either sigmoid function or tanh.}\\
+&W = \text{The weight of the input.}\\
+&x(t) = \text{A present state input.}\\
+&U = \text{A hidden state matrix.}\\
+&h(t-1) = \text{A hidden layer or output value of the last state.}
+\end{align*}
+
+Because of this method, many consider RNN to use whenever they need context from the past,
+such as speech recognition, video analysis, and music composition.
+
+\subsection{Long Short-Term Memory (LSTM)}
+Like RNN the Long Short-Term Memory network is also a recurrent neural network but with
+different architecture designs %todo:(Shekhar, 2019; Olah, 2015)
+, as seen in Figure \ref*{fig:lstm_arch_design}. LSTM is specifically used to avoid the long-term dependency problem
+or the vanishing gradient.
+
+\begin{figure}[!h] \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=14cm]{./img/ch3/lstm_arch_design.jpg}}
+  \caption{LSTM architecture design}
+  \label{fig:lstm_arch_design}
+\end{figure}
+
+The core idea of LSTM is the cell state, the horizontal line that goes between each state. The
+cell state is like a bridge to carry out information from the first state throughout the model.
+Besides the ability to carry information, LSTM can also manipulate the cell state by adding gates
+that interact with the cell state. Each gate can alter the information on cell state like
+forgetting some data or to determine which information needs to be remembered. 
+
+\subsection{MaLSTM similarity function}
+\[\exp(-\|h^{(left)} - h^{(right)}\|1)\]
+In MaLSTM the identical sub-network is the way from the embedding up to the last LSTM hidden
+state (Primo.ai, 2020; Brown, 2020). using a LSTM to read in word-vectors that represent each
+input sentence and employs final hidden state as a vector representation for each sentence.
+The similarities among these representations are employed as predictors of semantic similarity.
+
+\subsection{The architecture of Siamese Neural Network}
+
+\begin{figure}[!h]
+  \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=14cm]{./img/ch3/siamese_arch.png}}
+  \caption{Sample Siamese Neural Networks architecture}
+  \label{fig:siamese_arch}
+\end{figure}
+Siamese Neural Networks is a type of neural network that contains multiple instances of the
+same model and shares the same architecture and weights (twin networks)%todo:(Brown, 2020; Cohen, 2017; J, 2020)
+. This architecture shows its strength when it must learn with limited data, and we do not have a complete dataset,
+for example Zero or One-shot learning tasks. They work in parallel and are responsible for creating vector
+representations for the input and producing better vector representations by measuring similarities between vectors. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Proposed Work}
