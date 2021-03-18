@@ -4,6 +4,7 @@
 \documentclass[12pt,oneside,openright,a4paper]{cpe-english-project}
 
 \usepackage{polyglossia}
+\usepackage{caption}
 \setdefaultlanguage{english}
 \setotherlanguage{thai}
 \newfontfamily\thaifont[Script=Thai,Scale=1.23]{TH Sarabun New}
@@ -356,11 +357,12 @@ Chatbot might have cons as
   \item Conversation quality is limited to the data.
 \end{itemize}
 There are two type of chatbot are IR based Chatbot and Neural Network Based Chatbot % todo: (Team, 2020; Savina, 2019).
+
 \subsubsection{IR Based Chatbot}
 IR based chatbot uses collections of conversations in order to produce responses to conversation %todo; (Savina, 2019; flow.ai, n.d.).
 Collections of conversations are stored in sequence of turns. When the chatbot receives a text,
 the chatbot can produce its turn of conversation by
-/\begin{itemize}
+\begin{itemize}
   \item Using the received text to search for a turn with the closest match in the collection,
   then return the next turn as response (most initiative).
   \item Using the received text to search for a turn with the closest match in the collection,
@@ -370,6 +372,7 @@ The turn searching is not limited to the receiving text, but rather the whole co
 can be used for response searching. Downside of this approach is that the text that chatbot produces
 might not be consistent. Chatbot might say something that conflicts with what the chatbot has said
 before.
+
 \subsubsection{Neural Network Based Chatbot}
 Neural network based chatbot sees its response as a transformation of the incoming text. This chatbot
 provides responses by training an encoder-decoder neural network with pairs of turns\\ %todo: (Savina, 2019; flow.ai, n.d.).
@@ -493,7 +496,6 @@ input sentence and employs final hidden state as a vector representation for eac
 The similarities among these representations are employed as predictors of semantic similarity.
 
 \subsection{The architecture of Siamese Neural Network}
-
 \begin{figure}[!h]
   \centering
   \setlength{\fboxrule}{0.2mm}
@@ -590,6 +592,7 @@ through insiders and outsiders, they prefer to use the Facebook Messenger platfo
   \caption{The result of our survey from 108 people.}
   \label{fig:ch3_result_survey}
 \end{figure}
+
 \subsection{ Storage Subsystem}
 \subsubsection{NestJS}
 NestJS is a framework for building Node.js server-side applications that scalable and very
@@ -668,6 +671,114 @@ To enter into the processor for the computer to work as we want. Python programm
 can also be used for many different types of programming. Without being limited to a particular
 job (General-purpose language), it is widely used in many large global organizations such as
 Google, YouTube, Instagram, Dropbox, and NASA, etc.
+
+\section{Related Chatbot}
+\subsection{Eliza}
+Eliza is a rule-based chatbot. It simulates a Rogerian psychologist by reflecting the patient’s
+statement back at them to continue the conversation. In the ELIZA system, there are rules. Each
+rule captures some keywords. When the rules are matched, the incoming sentence is transformed
+by transformation written for the rule %todo:(Johnson, 2019)
+. Each rule might have multiple
+transformations to reduce repetitiveness of returning sentences.\\
+Keywords in the rules are ranked. Specific meaning keywords have higher priority than general
+keywords. But universal keywords such as “everybody” are exceptions. As the universal keywords
+are highly probably referring to some specific event or person, universal keywords are ranked
+highest.\\
+Aside from rules, ELIZA also contains memory. Some rules cause ELIZA to store the topic in the
+memory stack. Afterward, if no keyword match to the incoming sentence is found, content in the
+memory stack is retrieved to continue the conversation.\\
+Aside from rule-based transformation, there are also transformations that switch 1st person
+words with 2nd persons words and vice versa.
+
+\subsection{PARRY}
+PARRY is a rule-based chatbot to simulate a paranoid person who is under delusion of threat
+from the mafia due to PARRY’s involvement in horse racing bet. PARRY included a model of mental
+state with 3 variables. The variables are anger, fear, and mistrust. Rules are written to
+manipulate these variables %todo:(GARBER, 2014)
+. When PARRY anger, hostile responses are made. PARRY also includes a chain of topics that are
+linked to mafia via horse racing. Whenever such topics are brought up for the first time,
+regardless of speaker’s intention, PARRY’s would feel threatened and related mental model
+variables are adjusted accordingly.
+
+\subsection{Botnoi Consulting}
+Botnoi Consulting has started from Botnoi chatbot in 2016 in Line Bot Awards competition in Japan %todo: (Botnoi, 2020)
+. On that time Botnoi is a chatbot on Line platform that has good relationship which can talk like
+a friend and have many features such as translate, find nearest restaurant, etc.\\
+But now, Botnoi group have been upgraded to the Botnoi Consulting company. Botnoi Consulting
+has developed own NLP engine in Thai language and related technology to makes many businesses
+can integrate Botnoi to the system such as Botnoi API, external API intregration, AI training
+\& monitoring, chat analytic repots, live chat, etc. Currently, Botnoi can automatically get
+input from user, provide information, make a payment, and update stock in the system without human.
+
+\section{Related research}
+\subsection{Automated Self-Learning Chatbot Initially Built as a FAQs Database Information Retrieval System: Multi-level and Intelligent Universal Virtual Front-Office Implementing Neural Network}
+This paper is about implement the multi-level virtual front office as you can see from the Figure \ref*{fig:ch3_lr_self_learning_chatbot}. 
+\begin{figure}[h!]
+  \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=14cm]{./img/ch3/literature_review_self_learning_chatbot.png}}
+  \caption{Functional schema of Automated Self-Learning Chatbot Initially Built as a FAQs
+  Database Information Retrieval System: Multi-level and Intelligent Universal Virtual
+  Front-Office Implement Neural Networks.}
+  \label{fig:ch3_lr_self_learning_chatbot}
+\end{figure}
+
+What we focus on from this research is about chatbot have automated self-learning from FAQs
+database which is likely to our project. From Figure \ref*{fig:ch3_lr_activity_dg_self_learning_chatbot},
+when there is a new question, if chatbot can answer, chatbot will send the answer to user.
+But if chatbot cannot answer, the operator will answer instead and store the question FAQs
+database and update A.I. engine of chatbot.\\
+But the different between this research paper and our project is the chatbot and A.I. engine.
+The author of research uses neural network to preprocess text before generating to AIML
+pattern and create chatbot from AIML A.I. engine. While our project creates Siamese Neural
+Network to pair the similarity of text between the question from user and question in
+knowledge management. If both questions are the similar, our system will query the answer
+from database and send answer back to the user.
+
+\begin{figure}[h!]
+  \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=10cm]{./img/ch3/literature_review_activity_diagram_chatbot.png}}
+  \caption{Activity Diagram of Self-Learning Algorithm of Automated Self-Learning Chatbot
+  Initially Built as a FAQs Database Information Retrieval System: Multi-level and Intelligent
+  Universal Virtual Front-Office Implement Neural Networks.}
+  \label{fig:ch3_lr_activity_dg_self_learning_chatbot}
+\end{figure}
+
+\section{Summary}
+KMUTT CPE Chatbot System is a neural network based chatbot with model prediction which use
+Siamese neural network to learn the similarity of question in Thai language with knowledge
+management that can learn by it-self overtime not a rule based chatbot like in the existing
+chatbot in the market. So, if we compare Rule-based chatbot and neural network based chatbot.
+\begin{itemize}
+  \item Rule-based Chatbot: The data must be entered verbatim — one sentence at a time. If the
+  user asks more than that, the answer will not be answered immediately or cannot answer.
+  \item Neural network based Chatbot: Understand a variety of sentence patterns. Can understand
+  a wider range of questions. The users do not have to ask directly but the model can understand.
+\end{itemize}
+Our project can help in answering the FAQ and general inquiries of the Computer Engineering
+department in KMUTT to outsiders and insiders via Facebook Messenger platform by prediction
+model from knowledge management. It can reduce the over workload of KMUTT CPE staff that they
+have to reply to the same answer to same questions to insiders or outsiders as quickly as they
+can and repeatedly every day. So, if we compare or solution with the existing solution which is
+the CPE staff have to answer by themselves (Table \ref*{table:ch3_solution_compare}).
+\begin{figure}[h!]
+  \centering
+  \fbox{\includegraphics[width=15cm]{./img/ch3/solution_compare.png}}
+  \captionof{table}{Compare KMUTT CPE chatbot with the existing solution which is the CPE
+  staff have to answer by themselves.}
+  \label{table:ch3_solution_compare}
+\end{figure}
+
+Overall KMUTT CPE Chatbot system can reduce the workload of document workers and reduce human
+error when answering the question. Also, can reply to outsiders and insiders correctly and
+immediately. It will serve either the computer engineering insiders or people interested in
+computer engineering to answer the question about the department and CPE staff can use
+knowledge management to manage FAQ in the department.
+Moreover, our chatbot systems can scalable, the chatbot can automatically build models
+when knowledge management receives new data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
