@@ -492,9 +492,22 @@ state (Primo.ai, 2020; Brown, 2020). using a LSTM to read in word-vectors that r
 input sentence and employs final hidden state as a vector representation for each sentence.
 The similarities among these representations are employed as predictors of semantic similarity.
 
-\section{Development Tools}
+\subsection{The architecture of Siamese Neural Network}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+\begin{figure}[!h]
+  \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=14cm]{./img/ch3/siamese_arch.png}}
+  \caption{Sample Siamese Neural Networks architecture}
+  \label{fig:siamese_arch}
+\end{figure}
+Siamese Neural Networks is a type of neural network that contains multiple instances of the
+same model and shares the same architecture and weights (twin networks)%todo:(Brown, 2020; Cohen, 2017; J, 2020)
+. This architecture shows its strength when it must learn with limited data, and we do not have a complete dataset,
+for example Zero or One-shot learning tasks. They work in parallel and are responsible for creating vector
+representations for the input and producing better vector representations by measuring similarities between vectors. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Proposed Work}
