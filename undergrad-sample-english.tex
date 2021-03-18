@@ -356,11 +356,12 @@ Chatbot might have cons as
   \item Conversation quality is limited to the data.
 \end{itemize}
 There are two type of chatbot are IR based Chatbot and Neural Network Based Chatbot % todo: (Team, 2020; Savina, 2019).
+
 \subsubsection{IR Based Chatbot}
 IR based chatbot uses collections of conversations in order to produce responses to conversation %todo; (Savina, 2019; flow.ai, n.d.).
 Collections of conversations are stored in sequence of turns. When the chatbot receives a text,
 the chatbot can produce its turn of conversation by
-/\begin{itemize}
+\begin{itemize}
   \item Using the received text to search for a turn with the closest match in the collection,
   then return the next turn as response (most initiative).
   \item Using the received text to search for a turn with the closest match in the collection,
@@ -370,6 +371,7 @@ The turn searching is not limited to the receiving text, but rather the whole co
 can be used for response searching. Downside of this approach is that the text that chatbot produces
 might not be consistent. Chatbot might say something that conflicts with what the chatbot has said
 before.
+
 \subsubsection{Neural Network Based Chatbot}
 Neural network based chatbot sees its response as a transformation of the incoming text. This chatbot
 provides responses by training an encoder-decoder neural network with pairs of turns\\ %todo: (Savina, 2019; flow.ai, n.d.).
@@ -493,7 +495,6 @@ input sentence and employs final hidden state as a vector representation for eac
 The similarities among these representations are employed as predictors of semantic similarity.
 
 \subsection{The architecture of Siamese Neural Network}
-
 \begin{figure}[!h]
   \centering
   \setlength{\fboxrule}{0.2mm}
@@ -590,6 +591,7 @@ through insiders and outsiders, they prefer to use the Facebook Messenger platfo
   \caption{The result of our survey from 108 people.}
   \label{fig:ch3_result_survey}
 \end{figure}
+
 \subsection{ Storage Subsystem}
 \subsubsection{NestJS}
 NestJS is a framework for building Node.js server-side applications that scalable and very
