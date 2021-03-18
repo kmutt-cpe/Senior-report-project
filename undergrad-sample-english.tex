@@ -420,18 +420,50 @@ might learn that an incoming image consists of lines. The high floor brings toge
 to form a rectangle. And the next layer is to find the correlation of the squares until the
 computer recognizes that the image is the image of flag, etc.
 
-\section{Text Processing Algorithms}
-\subsection{Algorithm I}
+\subsection{Recurrent Neural network (RNN)}
+RNN is a class of artificial neural networks, but the difference is there is a connection between
+each state to form a memory called “Internal memory” %todo: (Shekhar, 2019)
+. Unlike the feedforward neural network, RNN can use the internal memory to process the input that is sequential data.
 
-% Can define this in the preamble..
-You can place the figure and refer to it as Figure~\ref{fig:model2}.
-The figure and table numbering will be run and updated automatically when you add/remove tables/figures from the document.
+\begin{figure}[!h] \centering
+  \setlength{\fboxrule}{0.2mm} % line border
+  \setlength{\fboxsep}{0.5cm} % space between picture and line border
+  \fbox{\includegraphics[width=14cm]{./img/ch3/example_rnn.png}}  %width=14cm equal to width of paragraph
+  \caption{An example of RNN} % Caption under figure
+  \label{fig:example_rnn} % Used for ref in paragraph
+\end{figure}
 
-\begin{figure}[!h]\centering
-\setlength{\fboxrule}{0.2mm} % can define this in the preamble
-\setlength{\fboxsep}{1cm}
-\fbox{\includegraphics[width=5cm]{./model2.pdf}}
-\caption{The network model}\label{fig:model2}
+Figure \ref*{fig:example_rnn} the method that RNN uses to create the internal memory is
+creating a loop within it. Figure A is activated, gets the input $X_t$ in the state of time,
+and output value to the hidden layer. The loop allows the information to be passed into the
+next state. Therefore, the first input will affect the output in the last state.
+
+\begin{figure}[!h] \centering
+  \setlength{\fboxrule}{0.2mm} % line border
+  \setlength{\fboxsep}{0.5cm} % space between picture and line border
+  \fbox{\includegraphics[width=14cm]{./img/ch3/standard_rnn.png}}  %width=14cm equal to width of paragraph
+  \caption{A standard RNN method} % Caption under figure
+  \label{fig:standard_rnn} % Used for ref in paragraph
+\end{figure}
+
+Inside the RNN layer, the methods are different for each type as you can see from Figure
+\ref*{fig:standard_rnn}, standard RNN method. It takes the output value from the previous
+state and then combines with the present state’s input. After combining the result will go
+to the nonlinear function, in this case is Tanh. Then the output from this state will be
+used in the later state. The figure above can transform into the formula below.
+
+\[h_t = \Phi(Wx_t + Uh_{t-1})\]
+\begin{align*}
+&h(t) = \text{A hidden layer or output value of this state.}\\
+&\Phi = \text{An activation function, either sigmoid function or tanh.}\\
+&W = \text{The weight of the input.}\\
+&x(t) = \text{A present state input.}\\
+&U = \text{A hidden state matrix.}\\
+&h(t-1) = \text{A hidden layer or output value of the last state.}
+\end{align*}
+
+Because of this method, many consider RNN to use whenever they need context from the past,
+such as speech recognition, video analysis, and music composition.
 \end{figure}
 
  
