@@ -935,13 +935,16 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 		Integrate all subsystems and deploy to environment & Nathaphop, Natkanok, Natthawat 
 	\end{tabular}
 \end{table}
+
 \pagebreak
+
 \section{Use case diagram}
 Figure ~\ref{fig:use case diagram} shows the main things that the KMUTT CPE staff and questioner can do with the KMUTT CPE Chatbot System. Knowledge management is used by KMUTT CPE staff only.
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/use case diagram.jpg}
 	\caption{Use case of KMUTT CPE Chatbot}\label{fig:use case diagram}
 \end{figure}
+
 \section{Use case narrative}
 \subsection{Login}
 \underline{Actor}: Admin\\
@@ -1007,36 +1010,273 @@ Figure ~\ref{fig:use case diagram} shows the main things that the KMUTT CPE staf
 
 \subsection{Create category}
 \underline{Actor}: Admin\\
-\underline{Goal}: Admin can edit their profile\\
+\underline{Goal}: Admin can create category data\\
 \underline{Precondition}: Admin need to login to the system first\\
 \underline{Main Success Scenario}:
 \begin{enumerate}[label={\arabic*.}]
-	\item Admin clicks edit profile       
-	\item Redirect to edit profile page
-	\item Admin edits their own profile such as name or password
-	\item Admin clicks save and confirm the edit action
+	\item Admin goes to category management page
+	\item Admin clicks create category button
+	\item Admin inputs category name in input box
+	\item Admin clicks create button
+	\item Admin confirm create action
 \end{enumerate}
 \underline{Postcondition}: 
 \begin{enumerate}[label={\arabic*.}]
-	\item Admin can access feature inside knowledge management
+	\item Admin can see the updated category list and can select category when manage the question
+	\item Websites contains new category
 \end{enumerate}
 
 \subsection{Edit category}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can edit category data\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to category management page
+	\item Admin clicks edit category button
+	\item Admin edits category name
+	\item Admin clicks save button
+	\item Admin confirm edit action
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can see the updated category list
+	\item Websites update the category
+\end{enumerate}
+
 \subsection{Remove category}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can remove category\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to category management page
+	\item Admin clicks remove category button
+	\item Admin confirm remove action
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can see the updated category list
+	\item Websites remove that category, subcategories, and questions inside that category
+\end{enumerate}
+
 \subsection{Read subcategory}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can read subcategory data in each category\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to category management page
+	\item Admin clicks to category that interested
+	\item Admin can read all subcategories inside that category
+\end{enumerate}
+\underline{Postcondition}: -
+
 \subsection{Create subcategory}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can create subcategory\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to category management page
+	\item Admin clicks to the category that want to add a new subcategory
+	\item Admin clicks create new subcategory button
+	\item Admin inputs subcategory name in input box
+	\item Admin clicks create button
+	\item Admin confirm create action
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can see the updated subcategory list and can select subcategory when manage the question
+	\item Websites contains new subcategory
+\end{enumerate}
+
 \subsection{Edit subcategory}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can edit subcategory\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to category management page
+	\item Admin clicks category that have subcategory that want to edit
+	\item Admin clicks edit subcategory button
+	\item Admin edits subcategory name
+	\item Admin clicks save button
+	\item Admin confirm edit action
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can see the updated subcategory list
+	\item Websites update the subcategory
+\end{enumerate}
+
 \subsection{Remove subcategory}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can remove subcategory\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to category management page
+	\item Admin clicks category that have subcategory that want to remove
+	\item Admin clicks remove subcategory button
+	\item Admin confirm delete action
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can see the updated category list
+	\item Websites remove all of questions in that subcategory
+\end{enumerate}
+
 \subsection{Read FAQ}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can read question in knowledge management\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to question management page
+	\item Admin selects the category of question that want to read
+	\item Admin can see the list of questions and can click to the question that want to read
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can see information of that question, consists of question, answer, category, subcategory, last editor, and last updated.
+\end{enumerate}
+
 \subsection{Create FAQ}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can create question in knowledge management\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to question management page
+	\item Admin clicks to create new question
+	\item Admin selects category and subcategory
+	\item Admin inputs question and answer
+	\item Admin clicks create button
+	\item Admin confirm create action
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can see the updated question list
+\end{enumerate}
+
 \subsection{Edit FAQ}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can edit question in knowledge management\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to question management page
+	\item Admin selects the category of question that want to edit
+	\item Admin selects the question that wants to edit
+	\item Admin edits the question
+	\item Admin click saves
+	\item Admin confirm edit action
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can see the updated question list
+\end{enumerate}
+
 \subsection{Remove FAQ}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can remove question in knowledge management\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to question management page
+	\item Admin selects the category of question that want to remove
+	\item Admin selects the question that wants to remove
+	\item Admin confirm delete action
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can see the updated question list
+	\item Websites contains new category
+\end{enumerate}
+
 \subsection{Read user}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can read user information in knowledge management\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to user management page
+	\item Admin can see the list of users and can click user that want to read information
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can read information of that user.
+\end{enumerate}
+
 \subsection{Create user}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can create new user account\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to user management page
+	\item Admin clicks create new user button
+	\item Admin input username that doesn’t exist in the system
+	\item Admin input password, and confirmed password
+	\item Admin input name of the user
+	\item Admin clicks create user and confirm create action
+\end{enumerate}
+\underline{Extension a}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to user management page
+	\item Admin clicks create new user button
+	\item Admin input username that already exists in the system
+	\item Admin input password, and confirmed password
+	\item Admin input name of the user
+	\item Admin clicks create
+	\item Websites display error message of user have already exists
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can see the updated list of users
+	\item Should not create the username that already exists in the system
+\end{enumerate}
+
 \subsection{Edit user}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can create new user account\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to user management page
+	\item Admin clicks edit button on the account that want to edit
+	\item Admin edits password or name
+	\item Admin click saves and confirm edit action
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can see the updated list of users
+\end{enumerate}
+
 \subsection{Remove user}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can remove user account\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to user management page
+	\item Admin clicks remove button on the account that want to remove
+	\item Admin click confirm remove action
+\end{enumerate}
+\underline{Extension a}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to user management page
+	\item Admin clicks remove button on the own account
+	\item Website display error message causes from delete own account
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can see the updated list of users
+\end{enumerate}
 
 \section{Workflow}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Experiments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
