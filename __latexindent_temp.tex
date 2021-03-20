@@ -857,10 +857,9 @@ Test function and website interface in each   browser                           
 \end{description}
 \emph{workload}
 \begin{table}[h]
-\centering
-  \caption{Workload of prediction model subsystem}
-  \label{tab:Workload of prediction model subsystem}
- \begin{tabular}{ll}
+\caption{Workload of prediction model subsystem}
+\label{tab:Workload of prediction model subsystem}
+\begin{tabular}{ll}
 \rowcolor[HTML]{5B9BD5} 
 Task                                        & Responsibility      \\
 \rowcolor[HTML]{DEEAF6} 
@@ -886,7 +885,6 @@ Evaluate and tuning model                   & Natkanok, Natthawat
 \end{description}
 \emph{workload}
 \begin{table}[h]
-\centering
 \caption{Workload of chatbot subsystem}
 \label{tab:Workload of chatbot subsystem}
 \begin{tabular}{ll}
@@ -906,48 +904,6 @@ Connect webhook Dialogflow to our system                                        
 \end{tabular}
 \end{table}
 
-\begin{description}
-  \item[Storage Subsystem]
-  \begin{itemize}
-    \item Storage subsystem can manage a queue of questions from the chatbot subsystem to the prediction model subsystem.
-    \item Storage subsystem provides API to the knowledge management subsystem and chatbot subsystem.
-    \item Storage subsystem can send all questions to the prediction model subsystem for building the model.
-  \end{itemize}
-\end{description}
-\emph{workload}
-\begin{table}[h]
-\centering
-\caption{Workload of storage subsystem}
-\label{tab:Workload of storage subsystem}
-\begin{tabular}{ll}
-\rowcolor[HTML]{5B9BD5} 
-Task                                               & Responsibility                 \\
-\rowcolor[HTML]{DEEAF6} 
-Design database schema                             & Nathaphop                      \\
-Planning code structure                            & Nathaphop                      \\
-\rowcolor[HTML]{DEEAF6} 
-Setup environment and dependency                   & Nathaphop                      \\
-Implement entities object of each table            & Nathaphop                      \\
-\rowcolor[HTML]{DEEAF6} 
-Provide necessary restful API and GraphQL          & Nathaphop                      \\
-Doing unit test and integrate test                 & Nathaphop                      \\
-\rowcolor[HTML]{DEEAF6} 
-Integrate all subsystems and deploy to environment & Nathaphop, Natkanok, Natthawat
-\end{tabular}
-\end{table}
-\pagebreak
-\section{Use case diagram}
-Figure ~\ref{fig:use case diagram} shows the main things that the KMUTT CPE staff and questioner can do with the KMUTT CPE Chatbot System. Knowledge management is used by KMUTT CPE staff only.
-\begin{figure}[!h]
-\includegraphics[width=14cm]{img/ch3/use case diagram.jpg}
-\caption{Use case of KMUTT CPE Chatbot}\label{fig:use case diagram}
-\end{figure}
-\section{Use case narrative}
-\subsection{Login}
-\subsection{Logout}
-\subsection{Edit Profile}
-\subsection{Read category}
-\subsection{Create category}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Experiments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
