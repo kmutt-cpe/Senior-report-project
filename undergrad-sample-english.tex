@@ -795,160 +795,248 @@ This chapter demonstrates our plan and idea to be method or approach to reach th
 \section{System Architecture}
 After planning and discussion with advisor, KMUTT CPE Chatbot System can be divide into 4 subsystems which consists of knowledge management subsystem, prediction model subsystem, chatbot subsystem, and storage subsystem
 \begin{figure}[h!]
-  \centering
-  \setlength{\fboxrule}{0.2mm}
-  \setlength{\fboxsep}{0.5cm}
-  \fbox{\includegraphics[width=10cm]{img/ch3/System Architecture.jpg}}
-  \caption{System architecture of KMUTT CPE Chatbot System}
-  \label{fig:System architecture of KMUTT CPE Chatbot System}
+	\centering
+	\setlength{\fboxrule}{0.2mm}
+	\setlength{\fboxsep}{0.5cm}
+	\fbox{\includegraphics[width=10cm]{img/ch3/System Architecture.jpg}}
+	\caption{System architecture of KMUTT CPE Chatbot System}
+	\label{fig:System architecture of KMUTT CPE Chatbot System}
 \end{figure}
 
 \begin{description}
-  \item [Knowledge Management Subsystem]
-    \hfill \\The knowledge management subsystem is related to knowledge management for the Computer Engineering department, allowing the staff to manage the FAQ. Also, FAQ from knowledge management will be the data for building the model.\\
-This subsystem contains only web applications based on a web browser for KMUTT CPE staff. Our group will build the knowledge management web application by using the TypeScript language and React library. The web application also read and save to the database through the GraphQL gateway to backend API.
-  \item [Prediction Model Subsystem]
-    \hfill \\The prediction model subsystem is related to the chatbot's prediction model and includes the automated build model.\\
-This subsystem consists of Apache Airflow and Siamese Neural Network. Apache Airflow is used to automate build the Siamese model. It will query all questions and answers from the backend API and build the model in a schedule. While Siamese Neural Network input as a sequence of questions from the questioner, then pair with the FAQ in knowledge management and then return the related question.
-  \item [Chatbot Subsystem]
-    \hfill \\Chatbot subsystem is related to the managing queue of chat from many users, chat flow and intent message.\\
-This subsystem consists of Facebook Messenger, Dialogflow, and NLG Template. Facebook Messenger is a chat platform where people can ask their question, and this platform will be connected to Dialogflow. Dialogflow will manage the chat flow and chat queue from Facebook Messenger and intent to message that the message is a question or common message like greeting. If the message is common message, Dialogflow will automatically replied with a common answer. But if it is a question, Dialogflow will send the question to the backend API to get the answer back.
-  \item [Storage Subsystem]
-    \hfill \\The storage subsystem is related to managing data and providing API for each subsystem.\\
-Storage subsystem consists of a database and backend API. Our database is MySQL, and it keeps all data from each subsystem, either knowledge management subsystem or chatbot subsystem. But both subsystems need to save the data into the database through the backend API. The backend API provides the restful API and GraphQL for all subsystems to query, update, and delete data. Moreover, the back-end API provides an API to get a question from Dialogflow and manage the question in the queue to send a question to the prediction model and return an answer from knowledge management.
+	\item [Knowledge Management Subsystem]
+	\hfill \\The knowledge management subsystem is related to knowledge management for the Computer Engineering department, allowing the staff to manage the FAQ. Also, FAQ from knowledge management will be the data for building the model.\\
+	This subsystem contains only web applications based on a web browser for KMUTT CPE staff. Our group will build the knowledge management web application by using the TypeScript language and React library. The web application also read and save to the database through the GraphQL gateway to backend API.
+	\item [Prediction Model Subsystem]
+	\hfill \\The prediction model subsystem is related to the chatbot's prediction model and includes the automated build model.\\
+	This subsystem consists of Apache Airflow and Siamese Neural Network. Apache Airflow is used to automate build the Siamese model. It will query all questions and answers from the backend API and build the model in a schedule. While Siamese Neural Network input as a sequence of questions from the questioner, then pair with the FAQ in knowledge management and then return the related question.
+	\item [Chatbot Subsystem]
+	\hfill \\Chatbot subsystem is related to the managing queue of chat from many users, chat flow and intent message.\\
+	This subsystem consists of Facebook Messenger, Dialogflow, and NLG Template. Facebook Messenger is a chat platform where people can ask their question, and this platform will be connected to Dialogflow. Dialogflow will manage the chat flow and chat queue from Facebook Messenger and intent to message that the message is a question or common message like greeting. If the message is common message, Dialogflow will automatically replied with a common answer. But if it is a question, Dialogflow will send the question to the backend API to get the answer back.
+	\item [Storage Subsystem]
+	\hfill \\The storage subsystem is related to managing data and providing API for each subsystem.\\
+	Storage subsystem consists of a database and backend API. Our database is MySQL, and it keeps all data from each subsystem, either knowledge management subsystem or chatbot subsystem. But both subsystems need to save the data into the database through the backend API. The backend API provides the restful API and GraphQL for all subsystems to query, update, and delete data. Moreover, the back-end API provides an API to get a question from Dialogflow and manage the question in the queue to send a question to the prediction model and return an answer from knowledge management.
 \end{description}
 \section{System Requirements}
 \begin{description}
-  \item[Knowledge Management Subsystem]
-  \begin{itemize}
-    \item Deploying new knowledge management for Computer Engineering department
-    \item KMUTT CPE Staff can create, update, read, and delete the FAQ in Knowledge management.
-    \item Knowledge management subsystem can save the data in the database through the storage subsystem.
-  \end{itemize}
+	\item[Knowledge Management Subsystem]
+	\begin{itemize}
+		\item Deploying new knowledge management for Computer Engineering department
+		\item KMUTT CPE Staff can create, update, read, and delete the FAQ in Knowledge management.
+		\item Knowledge management subsystem can save the data in the database through the storage subsystem.
+	\end{itemize}
 \end{description}
 \emph{workload}
 \begin{table}[h]
-\centering
-  \caption{Workload of knowledge management subsystem}
-  \label{tab:Workload of knowledge management subsystem}
-  \begin{tabular}{ll}
-\rowcolor[HTML]{5B9BD5} 
-Task                                                                              & Responsibility \\
-\rowcolor[HTML]{DEEAF6} 
-Design user interface                                                             & Natkanok       \\
-\rowcolor[HTML]{FFFFFF} 
-Setup environment and dependency                                                  & Nathaphop      \\
-\rowcolor[HTML]{DEEAF6} 
-Create each component of website such as button, navbar, input   box, table, etc. & Nathaphop      \\
-Implement web page follow the user interface   design                             & Nathaphop      \\
-\rowcolor[HTML]{DEEAF6} 
-Connect the website to backend API with   GraphQL                                 & Nathaphop      \\
-Test function and website interface in each   browser                             & Nathaphop     
-  \end{tabular}
+	\centering
+	\caption{Workload of knowledge management subsystem}
+	\label{tab:Workload of knowledge management subsystem}
+	\begin{tabular}{ll}
+		\rowcolor[HTML]{5B9BD5} 
+		Task                                                                              & Responsibility \\
+		\rowcolor[HTML]{DEEAF6} 
+		Design user interface                                                             & Natkanok       \\
+		\rowcolor[HTML]{FFFFFF} 
+		Setup environment and dependency                                                  & Nathaphop      \\
+		\rowcolor[HTML]{DEEAF6} 
+		Create each component of website such as button, navbar, input   box, table, etc. & Nathaphop      \\
+		Implement web page follow the user interface   design                             & Nathaphop      \\
+		\rowcolor[HTML]{DEEAF6} 
+		Connect the website to backend API with   GraphQL                                 & Nathaphop      \\
+		Test function and website interface in each   browser                             & Nathaphop      
+	\end{tabular}
 \end{table}
 
 \begin{description}
-  \item[Prediction Model Subsystem]
-  \begin{itemize}
-    \item Use the FAQ data from knowledge management to build the model
-    \item The model has input as a sequence of question from the questioner, then pairs with the FAQ in knowledge management, and then returns the related question back.
-    \item Automate build model and deploy
-  \end{itemize}
+	\item[Prediction Model Subsystem]
+	\begin{itemize}
+		\item Use the FAQ data from knowledge management to build the model
+		\item The model has input as a sequence of question from the questioner, then pairs with the FAQ in knowledge management, and then returns the related question back.
+		\item Automate build model and deploy
+	\end{itemize}
 \end{description}
 \emph{workload}
 \begin{table}[h]
-\centering
-  \caption{Workload of prediction model subsystem}
-  \label{tab:Workload of prediction model subsystem}
- \begin{tabular}{ll}
-\rowcolor[HTML]{5B9BD5} 
-Task                                        & Responsibility      \\
-\rowcolor[HTML]{DEEAF6} 
-Gathering Pantip data to create data corpus & Natkanok            \\
-Manually pair similar text                  & Natkanok            \\
-\rowcolor[HTML]{DEEAF6} 
-Preprocess and clean data                   & Natkanok            \\
-Build the model                             & Natkanok            \\
-\rowcolor[HTML]{DEEAF6} 
-Train model                                 & Natkanok, Natthawat \\
-Evaluate and tuning model                   & Natkanok, Natthawat
-\end{tabular}
+	\centering
+	\caption{Workload of prediction model subsystem}
+	\label{tab:Workload of prediction model subsystem}
+	\begin{tabular}{ll}
+		\rowcolor[HTML]{5B9BD5} 
+		Task                                        & Responsibility      \\
+		\rowcolor[HTML]{DEEAF6} 
+		Gathering Pantip data to create data corpus & Natkanok            \\
+		Manually pair similar text                  & Natkanok            \\
+		\rowcolor[HTML]{DEEAF6} 
+		Preprocess and clean data                   & Natkanok            \\
+		Build the model                             & Natkanok            \\
+		\rowcolor[HTML]{DEEAF6} 
+		Train model                                 & Natkanok, Natthawat \\
+		Evaluate and tuning model                   & Natkanok, Natthawat 
+	\end{tabular}
 \end{table}
 
 \begin{description}
-  \item[Chatbot Subsystem]
-  \begin{itemize}
-    \item Chatbot subsystem can manage queues and chat flow.
-    \item Chatbot subsystem must connect with Facebook Messenger.
-    \item Chatbot subsystem can get the question from people and can reply answer from knowledge management back.
-    \item Chatbot subsystem can keep log messages in the database through storage subsystem.
-  \end{itemize}
+	\item[Chatbot Subsystem]
+	\begin{itemize}
+		\item Chatbot subsystem can manage queues and chat flow.
+		\item Chatbot subsystem must connect with Facebook Messenger.
+		\item Chatbot subsystem can get the question from people and can reply answer from knowledge management back.
+		\item Chatbot subsystem can keep log messages in the database through storage subsystem.
+	\end{itemize}
 \end{description}
 \emph{workload}
 \begin{table}[h]
-\centering
-\caption{Workload of chatbot subsystem}
-\label{tab:Workload of chatbot subsystem}
-\begin{tabular}{ll}
-\rowcolor[HTML]{5B9BD5} 
-Task                                                                                       & Responsibility \\
-\rowcolor[HTML]{DEEAF6} 
-Create app in Facebook developer and write app review                                      & Natthawat      \\
-Write privacy policy and term of service in   Facebook developer                           & Natthawat      \\
-\rowcolor[HTML]{DEEAF6} 
-Create business account                                                                    & Natthawat      \\
-Write data protection officer contact   information                                        & Natthawat      \\
-\rowcolor[HTML]{DEEAF6} 
-Generate token to Facebook and connect Facebook   webhook to Dialogflow                    & Natthawat      \\
-Create agent in Dialogflow to makes it be able   to handle both Thai and English languages & Natthawat      \\
-\rowcolor[HTML]{DEEAF6} 
-Connect webhook Dialogflow to our system                                                   & Natthawat     
-\end{tabular}
+	\centering
+	\caption{Workload of chatbot subsystem}
+	\label{tab:Workload of chatbot subsystem}
+	\begin{tabular}{ll}
+		\rowcolor[HTML]{5B9BD5} 
+		Task                                                                                       & Responsibility \\
+		\rowcolor[HTML]{DEEAF6} 
+		Create app in Facebook developer and write app review                                      & Natthawat      \\
+		Write privacy policy and term of service in   Facebook developer                           & Natthawat      \\
+		\rowcolor[HTML]{DEEAF6} 
+		Create business account                                                                    & Natthawat      \\
+		Write data protection officer contact   information                                        & Natthawat      \\
+		\rowcolor[HTML]{DEEAF6} 
+		Generate token to Facebook and connect Facebook   webhook to Dialogflow                    & Natthawat      \\
+		Create agent in Dialogflow to makes it be able   to handle both Thai and English languages & Natthawat      \\
+		\rowcolor[HTML]{DEEAF6} 
+		Connect webhook Dialogflow to our system                                                   & Natthawat      
+	\end{tabular}
 \end{table}
 
 \begin{description}
-  \item[Storage Subsystem]
-  \begin{itemize}
-    \item Storage subsystem can manage a queue of questions from the chatbot subsystem to the prediction model subsystem.
-    \item Storage subsystem provides API to the knowledge management subsystem and chatbot subsystem.
-    \item Storage subsystem can send all questions to the prediction model subsystem for building the model.
-  \end{itemize}
+	\item[Storage Subsystem]
+	\begin{itemize}
+		\item Storage subsystem can manage a queue of questions from the chatbot subsystem to the prediction model subsystem.
+		\item Storage subsystem provides API to the knowledge management subsystem and chatbot subsystem.
+		\item Storage subsystem can send all questions to the prediction model subsystem for building the model.
+	\end{itemize}
 \end{description}
 \emph{workload}
 \begin{table}[h]
-\centering
-\caption{Workload of storage subsystem}
-\label{tab:Workload of storage subsystem}
-\begin{tabular}{ll}
-\rowcolor[HTML]{5B9BD5} 
-Task                                               & Responsibility                 \\
-\rowcolor[HTML]{DEEAF6} 
-Design database schema                             & Nathaphop                      \\
-Planning code structure                            & Nathaphop                      \\
-\rowcolor[HTML]{DEEAF6} 
-Setup environment and dependency                   & Nathaphop                      \\
-Implement entities object of each table            & Nathaphop                      \\
-\rowcolor[HTML]{DEEAF6} 
-Provide necessary restful API and GraphQL          & Nathaphop                      \\
-Doing unit test and integrate test                 & Nathaphop                      \\
-\rowcolor[HTML]{DEEAF6} 
-Integrate all subsystems and deploy to environment & Nathaphop, Natkanok, Natthawat
-\end{tabular}
+	\centering
+	\caption{Workload of storage subsystem}
+	\label{tab:Workload of storage subsystem}
+	\begin{tabular}{ll}
+		\rowcolor[HTML]{5B9BD5} 
+		Task                                               & Responsibility                 \\
+		\rowcolor[HTML]{DEEAF6} 
+		Design database schema                             & Nathaphop                      \\
+		Planning code structure                            & Nathaphop                      \\
+		\rowcolor[HTML]{DEEAF6} 
+		Setup environment and dependency                   & Nathaphop                      \\
+		Implement entities object of each table            & Nathaphop                      \\
+		\rowcolor[HTML]{DEEAF6} 
+		Provide necessary restful API and GraphQL          & Nathaphop                      \\
+		Doing unit test and integrate test                 & Nathaphop                      \\
+		\rowcolor[HTML]{DEEAF6} 
+		Integrate all subsystems and deploy to environment & Nathaphop, Natkanok, Natthawat 
+	\end{tabular}
 \end{table}
 \pagebreak
 \section{Use case diagram}
 Figure ~\ref{fig:use case diagram} shows the main things that the KMUTT CPE staff and questioner can do with the KMUTT CPE Chatbot System. Knowledge management is used by KMUTT CPE staff only.
 \begin{figure}[!h]
-\includegraphics[width=14cm]{img/ch3/use case diagram.jpg}
-\caption{Use case of KMUTT CPE Chatbot}\label{fig:use case diagram}
+	\includegraphics[width=14cm]{img/ch3/use case diagram.jpg}
+	\caption{Use case of KMUTT CPE Chatbot}\label{fig:use case diagram}
 \end{figure}
 \section{Use case narrative}
 \subsection{Login}
-\subsection{Logout}
-\subsection{Edit Profile}
-\subsection{Read category}
-\subsection{Create category}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can login to the system\\
+\underline{Precondition}: Register username and password by root user\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin inputs valid username and password in input box        
+	\item Admin clicks login button
+	\item Redirect to knowledge management workspace
+\end{enumerate}
+\underline{Extension a}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin inputs valid username and password in input box        
+	\item Admin clicks login button
+	\item Website displays the error message of incorrect username or password
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can access feature inside knowledge management
+\end{enumerate}
 
+\subsection{Logout}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can logout from the system\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin clicks logout button      
+	\item Redirect to home page
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can access feature inside knowledge management
+\end{enumerate}
+
+\subsection{Edit Profile}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can edit their profile\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin clicks edit profile       
+	\item Redirect to edit profile page
+	\item Admin edits their own profile such as name or password
+	\item Admin clicks save and confirm the edit action
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can access feature inside knowledge management
+\end{enumerate}
+
+\subsection{Read category}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can read category data\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin goes to category management page      
+	\item Admin can read all categories
+\end{enumerate}
+\underline{Postcondition}: -
+
+\subsection{Create category}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can edit their profile\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin clicks edit profile       
+	\item Redirect to edit profile page
+	\item Admin edits their own profile such as name or password
+	\item Admin clicks save and confirm the edit action
+\end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+	\item Admin can access feature inside knowledge management
+\end{enumerate}
+
+\subsection{Edit category}
+\subsection{Remove category}
+\subsection{Read subcategory}
+\subsection{Create subcategory}
+\subsection{Edit subcategory}
+\subsection{Remove subcategory}
+\subsection{Read FAQ}
+\subsection{Create FAQ}
+\subsection{Edit FAQ}
+\subsection{Remove FAQ}
+\subsection{Read user}
+\subsection{Create user}
+\subsection{Edit user}
+\subsection{Remove user}
+
+\section{Workflow}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Experiments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

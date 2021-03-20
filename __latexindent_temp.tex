@@ -857,9 +857,10 @@ Test function and website interface in each   browser                           
 \end{description}
 \emph{workload}
 \begin{table}[h]
-\caption{Workload of prediction model subsystem}
-\label{tab:Workload of prediction model subsystem}
-\begin{tabular}{ll}
+\centering
+  \caption{Workload of prediction model subsystem}
+  \label{tab:Workload of prediction model subsystem}
+ \begin{tabular}{ll}
 \rowcolor[HTML]{5B9BD5} 
 Task                                        & Responsibility      \\
 \rowcolor[HTML]{DEEAF6} 
@@ -885,6 +886,7 @@ Evaluate and tuning model                   & Natkanok, Natthawat
 \end{description}
 \emph{workload}
 \begin{table}[h]
+\centering
 \caption{Workload of chatbot subsystem}
 \label{tab:Workload of chatbot subsystem}
 \begin{tabular}{ll}
@@ -904,7 +906,95 @@ Connect webhook Dialogflow to our system                                        
 \end{tabular}
 \end{table}
 
+\begin{description}
+  \item[Storage Subsystem]
+  \begin{itemize}
+    \item Storage subsystem can manage a queue of questions from the chatbot subsystem to the prediction model subsystem.
+    \item Storage subsystem provides API to the knowledge management subsystem and chatbot subsystem.
+    \item Storage subsystem can send all questions to the prediction model subsystem for building the model.
+  \end{itemize}
+\end{description}
+\emph{workload}
+\begin{table}[h]
+\centering
+\caption{Workload of storage subsystem}
+\label{tab:Workload of storage subsystem}
+\begin{tabular}{ll}
+\rowcolor[HTML]{5B9BD5} 
+Task                                               & Responsibility                 \\
+\rowcolor[HTML]{DEEAF6} 
+Design database schema                             & Nathaphop                      \\
+Planning code structure                            & Nathaphop                      \\
+\rowcolor[HTML]{DEEAF6} 
+Setup environment and dependency                   & Nathaphop                      \\
+Implement entities object of each table            & Nathaphop                      \\
+\rowcolor[HTML]{DEEAF6} 
+Provide necessary restful API and GraphQL          & Nathaphop                      \\
+Doing unit test and integrate test                 & Nathaphop                      \\
+\rowcolor[HTML]{DEEAF6} 
+Integrate all subsystems and deploy to environment & Nathaphop, Natkanok, Natthawat
+\end{tabular}
+\end{table}
+\pagebreak
+\section{Use case diagram}
+Figure ~\ref{fig:use case diagram} shows the main things that the KMUTT CPE staff and questioner can do with the KMUTT CPE Chatbot System. Knowledge management is used by KMUTT CPE staff only.
+\begin{figure}[!h]
+\includegraphics[width=14cm]{img/ch3/use case diagram.jpg}
+\caption{Use case of KMUTT CPE Chatbot}\label{fig:use case diagram}
+\end{figure}
+\section{Use case narrative}
+\subsection{Login}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can login to the system\\
+\underline{Precondition}: Register username and password by root user\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+        \item Admin inputs valid username and password in input box        
+\item Admin clicks login button
+\item Redirect to knowledge management workspace
+      \end{enumerate}
+\underline{Extension a}:
+\begin{enumerate}[label={\arabic*.}]
+        \item Admin inputs valid username and password in input box        
+\item Admin clicks login button
+\item Website displays the error message of incorrect username or password
+      \end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+\item Admin can access feature inside knowledge management
+\end{enumerate}
+\subsection{Logout}
+\underline{Actor}: Admin\\
+\underline{Goal}: Admin can logout from the system\\
+\underline{Precondition}: Admin need to login to the system first\\
+\underline{Main Success Scenario}:
+\begin{enumerate}[label={\arabic*.}]
+        \item Admin clicks logout button      
+\item Redirect to home page
+      \end{enumerate}
+\underline{Postcondition}: 
+\begin{enumerate}[label={\arabic*.}]
+\item Admin can access feature inside knowledge management
+\end{enumerate}
+\subsection{Edit Profile}
+\subsection{Read category}
+\subsection{Create category}
+\subsection{Edit category}
+\subsection{Remove category}
+\subsection{Read subcategory}
+\subsection{Create subcategory}
+\subsection{Edit subcategory}
+\subsection{Remove subcategory}
+\subsection{Read FAQ}
+\subsection{Create FAQ}
+\subsection{Edit FAQ}
+\subsection{Remove FAQ}
+\subsection{Read user}
+\subsection{Create user}
+\subsection{Edit user}
+\subsection{Remove user}
 
+\section{Workflow}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Experiments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
