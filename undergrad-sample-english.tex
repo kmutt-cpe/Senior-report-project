@@ -1479,6 +1479,8 @@ Pre-processing data by trying to convert text it into lists of word indices or s
 In the model prediction subsystem, we split our data into “left” and “right” inputs (one for each side of the MaLSTM) and Pad all the word number sequences with zeros. We also create a two thousand validation dataset to measure our model using the scikit learns train\_test\_split function. It can help to keeps the distribution of the label between the datasets by default.
 \end{flushleft}
 
+\pagebreak
+
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/The architecture of Siamese neural network with MaLSTM for learning similarity.jpg}
 	\caption{The architecture of Siamese neural network with MaLSTM for learning similarity}\label{fig:The architecture of Siamese neural network with MaLSTM for learning similarity}
@@ -1495,14 +1497,14 @@ Prepare from the pre-processing process, which are two embedded matrices represe
 	\caption{Model Summary}\label{fig:Model Summary}
 \end{figure}
 
+\pagebreak
+
 \section{Evaluation plans}
 \begin{itemize}
   \item Overall requirements
 \begin{flushleft}
 Our system can reply and answer the question from people who asked via Facebook Messenger automatically. In addition to satisfying score and comment from people who have used.
 \end{flushleft}
-
-\pagebreak
 
   \item Knowledge Management
 \begin{table}[h]
