@@ -184,15 +184,15 @@ and then the chatbot will send the answer back to the questioner via the Faceboo
 %%%%%%%%%%%%%%%%%%%%%%% Acknowledgments %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \preface
-First, we would like to express our gratitude toward our advisor Asst. Prof. Santitham Prom-on whom always 
-there to help us. When we need some advice, had a question about our research or a problem in writing, he 
-always supports us even in times that he is busy, he still finds some time or alternative way to help us do our 
+Firstly, we would like to express our gratitude toward our advisor Asst. Prof. Santitham Prom-on whom always 
+there to help us. When we need some advice, had a question about our research, or a problem in report, he 
+always supports us even in times that he is busy. He still finds some time or alternative way to help us do our 
 research. We are very grateful for what you have done for us, thank you.
-\\Secondly, we deep gratitude to all our committees: Assoc. Prof. Peerapon Siripongwutikorn, Asst. 
+\\Secondly, we deeply gratitude to all our committees: Assoc. Prof. Peerapon Siripongwutikorn, Asst. 
 Prof. Nuttanart Facundes, and Assoc. Prof. Thumrongrat Amornraksa, who interest in our project and guided 
 us all along until the completion.  By providing all the necessary information for developing a good system, 
 give us advice and comment to make our project and ourselves to become better.
-\\Last, we would like to thank our friends and family who, support us and help us in many ways besides the 
+\\Lastly, we would like to thank our friends and family who support us and help us in many ways besides the 
 project, such as encouragement, guideline, and many other ways. We are very grateful toward all of them, 
 thank you.
 
@@ -243,9 +243,25 @@ thank you.
 \chapter{Introduction}
 
 \section{Problem Statement and Approach} 
-Many companies and organizations confront with lag of answer the question online. Lag of answering the question cause of they have much work to do and unmanageable work that go the staff, lead to less interactive organization department and contact person. Computer Engineering department confront of this problem too. Computer Engineering staff has a lot of work to do. When people ask the question to Computer Engineering Fanpage, it takes a long time to answer.\\
-Lag of answering the question can be solved by using the chatbot, there are many types of chatbot the easy one is rule based chatbots used to lead a user through to offer choices and asks for data. This type of chatbot has their question and answer and just waiting for question that match with pattern for answering to user. Rule based chatbot is good at survey. Next type of chatbot is a chatbot that many companies use and will happen in the Computer Engineering department which is AI chatbot. AI chatbot is a chatbot that can study from the conversation history log and able to predict the question from the user then choose the answer that match to the question most. AI chatbot can answer like natural language and flexible context.\\
-After having consultant with the staff that take care of answering the question of Computer Engineering department, they said that the questions from outsiders and insiders are mostly the same and some of the information is out of date due to frequently update information which leads to human error that will give an incorrect answering as well as some of rarely information may take a lot of time to find the answer. The staff said that it would be better if they can reduce their workload from answering the questions. So, we are going to create chatbot system that staff can manage knowledge of chatbot to solve problems of workload and reduce time to answer the question.
+Many companies and organizations confront with lag of answer the question online. Lag of answering the question
+cause of they have much work to do and unmanageable work that go the staff, lead to less interactive organization
+department and contact person. Computer Engineering department confront of this problem too. Computer Engineering
+staff has a lot of work to do. When people ask Computer Engineering Fanpage, it takes a long time
+to answer.\\
+Lag of answering the question can be solved by using the chatbot, there are many types of chatbot the easy one is
+rule based chatbots used to lead a user through to offer choices and asks for data. This type of chatbot has their
+question and answer and just waiting for question that match with pattern for answering to user. Rule based chatbot
+is good at survey. Next type of chatbot is a chatbot that many companies use and will happen in the
+Computer Engineering department which is AI chatbot. AI chatbot is a chatbot that can study from the 
+conversation history log and able to predict the question from the user then choose the answer that match
+to the question most. AI chatbot can answer like natural language and flexible context.\\
+After having consultant with the staff that take care of answering the question of Computer
+Engineering department, they said that the questions from outsiders and insiders are mostly the same
+and some of information is out of date due to frequently update information which leads to human error
+that will give an incorrect answering as well as some of rarely information may take a lot of time to find
+the answer. The staff said that it would be better if they can reduce their workload from answering the
+questions. So, we are going to create chatbot system that staff can manage knowledge of chatbot to solve
+problems of workload and reduce time to answer the question.
 
 \section{Objectives}
 \begin{itemize}
@@ -256,10 +272,15 @@ After having consultant with the staff that take care of answering the question 
 \section{Scope of Work}
 
 \begin{itemize}
-\item  Create a new KMUTT CPE chatbot for the Computer Engineering department. This chatbot must be able to answer the questions about basic information of the Computer Engineering department, curriculum, frequently asked questions (FAQ), and student registration.
-\item  Create knowledge management for the Computer Engineering department. Knowledge management requires having a frequently asked question management that can create, read, update, and delete questions and answers.
-\item  Create a deep learning model to find the intent of a question and predict the answer from the question that people ask from KMUTT chatbot using the data from the knowledge management.
-\item  Use tools to set up a CI/CD pipeline of the chatbot, knowledge management, and deep learning model for making automated systems such as auto-gathering data and auto train models when receiving new data.
+\item  Create a new KMUTT CPE chatbot for the Computer Engineering department. This chatbot must be able to answer
+the questions about basic information of the Computer Engineering department, curriculum, frequently asked questions
+(FAQ), and student registration.
+\item  Create knowledge management for the Computer Engineering department. Knowledge management requires having
+a frequently asked question management that can create, read, update, and delete questions and answers.
+\item  Create a deep learning model to find the intent of a question and predict the answer from the question
+that people ask from KMUTT chatbot using the data from the knowledge management.
+\item  Use tools to set up a CI/CD pipeline of the chatbot, knowledge management, and deep learning model for
+making automated systems such as auto-gathering data and auto train models when receiving new data.
 \end{itemize}
 
 \section{Project Schedule}
@@ -291,20 +312,19 @@ management.
  
 \subsection{Natural Language Processing}
 Natural language processing (NLP) is a subfield of linguistics, computer science, and artificial
-intelligence concerned with computers and human language interactions, mainly how to program
+intelligence concerned with computers and human language interactions. The mainly how to program
 computers to process and analyze large amounts of natural language data.\\
 The reason for the development of NLP was that computers were originally designed to be more suited
 to understand numeric information or code \cite{nlp_technology}. Which does not match the way of human
 communication which relies on language and language is significantly more complex than computer-based
 code. So, NLP emerged to bridge the gap in human-computer communication.\\
-NLP supports both reading and listening by using other technologies such as Visual Recognition. For
-reading text and using voice recognition for listening Including other technologies to show results
-to humans Including being able to convey information back to us in both text and voice form as well.\\
+NLP supports both reading and listening by using other technologies such as visual recognition for
+reading text and using voice recognition for listening.\\
 NLP currently has a 6-step language learning process:
 \begin{enumerate}
-  \item Morphological Level — Understand letters. NLP will remove words into messages, find consonants,
+  \item Morphological Level — Understand letters. NLP will remove words in messages, find consonants,
   vowels, and spelling for the next step.
-  \item Lexical Level — Understand the word after mixing the letters. It will start to find the meaning
+  \item Lexical Level — Understand the word after mixing the letters. It will find the meaning
   of that word to prepare for understanding the whole sentence.
   \item Syntactic Level — Understand sentences. Based on understanding the common word and structural
   order specified by experts or schemes learned.
@@ -316,15 +336,15 @@ NLP currently has a 6-step language learning process:
   \item Pragmatic Level — Understand the meaning of words and sentences based on the actual situation
   or knowledge base, which may not be specified in the content. So, it can be interpreted as close to
   human beings that can always relate the new information with the old knowledge. In addition to
-  understanding each point, NLP has three other language learning channels modeled after human language learning:
+  understanding each point. NLP has three other language learning channels modeled after human language learning:
   \begin{itemize}
     \item Symbolic  — Symbolic is the basis of human language understanding where AI has to understand vocabulary up
     to that language's structure. Developers can now apply expert knowledge directly into AI.
-    \item Statistical — After learning the basics of the language, the next step will be to collect information
+    \item Statistical — After learning the basics of the language, the next step will be collect information
     on using the language in different places. The patterns were analyzed by statistical methods such as the
     frequency of words used. Find out how to sort common sentences. Then bring to synthesize new knowledge.
     This will help AI improve the language based on its current popularity. And understand the use of language
-    in a particular field such as science, finance, or various academic documents, etc.
+    in a particular field such as science, finance, various academic documents, etc.
     \item Connectionist AI — Connectionist AI combines a statistical language learning process with a symbolic level for complete
     communication and understanding. This is based on the Symbolic stage's actual knowledge and adapted with new
     information received from the statistical stage.
@@ -333,13 +353,13 @@ NLP currently has a 6-step language learning process:
 \end{enumerate}
 
 \subsection{Chatbot}
-Chatbot is an artificial intelligence software used to communicate by talking to humans \cite{what_is_chatbot}.
-For the benefit of one way or another through messaging applications, websites, mobile apps or through
-the telephone. Creating or using chatbot is fun, can be used for counselling or contact interface.\\
+Chatbot is an artificial intelligence software used to communicate by talking with humans \cite{what_is_chatbot}.
+The benefit of chatbot is chatbot can automatically communicate through messaging applications, websites, mobile apps
+or through the telephone. Creating or using chatbot is fun, can be used for counselling or contact interface.\\
 Chatbot might have cons as
 \begin{itemize}
-  \item The chatbot itself does not really understand the conversation
-  \item Scripting the chatbot with rules is fragile and hard to be fully written
+  \item The chatbot itself does not really understand the conversation.
+  \item Scripting the chatbot with rules is fragile and hard to be fully written.
   \item Conversation quality is limited to the data.
 \end{itemize}
 There are two type of chatbot are IR based Chatbot and Neural Network Based Chatbot \cite{what_is_chatbot,five_types_of_chatbot}.
