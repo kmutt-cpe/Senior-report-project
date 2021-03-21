@@ -214,26 +214,27 @@ thank you.
 %%%%%%%%%%%%%%%%%%%%% List of symbols page %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % You have to add this manually..
-\listofsymbols
-\begin{flushleft}
-\begin{tabular}{@{}p{0.07\textwidth}p{0.7\textwidth}p{0.1\textwidth}}
-\textbf{SYMBOL}  & & \textbf{UNIT} \\[0.2cm]
-$\alpha$ & Test variable\hfill & m$^2$ \\
-$\lambda$ & Interarival rate\hfill &  jobs/second\\
-$\mu$ & Service rate\hfill & jobs/second\\
-\end{tabular}
-\end{flushleft}
+% \listofsymbols
+% \begin{flushleft}
+% \begin{tabular}{@{}p{0.07\textwidth}p{0.7\textwidth}p{0.1\textwidth}}
+% \textbf{SYMBOL}  & & \textbf{UNIT} \\[0.2cm]
+% $\alpha$ & Test variable\hfill & m$^2$ \\
+% $\lambda$ & Interarival rate\hfill &  jobs/second\\
+% $\mu$ & Service rate\hfill & jobs/second\\
+% \end{tabular}
+% \end{flushleft}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%% List of vocabs & terms %%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % You also have to add this manually..
-\listofvocab
-\begin{flushleft}
-\begin{tabular}{@{}p{1in}@{=\extracolsep{0.5in}}l}
-ABC & Adaptive Bandwidth Control \\
-MANET & Mobile Ad Hoc Network 
-\end{tabular}
-\end{flushleft}
+% \listofvocab
+% \begin{flushleft}
+% \begin{tabular}{@{}p{1in}@{=\extracolsep{0.5in}}l}
+% ABC & Adaptive Bandwidth Control \\
+% MANET & Mobile Ad Hoc Network 
+% \end{tabular}
+% \end{flushleft}
 
 %\setlength{\parskip}{1.2mm}
 
@@ -1627,16 +1628,16 @@ Even the model can predict, but the overall performance of the model is quite no
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Conclusions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Conclusions}
+% \chapter{Conclusions}
 
-This chapter is optional for proposal and progress reports but 
-is required for the final report.
+% This chapter is optional for proposal and progress reports but 
+% is required for the final report.
 
-\section{Problems and Solutions}
-State your problems and how you fixed them.
+% \section{Problems and Solutions}
+% State your problems and how you fixed them.
 
-\section{Future Works}
-What could be done in the future to make your projects better.
+% \section{Future Works}
+% What could be done in the future to make your projects better.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1654,102 +1655,102 @@ What could be done in the future to make your projects better.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% Appendix %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\appendix{First appendix title}
-\noindent{\large\bf Put appropriate topic here} \\
+% \appendix{First appendix title}
+% \noindent{\large\bf Put appropriate topic here} \\
 
-This is where you put hardware circuit diagrams, detailed experimental data in tables or source codes, etc.. \\ \bigskip
+% This is where you put hardware circuit diagrams, detailed experimental data in tables or source codes, etc.. \\ \bigskip
 
 
 
-This appendix describes two static allocation methods for fGn (or fBm)
-traffic. Here, $\lambda$ and $C$ are respectively the traffic arrival
-rate and the service rate per dimensionless time step. Their unit are
-converted to a physical time unit by multiplying the step size
-$\Delta$. For a fBm self-similar traffic source,
-Norros~\cite{norros95} provides its EB as
-\begin{equation}\label{eq:norros}
-  C = \lambda + (\kappa(H)\sqrt{-2\ln\epsilon})^{1/H}a^{1/(2H)}x^{-(1-H)/H}\lambda^{1/(2H)}
-\end{equation}
-where $\kappa(H) = H^H(1-H)^{(1-H)}$. Simplicity in the calculation is
-the attractive feature of (\ref*{eq:norros}).
+% This appendix describes two static allocation methods for fGn (or fBm)
+% traffic. Here, $\lambda$ and $C$ are respectively the traffic arrival
+% rate and the service rate per dimensionless time step. Their unit are
+% converted to a physical time unit by multiplying the step size
+% $\Delta$. For a fBm self-similar traffic source,
+% Norros~\cite{norros95} provides its EB as
+% \begin{equation}\label{eq:norros}
+%   C = \lambda + (\kappa(H)\sqrt{-2\ln\epsilon})^{1/H}a^{1/(2H)}x^{-(1-H)/H}\lambda^{1/(2H)}
+% \end{equation}
+% where $\kappa(H) = H^H(1-H)^{(1-H)}$. Simplicity in the calculation is
+% the attractive feature of (\ref*{eq:norros}).
 
-The MVA technique developed in~\cite{kim01} so far provides the most
-accurate estimation of the loss probability compared to previous
-bandwidth allocation techniques according to simulation results.
-Consider a discrete-time queueing system with constant service rate
-$C$ and input process $\lambda_n$ with $\mathbb{E}\{\lambda_n\} =
-\lambda$ and $\mathrm{Var}\{\lambda_n\} = \sigma^2$.  Define $X_n \equiv
-\sum_{k=1}^n \lambda_k - Cn$.  The loss probability due to the MVA
-approach is given by
-\begin{equation}\label{eq:loss_mva}
-  \varepsilon \approx \alpha e^{-m_x/2}
-\end{equation}
-where
-\begin{equation}\label{eq:mx}
-m_x = \min_{n \geq 0} \frac{((C-\lambda)n + B)^2}{\mathrm{Var}\{X_n\}} =
-\frac{((C-\lambda)n^\ast + B)^2}{\mathrm{Var}\{X_{n^{\ast}}\}}
-\end{equation} 
-and 
-\begin{equation}\label{eq:alpha}
-  \alpha =
-  \frac{1}{\lambda\sqrt{2\pi\sigma^2}}\exp\left(\frac{(C-\lambda)^2}{2\sigma^2}\right)
-  \int_C^\infty (r-C)\exp\left(\frac{(r-\lambda)^2}{2\sigma^2}\right)\, dr
-\end{equation}
-For a given $\varepsilon$, we numerically solve for $C$ that satisfies
-(\ref*{eq:loss_mva}). Any search algorithm can be used to do the task.
-Here, the bisection method is used.  
+% The MVA technique developed in~\cite{kim01} so far provides the most
+% accurate estimation of the loss probability compared to previous
+% bandwidth allocation techniques according to simulation results.
+% Consider a discrete-time queueing system with constant service rate
+% $C$ and input process $\lambda_n$ with $\mathbb{E}\{\lambda_n\} =
+% \lambda$ and $\mathrm{Var}\{\lambda_n\} = \sigma^2$.  Define $X_n \equiv
+% \sum_{k=1}^n \lambda_k - Cn$.  The loss probability due to the MVA
+% approach is given by
+% \begin{equation}\label{eq:loss_mva}
+%   \varepsilon \approx \alpha e^{-m_x/2}
+% \end{equation}
+% where
+% \begin{equation}\label{eq:mx}
+% m_x = \min_{n \geq 0} \frac{((C-\lambda)n + B)^2}{\mathrm{Var}\{X_n\}} =
+% \frac{((C-\lambda)n^\ast + B)^2}{\mathrm{Var}\{X_{n^{\ast}}\}}
+% \end{equation} 
+% and 
+% \begin{equation}\label{eq:alpha}
+%   \alpha =
+%   \frac{1}{\lambda\sqrt{2\pi\sigma^2}}\exp\left(\frac{(C-\lambda)^2}{2\sigma^2}\right)
+%   \int_C^\infty (r-C)\exp\left(\frac{(r-\lambda)^2}{2\sigma^2}\right)\, dr
+% \end{equation}
+% For a given $\varepsilon$, we numerically solve for $C$ that satisfies
+% (\ref*{eq:loss_mva}). Any search algorithm can be used to do the task.
+% Here, the bisection method is used.  
 
-Next, we show how $\mathrm{Var}\{X_n\}$ can be determined.  Let
-$C_{\lambda}(l)$ be the autocovariance function of $\lambda_n$.  The
-MVA technique basically approximates the input process $\lambda_n$
-with a Gaussian process, which allows $\mathrm{Var}\{X_n\}$ to be
-represented by the autocovariance function.  In particular, the
-variance of $X_n$ can be expressed in terms of $C_{\lambda}(l)$ as
-\begin{equation}
-  \mathrm{Var}\{X_n\} = nC_{\lambda}(0) + 2\sum_{l=1}^{n-1} (n-l)C_{\lambda}(l)
-\end{equation} 
-Therefore, $C_{\lambda}(l)$ must be known in the MVA technique, either
-by assuming specific traffic models or by off-line analysis in case of
-traces.  In most practical situations, $C_{\lambda}(l)$ will not be
-known in advance, and an on-line measurement algorithm developed
-in~\cite{eun01} is required to jointly determine both $n^\ast$ and
-$m_x$. For fGn traffic, $\mathrm{Var}\{X_n\}$ is equal to $\sigma^2
-n^{2H}$, where $\sigma^2 = \mathrm{Var}\{\lambda_n\}$, and we can find
-the $n^\ast$ that minimizes (\ref*{eq:mx}) directly. Although $\lambda$
-can be easily measured, it is not the case for $\sigma^2$ and $H$.
-Consequently, the MVA technique suffers from the need of prior
-knowledge traffic parameters.
+% Next, we show how $\mathrm{Var}\{X_n\}$ can be determined.  Let
+% $C_{\lambda}(l)$ be the autocovariance function of $\lambda_n$.  The
+% MVA technique basically approximates the input process $\lambda_n$
+% with a Gaussian process, which allows $\mathrm{Var}\{X_n\}$ to be
+% represented by the autocovariance function.  In particular, the
+% variance of $X_n$ can be expressed in terms of $C_{\lambda}(l)$ as
+% \begin{equation}
+%   \mathrm{Var}\{X_n\} = nC_{\lambda}(0) + 2\sum_{l=1}^{n-1} (n-l)C_{\lambda}(l)
+% \end{equation} 
+% Therefore, $C_{\lambda}(l)$ must be known in the MVA technique, either
+% by assuming specific traffic models or by off-line analysis in case of
+% traces.  In most practical situations, $C_{\lambda}(l)$ will not be
+% known in advance, and an on-line measurement algorithm developed
+% in~\cite{eun01} is required to jointly determine both $n^\ast$ and
+% $m_x$. For fGn traffic, $\mathrm{Var}\{X_n\}$ is equal to $\sigma^2
+% n^{2H}$, where $\sigma^2 = \mathrm{Var}\{\lambda_n\}$, and we can find
+% the $n^\ast$ that minimizes (\ref*{eq:mx}) directly. Although $\lambda$
+% can be easily measured, it is not the case for $\sigma^2$ and $H$.
+% Consequently, the MVA technique suffers from the need of prior
+% knowledge traffic parameters.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%% The 2nd appendix %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\appendix{Second appendix title}
-\noindent{\large\bf Put appropriate topic here} \\
+% \appendix{Second appendix title}
+% \noindent{\large\bf Put appropriate topic here} \\
 
-Next, we show how $\mathrm{Var}\{X_n\}$ can be determined.  Let
-$C_{\lambda}(l)$ be the autocovariance function of $\lambda_n$.  The
-MVA technique basically approximates the input process $\lambda_n$
-with a Gaussian process, which allows $\mathrm{Var}\{X_n\}$ to be
-represented by the autocovariance function.  In particular, the
-variance of $X_n$ can be expressed in terms of $C_{\lambda}(l)$ as
-\begin{equation}
-  \mathrm{Var}\{X_n\} = nC_{\lambda}(0) + 2\sum_{l=1}^{n-1} (n-l)C_{\lambda}(l)
-\end{equation} 
+% Next, we show how $\mathrm{Var}\{X_n\}$ can be determined.  Let
+% $C_{\lambda}(l)$ be the autocovariance function of $\lambda_n$.  The
+% MVA technique basically approximates the input process $\lambda_n$
+% with a Gaussian process, which allows $\mathrm{Var}\{X_n\}$ to be
+% represented by the autocovariance function.  In particular, the
+% variance of $X_n$ can be expressed in terms of $C_{\lambda}(l)$ as
+% \begin{equation}
+%   \mathrm{Var}\{X_n\} = nC_{\lambda}(0) + 2\sum_{l=1}^{n-1} (n-l)C_{\lambda}(l)
+% \end{equation} 
 
-\noindent{\large\bf Add more topic as you need} \\
+% \noindent{\large\bf Add more topic as you need} \\
 
-Therefore, $C_{\lambda}(l)$ must be known in the MVA technique, either
-by assuming specific traffic models or by off-line analysis in case of
-traces.  In most practical situations, $C_{\lambda}(l)$ will not be
-known in advance, and an on-line measurement algorithm developed
-in~\cite{eun01} is required to jointly determine both $n^\ast$ and
-$m_x$. For fGn traffic, $\mathrm{Var}\{X_n\}$ is equal to $\sigma^2
-n^{2H}$, where $\sigma^2 = \mathrm{Var}\{\lambda_n\}$, and we can find
-the $n^\ast$ that minimizes (\ref*{eq:mx}) directly. Although $\lambda$
-can be easily measured, it is not the case for $\sigma^2$ and $H$.
-Consequently, the MVA technique suffers from the need of prior
-knowledge traffic parameters. 
+% Therefore, $C_{\lambda}(l)$ must be known in the MVA technique, either
+% by assuming specific traffic models or by off-line analysis in case of
+% traces.  In most practical situations, $C_{\lambda}(l)$ will not be
+% known in advance, and an on-line measurement algorithm developed
+% in~\cite{eun01} is required to jointly determine both $n^\ast$ and
+% $m_x$. For fGn traffic, $\mathrm{Var}\{X_n\}$ is equal to $\sigma^2
+% n^{2H}$, where $\sigma^2 = \mathrm{Var}\{\lambda_n\}$, and we can find
+% the $n^\ast$ that minimizes (\ref*{eq:mx}) directly. Although $\lambda$
+% can be easily measured, it is not the case for $\sigma^2$ and $H$.
+% Consequently, the MVA technique suffers from the need of prior
+% knowledge traffic parameters.
 
 
 
