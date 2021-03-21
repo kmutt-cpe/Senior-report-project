@@ -226,6 +226,7 @@ MANET & Mobile Ad Hoc Network
 
 %\setlength{\parskip}{1.2mm}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% Main body %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -239,15 +240,18 @@ Lag of answering the question can be solved by using the chatbot, there are many
 After having consultant with the staff that take care of answering the question of Computer Engineering department, they said that the questions from outsiders and insiders are mostly the same and some of the information is out of date due to frequently update information which leads to human error that will give an incorrect answering as well as some of rarely information may take a lot of time to find the answer. The staff said that it would be better if they can reduce their workload from answering the questions. So, we are going to create chatbot system that staff can manage knowledge of chatbot to solve problems of workload and reduce time to answer the question.
 
 \section{Objectives}
-
+\begin{itemize}
+\item  Build a chatbot to answer questions about the Computer Engineering department and general inquiries to outsiders and insiders.
+\item  Integrate chatbot system with production environment.
+\end{itemize}
 
 \section{Scope of Work}
 
-Explain the scope of your works. 
 \begin{itemize}
-\item   What are the problems you are addressing? 
-\item  Why they are important?
-\item  What are the limitations of existing approaches?
+\item  Create a new KMUTT CPE chatbot for the Computer Engineering department. This chatbot must be able to answer the questions about basic information of the Computer Engineering department, curriculum, frequently asked questions (FAQ), and student registration.
+\item  Create knowledge management for the Computer Engineering department. Knowledge management requires having a frequently asked question management that can create, read, update, and delete questions and answers.
+\item  Create a deep learning model to find the intent of a question and predict the answer from the question that people ask from KMUTT chatbot using the data from the knowledge management.
+\item  Use tools to set up a CI/CD pipeline of the chatbot, knowledge management, and deep learning model for making automated systems such as auto-gathering data and auto train models when receiving new data.
 \end{itemize}
 
 \section{Project Schedule}
