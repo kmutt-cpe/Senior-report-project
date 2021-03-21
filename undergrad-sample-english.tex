@@ -940,7 +940,7 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 \pagebreak
 
 \section{Use case diagram}
-Figure ~\ref{fig:use case diagram} shows the main things that the KMUTT CPE staff and questioner can do with the KMUTT CPE Chatbot System. Knowledge management is used by KMUTT CPE staff only.
+Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE staff and questioner can do with the KMUTT CPE Chatbot System. Knowledge management is used by KMUTT CPE staff only.
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/use case diagram.jpg}
 	\caption{Use case of KMUTT CPE Chatbot}\label{fig:use case diagram}
@@ -1280,7 +1280,7 @@ Figure ~\ref{fig:use case diagram} shows the main things that the KMUTT CPE staf
 
 \section{Workflow}
 \subsection{The sequence diagram workflow of chat message}
-Figure ~\ref{fig:sequence diagram of chat message} illustrates the chat workflow starting from a question from questioner until reply answer in knowledge management back. When the questioner sends the message via Facebook Messenger, the message will be sent directly to Dialogflow.\\
+Figure ~\ref*{fig:sequence diagram of chat message} illustrates the chat workflow starting from a question from questioner until reply answer in knowledge management back. When the questioner sends the message via Facebook Messenger, the message will be sent directly to Dialogflow.\\
 Dialogflow will manage the chat queue, save the meta of the questioner and message to the database, and then find the intended message to identify the message that it is a question or common message like a greeting message. If the message is common, Dialogflow will automatically be replied with a common message. But if it is a question, Dialogflow will send the message to the backend API to get the answer to reply.\\
 The backend API will manage the queue of questions from Dialogflow before sending it to the Siamese model. The Siamese model will pair the question from the questioner and all questions in FAQ, then return the related question to the Backend API.\\
 After the backend API gets a related question (or a predicted question), the back-end API will query the raw answer from the database and return to the Dialogflow. Dialogflow will change answers into human speech with an NLP template before replying to the questioner.
@@ -1292,7 +1292,7 @@ After the backend API gets a related question (or a predicted question), the bac
 \pagebreak
 
 \subsection{The sequence diagram of automate build model}
-Figure ~\ref{fig:sequence diagram of automate build model} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
+Figure ~\ref*{fig:sequence diagram of automate build model} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/sequence diagram of automate build model.jpg}
 	\caption{Use case of KMUTT CPE Chatbot}\label{fig:sequence diagram of automate build model}
@@ -1306,10 +1306,10 @@ Figure ~\ref{fig:sequence diagram of automate build model} illustrates the workf
 
 \pagebreak
 
+\textbf{user} - User that can access knowledge management system.
 \begin{table}[ht]
 	\caption{User entity description table.}
 	\label{tab:User entity description table}
-\textbf{user} - User that can access knowledge management system.
 \centering
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1329,10 +1329,10 @@ deletedAt & Datetime & Used soft delete method   to be able to recover the data.
 \end{tabular}
 \end{table}
 
+\textbf{faq} - Frequently asked question that admin create through the knowledge management system.
 \begin{table}[ht]
 	\caption{FAQ entity description table.}
 	\label{tab:FAQ entity description table.}
-\textbf{faq} - Frequently asked question that admin create through the knowledge management system.
 \centering
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1352,10 +1352,10 @@ deletedAt          & Datetime & Used soft delete method   to be able to recover 
 \end{tabular}
 \end{table}
 
+\textbf{category} - Category of the question.
 \begin{table}[ht]
 	\caption{Category entity description table.}
 	\label{tab:Category entity description table.}
-\textbf{category} - Category of the question.
 \centering
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1371,10 +1371,12 @@ deletedAt & Datetime & Used soft delete method to be able to recover the data. T
 \end{tabular}
 \end{table}
 
+\pagebreak
+
+\textbf{subcategory} - Subcategory of the question.
 \begin{table}[ht]
 	\caption{Subcategory entity description table.}
 	\label{tab:Subcategory entity description table.}
-\textbf{subcategory} - Subcategory of the question.
 \centering
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1391,11 +1393,10 @@ deletedAt       & Datetime & Used soft delete method   to be able to recover the
 \end{tabular}
 \end{table}
 
+\textbf{predict\_task} - Message that going to predict in prediction model. Used to keep log of question message and predict task.
 \begin{table}[ht]
 	\caption{Prediction model entity description table.}
 	\label{tab:Prediction model entity description table.}
-\textbf{predict\_task} - Message that going to predict in prediction model.\\
-Used to keep log of question message and predict task.
 \centering
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1417,13 +1418,10 @@ deletedAt         & Datetime & Used soft delete method to be able to recover the
 \end{tabular}
 \end{table}
 
-\pagebreak
-
+\textbf{fb\_message} - Message from Facebook webhook. Used to keep log of question message and predict task.
 \begin{table}[ht]
 	\caption{Facebook webhook entity prediction table.}
 	\label{tab:Facebook webhook entity prediction table.}
-\textbf{fb\_message} - Message from Facebook webhook.\\
-Used to keep log of question message and predict task.
 \centering
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1666,7 +1664,7 @@ Norros~\cite{norros95} provides its EB as
   C = \lambda + (\kappa(H)\sqrt{-2\ln\epsilon})^{1/H}a^{1/(2H)}x^{-(1-H)/H}\lambda^{1/(2H)}
 \end{equation}
 where $\kappa(H) = H^H(1-H)^{(1-H)}$. Simplicity in the calculation is
-the attractive feature of (\ref{eq:norros}).
+the attractive feature of (\ref*{eq:norros}).
 
 The MVA technique developed in~\cite{kim01} so far provides the most
 accurate estimation of the loss probability compared to previous
@@ -1691,7 +1689,7 @@ and
   \int_C^\infty (r-C)\exp\left(\frac{(r-\lambda)^2}{2\sigma^2}\right)\, dr
 \end{equation}
 For a given $\varepsilon$, we numerically solve for $C$ that satisfies
-(\ref{eq:loss_mva}). Any search algorithm can be used to do the task.
+(\ref*{eq:loss_mva}). Any search algorithm can be used to do the task.
 Here, the bisection method is used.  
 
 Next, we show how $\mathrm{Var}\{X_n\}$ can be determined.  Let
@@ -1710,7 +1708,7 @@ known in advance, and an on-line measurement algorithm developed
 in~\cite{eun01} is required to jointly determine both $n^\ast$ and
 $m_x$. For fGn traffic, $\mathrm{Var}\{X_n\}$ is equal to $\sigma^2
 n^{2H}$, where $\sigma^2 = \mathrm{Var}\{\lambda_n\}$, and we can find
-the $n^\ast$ that minimizes (\ref{eq:mx}) directly. Although $\lambda$
+the $n^\ast$ that minimizes (\ref*{eq:mx}) directly. Although $\lambda$
 can be easily measured, it is not the case for $\sigma^2$ and $H$.
 Consequently, the MVA technique suffers from the need of prior
 knowledge traffic parameters.
@@ -1741,7 +1739,7 @@ known in advance, and an on-line measurement algorithm developed
 in~\cite{eun01} is required to jointly determine both $n^\ast$ and
 $m_x$. For fGn traffic, $\mathrm{Var}\{X_n\}$ is equal to $\sigma^2
 n^{2H}$, where $\sigma^2 = \mathrm{Var}\{\lambda_n\}$, and we can find
-the $n^\ast$ that minimizes (\ref{eq:mx}) directly. Although $\lambda$
+the $n^\ast$ that minimizes (\ref*{eq:mx}) directly. Although $\lambda$
 can be easily measured, it is not the case for $\sigma^2$ and $H$.
 Consequently, the MVA technique suffers from the need of prior
 knowledge traffic parameters. 
