@@ -8,6 +8,9 @@
 \usepackage{enumitem}
 \usepackage{multirow}
 \usepackage[table,xcdraw]{xcolor}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{adjustbox}
 \setdefaultlanguage{english}
 \setotherlanguage{thai}
 
@@ -832,7 +835,8 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 	\centering
 	\caption{Workload of knowledge management subsystem}
 	\label{tab:Workload of knowledge management subsystem}
-	\begin{tabular}{ll}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{lp{0.25\linewidth}l}
 		\rowcolor[HTML]{5B9BD5} 
 		Task                                                                              & Responsibility \\
 		\rowcolor[HTML]{DEEAF6} 
@@ -846,6 +850,7 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 		Connect the website to backend API with   GraphQL                                 & Nathaphop      \\
 		Test function and website interface in each   browser                             & Nathaphop      
 	\end{tabular}
+\end{adjustbox}
 \end{table}
 
 \begin{description}
@@ -861,7 +866,8 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 	\centering
 	\caption{Workload of prediction model subsystem}
 	\label{tab:Workload of prediction model subsystem}
-	\begin{tabular}{ll}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{lp{0.6\linewidth}l}
 		\rowcolor[HTML]{5B9BD5} 
 		Task                                        & Responsibility      \\
 		\rowcolor[HTML]{DEEAF6} 
@@ -874,6 +880,7 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 		Train model                                 & Natkanok, Natthawat \\
 		Evaluate and tuning model                   & Natkanok, Natthawat 
 	\end{tabular}
+\end{adjustbox}
 \end{table}
 
 \begin{description}
@@ -890,7 +897,8 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 	\centering
 	\caption{Workload of chatbot subsystem}
 	\label{tab:Workload of chatbot subsystem}
-	\begin{tabular}{ll}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{ll}
 		\rowcolor[HTML]{5B9BD5} 
 		Task                                                                                       & Responsibility \\
 		\rowcolor[HTML]{DEEAF6} 
@@ -905,6 +913,7 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 		\rowcolor[HTML]{DEEAF6} 
 		Connect webhook Dialogflow to our system                                                   & Natthawat      
 	\end{tabular}
+\end{adjustbox}
 \end{table}
 
 \begin{description}
@@ -920,7 +929,8 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 	\centering
 	\caption{Workload of storage subsystem}
 	\label{tab:Workload of storage subsystem}
-	\begin{tabular}{ll}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{lp{0.5\linewidth}l}
 		\rowcolor[HTML]{5B9BD5} 
 		Task                                               & Responsibility                 \\
 		\rowcolor[HTML]{DEEAF6} 
@@ -935,6 +945,7 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 		\rowcolor[HTML]{DEEAF6} 
 		Integrate all subsystems and deploy to environment & Nathaphop, Natkanok, Natthawat 
 	\end{tabular}
+\end{adjustbox}
 \end{table}
 
 \pagebreak
@@ -1280,22 +1291,22 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 
 \section{Workflow}
 \subsection{The sequence diagram workflow of chat message}
-Figure ~\ref*{fig:sequence diagram of chat message} illustrates the chat workflow starting from a question from questioner until reply answer in knowledge management back. When the questioner sends the message via Facebook Messenger, the message will be sent directly to Dialogflow.\\
+Figure ~\ref*{fig:Sequence diagram workflow of chat message} illustrates the chat workflow starting from a question from questioner until reply answer in knowledge management back. When the questioner sends the message via Facebook Messenger, the message will be sent directly to Dialogflow.\\
 Dialogflow will manage the chat queue, save the meta of the questioner and message to the database, and then find the intended message to identify the message that it is a question or common message like a greeting message. If the message is common, Dialogflow will automatically be replied with a common message. But if it is a question, Dialogflow will send the message to the backend API to get the answer to reply.\\
 The backend API will manage the queue of questions from Dialogflow before sending it to the Siamese model. The Siamese model will pair the question from the questioner and all questions in FAQ, then return the related question to the Backend API.\\
 After the backend API gets a related question (or a predicted question), the back-end API will query the raw answer from the database and return to the Dialogflow. Dialogflow will change answers into human speech with an NLP template before replying to the questioner.
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/sequence diagram of chat message.jpg}
-	\caption{Use case of KMUTT CPE Chatbot}\label{fig:sequence diagram of chat message}
+	\caption{Sequence diagram workflow of chat message}\label{fig:Sequence diagram workflow of chat message}
 \end{figure}
 
 \pagebreak
 
 \subsection{The sequence diagram of automate build model}
-Figure ~\ref*{fig:sequence diagram of automate build model} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
+Figure ~\ref*{fig:Sequence diagram of automate building and deploy model.} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/sequence diagram of automate build model.jpg}
-	\caption{Use case of KMUTT CPE Chatbot}\label{fig:sequence diagram of automate build model}
+	\caption{Sequence diagram of automate building and deploy model.}\label{fig:Sequence diagram of automate building and deploy model.}
 \end{figure}
 
 \section{Database Schema}
@@ -1307,10 +1318,11 @@ Figure ~\ref*{fig:sequence diagram of automate build model} illustrates the work
 \pagebreak
 
 \textbf{user} - User that can access knowledge management system.
+
 \begin{table}[ht]
 	\caption{User entity description table.}
 	\label{tab:User entity description table}
-\centering
+\begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
 Attribute & Type     & Description                                                                                                   \\
@@ -1327,14 +1339,15 @@ createdAt & Datetime & Created time of the row   data                           
 updatedAt & Datetime & Updated time of the row data                                                                                  \\
 deletedAt & Datetime & Used soft delete method   to be able to recover the data. This column used to keep the deleted time of   data
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 \textbf{faq} - Frequently asked question that admin create through the knowledge management system.
 \begin{table}[ht]
 	\caption{FAQ entity description table.}
 	\label{tab:FAQ entity description table.}
-\centering
-\begin{tabular}{llp{0.6\linewidth}l}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{llp{0.5\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
 Attribute          & Type     & Description                                                                                                   \\
 \rowcolor[HTML]{DEEAF6} 
@@ -1348,15 +1361,16 @@ subcategoryId (FK) & Varchar  & Subcategory of the question. Also, use this subc
 createdAt          & Datetime & Created time of the row   data                                                                                \\
 \rowcolor[HTML]{DEEAF6} 
 updatedAt          & Datetime & Updated time of the row data                                                                                  \\
-deletedAt          & Datetime & Used soft delete method   to be able to recover the data. This column used to keep the deleted time of   data
+deletedAt          & Datetime & Used soft delete method   to be able to recover the data. This column used to keep the deleted time of data
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 \textbf{category} - Category of the question.
 \begin{table}[ht]
 	\caption{Category entity description table.}
 	\label{tab:Category entity description table.}
-\centering
+\begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
 Attribute & Type     & Description                                                                                                 \\
@@ -1369,6 +1383,7 @@ updatedAt & Datetime & Updated time of the row   data                           
 \rowcolor[HTML]{DEEAF6} 
 deletedAt & Datetime & Used soft delete method to be able to recover the data. This column   used to keep the deleted time of data
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 \pagebreak
@@ -1377,7 +1392,7 @@ deletedAt & Datetime & Used soft delete method to be able to recover the data. T
 \begin{table}[ht]
 	\caption{Subcategory entity description table.}
 	\label{tab:Subcategory entity description table.}
-\centering
+\begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
 Attribute       & Type     & Description                                                                                                   \\
@@ -1391,13 +1406,14 @@ createdAt       & Datetime & Created time of the row   data                     
 updatedAt       & Datetime & Updated time of the row data                                                                                  \\
 deletedAt       & Datetime & Used soft delete method   to be able to recover the data. This column used to keep the deleted time of   data
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 \textbf{predict\_task} - Message that going to predict in prediction model. Used to keep log of question message and predict task.
 \begin{table}[ht]
 	\caption{Prediction model entity description table.}
 	\label{tab:Prediction model entity description table.}
-\centering
+\begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
 Attribute         & Type     & Description                                                                                                 \\
@@ -1416,13 +1432,14 @@ updatedAt         & Datetime & Updated time of the row   data                   
 \rowcolor[HTML]{DEEAF6} 
 deletedAt         & Datetime & Used soft delete method to be able to recover the data. This column   used to keep the deleted time of data
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 \textbf{fb\_message} - Message from Facebook webhook. Used to keep log of question message and predict task.
 \begin{table}[ht]
 	\caption{Facebook webhook entity prediction table.}
 	\label{tab:Facebook webhook entity prediction table.}
-\centering
+\begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
 Attribute & Type     & Description                                                                                                 \\
@@ -1435,6 +1452,7 @@ updatedAt & Datetime & Updated time of the row   data                           
 \rowcolor[HTML]{DEEAF6} 
 deletedAt & Datetime & Used soft delete method to be able to recover the data. This column   used to keep the deleted time of data
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 \pagebreak
@@ -1509,8 +1527,8 @@ Our system can reply and answer the question from people who asked via Facebook 
 \begin{table}[h]
 	\caption{Evaluation knowledge management table}
 	\label{tab:Evaluation knowledge management table}
-\centering
-\begin{tabular}{|l|l|l|l|}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{|p{0.3\linewidth}|p{0.2\linewidth}|p{0.5\linewidth}|p{0.1\linewidth}|}
 \hline
 \rowcolor[HTML]{C9DAF8} 
 Features                             & Role                    & Function                           & Status \\ \hline
@@ -1530,6 +1548,7 @@ Features                             & Role                    & Function       
                                      &                         & Remove user                        &        \\ \cline{3-4} 
 \multirow{-3}{*}{Manage   user}      & \multirow{-3}{*}{Admin} & Update user                        &        \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 
