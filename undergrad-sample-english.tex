@@ -1306,10 +1306,10 @@ Figure ~\ref{fig:sequence diagram of automate build model} illustrates the workf
 
 \pagebreak
 
+\textbf{user} - User that can access knowledge management system.
 \begin{table}[ht]
 	\caption{User entity description table.}
 	\label{tab:User entity description table}
-\textbf{user} - User that can access knowledge management system.
 \centering
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1329,10 +1329,10 @@ deletedAt & Datetime & Used soft delete method   to be able to recover the data.
 \end{tabular}
 \end{table}
 
+\textbf{faq} - Frequently asked question that admin create through the knowledge management system.
 \begin{table}[ht]
 	\caption{FAQ entity description table.}
 	\label{tab:FAQ entity description table.}
-\textbf{faq} - Frequently asked question that admin create through the knowledge management system.
 \centering
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1352,10 +1352,10 @@ deletedAt          & Datetime & Used soft delete method   to be able to recover 
 \end{tabular}
 \end{table}
 
+\textbf{category} - Category of the question.
 \begin{table}[ht]
 	\caption{Category entity description table.}
 	\label{tab:Category entity description table.}
-\textbf{category} - Category of the question.
 \centering
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1371,10 +1371,12 @@ deletedAt & Datetime & Used soft delete method to be able to recover the data. T
 \end{tabular}
 \end{table}
 
+\pagebreak
+
+\textbf{subcategory} - Subcategory of the question.
 \begin{table}[ht]
 	\caption{Subcategory entity description table.}
 	\label{tab:Subcategory entity description table.}
-\textbf{subcategory} - Subcategory of the question.
 \centering
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1391,11 +1393,10 @@ deletedAt       & Datetime & Used soft delete method   to be able to recover the
 \end{tabular}
 \end{table}
 
+\textbf{predict\_task} - Message that going to predict in prediction model. Used to keep log of question message and predict task.
 \begin{table}[ht]
 	\caption{Prediction model entity description table.}
 	\label{tab:Prediction model entity description table.}
-\textbf{predict\_task} - Message that going to predict in prediction model.\\
-Used to keep log of question message and predict task.
 \centering
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1417,13 +1418,10 @@ deletedAt         & Datetime & Used soft delete method to be able to recover the
 \end{tabular}
 \end{table}
 
-\pagebreak
-
+\textbf{fb\_message} - Message from Facebook webhook. Used to keep log of question message and predict task.
 \begin{table}[ht]
 	\caption{Facebook webhook entity prediction table.}
 	\label{tab:Facebook webhook entity prediction table.}
-\textbf{fb\_message} - Message from Facebook webhook.\\
-Used to keep log of question message and predict task.
 \centering
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1666,7 +1664,7 @@ Norros~\cite{norros95} provides its EB as
   C = \lambda + (\kappa(H)\sqrt{-2\ln\epsilon})^{1/H}a^{1/(2H)}x^{-(1-H)/H}\lambda^{1/(2H)}
 \end{equation}
 where $\kappa(H) = H^H(1-H)^{(1-H)}$. Simplicity in the calculation is
-the attractive feature of (\ref{eq:norros}).
+the attractive feature of (\ref*{eq:norros}).
 
 The MVA technique developed in~\cite{kim01} so far provides the most
 accurate estimation of the loss probability compared to previous
