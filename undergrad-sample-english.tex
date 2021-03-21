@@ -226,6 +226,7 @@ MANET & Mobile Ad Hoc Network
 
 %\setlength{\parskip}{1.2mm}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% Main body %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -233,56 +234,32 @@ MANET & Mobile Ad Hoc Network
 
 \chapter{Introduction}
 
-\section{Background} 
-
-Explain the background of your works for readers. You can refer to figure by like this.. Figure~\ref{fig:x1}.
-\begin{figure}[!h]
-\caption{This is the figure x11}\label{fig:x1}
-\end{figure}
-
-Get ready, skanks! It's time for the truth train! Fame was like a drug. But what was even more like a drug were the drugs. Attempted murder? Now honestly, what is that? Do they give a Nobel Prize for attempted chemistry?
-
-"Thank the Lord"? That sounded like a prayer. A prayer in a public school. God has no place within these walls, just like facts don't have a place within an organized religion. Thank you, steal again. I hope this has taught you kids a lesson: kids never learn.
-
-…And the fluffy kitten played with that ball of string all through the night. On a lighter note, a Kwik-E-Mart clerk was brutally murdered last night. Oh, so they have Internet on computers now!
-
-You don't like your job, you don't strike. You go in every day and do it really half-assed. That's the American way. Lisa, vampires are make-believe, like elves, gremlins, and Eskimos. Jesus must be spinning in his grave!
-
-I prefer a vehicle that doesn't hurt Mother Earth. It's a go-cart, powered by my own sense of self-satisfaction. Marge, it takes two to lie. One to lie and one to listen. Attempted murder? Now honestly, what is that? Do they give a Nobel Prize for attempted chemistry?
-
-I was saying "Boo-urns." Bart, with \$10,000 we'd be millionaires! We could buy all kinds of useful things like…love! I'll keep it short and sweet — Family. Religion. Friendship. These are the three demons you must slay if you wish to succeed in business.
-
-How could you?! Haven't you learned anything from that guy who gives those sermons at church? Captain Whatshisname? We live in a society of laws! Why do you think I took you to all those Police Academy movies? For fun? Well, I didn't hear anybody laughing, did you? Except at that guy who made sound effects. Makes sound effects and laughs. Where was I? Oh yeah! Stay out of my booze. I can't go to juvie. They use guys like me as currency.
-
-Oh, loneliness and cheeseburgers are a dangerous mix. "Thank the Lord"? That sounded like a prayer. A prayer in a public school. God has no place within these walls, just like facts don't have a place within an organized religion.
-
-
-\section{Motivations}
-Explain the motivations of your works.  
-\begin{itemize}
-\item   What are the problems you are addressing? 
-\item  Why they are important?
-\item  What are the limitations of existing approaches? 
-\end{itemize}
-You may combine this section with the background section.
-
-
-\section{Problem Statements}
+\section{Problem Statement and Approach} 
+Many companies and organizations confront with lag of answer the question online. Lag of answering the question cause of they have much work to do and unmanageable work that go the staff, lead to less interactive organization department and contact person. Computer Engineering department confront of this problem too. Computer Engineering staff has a lot of work to do. When people ask the question to Computer Engineering Fanpage, it takes a long time to answer.\\
+Lag of answering the question can be solved by using the chatbot, there are many types of chatbot the easy one is rule based chatbots used to lead a user through to offer choices and asks for data. This type of chatbot has their question and answer and just waiting for question that match with pattern for answering to user. Rule based chatbot is good at survey. Next type of chatbot is a chatbot that many companies use and will happen in the Computer Engineering department which is AI chatbot. AI chatbot is a chatbot that can study from the conversation history log and able to predict the question from the user then choose the answer that match to the question most. AI chatbot can answer like natural language and flexible context.\\
+After having consultant with the staff that take care of answering the question of Computer Engineering department, they said that the questions from outsiders and insiders are mostly the same and some of the information is out of date due to frequently update information which leads to human error that will give an incorrect answering as well as some of rarely information may take a lot of time to find the answer. The staff said that it would be better if they can reduce their workload from answering the questions. So, we are going to create chatbot system that staff can manage knowledge of chatbot to solve problems of workload and reduce time to answer the question.
 
 \section{Objectives}
-
+\begin{itemize}
+\item  Build a chatbot to answer questions about the Computer Engineering department and general inquiries to outsiders and insiders.
+\item  Integrate chatbot system with production environment.
+\end{itemize}
 
 \section{Scope of Work}
 
-Explain the scope of your works. 
 \begin{itemize}
-\item   What are the problems you are addressing? 
-\item  Why they are important?
-\item  What are the limitations of existing approaches?
+\item  Create a new KMUTT CPE chatbot for the Computer Engineering department. This chatbot must be able to answer the questions about basic information of the Computer Engineering department, curriculum, frequently asked questions (FAQ), and student registration.
+\item  Create knowledge management for the Computer Engineering department. Knowledge management requires having a frequently asked question management that can create, read, update, and delete questions and answers.
+\item  Create a deep learning model to find the intent of a question and predict the answer from the question that people ask from KMUTT chatbot using the data from the knowledge management.
+\item  Use tools to set up a CI/CD pipeline of the chatbot, knowledge management, and deep learning model for making automated systems such as auto-gathering data and auto train models when receiving new data.
 \end{itemize}
 
 \section{Project Schedule}
-
+\begin{figure}[!h]\centering
+\includegraphics[width=15cm]{img/ch1/ProjectSchedule.jpg}
+\captionof{table}{Task Schedule Table}
+\label{fig:ProjectSchedule.jpg}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%  Literature Review %%%%%%%%%%%%%%%%%%%%%%%%%%
