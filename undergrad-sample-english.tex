@@ -1534,19 +1534,35 @@ To evaluate prediction model base on different criteria for example accuracy and
 %%%%%%%%%%%%%%%%%%%% Experiments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Implementation Results}
-\section{Chatbot Subsystem and Storage Subsystem Result}
-Now our chatbot subsystem which we implement in dialog flow can greeting and understand what is the question and for storage subsystem which we implement in GraphQL query category from backend API. Now our system can category of FAQs by ID and can query FAQs from all category.
+\section{Chatbot Subsystem Results}
+Now our chatbot subsystem, we implemented in dialogflow which can classify greeting and understanding what is the questions. We also finished to implement SSL and DNS server on Cloudflare.
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width=15cm]{./img/ch4/ch4_1.png}}
 \caption{Classification greeting messages and questions}\label{fig:Classification greeting messages and questions}
 \end{figure}
 \begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 15cm]{./img/ch4/ch4_2.png}}
-\caption{GraphQL query FAQs category from backend API}\label{fig:GraphQL query FAQs category from backend API}
+\fbox{\includegraphics[width=15cm]{./img/ch4/ch4_Cloudflare.jpg}}
+\caption{The SSL and DNS server of KMUTT CPE chatbot system on Cloudflare}\label{fig:The SSL and DNS server of KMOTT CPE chatbot system on Cloudflare}
 \end{figure}
 
-\section{Model Prediction Subsystem Result}
+
+\section{Storage Subsystem Results}
+For storage subsystem, we have already prepared the environment and dependency and implemented the restful API and graphQL for all subsystems. Now our system can create, update, delete, and query category, subcategory, users, and FAQs.
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 15cm]{./img/ch4/ch4_2.png}}
+\caption{GraphQL query FAQs by ID category from backend API}\label{fig:GraphQL query FAQs category from backend API}
+\end{figure}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 15cm]{./img/ch4/ch4_GetFAQ.jpg}}
+\caption{GraphQL query FAQs from backend API}\label{fig:GraphQL query FAQs from backend API}
+\end{figure}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 15cm]{./img/ch4/chap4_get.jpg}}
+\caption{The result from Rest API by using GET Method to query category}\label{fig:The result from Rest API by using GET Method to query category}
+\end{figure}
+
+\section{Model Prediction Subsystem Results}
 \subsection{Training Siamese Neural Network with MaLSTM Result}
 After preprocessing the data, we split the data into train, validate, and test data. Then separate the data into left inputs and right inputs, one for each side of MaLSTM. Then train the model with 100 epochs and use batch sizes 128. In addition to using early stops to prevent the model too overfitting and model checkpoint to save the model. Even our group set 100 epochs, but the model was trained only 17 epochs before stopping from early stop. Loss of training data is 0.4116 and loss of validation data is 0.4358. Also, accuracy of training data is 0.5487 and accuracy of validation data is 0.4358. Graphs below are the result from training.
 
