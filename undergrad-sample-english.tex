@@ -940,7 +940,7 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 \pagebreak
 
 \section{Use case diagram}
-Figure ~\ref{fig:use case diagram} shows the main things that the KMUTT CPE staff and questioner can do with the KMUTT CPE Chatbot System. Knowledge management is used by KMUTT CPE staff only.
+Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE staff and questioner can do with the KMUTT CPE Chatbot System. Knowledge management is used by KMUTT CPE staff only.
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/use case diagram.jpg}
 	\caption{Use case of KMUTT CPE Chatbot}\label{fig:use case diagram}
@@ -1280,7 +1280,7 @@ Figure ~\ref{fig:use case diagram} shows the main things that the KMUTT CPE staf
 
 \section{Workflow}
 \subsection{The sequence diagram workflow of chat message}
-Figure ~\ref{fig:sequence diagram of chat message} illustrates the chat workflow starting from a question from questioner until reply answer in knowledge management back. When the questioner sends the message via Facebook Messenger, the message will be sent directly to Dialogflow.\\
+Figure ~\ref*{fig:sequence diagram of chat message} illustrates the chat workflow starting from a question from questioner until reply answer in knowledge management back. When the questioner sends the message via Facebook Messenger, the message will be sent directly to Dialogflow.\\
 Dialogflow will manage the chat queue, save the meta of the questioner and message to the database, and then find the intended message to identify the message that it is a question or common message like a greeting message. If the message is common, Dialogflow will automatically be replied with a common message. But if it is a question, Dialogflow will send the message to the backend API to get the answer to reply.\\
 The backend API will manage the queue of questions from Dialogflow before sending it to the Siamese model. The Siamese model will pair the question from the questioner and all questions in FAQ, then return the related question to the Backend API.\\
 After the backend API gets a related question (or a predicted question), the back-end API will query the raw answer from the database and return to the Dialogflow. Dialogflow will change answers into human speech with an NLP template before replying to the questioner.
@@ -1292,7 +1292,7 @@ After the backend API gets a related question (or a predicted question), the bac
 \pagebreak
 
 \subsection{The sequence diagram of automate build model}
-Figure ~\ref{fig:sequence diagram of automate build model} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
+Figure ~\ref*{fig:sequence diagram of automate build model} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/sequence diagram of automate build model.jpg}
 	\caption{Use case of KMUTT CPE Chatbot}\label{fig:sequence diagram of automate build model}
@@ -1689,7 +1689,7 @@ and
   \int_C^\infty (r-C)\exp\left(\frac{(r-\lambda)^2}{2\sigma^2}\right)\, dr
 \end{equation}
 For a given $\varepsilon$, we numerically solve for $C$ that satisfies
-(\ref{eq:loss_mva}). Any search algorithm can be used to do the task.
+(\ref*{eq:loss_mva}). Any search algorithm can be used to do the task.
 Here, the bisection method is used.  
 
 Next, we show how $\mathrm{Var}\{X_n\}$ can be determined.  Let
@@ -1708,7 +1708,7 @@ known in advance, and an on-line measurement algorithm developed
 in~\cite{eun01} is required to jointly determine both $n^\ast$ and
 $m_x$. For fGn traffic, $\mathrm{Var}\{X_n\}$ is equal to $\sigma^2
 n^{2H}$, where $\sigma^2 = \mathrm{Var}\{\lambda_n\}$, and we can find
-the $n^\ast$ that minimizes (\ref{eq:mx}) directly. Although $\lambda$
+the $n^\ast$ that minimizes (\ref*{eq:mx}) directly. Although $\lambda$
 can be easily measured, it is not the case for $\sigma^2$ and $H$.
 Consequently, the MVA technique suffers from the need of prior
 knowledge traffic parameters.
@@ -1739,7 +1739,7 @@ known in advance, and an on-line measurement algorithm developed
 in~\cite{eun01} is required to jointly determine both $n^\ast$ and
 $m_x$. For fGn traffic, $\mathrm{Var}\{X_n\}$ is equal to $\sigma^2
 n^{2H}$, where $\sigma^2 = \mathrm{Var}\{\lambda_n\}$, and we can find
-the $n^\ast$ that minimizes (\ref{eq:mx}) directly. Although $\lambda$
+the $n^\ast$ that minimizes (\ref*{eq:mx}) directly. Although $\lambda$
 can be easily measured, it is not the case for $\sigma^2$ and $H$.
 Consequently, the MVA technique suffers from the need of prior
 knowledge traffic parameters. 
