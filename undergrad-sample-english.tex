@@ -5,6 +5,7 @@
 
 \usepackage{polyglossia}
 \usepackage{caption}
+\usepackage{cite}
 \setdefaultlanguage{english}
 \setotherlanguage{thai}
 \newfontfamily\thaifont[Script=Thai,Scale=1.23]{TH Sarabun New}
@@ -18,31 +19,31 @@
 % The ones that are optional can be left blank. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % First line of title
-\def\disstitleone{Project/Indep study title line 1}   
+\def\disstitleone{KMUTT CPE Chatbot System}   
 % Second line of title
-\def\disstitletwo{Project/Indep title line 2 (optional)}   
+\def\disstitletwo{}   
 % Your first name and lastname
-\def\dissauthor{Mr./Ms. Firstname1 Lastname1}   % 1st member
+\def\dissauthor{Mr. Nathaphop Sundarabhogin}   % 1st member
 %%% Put other group member names here ..
-\def\dissauthortwo{Mr./Ms. Firstname2 Lastname2}   % 2nd member (optional)
-\def\dissauthorthree{Mr./Ms. Firstname3 Lastname3}   % 3rd member (optional)
+\def\dissauthortwo{Ms. Natkanok Poksappaiboon}   % 2nd member (optional)
+\def\dissauthorthree{Mr. Natthawat Tungruethaipak}   % 3rd member (optional)
 
 
 % The degree that you're persuing..
 \def\dissdegree{Bachelor of Engineering} % Name of the degree
 \def\dissdegreeabrev{B.Eng} % Abbreviation of the degree
-\def\dissyear{202x}                   % Year of submission
-\def\thaidissyear{256x}               % Year of submission (B.E.)
+\def\dissyear{2020}                   % Year of submission
+\def\thaidissyear{2563}               % Year of submission (B.E.)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Your project and independent study committee..
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\def\dissadvisor{Assoc.Prof. My main advisor name , Ph.D.}  % Advisor
+\def\dissadvisor{Asst. Prof. Santitham Prom-on, Ph.D.}  % Advisor
 %%% Leave it empty if you have no Co-advisor
-\def\disscoadvisor{Assoc.Prof. My Co-advisor name, Ph.D.}  % Co-advisor
-\def\disscommitteetwo{Asst.Prof. Committee2, Ph.D.}  % 3rd committee member (optional)
-\def\disscommitteethree{Asst.Prof. Committee3, Ph.D.}   % 4th committee member (optional) 
-\def\disscommitteefour{}    % 5th committee member (optional) 
+\def\disscoadvisor{}  % Co-advisor
+\def\disscommitteetwo{Assoc. Prof. Dr. Peerapon Siripongwutikorn, Ph.D.}  % 3rd committee member (optional)
+\def\disscommitteethree{Asst. Prof. Nuttanart Facundes, Ph.D.}   % 4th committee member (optional) 
+\def\disscommitteefour{Assoc. Prof. Thumrongrat Amornraksa, Ph.D.}    % 5th committee member (optional) 
 
 \def\worktype{Project} %%  Project or Independent study
 \def\disscredit{3}   %% 3 credits or 6 credits
@@ -56,18 +57,18 @@
 \def\thaidepartment{วิศวกรรมคอมพิวเตอร์} 
 \def\thaifaculty{วิศวกรรมศาสตร์}
  
-\def\appendixnames{Appendix} %%% Appendices or Appendix
+\def\appendixnames{Appendix} % todo: Select Appendices or Appendix
 
 \def\thaiworktype{ปริญญานิพนธ์} %  Project or research project % 
-\def\thaidisstitleone{หัวข้อปริญญานิพนธ์บรรทัดแรก}
-\def\thaidisstitletwo{หัวข้อปริญญานิพนธ์บรรทัดสอง}
-\def\thaidissauthor{นายสมศักดิ์ คอมพิวเตอร์}
-\def\thaidissauthortwo{นางสาวสมศรี คอมพิวเตอร์2} %Optional
-\def\thaidissauthorthree{นางสาวสมปอง คอมพิวเตอร์3} %Optional
+\def\thaidisstitleone{ระบบแชทบอทภาควิชาวิศวกรรมคอมพิวเตอร์ มจธ.}
+\def\thaidisstitletwo{}
+\def\thaidissauthor{นายณฐาภพ สุนทรโภคิน}
+\def\thaidissauthortwo{นางสาวณัฐกนก โภคทรัพย์ไพบูลย์} %Optional
+\def\thaidissauthorthree{นายณัฐวัฒน์ ตั้งฤทัยภักดิ์} %Optional
 
-\def\thaidissadvisor{รศ.ดร.ที่ปรึกษา วิทยานิพนธ์}
+\def\thaidissadvisor{ผศ.ดร. สันติธรรม พรหมอ่อน}
 %% Leave this empty if you have no co-advisor
-\def\thaidisscoadvisor{รศ.ดร.ที่ปรึกษา วิทยานิพนธ์ร่วม} %Optional
+\def\thaidisscoadvisor{} %Optional
 \def\thaidissdegree{วิศวกรรมศาสตรบัณฑิต}
 
 % Change the line spacing here...
@@ -114,7 +115,7 @@
 \let\MakeUppercase\relax
 }
 \begin{center}
-  \includegraphics[width=2.8cm]{logo02.jpg}
+  \includegraphics[width=2.8cm]{./img/cover/logo02.jpg}
 \end{center}
 \vspace*{-1cm}
 
@@ -126,23 +127,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \abstract
 
-In a multihop ad hoc network, the interference among nodes is
-  reduced to maximize the throughput by using a smallest transmission
-  range that still preserve the network connectivity. However, most
-  existing works on transmission range control focus on the
-  connectivity but lack of results on the throughput performance. This
-  paper analyzes the per-node saturated throughput of an IEEE 802.11b
-  multihop ad hoc network with a uniform transmission range. Compared
-  to simulation, our model can accurately predict the per-node
-  throughput.  The results show that the maximum achievable per-node
-  throughput can be as low as 11\% of the channel capacity in a normal
-  set of $\alpha$ operating parameters independent of node density. However, if
-  the network connectivity is considered, the obtainable throughput
-  will reduce by as many as 43\% of the maximum throughput. 
+Our world is becoming more technology driven. The population needs to have an awareness of technology 
+like Artificial Intelligence (AI) for the country to become successful and reduce the workload of humans, as 
+in the Computer Engineering department of King Mongkut’s University of Technology Thonburi. \\
+Nowadays, many outsiders and insiders, whether students, teacher assistants, and staff have asked many 
+questions about departments, such as frequently asked questions (FAQ) or the curriculum of each year etc. 
+Each day, the staff in the department have to answer the same questions repeatedly. \\
+Therefore, our team wants to develop the KMUTT CPE Chatbot System to help in answering the frequently 
+asked questions and general inquiries of the Computer Engineering department in KMUTT to outsiders. It 
+can also bring questions that chatbot cannot reply to officers and administration for answering the question 
+and then the chatbot will send the answer back to the questioner via the Facebook Messenger platform.
 
 \begin{flushleft}
 \begin{tabular*}{\textwidth}{@{}lp{0.8\textwidth}}
-\textbf{Keywords}: & Multihop ad hoc networks / Topology control / Single-Hop Throughput
+\textbf{Keywords}: & Knowledge management / Chatbot / Artificial Intelligence (AI) / Siamese Neural Network / MySQL / Database / Automation / FAQ
 \end{tabular*}
 \end{flushleft}
 \endabstract
@@ -154,17 +152,22 @@ In a multihop ad hoc network, the interference among nodes is
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont
 \thaiabstract
-
-การวิจัยครั้งนี้มีวัตถุประสงค์  เพื่อศึกษาความพึงพอใจในการให้บริการงานทั่วไปของสานักวิชา พื้นฐานและภาษา เพื่อเปรียบเทียบระดับความพึงพอใจต่อการให้บริการงาน ทั่วไปของสานักวิชาพื้นฐานและภาษา ของนักศึกษาที่มาใช้บริการสานักวิชาพื้นฐานและภาษา สถาบัน เทคโนโลยีไทย-ญี่ปุ่น จาแนกตามเพศ คณะ และชั้นปีที่ศึกษา เพื่อศึกษาปัญหาและข้อเสนอแนะของ นักศึกษามาเป็นแนวทางในการพัฒนาและปรับปรุงการให้บริการของสานักวิชาพื้นฐานและภาษา
-
-เนื่องจากในยุคสมัยนี้โลกเราได้เข้าสู่ยุคของข้อมูลมหัต (Big data) ซึ่งบริษัทต่าง ๆก็เริ่มขับเคลื่อนธุรกิจด้วยข้อมูลแล้ว  โดยธุรกิจที่มีข้อมูลขนาดใหญ่อย่างที่เห็นง่ายๆเลยก็จะเป็น เว็บไซต์ที่เปิดบริการให้ขายของออนไลน์ ซึ่งในเว็บไซต์นั้นก็จะมีข้อมูลสินค้ามากมายและ สิ่งที่เราได้พบคือรายละเอียดสินค้าหลายๆอย่างไม่มีความสอดคล้องกับรูปภาพสินค้าหรือไม่ชัดเจนพอและ เนื่องด้วยข้อมูลที่มีขนาดใหญ่เกินกว่าที่จะจัดการด้วยแรงงานคนได้และ ยังไม่มีเครื่องมือใด ๆ ในการตรวจจับคำผิดเหล่านี้ได้ เราจึงทำโครงงานนี้ขึ้นมาเพื่อที่จะแก้ไขปัญหาเหล่านี้\par
-ทางเราจึงคิดที่จะทำระบบปัญญาประดิษฐ์หรือ AI มาแก้ไขปัญหาในส่วนนี้ โดยทำ Image captioning ที่ใช้ Convolutional neural network และ Long short-term memory ซึ่งทางคณะผู้จัดทำก็จะมีการเปรียบเทียบกับสถาปัตยกรรมของโมเดลอื่น ๆ เพื่อสร้างโมเดลที่มีประสิทธิภาพมากที่สุด ซึ่งถ้าโครงงานนี้ประสบความสำเร็จจะสามารถตรวจสอบคุณภาพของคำอธิบายสินค้าในเว็บไซต์ขายสินค้าออนไลน์ ทำให้คุณภาพและภาพลักษณ์ต่อสังคมของเว็บไซต์นั้นดูดีขึ้นได้ และนอกจากนี้โครงงานนี้ยังสามารถเป็นพื้นฐานให้แก่ผู้ที่สนใจในการทำ image captioning ที่เป็นภาษาไทยและนำไปประยุกต์ใช้กับงานของตนได้อีกด้วย 
+ในโลกของเราได้มีการขับเคลื่อนด้วยเทคโนโลยีที่มากขึ้น ดังนั้นประชากรจึงต้องมีการปรับตัวและรู้ทันถึงเทคโนโลยี เช่น ปัญญาประดิษฐ์ หรือ 
+เอไอ เพื่อที่ประเทศนั้นจะสามารถพัฒนาและประสบความสำเร็จในการลดการใช้แรงงานของบุคลากรลง อนึ่งเช่นบุคลากรของภาควิชาวิศวกรรม
+คอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี\\
+ปัจจุบัน ทั้งคนภายนอกและภายใน ไม่แม้แต่นักศึกษา คุณครู ผู้ช่วยสอน หรือบุคลากรนั้น ล้วนแล้วแต่มีคำถามเกี่ยวกับภาควิชาวิศวกรรม
+คอมพิวเตอร์ เช่น หลักสูตร การเรียนการสอนแต่ละปี ฯลฯ จนเกิดเป็นคำถามที่สามารถพบเห็นได้บ่อย ทำให้ภาควิชานั้นต้องมีการตอบ
+คำถามที่บ่อยครั้งและเดิม ๆ\\
+ดังนั้นทางผู้จัดทำจึงมีการเล็งเห็นปัญหาและต้องการที่จะทำโปรแกรมแชทบอทของภาควิชาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยี
+พระจอมเกล้าธนบุรีขึ้นมา เพื่อเป็นการช่วยตอบคำถามที่พบเห็นได้บ่อยและข้อสงสัยต่าง ๆ เกี่ยวกับภาควิชาแก่บุคคลภายนอกได้ โดยโปรแกรม
+นั้นยังสามารถนำเอาคำถามที่แชทบอทไม่สามารถตอบได้นั้นส่งต่อไปให้แก่บุคลากรหรือเจ้าหน้าที่ดูแลเป็นผู้ตอบคำถามเหล่านั้นโดยผ่าน
+\\แอปพลิเคชัน Facebook Messenger
 
 \begin{flushleft}
 \begin{tabular*}{\textwidth}{@{}lp{0.8\textwidth}}
  & \\
 
-\textbf{คำสำคัญ}: & การชุบเคลือบด้วยไฟฟ้า / การชุบเคลือบผิวเหล็ก /  เคลือบผิวรังสี
+\textbf{คำสำคัญ}: & การจัดการความรู้ / Chatbot / ปัญญาประดิษฐ์ / Siamese Neural Network / MySQL / ฐานข้อมูล / Automation / คำถามที่พบบ่อย
 \end{tabular*}
 \end{flushleft}
 \endabstract
@@ -174,7 +177,18 @@ In a multihop ad hoc network, the interference among nodes is
 %%%%%%%%%%%%%%%%%%%%%%% Acknowledgments %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \preface
-Acknowledge your advisors and thanks your friends here..
+First, we would like to express our gratitude toward our advisor Asst. Prof. Santitham Prom-on whom always 
+there to help us. When we need some advice, had a question about our research or a problem in writing, he 
+always supports us even in times that he is busy, he still finds some time or alternative way to help us do our 
+research. We are very grateful for what you have done for us, thank you.
+\\Secondly, we owe our deep gratitude to all our committees: Assoc. Prof. Peerapon Siripongwutikorn, Asst. 
+Prof. Nuttanart Facundes, and Assoc. Prof. Thumrongrat Amornraksa, who interest in our project and guided 
+us all along until the completion.  By providing all the necessary information for developing a good system, 
+give us advice and comment to make our project and ourselves to become better.
+\\Last, we would like to thank our friends and family who, support us and help us in many ways besides the 
+project, such as encouragement, guideline, and many other ways. We are very grateful toward all of them, 
+thank you.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% ToC, List of figures/tables %%%%%%%%%%%%%%%%
@@ -225,18 +239,15 @@ Lag of answering the question can be solved by using the chatbot, there are many
 After having consultant with the staff that take care of answering the question of Computer Engineering department, they said that the questions from outsiders and insiders are mostly the same and some of the information is out of date due to frequently update information which leads to human error that will give an incorrect answering as well as some of rarely information may take a lot of time to find the answer. The staff said that it would be better if they can reduce their workload from answering the questions. So, we are going to create chatbot system that staff can manage knowledge of chatbot to solve problems of workload and reduce time to answer the question.
 
 \section{Objectives}
-\begin{itemize}
-\item  Build a chatbot to answer questions about the Computer Engineering department and general inquiries to outsiders and insiders.
-\item  Integrate chatbot system with production environment.
-\end{itemize}
+
 
 \section{Scope of Work}
 
+Explain the scope of your works. 
 \begin{itemize}
-\item  Create a new KMUTT CPE chatbot for the Computer Engineering department. This chatbot must be able to answer the questions about basic information of the Computer Engineering department, curriculum, frequently asked questions (FAQ), and student registration.
-\item  Create knowledge management for the Computer Engineering department. Knowledge management requires having a frequently asked question management that can create, read, update, and delete questions and answers.
-\item  Create a deep learning model to find the intent of a question and predict the answer from the question that people ask from KMUTT chatbot using the data from the knowledge management.
-\item  Use tools to set up a CI/CD pipeline of the chatbot, knowledge management, and deep learning model for making automated systems such as auto-gathering data and auto train models when receiving new data.
+\item   What are the problems you are addressing? 
+\item  Why they are important?
+\item  What are the limitations of existing approaches?
 \end{itemize}
 
 \section{Project Schedule}
@@ -251,45 +262,490 @@ After having consultant with the staff that take care of answering the question 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Background Theory and Related Work}
 
-\url{http://www.cpe.kmutt.ac.th}
-Explain theory, algorithms, protocols, or existing research works and tools related to your work. \cite{bworld}
+\section{Introduction}
+This chapter, we are going to demonstrate the theory, core concept, tools, and related research to be background 
+and terminology before deep down into methodology and result.
 
-\section{Recommender Systems}
+\section{Theory and Core Concepts}
+\subsection{Knowledge Management}
+Knowledge Management is the process of creating, sharing, gathering, using and managing the knowledge 
+and information in organization \cite{what_is_km}. It refers to a multidisciplinary approach to achieve organizational 
+objectives by making the best use of knowledge.\\
+In terms of our project, knowledge management is the website to keep the knowledge and information about 
+computer engineering in question and answer format. Questions in knowledge management can group in category 
+such as basic information, curriculum, frequently asked questions (FAQ), and registration. Also, in each category 
+has subcategory to be more specific the question. Only staff in Computer Engineering department can use the knowledge 
+management.
+ 
+\subsection{Natural Language Processing}
+Natural language processing (NLP) is a subfield of linguistics, computer science, and artificial
+intelligence concerned with computers and human language interactions, mainly how to program
+computers to process and analyze large amounts of natural language data.\\
+The reason for the development of NLP was that computers were originally designed to be more suited
+to understand numeric information or code \cite{nlp_technology}. Which does not match the way of human
+communication which relies on language and language is significantly more complex than computer-based
+code. So, NLP emerged to bridge the gap in human-computer communication.\\
+NLP supports both reading and listening by using other technologies such as Visual Recognition. For
+reading text and using voice recognition for listening Including other technologies to show results
+to humans Including being able to convey information back to us in both text and voice form as well.\\
+NLP currently has a 6-step language learning process:
+\begin{enumerate}
+  \item Morphological Level — Understand letters. NLP will remove words into messages, find consonants,
+  vowels, and spelling for the next step.
+  \item Lexical Level — Understand the word after mixing the letters. It will start to find the meaning
+  of that word to prepare for understanding the whole sentence.
+  \item Syntactic Level — Understand sentences. Based on understanding the common word and structural
+  order specified by experts or schemes learned.
+  \item Semantic Level — Understand the context of words in a sentence. Understand the meaning of terms
+  used in sentences that are outside the standard language structure.
+  \item Discourse Level — Understand the syntax. Understand the effect of the previous sentence on the
+  meaning of the sentence that being read. This includes understanding the order of words used in sentences
+  that give different meanings.
+  \item Pragmatic Level — Understand the meaning of words and sentences based on the actual situation
+  or knowledge base, which may not be specified in the content. So, it can be interpreted as close to
+  human beings that can always relate the new information with the old knowledge. In addition to
+  understanding each point, NLP has three other language learning channels modeled after human language learning:
+  \begin{itemize}
+    \item Symbolic  — Symbolic is the basis of human language understanding where AI has to understand vocabulary up
+    to that language's structure. Developers can now apply expert knowledge directly into AI.
+    \item Statistical — After learning the basics of the language, the next step will be to collect information
+    on using the language in different places. The patterns were analyzed by statistical methods such as the
+    frequency of words used. Find out how to sort common sentences. Then bring to synthesize new knowledge.
+    This will help AI improve the language based on its current popularity. And understand the use of language
+    in a particular field such as science, finance, or various academic documents, etc.
+    \item Connectionist AI — Connectionist AI combines a statistical language learning process with a symbolic level for complete
+    communication and understanding. This is based on the Symbolic stage's actual knowledge and adapted with new
+    information received from the statistical stage.
+    
+  \end{itemize}
+\end{enumerate}
 
-\begin{table}[!h]
-\caption{test table method1}\label{tbl:method1}
-\begin{tabular}{c|c|l|rr} \hline\hline
-Center & Center & left aligned & Right & Right aligned \\ \hline\hline
-Center & Center & left aligned & Right & Right aligned \\ \hline
-Center & Center & left aligned & Right & Right aligned \\ 
-Center & Center & left aligned & Right & Right aligned \\ \hline
-Center & Center & left aligned & Right & Right aligned \\ \hline\hline
-\end{tabular}
-\end{table}
+\subsection{Chatbot}
+Chatbot is an artificial intelligence software used to communicate by talking to humans \cite{what_is_chatbot}.
+For the benefit of one way or another through messaging applications, websites, mobile apps or through
+the telephone. Creating or using chatbot is fun, can be used for counselling or contact interface.\\
+Chatbot might have cons as
+\begin{itemize}
+  \item The chatbot itself does not really understand the conversation
+  \item Scripting the chatbot with rules is fragile and hard to be fully written
+  \item Conversation quality is limited to the data.
+\end{itemize}
+There are two type of chatbot are IR based Chatbot and Neural Network Based Chatbot \cite{what_is_chatbot,five_types_of_chatbot}.
 
+\subsubsection{IR Based Chatbot}
+IR based chatbot uses collections of conversations in order to produce responses to conversation \cite{five_types_of_chatbot,rule_based_vs_nlp}.
+Collections of conversations are stored in sequence of turns. When the chatbot receives a text,
+the chatbot can produce its turn of conversation by
+\begin{itemize}
+  \item Using the received text to search for a turn with the closest match in the collection,
+  then return the next turn as response (most initiative).
+  \item Using the received text to search for a turn with the closest match in the collection,
+  then return that matching turn as response (not initiative, but actually provide better result).
+\end{itemize}
+The turn searching is not limited to the receiving text, but rather the whole conversation so far
+can be used for response searching. Downside of this approach is that the text that chatbot produces
+might not be consistent. Chatbot might say something that conflicts with what the chatbot has said
+before.
 
-\section{Text Processing Algorithms}
-\subsection{Algorithm I}
+\subsubsection{Neural Network Based Chatbot}
+Neural network based chatbot sees its response as a transformation of the incoming text. This chatbot
+provides responses by training an encoder-decoder neural network with pairs of turns \cite{five_types_of_chatbot,rule_based_vs_nlp}.\\
+An encoder-decoder neural network has an encoder and a decoder. The encoder transforms incoming
+text into some abstract representation, and the decoder transforms that abstract representation
+into response text. The encoder and the decoder usually have RNN structure, as they are capable
+of handling variable length of input text and return variable length response text.
 
-% Can define this in the preamble..
-You can place the figure and refer to it as Figure~\ref{fig:model2}.
-The figure and table numbering will be run and updated automatically when you add/remove tables/figures from the document.
+\subsection{Artificial Intelligence (AI)}
+AI is a computing system that provides deep analysis like human intelligence and can produce
+actionable results. For example, translation is due to the processing of incoming messages
+and convert it into another language and so on.\\
+AI learning is not different from human learning which “remember” and “think” like a human.
+For example, children who see their parents' faces repeatedly every day and try to know whose
+person is “dad” or “mother” for a long time. So children will be able to look at their face and
+call “Dad” or “Mom” correctly.\\
+The stimulus used to train AI is “data”, which teaches children to call “parents” must be trained
+many times and must use information that has the same repetitive characteristics\cite{machine_learning_vs_deep_learning}.\\
+The AI mechanism is a computer processing system, and Machine learning is a component in AI.
+This machine learning has a variety of algorithms depending on the problem. Most data that used to
+trend such as deep learning is an algorithm that is suitable for large complex data or Random Forests
+is an algorithm that used for supervised problems, etc.\\
+So, Artificial Intelligence (AI) is like a tool, a robot, or whatever the action takes place.
+Let us learn from what we are interested in. The brain of AI is machine learning (ML),
+learning from what we stimulate and the output is a number or code that is forwarded to display
+the result or allow the AI to show action. ML can be used in various ways, from credit scoring
+to analyzing a person's financial credibility, weather forecast sound analysis, or even the
+translation of the language that ML is learned. It requires a programmatic mechanism or a variety
+of algorithms, with data scientist designing is one of the most popular algorithms.\\
+Deep learning is intended to be easy to use. However, in real work, data scientist needs to
+design variables in the deep learning and need to find other algorithms as a comparison pair
+to look for the most suitable algorithm in actual use.
 
-\begin{figure}[!h]\centering
-\setlength{\fboxrule}{0.2mm} % can define this in the preamble
-\setlength{\fboxsep}{1cm}
-\fbox{\includegraphics[width=5cm]{./model2.pdf}}
-\caption{The network model}\label{fig:model2}
+\subsection{Deep Neural network}
+Deep learning algorithms must use Artificial Neural Networks (ANN), which is the same as how
+the nervous system works in the human brain \cite{machine_learning_vs_deep_learning}. These networks have neurons that
+connect from the nervous system and communicate. It uses parallel processing to understand and
+learn from the vast amount of information it continually receives.\\
+The general principle of deep learning is to have multiple processors. The input data for each
+layer is obtained through interaction with the other layers. Deep learning seeks to find deeper
+relationships as the number of layers and processors in it increases. The higher the data, the
+deeper and more complex (abstract).\\
+The deep learning structure architecture is based on the greedy method to find things in each
+layer that make deep learning more efficient than other methods. For example, early information
+might learn that an incoming image consists of lines. The high floor brings together the lines
+to form a rectangle. And the next layer is to find the correlation of the squares until the
+computer recognizes that the image is the image of flag, etc.
+
+\subsection{Recurrent Neural network (RNN)}
+RNN is a class of artificial neural networks, but the difference is there is a connection between
+each state to form a memory called “Internal memory” \cite{understand_rnn}. Unlike the feedforward
+neural network, RNN can use the internal memory to process the input that is sequential data.
+
+\begin{figure}[!h] \centering
+  \setlength{\fboxrule}{0.2mm} % line border
+  \setlength{\fboxsep}{0.5cm} % space between picture and line border
+  \fbox{\includegraphics[width=14cm]{./img/ch2/example_rnn.png}}  %width=14cm equal to width of paragraph
+  \caption{An example of RNN} % Caption under figure
+  \label{fig:example_rnn} % Used for ref in paragraph
 \end{figure}
 
- 
-\subsection{Algorithm II}
-Add more subsections as you want.
+Figure \ref*{fig:example_rnn} the method that RNN uses to create the internal memory is
+creating a loop within it. Figure A is activated, gets the input $X_t$ in the state of time,
+and output value to the hidden layer. The loop allows the information to be passed into the
+next state. Therefore, the first input will affect the output in the last state.
 
+\begin{figure}[!h] \centering
+  \setlength{\fboxrule}{0.2mm} % line border
+  \setlength{\fboxsep}{0.5cm} % space between picture and line border
+  \fbox{\includegraphics[width=14cm]{./img/ch2/standard_rnn.png}}  %width=14cm equal to width of paragraph
+  \caption{A standard RNN method} % Caption under figure
+  \label{fig:standard_rnn} % Used for ref in paragraph
+\end{figure}
 
-\section{Development Tools}
+Inside the RNN layer, the methods are different for each type as you can see from Figure
+\ref*{fig:standard_rnn}, standard RNN method. It takes the output value from the previous
+state and then combines with the present state’s input. After combining the result will go
+to the nonlinear function, in this case is Tanh. Then the output from this state will be
+used in the later state. The figure above can transform into the formula below.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+\[h_t = \Phi(Wx_t + Uh_{t-1})\]
+\begin{align*}
+&h(t) = \text{A hidden layer or output value of this state.}\\
+&\Phi = \text{An activation function, either sigmoid function or tanh.}\\
+&W = \text{The weight of the input.}\\
+&x(t) = \text{A present state input.}\\
+&U = \text{A hidden state matrix.}\\
+&h(t-1) = \text{A hidden layer or output value of the last state.}
+\end{align*}
+
+Because of this method, many consider RNN to use whenever they need context from the past,
+such as speech recognition, video analysis, and music composition.
+
+\subsection{Long Short-Term Memory (LSTM)}
+Like RNN the Long Short-Term Memory network is also a recurrent neural network but with
+different architecture designs \cite{understand_rnn}, as seen in Figure \ref*{fig:lstm_arch_design}.
+LSTM is specifically used to avoid the long-term dependency problem or the vanishing gradient.
+
+\begin{figure}[!h] \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=14cm]{./img/ch2/lstm_arch_design.jpg}}
+  \caption{LSTM architecture design}
+  \label{fig:lstm_arch_design}
+\end{figure}
+
+The core idea of LSTM is the cell state, the horizontal line that goes between each state. The
+cell state is like a bridge to carry out information from the first state throughout the model.
+Besides the ability to carry information, LSTM can also manipulate the cell state by adding gates
+that interact with the cell state. Each gate can alter the information on cell state like
+forgetting some data or to determine which information needs to be remembered. 
+
+\subsection{MaLSTM similarity function}
+\[\exp(-\|h^{(left)} - h^{(right)}\|1)\]
+In MaLSTM the identical sub-network is the way from the embedding up to the last LSTM hidden
+state \cite{manhattan_lstm, what_is_embedding_matrix}. Using a LSTM to read in word-vectors that represent each
+input sentence and employs final hidden state as a vector representation for each sentence.
+The similarities among these representations are employed as predictors of semantic similarity.
+
+\subsection{The architecture of Siamese Neural Network}
+\begin{figure}[!h]
+  \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=14cm]{./img/ch2/siamese_arch.png}}
+  \caption{Sample Siamese Neural Networks architecture}
+  \label{fig:siamese_arch}
+\end{figure}
+Siamese Neural Networks is a type of neural network that contains multiple instances of the
+same model and shares the same architecture and weights (twin networks) \cite{what_is_embedding_matrix, how_to_predict_questions_pair_using_malstm, introduction_siamese_network}
+. This architecture shows its strength when it must learn with limited data, and we do not have a complete dataset,
+for example Zero or One-shot learning tasks. They work in parallel and are responsible for creating vector
+representations for the input and producing better vector representations by measuring similarities between vectors. 
+
+\section{Tools}
+Figure \ref*{fig:ch3_tools} is an overview of tools that are used in KMUTT CPE Chatbot in each subsystem.
+\begin{figure}[h!]
+  \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=14cm]{./img/ch2/tools.png}}
+  \caption{All tools that are used in KMUTT CPE Chatbot System.}
+  \label{fig:ch3_tools}
+\end{figure}
+
+\subsection{Knowledge Management Subsystem}
+\subsubsection{React JS}
+React is a JavaScript library, or it can be called a JavaScript Framework that we use for building
+our web pages to look interesting. The strength of React that makes it worth using is that It has
+a built-in caching system that makes our web pages responsive. It is very suitable for SPA
+implementation. Writing React, we can also separate the elements of our web page into parts,
+called as a component, and assemble it into a web page. This allows us to reuse our components
+elsewhere \cite{what_is_react}. Do not waste time rewriting.
+
+\subsubsection{GraphQL}
+GraphQL is a language for accessing data (Query Language) for the use of APIs of the system \cite{what_is_graphql}
+and will execute commands on the server side, also known as server-side runtime, using our defined
+data structures.
+
+\subsection{Prediction Model Subsystem}
+\subsubsection{Keras}
+Keras is an open-source neural network library written in python. It uses Tensorflow as one of the
+backends using both CPU and GPU \cite{keras}. It is designed for a fast experiment with Deep Neural
+Network. It was developed as part of the research effort of project ONEIROS (Open-ended Neuro-Electronic
+Intelligent Robot Operating System). Keras library is commonly used to build neural networks such as network
+layers, activation functions, optimizers, etc.
+
+\subsubsection{TensorFlow}
+Tensorflow is an open-source library for numerical computation and large-scale machine learning.
+It uses Python to provide a convenient front-end API for building applications with the framework
+while executing those applications in C++ \cite{what_is_tf}. TensorFlow can train and run deep neural
+networks for handwritten digit classification, image recognition, word embeddings, recurrent neural
+networks, and is the backend for other libraries.
+
+\subsubsection{PyThaiNLP}
+PyThaiNLP is a library package of Python languages used to process text. And language analysis,
+similar to NLTK, but especially for the Thai language \cite{pythainlp}.
+There are a variety of functions such as character set, Thai alphabet, Thai words,
+stop words in Thai, cut Thai words, Type of grammatical words, spell check, correct words,
+and much more.
+
+\subsubsection{Apache Airflow}
+Apache Airflow is an Open Source that manages various tasks by writing a Configuration in
+the Python Code, which is suitable for Python programmers. Each task can see the workflow
+in detail. When there is a problem, such as a bottleneck, it can be analyzed easily \cite{apache_airflow}.
+We can set the working time like a Cronjob. For example, when running Job, A at 1:00 am
+every day, Run Job B at 8:00 am, once a week on Sunday. Job is called DAGs
+(Directed Acyclic Graphs) in Airflow is a web UI for us to monitor Task Failure
+that occurred, or Duration Time caused by each work.
+
+\subsection{Chatbot System}
+\subsubsection{Dialogflow}
+Dialogflow is a chatbot builder from Google which provide flexible integration to many platforms,
+unique to Natural Language Processing, or NLP \cite{dialogflow}. Which means that chatbot can
+accurately understand the meaning of user-typed sentences, enabling chatbot to interact with people.
+Use it precisely and to the point.
+
+\subsubsection{Facebook Messenger}
+Facebook Messenger is an application through a smartphone and desktop PC. It connects information
+and information, extending from the inbox system, sending messages on Facebook, and creating data
+storage to facilitate communication \cite{wiki_fb_messenger}.\\
+We decide this application to be our chat platform because from our survey (Figure \ref*{fig:ch3_result_survey})
+through insiders and outsiders, they prefer to use the Facebook Messenger platform the most.
+
+\begin{figure}[h!]
+  \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=14cm]{./img/ch2/result_survey.png}}
+  \caption{The result of our survey from 108 people.}
+  \label{fig:ch3_result_survey}
+\end{figure}
+
+\subsection{ Storage Subsystem}
+\subsubsection{NestJS}
+NestJS is a framework for building Node.js server-side applications that scalable and very
+efficient \cite{nestjs_beautiful}. NestJS uses progressive JavaScript which means NestJS updated
+features inside follow latest JavaScript. In addition, NestJS is very flexible from giving
+freedom to easily plug the third party or another module to NestJS application. This reason
+makes NestJS extensible and can be scalable to big size project.\\
+Moreover, NestJS supports TypeScript and comes up with idea combination of Object-Oriented
+Programming (OOP), Functional Programming (FP), and Functional Reactive Programming (FRP)
+to makes more friendly to develop the application \cite{nestjs_beautiful}. Also, NestJS
+provides a level of abstraction above common Node.js framework like Express or
+Fastify by adding more level such as controller, provider, module, etc.
+
+\subsubsection{MySQL}
+It is a popular program used to manage database systems nowadays because of its free instruction
+set. MySQL is a relational database (RDBMS: Relational Database Management System) that can
+simultaneously work with multiple tables \cite{what_is_mysql}. Those tables with shared fields
+MySQL are a capable database server. Standard database language like ANSI SQL
+(Structured Queries Language).
+
+\subsubsection{TypeORM}
+TypeORM is Object Relational Mapping (ORM), which facilitates and simplifies database connection \cite{typeorm}.
+We chose TypeORM because it supports TypeScript, which is suitable for NestJS.
+
+\subsubsection{Bull}
+Bull is a Node library that manages a queue system based on Redis, which benefits from the queue
+\cite{job_queue_management_bull}. It can solve many problems elegantly, from smoothing out processing peaks to creating
+robust communication channels between microservices or offloading heavy work from one server to
+many smaller workers, etc.
+
+\subsection{Deployment System}
+\subsubsection{Docker}
+Docker is an engine that works in a simulated environment on the server to run the required service.
+It works similarly to Virtual Machines such as VMWare, VirtualBox, XEN, KVM, but the main difference
+is Virtual \cite{what_is_docker}. Previously known machine It simulates the entire OS for use.
+
+\subsubsection{Kubernetes}
+Kubernetes, or k8s is an open-source platform that allows operations to Linux Containers
+can be done automatically. Minimize the process of installing or extending applications
+running on containers that developers have to do manually \cite{explain_kubernetes}. Or
+it can be said that This enables developers to cluster a cluster of hosts
+running Linux containers, and Kubernetes can quickly and efficiently manage them
+for public, private, and hybrid cloud deployments.
+
+\subsection{Languages}
+\subsubsection{TypeScript}
+TypeScript is a programming language that combines the capabilities that ES2015 itself has.
+What is added is support for Type System and additional features such as Enum and the expanded
+capabilities of object-oriented programming. TypeScript is a Babel-like transpiler \cite{what_is_ts}.
+This means that the TypeScript translator will translate the code we write into JavaScript one more
+time, ensuring that the result will be usable in a regular web browser.
+
+\subsubsection{HTML}
+HTML is the primary language used for writing web pages using Tag to define their display.
+HTML stands for Hypertext Markup Language, where Hypertext refers to hyperlinked text.
+Markup language refers to the language in which a tag is used.
+HTML is defined as a language in which a tag is used to designate a web page connected
+in hyperspace via Hyperlink \cite{html_basic}. It is now developed and standardized by
+the World Wide Web Consortium (W3C).
+
+\subsubsection{CSS}
+CSS is a language used to decorate HTML / XHTML documents with appearance, colors, spacing,
+backgrounds, borders, and more \cite{ultimate_guide_css}
+. As requested, CSS stands for Cascading Style Sheets. It is a syntax-specific programming
+language standardized by W3C as one of the web site decoration languages. It has been widely
+popular.
+
+\subsubsection{Python}
+The Python programming language is a high-level computer programming language \cite{keras}. 
+It is designed as an easy-to-read scripting language. By eliminating the complexity
+of the structure and grammar of the language. In the part of converting the instruction
+set to the machine, language Python has a function Interpreter is a line-by-line translation.
+To enter into the processor for the computer to work as we want. Python programming language
+can also be used for many types of programming. Without being limited to a particular
+job (General-purpose language), it is widely used in many large global organizations such as
+Google, YouTube, Instagram, Dropbox, and NASA, etc.
+
+\section{Related Chatbot}
+\subsection{Eliza}
+Eliza is a rule-based chatbot. It simulates a Rogerian psychologist by reflecting the patient’s
+statement back at them to continue the conversation. In the ELIZA system, there are rules. Each
+rule captures some keywords. When the rules are matched, the incoming sentence is transformed
+by transformation written for the rule \cite{what_is_eliza}. Each rule might have multiple
+transformations to reduce repetitiveness of returning sentences.\\
+Keywords in the rules are ranked. Specific meaning keywords have higher priority than general
+keywords. But universal keywords such as “everybody” are exceptions. As the universal keywords
+are highly probably referring to some specific event or person, universal keywords are ranked
+highest.\\
+Aside from rules, ELIZA also contains memory. Some rules cause ELIZA to store the topic in the
+memory stack. Afterward, if no keyword match to the incoming sentence is found, content in the
+memory stack is retrieved to continue the conversation.\\
+Aside from rule-based transformation, there are also transformations that switch 1st person
+words with 2nd persons words and vice versa.
+
+\subsection{Parry}
+Parry is a rule-based chatbot to simulate a paranoid person who is under delusion of threat
+from the mafia due to Parry’s involvement in horse racing bet. Parry included a model of mental
+state with 3 variables. The variables are anger, fear, and mistrust. Rules are written to
+manipulate these variables \cite{parry_met_eliza}
+. When Parry anger, hostile responses are made. Parry also includes a chain of topics that are
+linked to mafia via horse racing. Whenever such topics are brought up for the first time,
+regardless of speaker’s intention, Parry’s would feel threatened and related mental model
+variables are adjusted accordingly.
+
+\subsection{Botnoi Consulting}
+Botnoi Consulting has started from Botnoi chatbot in 2016 in Line Bot Awards competition in Japan \cite{botnoi_enterprise_chatbot}.
+On that time Botnoi is a chatbot on Line platform that has good relationship which can talk like
+a friend and have many features such as translate, find the nearest restaurant, etc.\\
+But now, Botnoi group have been upgraded to the Botnoi Consulting company. Botnoi Consulting
+has developed own NLP engine in Thai language and related technology to makes many businesses
+can integrate Botnoi to the system such as Botnoi API, external API integration, AI training
+\& monitoring, chat analytic repots, live chat, etc. Currently, Botnoi can automatically get
+input from user, provide information, make a payment, and update stock in the system without human.
+
+\section{Related research}
+\subsection{Automated Self-Learning Chatbot Initially Built as a FAQs Database Information Retrieval
+System: Multi-level and Intelligent Universal Virtual Front-Office Implementing Neural Network}
+This paper is about implement the multi-level virtual front office as you can see from the Figure
+\ref*{fig:ch3_lr_self_learning_chatbot}. 
+\begin{figure}[h!]
+  \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=14cm]{./img/ch2/literature_review_self_learning_chatbot.png}}
+  \caption{Functional schema of Automated Self-Learning Chatbot Initially Built as a FAQs
+  Database Information Retrieval System: Multi-level and Intelligent Universal Virtual
+  Front-Office Implement Neural Networks.}
+  \label{fig:ch3_lr_self_learning_chatbot}
+\end{figure}
+
+What we focus on from this research is about chatbot have automated self-learning from FAQs
+database which is likely to our project. From Figure \ref*{fig:ch3_lr_activity_dg_self_learning_chatbot},
+when there is a new question, if chatbot can answer, chatbot will send the answer to user.
+But if chatbot cannot answer, the operator will answer instead and store the question FAQs
+database and update A.I. engine of chatbot.\\
+But the different between this research paper and our project is the chatbot and A.I. engine.
+The author of research uses neural network to preprocess text before generating to AIML
+pattern and create chatbot from AIML A.I. engine. While our project creates Siamese Neural
+Network to pair the similarity of text between the question from user and question in
+knowledge management. If both questions are the similar, our system will query the answer
+from database and send answer back to the user.
+
+\begin{figure}[h!]
+  \centering
+  \setlength{\fboxrule}{0.2mm}
+  \setlength{\fboxsep}{0.5cm}
+  \fbox{\includegraphics[width=10cm]{./img/ch2/literature_review_activity_diagram_chatbot.png}}
+  \caption{Activity Diagram of Self-Learning Algorithm of Automated Self-Learning Chatbot
+  Initially Built as a FAQs Database Information Retrieval System: Multi-level and Intelligent
+  Universal Virtual Front-Office Implement Neural Networks.}
+  \label{fig:ch3_lr_activity_dg_self_learning_chatbot}
+\end{figure}
+
+\section{Summary}
+KMUTT CPE Chatbot System is a neural network based chatbot with model prediction which use
+Siamese neural network to learn the similarity of question in Thai language with knowledge
+management that can learn by it-self overtime not a rule based chatbot like in the existing
+chatbot in the market. So, if we compare Rule-based chatbot and neural network based chatbot.
+\begin{itemize}
+  \item Rule-based Chatbot: The data must be entered verbatim — one sentence at a time. If the
+  user asks more than that, the answer will not be answered immediately or cannot answer.
+  \item Neural network based Chatbot: Understand a variety of sentence patterns. Can understand
+  a wider range of questions. The users do not have to ask directly but the model can understand.
+\end{itemize}
+Our project can help in answering the FAQ and general inquiries of the Computer Engineering
+department in KMUTT to outsiders and insiders via Facebook Messenger platform by prediction
+model from knowledge management. It can reduce the over workload of KMUTT CPE staff that they
+have to reply to the same answer to same questions to insiders or outsiders as quickly as they
+can and repeatedly every day. So, if we compare or solution with the existing solution which is
+the CPE staff have to answer by themselves (Table \ref*{table:ch3_solution_compare}).
+\begin{figure}[h!]
+  \centering
+  \fbox{\includegraphics[width=15cm]{./img/ch2/solution_compare.png}}
+  \captionof{table}{Compare KMUTT CPE chatbot with the existing solution which is the CPE
+  staff have to answer by themselves.}
+  \label{table:ch3_solution_compare}
+\end{figure}
+
+Overall KMUTT CPE Chatbot system can reduce the workload of document workers and reduce human
+error when answering the question. Also, can reply to outsiders and insiders correctly and
+immediately. It will serve either the computer engineering insiders or people interested in
+computer engineering to answer the question about the department and CPE staff can use
+knowledge management to manage FAQ in the department.
+Moreover, our chatbot systems can scalable, the chatbot can automatically build models
+when knowledge management receives new data.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Proposed Work}
@@ -335,8 +791,79 @@ $\mu$ & Service rate\hfill & jobs/second \\ \hline
 %%%%%%%%%%%%%%%%%%%% Experiments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Implementation Results}
+\section{Chatbot Subsystem and Storage Subsystem Result}
+Now our chatbot subsystem which we implement in dialog flow can greeting and understand what is the question and for storage subsystem which we implement in GraphQL query category from backend API. Now our system can category of FAQs by ID and can query FAQs from all category.
 
-You can title this chapter as \textbf{Preliminary Results} or \textbf{Work Progress} for the progress reports. Present implementation or experimental results here and discuss them.
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=15cm]{./img/ch4/ch4_1.png}}
+\caption{Classification greeting messages and questions}\label{fig:Classification greeting messages and questions}
+\end{figure}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 15cm]{./img/ch4/ch4_2.png}}
+\caption{GraphQL query FAQs category from backend API}\label{fig:GraphQL query FAQs category from backend API}
+\end{figure}
+
+\section{Model Prediction Subsystem Result}
+\subsection{Training Siamese Neural Network with MaLSTM Result}
+After preprocessing the data, we split the data into train, validate, and test data. Then separate the data into left inputs and right inputs, one for each side of MaLSTM. Then train the model with 100 epochs and use batch sizes 128. In addition to using early stops to prevent the model too overfitting and model checkpoint to save the model. Even our group set 100 epochs, but the model was trained only 17 epochs before stopping from early stop. Loss of training data is 0.4116 and loss of validation data is 0.4358. Also, accuracy of training data is 0.5487 and accuracy of validation data is 0.4358. Graphs below are the result from training.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 15cm]{./img/ch4/ch4_3.png}}
+\caption{Model accuracy}\label{fig:Model accuracy}
+\end{figure}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 15cm]{./img/ch4/ch4_4.png}}
+\caption{Model loss}\label{fig:Model loss}
+\end{figure}
+
+\subsection{Evaluation Model Result}
+The result from the model is the real number from 0 to 1. We interpret both questions are similar (result = 1) if the model predicted score is more than 0.3. If the model predicted score is less than 0.3, both questions are not similar (result = 0). We pick 0.3 to be a criterion for similar or not similar because we have picked 0.6 and 0.5 already but accuracy is very low. After the model predicts the test data, we convert from a similar score (0 to 1)  to binary (0 or 1) instead before evaluating. As you can see in the training topic, we use accuracy and loss to be the main criteria to evaluate the model while training. But in this process we will also use accuracy, precision, and F1-score to evaluate the model. The picture below is the result after evaluating the model with test data.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 15cm]{./img/ch4/ch4_5.png}}
+\caption{Classification report}\label{fig:Classification report}
+\end{figure}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 15cm]{./img/ch4/ch4_6.png}}
+\caption{Confusion matrix}\label{fig:Confusion matrix}
+\end{figure}
+
+The accuracy after evaluating with test data is 0.527. From the confusion matrix and classification report, the overall model performs accuracy with 52.7\%. There are two classes and we got class o with less precision around 25\%. but we have got class 1 with high precision with 76\%.
+\subsection{Siamese Neural Network with MaLSTM Model Result}
+
+The picture below shows an example result from playing with the model. The Input questions are
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+'วิศวะคอมเรียนหลักสูตรอะไรบ้างคะ' }
+and
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ' วิศวะคอมมีหลักสูตรอะไรบ้าง'. 
+}Both questions are similar and our model can predict both questions are similar for 83.33\%.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 15cm]{./img/ch4/ch4_7.png}}
+\caption{Model result by compare questions which similar}\label{fig:Model result by compare questions which similar}
+\end{figure}
+
+From others example from playing with model.The Input questions are
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ วิศวะคอมเรียนเกี่ยวกับอะไรบ้าง’ }and 
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont ‘ วิศวะคอมมีเรียนหลักสูตรอะไรบ้าง’.}
+ Both questions are not similar and our model can predict both questions are not similar for 57.14\%
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 15cm]{./img/ch4/ch4_8.png}}
+\caption{Model result by compare questions which not similar}\label{fig:Model result by compare questions which not similar}
+\end{figure}
+
+Even the model can predict, but the overall performance of the model is quite not good. Because we think the model should return similar questions from MaLSTM more than 0.5 scores not 0.3 scores. We think that the problem comes from not enough data. If we can gather more dataset and have more cases about question pairs that are similar or not similar, especially not similar that we got less precision, we can increase our model's performance. Also we have to integrate all subsystem to be one system in the production environment.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Conclusions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%

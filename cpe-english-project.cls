@@ -23,7 +23,7 @@
 
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{cpe-grad}[2016/05/30 CPE,KMUTT latex class]
+\ProvidesClass{cpe-english-project}[2016/05/30 CPE,KMUTT latex class]
 \LoadClass{report}
 \typeout{Document Style `CPE thesis/report'.}
 \newcommand{\dotrule}[1]{% 
