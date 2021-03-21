@@ -15,10 +15,6 @@
 \setdefaultlanguage{english}
 \setotherlanguage{thai}
 
-%added by tong use for make itemize go in to description
-\setlist[itemize]{topsep=0pt,before=\leavevmode\vspace{-1.5em}}
-\setlist[description]{style=nextline}
-
 \newfontfamily\thaifont[Script=Thai,Scale=1.23]{TH Sarabun New}
 \defaultfontfeatures{Mapping=tex-text,Scale=1.0,LetterSpace=0.0}
 \setmainfont[Scale=1.0,LetterSpace=0,WordSpace=1.0,FakeStretch=1.0]{Times New Roman}
@@ -795,14 +791,12 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 	Storage subsystem consists of a database and backend API. Our database is MySQL, and it keeps all data from each subsystem, either knowledge management subsystem or chatbot subsystem. But both subsystems need to save the data into the database through the backend API. The backend API provides the restful API and GraphQL for all subsystems to query, update, and delete data. Moreover, the back-end API provides an API to get a question from Dialogflow and manage the question in the queue to send a question to the prediction model and return an answer from knowledge management.
 \end{description}
 \section{System Requirements}
-\begin{description}
-	\item[Knowledge Management Subsystem]
+	\subsection{Knowledge Management Subsystem}
 	\begin{itemize}
 		\item Deploying new knowledge management for Computer Engineering department
 		\item KMUTT CPE Staff can create, update, read, and delete the FAQ in Knowledge management.
 		\item Knowledge management subsystem can save the data in the database through the storage subsystem.
 	\end{itemize}
-\end{description}
 \emph{workload}
 \begin{table}[h]
 	\centering
@@ -826,14 +820,12 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 \end{adjustbox}
 \end{table}
 
-\begin{description}
-	\item[Prediction Model Subsystem]
+	\subsection{Prediction Model Subsystem}
 	\begin{itemize}
 		\item Use the FAQ data from knowledge management to build the model
 		\item The model has input as a sequence of question from the questioner, then pairs with the FAQ in knowledge management, and then returns the related question back.
 		\item Automate build model and deploy
 	\end{itemize}
-\end{description}
 \emph{workload}
 \begin{table}[h]
 	\centering
@@ -856,15 +848,13 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 \end{adjustbox}
 \end{table}
 
-\begin{description}
-	\item[Chatbot Subsystem]
+	\subsection{Chatbot Subsystem}
 	\begin{itemize}
 		\item Chatbot subsystem can manage queues and chat flow.
 		\item Chatbot subsystem must connect with Facebook Messenger.
 		\item Chatbot subsystem can get the question from people and can reply answer from knowledge management back.
 		\item Chatbot subsystem can keep log messages in the database through storage subsystem.
 	\end{itemize}
-\end{description}
 \emph{workload}
 \begin{table}[h]
 	\centering
@@ -889,14 +879,12 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 \end{adjustbox}
 \end{table}
 
-\begin{description}
-	\item[Storage Subsystem]
+	\subsection{Storage Subsystem}
 	\begin{itemize}
 		\item Storage subsystem can manage a queue of questions from the chatbot subsystem to the prediction model subsystem.
 		\item Storage subsystem provides API to the knowledge management subsystem and chatbot subsystem.
 		\item Storage subsystem can send all questions to the prediction model subsystem for building the model.
 	\end{itemize}
-\end{description}
 \emph{workload}
 \begin{table}[h]
 	\centering
