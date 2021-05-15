@@ -511,7 +511,10 @@ Siamese Neural Networks is a type of neural network that contains multiple insta
 same model and shares the same architecture and weights (twin networks) \cite{what_is_embedding_matrix, how_to_predict_questions_pair_using_malstm, introduction_siamese_network}
 . This architecture shows its strength when it must learn with limited data, and we do not have a complete dataset,
 for example Zero or One-shot learning tasks. They work in parallel and are responsible for creating vector
-representations for the input and producing better vector representations by measuring similarities between vectors. 
+representations for the input and producing better vector representations by measuring similarities between vectors.
+
+\subsection{Logistic Regression}
+% todo: Add Logistic Regression content
 
 \section{Tools}
 Figure \ref*{fig:ch3_tools} is an overview of tools that are used in KMUTT CPE Chatbot in each subsystem.
@@ -746,7 +749,7 @@ from database and send answer back to the user.
 \end{figure}
 
 \section{Summary}
-KMUTT CPE Chatbot System is a neural network based chatbot with model prediction which use
+KMUTT CPE Chatbot System is a neural network based chatbot with prediction model which use
 Siamese neural network to learn the similarity of question in Thai language with knowledge
 management that can learn by it-self overtime not a rule based chatbot like in the existing
 chatbot in the market. So, if we compare Rule-based chatbot and neural network based chatbot.
@@ -1271,7 +1274,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 \pagebreak
 
 \section{Workflow}
-\subsection{The sequence diagram workflow of chat message}
+\subsection{The Sequence Diagram Workflow of Chat Message}
 Figure ~\ref*{fig:Sequence diagram workflow of chat message} illustrates the chat workflow starting from a question from questioner until reply answer in knowledge management back. When the questioner sends the message via Facebook Messenger, the message will be sent directly to Dialogflow.\\
 Dialogflow will manage the chat queue, save the meta of the questioner and message to the database, and then find the intended message to identify the message that it is a question or common message like a greeting message. If the message is common, Dialogflow will automatically be replied with a common message. But if it is a question, Dialogflow will send the message to the backend API to get the answer to reply.\\
 The backend API will manage the queue of questions from Dialogflow before sending it to the Siamese model. The Siamese model will pair the question from the questioner and all questions in FAQ, then return the related question to the Backend API.\\
@@ -1283,7 +1286,7 @@ After the backend API gets a related question (or a predicted question), the bac
 
 \pagebreak
 
-\subsection{The sequence diagram of automate build model}
+\subsection{The Sequence Diagram of Automate Build Model}
 Figure ~\ref*{fig:Sequence diagram of automate building and deploy model.} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/sequence diagram of automate build model.jpg}
@@ -1476,7 +1479,7 @@ Pre-processing data by trying to convert text it into lists of word indices or s
 
 \section{Design of key processing algorithms}
 \begin{flushleft}
-In the model prediction subsystem, we split our data into “left” and “right” inputs (one for each side of the MaLSTM) and Pad all the word number sequences with zeros. We also create a two thousand validation dataset to measure our model using the scikit learns train\_test\_split function. It can help to keeps the distribution of the label between the datasets by default.
+In the prediction model subsystem, we split our data into “left” and “right” inputs (one for each side of the MaLSTM) and Pad all the word number sequences with zeros. We also create a two thousand validation dataset to measure our model using the scikit learns train\_test\_split function. It can help to keeps the distribution of the label between the datasets by default.
 \end{flushleft}
 
 \pagebreak
@@ -1545,36 +1548,96 @@ To evaluate prediction model base on different criteria for example accuracy and
 %%%%%%%%%%%%%%%%%%%% Experiments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Implementation Results}
-\section{Chatbot Subsystem Results}
-Now our chatbot subsystem, we implemented in dialogflow which can classify greeting and understanding what is the questions. We also finished to implement SSL and DNS server on Cloudflare.
 
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width=14cm]{./img/ch4/ch4_1.png}}
-\caption{Classification greeting messages and questions}\label{fig:Classification greeting messages and questions}
-\end{figure}
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width=14cm]{./img/ch4/ch4_Cloudflare.jpg}}
-\caption{The SSL and DNS server of KMUTT CPE chatbot system on Cloudflare}\label{fig:The SSL and DNS server of KMOTT CPE chatbot system on Cloudflare}
-\end{figure}
+\section{Problems}
+Before deep down into the results of our project, let us explain problems that we found during
+implement the project first. Because the results have changed a lot from our plan and it could
+make you confused if not understand the problem and how we solve it. There are 3 major problems
+that we want to describe first which are the performance problem, time exceed problem in Dialogflow,
+and budget problem.
+\subsection{Performance Problem}
+% todo: Describe about the performance problem to send all question to predict and bad performance of dialogflow intent
+\subsubsection{Solution of Performance Problem}
+% todo: Create the category model to classify category of question before put into question prediction model
+\subsection{Time Exceed in Dialogflow Problem}
+% todo: The problem occur when integrate the whole system together. Dialogflow have very short timeout.
+% todo: Add the performance image of pattern1.
+\subsubsection{The First Approach for Solving Time Exceed in Dialogflow Problem}
+\subsubsection{The Second Approach for Solving Time Exceed in Dialogflow Problem}
+\subsubsection{The Last Approach for Solving Time Exceed in Dialogflow Problem}
+\subsection{Budget Problem}
+% todo: Show cost of the lowest budget for GCP price.
+\subsubsection{Solution of Budget Problem}
+% todo: Reduce scope.
+
+
+\section{System Architecture}
+% todo: Describe change of system arichtecture
+
+
+\section{Workflow}
+% todo: Describe change of workflow
+\subsubsection{The Sequence Diagram Workflow of Chat Message}
+%todo: Add updated sequence diagram workflow
+
+
+\section{Chatbot Subsystem Results}
+% todo: Update the work done
+% Now our chatbot subsystem, we implemented in dialogflow which can classify greeting and understanding what is the questions. We also finished to implement SSL and DNS server on Cloudflare.
+
+% \begin{figure}[!h]\centering
+% \fbox{\includegraphics[width=14cm]{./img/ch4/ch4_1.png}}
+% \caption{Classification greeting messages and questions}\label{fig:Classification greeting messages and questions}
+% \end{figure}
+% \begin{figure}[!h]\centering
+% \fbox{\includegraphics[width=14cm]{./img/ch4/ch4_Cloudflare.jpg}}
+% \caption{The SSL and DNS server of KMUTT CPE chatbot system on Cloudflare}\label{fig:The SSL and DNS server of KMOTT CPE chatbot system on Cloudflare}
+% \end{figure}
+\subsection{Facebook Messenger}
+% todo: Detail of work/problem
+\subsection{Dialogflow}
+% todo: What we have done with Dialogflow, problem of Dialogflow, and how we solve it.
+
+
+\section{Knowledge Management Results}
+\subsection{Use case}
+% todo: New Use case with more role for App Review
+\subsection{User Interface Design}
+% todo: UI design
+\subsection{Implementation}
+% todo: Old UI design
 
 
 \section{Storage Subsystem Results}
-For storage subsystem, we have already prepared the environment and dependency and implemented the restful API and graphQL for all subsystems. Now our system can create, update, delete, and query category, subcategory, users, and FAQs.
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_2.png}}
-\caption{GraphQL query FAQs by ID category from backend API}\label{fig:GraphQL query FAQs category from backend API}
-\end{figure}
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_GetFAQ.jpg}}
-\caption{GraphQL query FAQs from backend API}\label{fig:GraphQL query FAQs from backend API}
-\end{figure}
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 14cm]{./img/ch4/chap4_get.jpg}}
-\caption{The result from Rest API by using GET Method to query category}\label{fig:The result from Rest API by using GET Method to query category}
-\end{figure}
+% For storage subsystem, we have already prepared the environment and dependency and implemented the restful API and graphQL for all subsystems. Now our system can create, update, delete, and query category, subcategory, users, and FAQs.
+% \begin{figure}[!h]\centering
+% \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_2.png}}
+% \caption{GraphQL query FAQs by ID category from backend API}\label{fig:GraphQL query FAQs category from backend API}
+% \end{figure}
+% \begin{figure}[!h]\centering
+% \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_GetFAQ.jpg}}
+% \caption{GraphQL query FAQs from backend API}\label{fig:GraphQL query FAQs from backend API}
+% \end{figure}
+% \begin{figure}[!h]\centering
+% \fbox{\includegraphics[width= 14cm]{./img/ch4/chap4_get.jpg}}
+% \caption{The result from Rest API by using GET Method to query category}\label{fig:The result from Rest API by using GET Method to query category}
+% \end{figure}
+\subsection{Database}
+% todo: Add database table
+\subsection{Example of Implementation}
+% todo: Add some example of implementation e.g. api, graphql
+% !Ask ajarn that should input api document or not?
 
-\section{Model Prediction Subsystem Results}
-\subsection{Training Siamese Neural Network with MaLSTM Result}
+
+\section{Prediction Model Subsystem Results}
+% todo: Describe why we add logistic regression and cosine similarity and add some references to the problem. what are they used for?
+\subsection{Logistic Regression Result}
+\subsubsection{Logistic Regression Training}
+\subsubsection{Logistic Regression Evaluation}
+\subsubsection{Logistic Regression Example}
+
+\subsection{Siamese Neural Network with MaLSTM Result}
+\subsubsection{Siamese Neural Network with MaLSTM Training}
 After preprocessing the data, we split the data into train, validate, and test data. Then separate the data into left inputs and right inputs, one for each side of MaLSTM. Then train the model with 100 epochs and use batch sizes 128. In addition to using early stops to prevent the model too overfitting and model checkpoint to save the model. Even our group set 100 epochs, but the model was trained only 17 epochs before stopping from early stop. Loss of training data is 0.4116 and loss of validation data is 0.4358. Also, accuracy of training data is 0.5487 and accuracy of validation data is 0.4358. Graphs below are the result from training.
 
 \begin{figure}[!h]\centering
@@ -1586,7 +1649,7 @@ After preprocessing the data, we split the data into train, validate, and test d
 \caption{Model loss}\label{fig:Model loss}
 \end{figure}
 
-\subsection{Evaluation Model Result}
+\subsubsection{Siamese Neural Network with MaLSTM Evaluation}
 The result from the model is the real number from 0 to 1. We interpret both questions are similar (result = 1) if the model predicted score is more than 0.3. If the model predicted score is less than 0.3, both questions are not similar (result = 0). We pick 0.3 to be a criterion for similar or not similar because we have picked 0.6 and 0.5 already but accuracy is very low. After the model predicts the test data, we convert from a similar score (0 to 1)  to binary (0 or 1) instead before evaluating. As you can see in the training topic, we use accuracy and loss to be the main criteria to evaluate the model while training. But in this process we will also use accuracy, precision, and F1-score to evaluate the model. The picture below is the result after evaluating the model with test data.
 
 \begin{figure}[!h]\centering
@@ -1599,7 +1662,8 @@ The result from the model is the real number from 0 to 1. We interpret both ques
 \end{figure}
 
 The accuracy after evaluating with test data is 0.527. From the confusion matrix and classification report, the overall model performs accuracy with 52.7\%. There are two classes and we got class o with less precision around 25\%. but we have got class 1 with high precision with 76\%.
-\subsection{Siamese Neural Network with MaLSTM Model Result}
+
+\subsubsection{Siamese Neural Network with MaLSTM Example}
 
 The picture below shows an example result from playing with the model. The Input questions are
 {
@@ -1610,7 +1674,7 @@ and
 {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- ' วิศวะคอมมีหลักสูตรอะไรบ้าง'. 
+ 'วิศวะคอมมีหลักสูตรอะไรบ้าง'. 
 }Both questions are similar and our model can predict both questions are similar for 83.33\%.
 
 \begin{figure}[!h]\centering
@@ -1635,19 +1699,27 @@ From others example from playing with model.The Input questions are
 
 Even the model can predict, but the overall performance of the model is quite not good. Because we think the model should return similar questions from MaLSTM more than 0.5 scores not 0.3 scores. We think that the problem comes from not enough data. If we can gather more dataset and have more cases about question pairs that are similar or not similar, especially not similar that we got less precision, we can increase our model's performance. Also we have to integrate all subsystem to be one system in the production environment.
 
+\subsection{Cosine Similarity Result}
+\subsubsection{Cosine Similarity Training}
+\subsubsection{Cosine Similarity Evaluation}
+\subsubsection{Cosine Similarity Example}
+
+\section{Project Demo}
+% todo: Chat capture that we asked through messenger and reply answer from KM back
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Conclusions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \chapter{Conclusions}
+\chapter{Conclusions}
 
-% This chapter is optional for proposal and progress reports but 
-% is required for the final report.
+This chapter is optional for proposal and progress reports but 
+is required for the final report.
 
-% \section{Problems and Solutions}
-% State your problems and how you fixed them.
+\section{Problems and Solutions}
+State your problems and how you fixed them.
 
-% \section{Future Works}
-% What could be done in the future to make your projects better.
+\section{Future Works}
+What could be done in the future to make your projects better.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
