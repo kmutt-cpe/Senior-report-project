@@ -1580,9 +1580,17 @@ Figure~\ref*{fig:chat_plan_2}.
 However, if we use the Dialogflow intent feature, users or KMUTT CPE staff must add a new intent
 if there is a new category of question in knowledge management, and we must implement the backend
 API to handle new Dialogflow intent. This method is too cumbersome.
+
 \subsubsection{Solution of Performance Problem}
-% todo: Create the category model to classify category of question before put into question prediction model
-\subsection{Time Exceed in Dialogflow Problem}
+So, we solved this problem by creating logistic regression model, which we called it category model,
+to predict the category of question to get questions in that category before send to Siamese neural
+network model as you can see from the Figure~\ref*{fig:model_pattern1}.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern1.png}}
+\caption{Overview of the second plan of chat workflow}
+\label{fig:model_pattern1}
+\end{figure}
 % todo: The problem occur when integrate the whole system together. Dialogflow have very short timeout.
 % todo: Add the performance image of pattern1.
 \subsubsection{The First Approach for Solving Time Exceed in Dialogflow Problem}
