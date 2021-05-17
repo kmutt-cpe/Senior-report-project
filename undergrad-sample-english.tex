@@ -440,7 +440,7 @@ neural network, RNN can use the internal memory to process the input that is seq
   \label{fig:example_rnn} % Used for ref in paragraph
 \end{figure}
 
-Figure \ref*{fig:example_rnn} the method that RNN uses to create the internal memory is
+Figure~\ref*{fig:example_rnn} the method that RNN uses to create the internal memory is
 creating a loop within it. Figure A is activated, gets the input $X_t$ in the state of time,
 and output value to the hidden layer. The loop allows the information to be passed into the
 next state. Therefore, the first input will affect the output in the last state.
@@ -474,7 +474,7 @@ such as speech recognition, video analysis, and music composition.
 
 \subsection{Long Short-Term Memory (LSTM)}
 Like RNN the Long Short-Term Memory network is also a recurrent neural network but with
-different architecture designs \cite{understand_rnn}, as seen in Figure \ref*{fig:lstm_arch_design}.
+different architecture designs \cite{understand_rnn}, as seen in Figure~\ref*{fig:lstm_arch_design}.
 LSTM is specifically used to avoid the long-term dependency problem or the vanishing gradient.
 
 \begin{figure}[!h] \centering
@@ -517,7 +517,7 @@ representations for the input and producing better vector representations by mea
 % todo: Add Logistic Regression content
 
 \section{Tools}
-Figure \ref*{fig:ch3_tools} is an overview of tools that are used in KMUTT CPE Chatbot in each subsystem.
+Figure~\ref*{fig:ch3_tools} is an overview of tools that are used in KMUTT CPE Chatbot in each subsystem.
 \begin{figure}[h!]
   \centering
   \setlength{\fboxrule}{0.2mm}
@@ -583,7 +583,7 @@ Use it precisely and to the point.
 Facebook Messenger is an application through a smartphone and desktop PC. It connects information
 and information, extending from the inbox system, sending messages on Facebook, and creating data
 storage to facilitate communication \cite{wiki_fb_messenger}.\\
-We decide this application to be our chat platform because from our survey (Figure \ref*{fig:ch3_result_survey})
+We decide this application to be our chat platform because from our survey (Figure~\ref*{fig:ch3_result_survey})
 through insiders and outsiders, they prefer to use the Facebook Messenger platform the most.
 
 \begin{figure}[h!]
@@ -726,7 +726,7 @@ This paper is about implement the multi-level virtual front office as you can se
 \end{figure}
 
 What we focus on from this research is about chatbot have automated self-learning from FAQs
-database which is likely to our project. From Figure \ref*{fig:ch3_lr_activity_dg_self_learning_chatbot},
+database which is likely to our project. From Figure~\ref*{fig:ch3_lr_activity_dg_self_learning_chatbot},
 when there is a new question, if chatbot can answer, chatbot will send the answer to user.
 But if chatbot cannot answer, the operator will answer instead and store the question FAQs
 database and update A.I. engine of chatbot.\\
@@ -1275,7 +1275,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 
 \section{Workflow}
 \subsection{The Sequence Diagram Workflow of Chat Message}
-Figure ~\ref*{fig:Sequence diagram workflow of chat message} illustrates the chat workflow starting from a question from questioner until reply answer in knowledge management back. When the questioner sends the message via Facebook Messenger, the message will be sent directly to Dialogflow.\\
+Figure~\ref*{fig:Sequence diagram workflow of chat message} illustrates the chat workflow starting from a question from questioner until reply answer in knowledge management back. When the questioner sends the message via Facebook Messenger, the message will be sent directly to Dialogflow.\\
 Dialogflow will manage the chat queue, save the meta of the questioner and message to the database, and then find the intended message to identify the message that it is a question or common message like a greeting message. If the message is common, Dialogflow will automatically be replied with a common message. But if it is a question, Dialogflow will send the message to the backend API to get the answer to reply.\\
 The backend API will manage the queue of questions from Dialogflow before sending it to the Siamese model. The Siamese model will pair the question from the questioner and all questions in FAQ, then return the related question to the Backend API.\\
 After the backend API gets a related question (or a predicted question), the back-end API will query the raw answer from the database and return to the Dialogflow. Dialogflow will change answers into human speech with an NLP template before replying to the questioner.
@@ -1287,7 +1287,7 @@ After the backend API gets a related question (or a predicted question), the bac
 \pagebreak
 
 \subsection{The Sequence Diagram of Automate Build Model}
-Figure ~\ref*{fig:Sequence diagram of automate building and deploy model.} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
+Figure~\ref*{fig:Sequence diagram of automate building and deploy model.} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/sequence diagram of automate build model.jpg}
 	\caption{Sequence diagram of automate building and deploy model.}\label{fig:Sequence diagram of automate building and deploy model.}
