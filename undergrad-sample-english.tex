@@ -1591,11 +1591,30 @@ network model as you can see from the Figure~\ref*{fig:model_pattern1}.
 \caption{Overview of the second plan of chat workflow}
 \label{fig:model_pattern1}
 \end{figure}
+
+\subsection{Response Timeout in Dialogflow Problem}
+After integrate all subsystem together, we want to know that our system work properly or not.
+So, to test the system, we asked a question in chat and waited for an answer response. But does not have
+any message reply back. We thoroughly examined the entire system until we determined that the issue
+comes from Dialogflow.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/dialogflow_time_out.jpg}}
+\caption{Deadline Exceed in Dialogflow}
+\label{fig:dialogflow_deadline_exceed}
+\end{figure}
+
+As you can see from Figure~\ref*{fig:dialogflow_deadline_exceed}
+The status of Dialogflow is 'Deadline Exceed'. It occurs when the response timeout of a webhook is exceeded
+\cite{dialogflow_time_out}. Dialogflow limits time for all webhook response only 5 seconds (except response for
+Google Assistant has limit time to 10 seconds) \cite{dialogflow_response_time}.
+
 % todo: The problem occur when integrate the whole system together. Dialogflow have very short timeout.
 % todo: Add the performance image of pattern1.
-\subsubsection{The First Approach for Solving Time Exceed in Dialogflow Problem}
-\subsubsection{The Second Approach for Solving Time Exceed in Dialogflow Problem}
-\subsubsection{The Last Approach for Solving Time Exceed in Dialogflow Problem}
+\subsubsection{The First Approach for Solving Response Timeout in Dialogflow Problem}
+\subsubsection{The Second Approach for Solving Response Timeout in Dialogflow Problem}
+\subsubsection{The Last Approach for Solving Response Timeout in Dialogflow Problem}
+
 \subsection{Budget Problem}
 % todo: Show cost of the lowest budget for GCP price.
 \subsubsection{Solution of Budget Problem}
