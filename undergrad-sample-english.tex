@@ -1556,7 +1556,30 @@ plan and it could make you confused if not understand the problem and how we sol
 problems that we want to describe first which are the performance problem, response time out in Dialogflow
 problem, and budget problem.
 \subsection{Performance Problem}
-% todo: Describe about the performance problem to send all question to predict and bad performance of dialogflow intent
+This problem was occurred when we want to integrate the system together. Initially, we decided to
+collect input questions from the chatbot and send it along with all questions to the prediction model,
+which would then predict the question, as you can see from the Figure~\ref*{fig:chat_plan_1}.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_plan1.png}}
+\caption{Overview of the first plan of chat workflow}
+\label{fig:chat_plan_1}
+\end{figure}
+
+We realized immediately that it would take a long time to deliver and predict all questions.
+Then we were going to use Dialogflow's intent feature to classify the question and filter
+only some questions in that category to prediction model as you can see from
+Figure~\ref*{fig:chat_plan_2}.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_plan2.png}}
+\caption{Overview of the second plan of chat workflow}
+\label{fig:chat_plan_2}
+\end{figure}
+
+However, if we use the Dialogflow intent feature, users or KMUTT CPE staff must add a new intent
+if there is a new category of question in knowledge management, and we must implement the backend
+API to handle new Dialogflow intent. This method is too cumbersome.
 \subsubsection{Solution of Performance Problem}
 % todo: Create the category model to classify category of question before put into question prediction model
 \subsection{Time Exceed in Dialogflow Problem}
