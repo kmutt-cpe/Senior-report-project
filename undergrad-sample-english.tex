@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage{adjustbox}
 \usepackage{cite}
+\usepackage{slashbox}
 \setdefaultlanguage{english}
 \setotherlanguage{thai}
 
@@ -764,7 +765,7 @@ department in KMUTT to outsiders and insiders via Facebook Messenger platform by
 model from knowledge management. It can reduce the over workload of KMUTT CPE staff that they
 have to reply to the same answer to same questions to insiders or outsiders as quickly as they
 can and repeatedly every day. So, if we compare or solution with the existing solution which is
-the CPE staff have to answer by themselves (Table \ref*{table:ch3_solution_compare}).
+the CPE staff have to answer by themselves (Table~\ref*{table:ch3_solution_compare}).
 \begin{figure}[h!]
   \centering
   \fbox{\includegraphics[width=15cm]{./img/ch2/solution_compare.jpg}}
@@ -1606,8 +1607,28 @@ comes from Dialogflow.
 
 As you can see from Figure~\ref*{fig:dialogflow_deadline_exceed}
 The status of Dialogflow is 'Deadline Exceed'. It occurs when the response timeout of a webhook is exceeded
-\cite{dialogflow_time_out}. Dialogflow limits time for all webhook response only 5 seconds (except response for
-Google Assistant has limit time to 10 seconds) \cite{dialogflow_response_time}.
+\cite{dialogflow_time_out}. Dialogflow limits timeout for all webhook response only 5 seconds (Except response for
+Google Assistant has limit timeout to 10 seconds) \cite{dialogflow_response_time}.
+
+First, we try to solve the problem by changing to a better computer to run the model.
+We tested the model on three different computers: Natthawat's PC, Nathaphop's PC, and A-Square lab's computer.
+Spec of each computer is in Table~\ref*{tab:computer_list}.
+
+%todo: Add computer spec
+\begin{table}[h]
+	\centering
+	\caption{Computer spec table}
+	\label{tab:computer_list}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			\backslashbox{Computer name}{Hardware component} & Central processing unit (CPU) & Graphic processor unit (GPU) & Ram \\ \hline
+			Natthawat's PC &                                  &     &               \\ \hline
+			Nathaphop's PC & AMD Ryzen 7 3700X & NVIDIA Gefore RTX 3080 & DDR4 3200 32GB (16GBx2) \\ \hline
+			A-Square lab's computer &                                  &     &            \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
 
 % todo: The problem occur when integrate the whole system together. Dialogflow have very short timeout.
 % todo: Add the performance image of pattern1.
