@@ -1632,6 +1632,27 @@ Spec of each computer is in Table~\ref*{tab:computer_list}.
 		\end{tabular}
 	\end{adjustbox}
 \end{table}
+	
+However, after upgrading to a better computer, the problem still occurred.
+So, we measured the time of the category model and the Siamese neural network
+model that we tested on each computer to determine the time usage.
+The result is in Table~\ref*{tab:run_time_pattern1_table}.
+The time summation in each computer is greater than timeout response of Dialogflow.
+
+\begin{table}[h]
+	\centering
+	\caption{Time usage for running the models from workflow in Figure~\ref*{fig:model_pattern1}}
+	\label{tab:run_time_pattern1_table}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			\backslashbox{Computer name}{Time usage to predict each model} & Category model & Siamese neural network model & Time summation \\ \hline
+			Natthawat's PC &                              &                                       &    \\ \hline
+			Nathaphop's PC &                              &                                        &   \\ \hline
+			A-Square lab's computer &                              &                                &           \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
 
 % todo: The problem occur when integrate the whole system together. Dialogflow have very short timeout.
 % todo: Add the performance image of pattern1.
