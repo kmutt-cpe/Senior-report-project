@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage{adjustbox}
 \usepackage{cite}
+\usepackage{slashbox}
 \setdefaultlanguage{english}
 \setotherlanguage{thai}
 
@@ -440,7 +441,7 @@ neural network, RNN can use the internal memory to process the input that is seq
   \label{fig:example_rnn} % Used for ref in paragraph
 \end{figure}
 
-Figure \ref*{fig:example_rnn} the method that RNN uses to create the internal memory is
+Figure~\ref*{fig:example_rnn} the method that RNN uses to create the internal memory is
 creating a loop within it. Figure A is activated, gets the input $X_t$ in the state of time,
 and output value to the hidden layer. The loop allows the information to be passed into the
 next state. Therefore, the first input will affect the output in the last state.
@@ -474,7 +475,7 @@ such as speech recognition, video analysis, and music composition.
 
 \subsection{Long Short-Term Memory (LSTM)}
 Like RNN the Long Short-Term Memory network is also a recurrent neural network but with
-different architecture designs \cite{understand_rnn}, as seen in Figure \ref*{fig:lstm_arch_design}.
+different architecture designs \cite{understand_rnn}, as seen in Figure~\ref*{fig:lstm_arch_design}.
 LSTM is specifically used to avoid the long-term dependency problem or the vanishing gradient.
 
 \begin{figure}[!h] \centering
@@ -516,8 +517,11 @@ representations for the input and producing better vector representations by mea
 \subsection{Logistic Regression}
 % todo: Add Logistic Regression content
 
+\subsection{Cosine Similarity}
+% todo: Add Cosine Similarity
+
 \section{Tools}
-Figure \ref*{fig:ch3_tools} is an overview of tools that are used in KMUTT CPE Chatbot in each subsystem.
+Figure~\ref*{fig:ch3_tools} is an overview of tools that are used in KMUTT CPE Chatbot in each subsystem.
 \begin{figure}[h!]
   \centering
   \setlength{\fboxrule}{0.2mm}
@@ -583,7 +587,7 @@ Use it precisely and to the point.
 Facebook Messenger is an application through a smartphone and desktop PC. It connects information
 and information, extending from the inbox system, sending messages on Facebook, and creating data
 storage to facilitate communication \cite{wiki_fb_messenger}.\\
-We decide this application to be our chat platform because from our survey (Figure \ref*{fig:ch3_result_survey})
+We decide this application to be our chat platform because from our survey (Figure~\ref*{fig:ch3_result_survey})
 through insiders and outsiders, they prefer to use the Facebook Messenger platform the most.
 
 \begin{figure}[h!]
@@ -726,7 +730,7 @@ This paper is about implement the multi-level virtual front office as you can se
 \end{figure}
 
 What we focus on from this research is about chatbot have automated self-learning from FAQs
-database which is likely to our project. From Figure \ref*{fig:ch3_lr_activity_dg_self_learning_chatbot},
+database which is likely to our project. From Figure~\ref*{fig:ch3_lr_activity_dg_self_learning_chatbot},
 when there is a new question, if chatbot can answer, chatbot will send the answer to user.
 But if chatbot cannot answer, the operator will answer instead and store the question FAQs
 database and update A.I. engine of chatbot.\\
@@ -764,7 +768,7 @@ department in KMUTT to outsiders and insiders via Facebook Messenger platform by
 model from knowledge management. It can reduce the over workload of KMUTT CPE staff that they
 have to reply to the same answer to same questions to insiders or outsiders as quickly as they
 can and repeatedly every day. So, if we compare or solution with the existing solution which is
-the CPE staff have to answer by themselves (Table \ref*{table:ch3_solution_compare}).
+the CPE staff have to answer by themselves (Table~\ref*{table:ch3_solution_compare}).
 \begin{figure}[h!]
   \centering
   \fbox{\includegraphics[width=15cm]{./img/ch2/solution_compare.jpg}}
@@ -1275,7 +1279,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 
 \section{Workflow}
 \subsection{The Sequence Diagram Workflow of Chat Message}
-Figure ~\ref*{fig:Sequence diagram workflow of chat message} illustrates the chat workflow starting from a question from questioner until reply answer in knowledge management back. When the questioner sends the message via Facebook Messenger, the message will be sent directly to Dialogflow.\\
+Figure~\ref*{fig:Sequence diagram workflow of chat message} illustrates the chat workflow starting from a question from questioner until reply answer in knowledge management back. When the questioner sends the message via Facebook Messenger, the message will be sent directly to Dialogflow.\\
 Dialogflow will manage the chat queue, save the meta of the questioner and message to the database, and then find the intended message to identify the message that it is a question or common message like a greeting message. If the message is common, Dialogflow will automatically be replied with a common message. But if it is a question, Dialogflow will send the message to the backend API to get the answer to reply.\\
 The backend API will manage the queue of questions from Dialogflow before sending it to the Siamese model. The Siamese model will pair the question from the questioner and all questions in FAQ, then return the related question to the Backend API.\\
 After the backend API gets a related question (or a predicted question), the back-end API will query the raw answer from the database and return to the Dialogflow. Dialogflow will change answers into human speech with an NLP template before replying to the questioner.
@@ -1287,7 +1291,7 @@ After the backend API gets a related question (or a predicted question), the bac
 \pagebreak
 
 \subsection{The Sequence Diagram of Automate Build Model}
-Figure ~\ref*{fig:Sequence diagram of automate building and deploy model.} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
+Figure~\ref*{fig:Sequence diagram of automate building and deploy model.} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/sequence diagram of automate build model.jpg}
 	\caption{Sequence diagram of automate building and deploy model.}\label{fig:Sequence diagram of automate building and deploy model.}
@@ -1550,21 +1554,112 @@ To evaluate prediction model base on different criteria for example accuracy and
 \chapter{Implementation Results}
 
 \section{Problems}
-Before deep down into the results of our project, let us explain problems that we found during
-implement the project first. Because the results have changed a lot from our plan and it could
-make you confused if not understand the problem and how we solve it. There are 3 major problems
-that we want to describe first which are the performance problem, time exceed problem in Dialogflow,
-and budget problem.
+Before we get into the details of our project's outcomes, let us first go through some of the problems
+we encountered while integrating subsystem together. Because the results have changed a lot from our
+plan and it could make you confused if not understand the problem and how we solve it. There are 3 major
+problems that we want to describe first which are the performance problem, response time out in Dialogflow
+problem, and budget problem.
 \subsection{Performance Problem}
-% todo: Describe about the performance problem to send all question to predict and bad performance of dialogflow intent
+This problem was occurred when we want to integrate the system together. Initially, we decided to
+collect input questions from the chatbot and send it along with all questions to the prediction model,
+which would then predict the question, as you can see from the Figure~\ref*{fig:chat_plan_1}.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_plan1.png}}
+\caption{Overview of the first plan of chat workflow}
+\label{fig:chat_plan_1}
+\end{figure}
+
+We realized immediately that it would take a long time to deliver and predict all questions.
+Then we were going to use Dialogflow's intent feature to classify the question and filter
+only some questions in that category to prediction model as you can see from
+Figure~\ref*{fig:chat_plan_2}.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_plan2.png}}
+\caption{Overview of the second plan of chat workflow}
+\label{fig:chat_plan_2}
+\end{figure}
+
+However, if we use the Dialogflow intent feature, users or KMUTT CPE staff must add a new intent
+if there is a new category of question in knowledge management, and we must implement the backend
+API to handle new Dialogflow intent. This method is too cumbersome.
+
 \subsubsection{Solution of Performance Problem}
-% todo: Create the category model to classify category of question before put into question prediction model
-\subsection{Time Exceed in Dialogflow Problem}
+So, we solved this problem by creating logistic regression model, which we called it category model,
+to predict the category of question to get questions in that category before send to Siamese neural
+network model as you can see from the Figure~\ref*{fig:model_pattern1}.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern1.png}}
+\caption{Overview of the second plan of chat workflow}
+\label{fig:model_pattern1}
+\end{figure}
+
+\subsection{Response Timeout in Dialogflow Problem}
+After integrate all subsystem together, we want to know that our system work properly or not.
+So, to test the system, we asked a question in chat and waited for an answer response. But does not have
+any message reply back. We thoroughly examined the entire system until we determined that the issue
+comes from Dialogflow.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/dialogflow_time_out.jpg}}
+\caption{Deadline Exceeded in Dialogflow}
+\label{fig:dialogflow_deadline_exceed}
+\end{figure}
+
+As you can see from Figure~\ref*{fig:dialogflow_deadline_exceed}
+The status of Dialogflow is 'Deadline Exceeded'. It occurs when the response timeout of a webhook is exceeded
+\cite{dialogflow_time_out}. Dialogflow limits timeout for all webhook response only 5 seconds (Except response for
+Google Assistant has limit timeout to 10 seconds) \cite{dialogflow_response_time}.
+
+First, we try to solve the problem by changing to a better computer to run the model.
+We tested the model on three different computers: Natthawat's PC, Nathaphop's PC, and A-Square lab's computer.
+Spec of each computer is in Table~\ref*{tab:computer_list}.
+
+%todo: Add computer spec
+\begin{table}[h]
+	\centering
+	\caption{Computer spec table}
+	\label{tab:computer_list}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			\backslashbox{Computer name}{Hardware component} & Central processing unit (CPU) & Graphic processor unit (GPU) & Ram \\ \hline
+			Natthawat's PC &                                  &     &               \\ \hline
+			Nathaphop's PC & AMD Ryzen 7 3700X & NVIDIA Gefore RTX 3080 & DDR4 3200 32GB (16GBx2) \\ \hline
+			A-Square lab's computer &                                  &     &            \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+	
+However, after upgrading to a better computer, the problem still occurred.
+So, we measured the time of the category model and the Siamese neural network
+model that we tested on each computer to determine the time usage.
+The result is in Table~\ref*{tab:run_time_pattern1_table}.
+The time summation in each computer is greater than timeout response of Dialogflow.
+
+\begin{table}[h]
+	\centering
+	\caption{Time usage for running the models from workflow in Figure~\ref*{fig:model_pattern1}}
+	\label{tab:run_time_pattern1_table}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			\backslashbox{Computer name}{Time usage to predict each model} & Category model & Siamese neural network model & Time summation \\ \hline
+			Natthawat's PC &                              &                                       &    \\ \hline
+			Nathaphop's PC &                              &                                        &   \\ \hline
+			A-Square lab's computer &                              &                                &           \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
 % todo: The problem occur when integrate the whole system together. Dialogflow have very short timeout.
 % todo: Add the performance image of pattern1.
-\subsubsection{The First Approach for Solving Time Exceed in Dialogflow Problem}
-\subsubsection{The Second Approach for Solving Time Exceed in Dialogflow Problem}
-\subsubsection{The Last Approach for Solving Time Exceed in Dialogflow Problem}
+\subsubsection{The First Approach for Solving Response Timeout in Dialogflow Problem}
+\subsubsection{The Second Approach for Solving Response Timeout in Dialogflow Problem}
+\subsubsection{The Last Approach for Solving Response Timeout in Dialogflow Problem}
+
 \subsection{Budget Problem}
 % todo: Show cost of the lowest budget for GCP price.
 \subsubsection{Solution of Budget Problem}
