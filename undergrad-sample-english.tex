@@ -1479,6 +1479,7 @@ Dataset: Use Selenium to gather all questions from Pantip and gathering FAQs fro
 
 \begin{flushleft}
 In our project, we try to do the NLP process in Thai language by tokenizing a chunk of Thai text into desirable units and building our dictionary to train data from Pantip.\\
+\label{preprocessing cosine}
 Pre-processing data by trying to convert text it into lists of word indices or sequence. Then creating a function to remove specific characters and turn the word into embedding metric by word2vec a Thai vocabulary which is a dictionary that we build by ourselves and load by genism model where the keys are words (str) and values are the corresponding indices (a unique id as int).
 \end{flushleft}
 
@@ -2014,6 +2015,8 @@ Even the model can predict, but the overall performance of the model is quite no
 
 \subsection{Cosine Similarity Result}
 Due to the respone timeout in Dialogflow problem after integrate all subsytem together we have to reduce time response to make our system can reply the respone back to user by change deep neural network which is Siamese Neural Network with MaLSTM model to machine learning which is cosine similarity that is the same method the find similiarity of user question and questions in database.
+\subsubsection{Cosine Similarity Preprocessing}
+We preprocessing the cosine silmilarity like the Siamese Neural Network with MaLSTM Evaluation that we tokenize text and covert text into lists of sequence as in the section \nameref{preprocessing cosine}
 \subsubsection{Cosine Similarity Training}
 \subsubsection{Cosine Similarity Evaluation}
 \subsubsection{Cosine Similarity Example}
