@@ -1827,15 +1827,18 @@ We got accuracy 89.28\% from Admission category, 82.15\% from FAQs category, 92.
 \end{figure}
 Each row is True label and each digit is Predicted label, we can see that most of mistakenly is economic curriculum category. 
 \subsubsection{Category Model Example}
+For testing, in the example we input qustions to find what categories of this input question. We expected our model can predict this input question is in Curriculum category 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/example_category1.png}}
 \caption{The example input question for classifying category}\label{fig:The example input question for classifying category}
 \end{figure}
+The model return all the value how the input question similar for each category and the we choose the max value to be catogry of the input question
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/example_category2.png}}
 \caption{The example input question result}\label{fig:The example input question result}
 \end{figure}
-From the results we can predict categories quite accurately. 
+\pagebreak
+The max category is Curriculum which match with our expected result. So from the results we can predict categories quite accurately. 
 \subsection{Siamese Neural Network with MaLSTM Result}
 \subsubsection{Siamese Neural Network with MaLSTM Training}
 After preprocessing the data, we split the data into train, validate, and test data. Then separate the data into left inputs and right inputs, one for each side of MaLSTM. Then train the model with 100 epochs and use batch sizes 128. In addition to using early stops to prevent the model too overfitting and model checkpoint to save the model. Even our group set 100 epochs, but the model was trained only 17 epochs before stopping from early stop. Loss of training data is 0.4116 and loss of validation data is 0.4358. Also, accuracy of training data is 0.5487 and accuracy of validation data is 0.4358. Graphs below are the result from training.
