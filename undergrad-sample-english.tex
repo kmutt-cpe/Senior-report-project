@@ -492,7 +492,7 @@ Besides the ability to carry information, LSTM can also manipulate the cell stat
 that interact with the cell state. Each gate can alter the information on cell state like
 forgetting some data or to determine which information needs to be remembered. 
 
-\subsection{MaLSTM similarity function}
+\subsection{MaLSTM Similarity Function}
 \[\exp(-\|h^{(left)} - h^{(right)}\|1)\]
 In MaLSTM the identical sub-network is the way from the embedding up to the last LSTM hidden
 state \cite{manhattan_lstm, what_is_embedding_matrix}. Using a LSTM to read in word-vectors that represent each
@@ -1014,7 +1014,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 \end{enumerate}
 \underline{Postcondition}: -
 
-\subsection{Create category}
+\subsection{Create Category}
 \underline{Actor}: Admin\\
 \underline{Goal}: Admin can create category data\\
 \underline{Precondition}: Admin need to login to the system first\\
@@ -1032,7 +1032,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 	\item Websites contains new category
 \end{enumerate}
 
-\subsection{Edit category}
+\subsection{Edit Category}
 \underline{Actor}: Admin\\
 \underline{Goal}: Admin can edit category data\\
 \underline{Precondition}: Admin need to login to the system first\\
@@ -1050,7 +1050,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 	\item Websites update the category
 \end{enumerate}
 
-\subsection{Remove category}
+\subsection{Remove Category}
 \underline{Actor}: Admin\\
 \underline{Goal}: Admin can remove category\\
 \underline{Precondition}: Admin need to login to the system first\\
@@ -1066,7 +1066,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 	\item Websites remove that category, subcategories, and questions inside that category
 \end{enumerate}
 
-\subsection{Read subcategory}
+\subsection{Read Subcategory}
 \underline{Actor}: Admin\\
 \underline{Goal}: Admin can read subcategory data in each category\\
 \underline{Precondition}: Admin need to login to the system first\\
@@ -1078,7 +1078,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 \end{enumerate}
 \underline{Postcondition}: -
 
-\subsection{Create subcategory}
+\subsection{Create Subcategory}
 \underline{Actor}: Admin\\
 \underline{Goal}: Admin can create subcategory\\
 \underline{Precondition}: Admin need to login to the system first\\
@@ -1097,7 +1097,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 	\item Websites contains new subcategory
 \end{enumerate}
 
-\subsection{Edit subcategory}
+\subsection{Edit Subcategory}
 \underline{Actor}: Admin\\
 \underline{Goal}: Admin can edit subcategory\\
 \underline{Precondition}: Admin need to login to the system first\\
@@ -1116,7 +1116,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 	\item Websites update the subcategory
 \end{enumerate}
 
-\subsection{Remove subcategory}
+\subsection{Remove Subcategory}
 \underline{Actor}: Admin\\
 \underline{Goal}: Admin can remove subcategory\\
 \underline{Precondition}: Admin need to login to the system first\\
@@ -1201,7 +1201,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 	\item Websites contains new category
 \end{enumerate}
 
-\subsection{Read user}
+\subsection{Read User}
 \underline{Actor}: Admin\\
 \underline{Goal}: Admin can read user information in knowledge management\\
 \underline{Precondition}: Admin need to login to the system first\\
@@ -1215,7 +1215,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 	\item Admin can read information of that user.
 \end{enumerate}
 
-\subsection{Create user}
+\subsection{Create User}
 \underline{Actor}: Admin\\
 \underline{Goal}: Admin can create new user account\\
 \underline{Precondition}: Admin need to login to the system first\\
@@ -1244,7 +1244,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 	\item Should not create the username that already exists in the system
 \end{enumerate}
 
-\subsection{Edit user}
+\subsection{Edit User}
 \underline{Actor}: Admin\\
 \underline{Goal}: Admin can create new user account\\
 \underline{Precondition}: Admin need to login to the system first\\
@@ -1260,7 +1260,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 	\item Admin can see the updated list of users
 \end{enumerate}
 
-\subsection{Remove user}
+\subsection{Remove User}
 \underline{Actor}: Admin\\
 \underline{Goal}: Admin can remove user account\\
 \underline{Precondition}: Admin need to login to the system first\\
@@ -1297,16 +1297,16 @@ After the backend API gets a related question (or a predicted question), the bac
 \pagebreak
 
 \subsection{The Sequence Diagram of Automate Build Model}
-Figure~\ref*{fig:Sequence diagram of automate building and deploy model.} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
+Figure~\ref*{fig:Sequence diagram of automate building and deploy model} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/sequence diagram of automate build model.jpg}
-	\caption{Sequence diagram of automate building and deploy model.}\label{fig:Sequence diagram of automate building and deploy model.}
+	\caption{Sequence diagram of automate building and deploy model.}\label{fig:Sequence diagram of automate building and deploy model}
 \end{figure}
 
 \section{Database Schema}
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/Database Schema.jpg}
-	\caption{ER Diagram illustrates database schema.}\label{fig:ER Diagram illustrates database schema.}
+	\caption{ER Diagram illustrates database schema.}\label{fig:ER Diagram illustrates database schema}
 \end{figure}
 
 \pagebreak
@@ -1753,7 +1753,7 @@ However, after testing by running model on Nathaphop's PC and sending message th
 we still cannot get any reply answer back. It could because some process inside backend API and transmitted data.
 For the time result of A-Square lab's computer, time usage to predict model is very faster than
 Natthawat's PC and Nathaphop's PC.
-After we have tested, we got the answer from knowledge management back after sending the questions chat.
+After we have tested sending the question through chat, we got the answer from knowledge management back.
 
 \begin{table}[h]
 	\centering
@@ -1792,11 +1792,25 @@ try using the cosine similarity instead. You can see the result of cosine simila
 at section~\ref*{} %todo: Add reference to cosine similarity
 
 \subsection{Budget Problem}
+From Chapter 3, we planned to use Apache Airflow to automate build and run on Google Cloud Platform.
+But after we checked the minimum price of platform that be able to run the model,
+the price is around 8385 Baht per month as you can see from Figure~\ref*{fig:model_pattern3}.
+It is too high budget for developing automate build and run.
 
-% todo: Show cost of the lowest budget for GCP price.
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/gcp_price.jpg}}
+\caption{The minimum price of Google Cloud Platform server with GPU}
+\label{fig:model_pattern3}
+\end{figure}
+
 \subsubsection{Solution of Budget Problem}
-% todo: Reduce scope.
+Our group decided to reduce the scope of automate train model with Apache Airflow because of high budget.
+But does not mean the model will not be able to update the data inside the prediction model.
+Because we have run another thread to query and tokenize all questions,
+then replace new tokenized question with old one to update the questions.
 
+So, the model can still automate update the question from knowledge management
+but cannot automate train the model as we planned.
 
 \section{System Architecture}
 % todo: Describe change of system arichtecture
