@@ -1661,9 +1661,59 @@ than timeout response of Dialogflow.
 	\end{adjustbox}
 \end{table}
 
-% todo: The problem occur when integrate the whole system together. Dialogflow have very short timeout.
-% todo: Add the performance image of pattern1.
+
+
+After that we want to find out which parts of code in Siamese neural network take a long
+time to implement. We divide our code and examine the time usage of each line and we
+discovered that the most time-consuming parts of the code are the time to tokenize the
+questions and the time to predict.
+
+From our record Natthawat's PC use 7.13 seconds to tokenize the word and 23 seconds to predict.
+Nathaphop's PC use 2.33 seconds to tokenize the word and 8.26 seconds to predict.
+Time usage of the rest of code is in nanoseconds unit, so it won't take long to implement.
+
 \subsubsection{The First Approach for Solving Response Timeout in Dialogflow Problem}
+The first approach we try to solve this problem is to increase the timeout of Dialogflow
+and decrease transmitted time. We are going to increase timeout of Dialogflow by using
+custom event in Dialogflow and decrease transmitted time by improving the chat workflow.
+
+According to our information, some people solve timeout response
+by returning the custom event in Dialogflow when it almost reaches the timeout response and
+creating a new intent in Dialogflow that will trigger when custom event is invoked from webhook API.
+This new intent will call back to the webhook API again, which is called follow up event, to get more timeout
+before return the message response back \cite{extend_webhook_intent}.
+Multiple follow up event can extend more timeout, but can have maximum 3 follow up event \cite{changing_intent_webhook}.
+We apply this method to our project to increase the maximum connection time to 10 seconds.
+
+Next, we try to improve chat workflow by integrating the category model and the Siamese neural network and
+providing the prediction model to contain all questions instead of passing them through the API. As a result
+of this change, the backend API only sends the input question to the prediction model once and then waits for
+the predicted question to return as you can see in Figure~\ref*{fig:model_pattern2}.
+
+The result of the improving chat workflow is in Table~\ref*{tab:run_time_pattern2_table}.
+Total time in each computer is not change too much from the previous one and
+still do not have enough time to response to Dialogflow before timeout.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern2.png}}
+\caption{The second implementation of chat workflow}
+\label{fig:model_pattern2}
+\end{figure}
+
+\begin{table}[h]
+	\centering
+	\caption{Time usage for running the models from workflow in Figure~\ref*{fig:model_pattern2}}
+	\label{tab:run_time_pattern2_table}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|}
+			\hline
+			\backslashbox{Computer name}{Time usage to predict each model} &Total time \\ \hline
+			Natthawat's PC & 22.6 s \\ \hline
+			Nathaphop's PC & 13.3 s \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
 \subsubsection{The Second Approach for Solving Response Timeout in Dialogflow Problem}
 \subsubsection{The Last Approach for Solving Response Timeout in Dialogflow Problem}
 
