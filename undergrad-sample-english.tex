@@ -1605,6 +1605,7 @@ return answer back to chatbot.
 \end{figure}
 
 \subsection{Response Timeout in Dialogflow Problem}
+\label{response_timeout_problem_section}
 After integrate all subsystem together, we want to know that our system work properly or not.
 So, to test the system, we asked a question in chat and waited for an answer response. But does not have
 any message reply back. We thoroughly examined the entire system until we determined that the issue
@@ -1625,7 +1626,6 @@ First, we try to solve the problem by changing to a better computer to run the m
 We tested the model on 2 different computers: Natthawat's PC and Nathaphop's PC.
 Spec of each computer is in Table~\ref*{tab:computer_list}.
 
-%todo: Add computer spec
 \begin{table}[h]
 	\centering
 	\caption{Computer spec table}
@@ -1646,7 +1646,6 @@ model that we tested on each computer to determine the time usage.
 The result is in Table~\ref*{tab:run_time_pattern1_table}. The time summation of both computers are greater
 than timeout response of Dialogflow.
 
-
 \begin{table}[h]
 	\centering
 	\caption{Time usage for running the models from workflow in Figure~\ref*{fig:model_pattern1}}
@@ -1661,8 +1660,6 @@ than timeout response of Dialogflow.
 	\end{adjustbox}
 \end{table}
 
-
-
 After that we want to find out which parts of code in Siamese neural network take a long
 time to implement. We divide our code and examine the time usage of each line and we
 discovered that the most time-consuming parts of the code are the time to tokenize the
@@ -1673,7 +1670,7 @@ Nathaphop's PC use 2.33 seconds to tokenize the word and 8.26 seconds to predict
 Time usage of the rest of code is in nanoseconds unit, so it won't take long to implement.
 
 \subsubsection{The First Approach for Solving Response Timeout in Dialogflow Problem}
-The first approach we try to solve this problem is to increase the timeout of Dialogflow
+The first approach that we try to solve this problem is to increase the timeout of Dialogflow
 and decrease transmitted time. We are going to increase timeout of Dialogflow by using
 custom event in Dialogflow and decrease transmitted time by improving the chat workflow.
 
@@ -1688,11 +1685,10 @@ We apply this method to our project to increase the maximum connection time to 1
 Next, we try to improve chat workflow by integrating the category model and the Siamese neural network and
 providing the prediction model to contain all questions instead of passing them through the API. As a result
 of this change, the backend API only sends the input question to the prediction model once and then waits for
-the predicted question to return as you can see in Figure~\ref*{fig:model_pattern2}.
-
-The result of the improving chat workflow is in Table~\ref*{tab:run_time_pattern2_table}.
+the predicted question to return as you can see in Figure~\ref*{fig:model_pattern2}. And the result of the
+improving chat workflow is in Table~\ref*{tab:run_time_pattern2_table}.
 Total time in each computer is not change too much from the previous one and
-still do not have enough time to response to Dialogflow before timeout.
+still cannot response the answer to Dialogflow before timeout.
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern2.png}}
@@ -1715,6 +1711,65 @@ still do not have enough time to response to Dialogflow before timeout.
 \end{table}
 
 \subsubsection{The Second Approach for Solving Response Timeout in Dialogflow Problem}
+From the previous approach, we just try to reduce transmitted time and increase timeout response of Dialogflow.
+But, still do not have enough time to response. So, we try another approach to address at the
+main problems as we mention in section~\ref*{response_timeout_problem_section}.
+We were finding the better computer to reduce run time and trying reduce time to tokenize.
+
+To use the better computer, we asked master student who take care A-Square lab's computer for running the model on computer
+at A-Square lab. He created the new environment for us to running the model.
+The computer spec of A-Square lab is in Table~\ref*{tab:a_square_computer_spec}.
+
+\begin{table}[h]
+	\centering
+	\caption{Computer spec at A-Square lab}
+	\label{tab:a_square_computer_spec}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			\backslashbox{Computer name}{Hardware component} & Central processing unit (CPU) & Graphic processor unit (GPU) & Ram \\ \hline
+			A-Square lab's computer &  Ryzen 5 6500x  & Geforce RTX 3060 Ti & DDR4 3200 32GB \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+After we can use the better performance computer, we also try reduce tokenize time.
+Before the Siamese neural network model predict the similarity between questions,
+both questions need to tokenize first.
+We move the tokenization process of questions from knowledge management before put into the model
+to when the questions are queried immediately as you can see from \ref*{fig:model_pattern3}
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern3.png}}
+	\caption{The third implementation of chat workflow}
+	\label{fig:model_pattern3}
+	\end{figure}
+
+After that we have tested time performance of the new workflow on each computer,
+the result is in Table~\ref*{tab:run_time_pattern3_table}.
+Natthawat's PC is still unable to run before timeout.
+While Nathaphop's PC expectes to be able to run before reach the timeout.
+However, after testing by running model on Nathaphop's PC and sending message through chat,
+we still cannot get any reply answer back. It could because some process inside backend API and transmitted data.
+For the time result of A-Square lab's computer, time usage to predict model is very faster than
+Natthawat's PC and Nathaphop's PC.
+After we have tested, we got the answer from knowledge management back after sending the questions chat.
+
+\begin{table}[h]
+	\centering
+	\caption{Time usage for running the models from workflow in Figure~\ref*{fig:model_pattern3}}
+	\label{tab:run_time_pattern3_table}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|}
+			\hline
+			\backslashbox{Computer name}{Time usage to predict each model} &Total time \\ \hline
+			Natthawat's PC & 15.4 s \\ \hline
+			Nathaphop's PC & 9.17 s \\ \hline
+			A-Square lab's computer & 1.88 s \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
 \subsubsection{The Last Approach for Solving Response Timeout in Dialogflow Problem}
 
 \subsection{Budget Problem}
