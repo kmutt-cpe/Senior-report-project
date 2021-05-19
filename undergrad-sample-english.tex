@@ -2053,20 +2053,6 @@ and
 \caption{Model result by compare questions which similar}\label{fig:Model result by compare questions which similar}
 \end{figure}
 
-From others example from playing with model.The Input questions are
-{
-\XeTeXlinebreaklocale "th_TH"	
-\thaifont 
- ‘ วิศวะคอมเรียนเกี่ยวกับอะไรบ้าง’ }and 
-{
-\XeTeXlinebreaklocale "th_TH"	
-\thaifont ‘ วิศวะคอมมีเรียนหลักสูตรอะไรบ้าง’.}
- Both questions are not similar and our model can predict both questions are not similar for 57.14\%
-
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_8.png}}
-\caption{Model result by compare questions which not similar}\label{fig:Model result by compare questions which not similar}
-\end{figure}
 
 Even the model can predict, but the overall performance of the model is quite not good. Because we think the model should return similar questions from MaLSTM more than 0.5 scores not 0.3 scores. We think that the problem comes from not enough data. If we can gather more dataset and have more cases about question pairs that are similar or not similar, especially not similar that we got less precision, we can increase our model's performance. Also we have to integrate all subsystem to be one system in the production environment.
 
@@ -2092,7 +2078,118 @@ The result from the cosine simiarity function is the real number from 0 to 1. We
 \caption{Cosine Classification Report}\label{fig:Cosine Classification Report}
 \end{figure} 
 \pagebreak
+
 \subsubsection{Cosine Similarity Example}
+The picture below shows an example result from using cosine similarity. The input questions are
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+'ผมลงวิชาแล้วตารางสอบซ้อนทำยังไงดีครับ' }
+and
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ 'ตารางสอบซ้อนต้องอย่างไร'. 
+}Both questions are similar around 61.23\%.
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_coco.png}}
+\caption{The example result of pairing two sentence by using cosine similarity}\label{fig:The example result of pairing two sentence by using cosine similarity}
+\end{figure}
+
+\subsection{Compare Performance of Siamese Neural Network with MaLSTM model and Cosine Similarity Example}
+\subsubsection{Time Usage}
+
+\begin{table}[h]
+	\centering
+	\caption{Time usage for running the Siamese Neural Network with MaLSTM model}
+	\label{tab: Time usage Siamese Neural Network with MaLSTM model}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|}
+			\hline
+			\backslashbox{Computer name}{Time usage to predict each model} &Total time \\ \hline
+			Natthawat's PC & 15.4 s \\ \hline
+			Nathaphop's PC & 9.17 s \\ \hline
+			A-Square lab's computer & 1.88 s \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\caption{Time usage for running Cosine Similarity}
+	\label{tab: Time usage Cosine Similarity}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|}
+			\hline
+			\backslashbox{Computer name}{Time usage to predict each model} &Total time \\ \hline
+			Natthawat's PC & 629 ms \\ \hline
+			Nathaphop's PC & 381 ms \\ \hline
+			A-Square lab's computer & 248 ms \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+Compare the time usage as you can see from the table. The cosine similarity is faster than Siamese Neural Network with MaLSTM model  
+\subsubsection{Accuracy}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_classfication_report_cosine.png}}
+\caption{Cosine Classification Report}\label{fig:Cosine Classification Report}
+\end{figure} 
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_5.png}}
+\caption{Classification report}\label{fig:Classification report}
+\end{figure}
+From both cassification report. The cosine similarity has got 32.9\% is less than Siamese Neural Network with MaLSTM that has got 52.7\%
+
+
+\subsubsection{Example questions of Siamese Neural Network with MaLSTM}
+From others example from playing with model.The Input questions are
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ วิศวะคอมเรียนเกี่ยวกับอะไรบ้าง’ }and 
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont ‘ วิศวะคอมมีเรียนหลักสูตรอะไรบ้าง’.}
+ Both questions are not similar and our model can predict both questions are not similar for 57.14\%
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_8.png}}
+\caption{Model result by compare questions which not similar}\label{fig:Model result by compare questions which not similar}
+\end{figure}
+
+The picture below shows an example result from playing with the model. The Input questions are
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+'วิศวะคอมเรียนหลักสูตรอะไรบ้างคะ' }
+and
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ 'วิศวะคอมมีหลักสูตรอะไรบ้าง'. 
+}Both questions are similar and our model can predict both questions are similar for 83.33\%.
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_7.png}}
+\caption{Model result by compare questions which similar}\label{fig:Model result by compare questions which similar}
+\end{figure}
+
+
+
+\subsubsection{Example questions Cosine Similarity}
+From others example from playing with model.The Input questions are
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ วิศวะคอมเรียนเกี่ยวกับอะไรบ้าง’ }and 
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont ‘ วิศวะคอมมีเรียนหลักสูตรอะไรบ้าง’.}
+ Both questions are not similar but cosine similarity return both questions are similar for 81.09\%
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_cosine2_2.png}}
+\caption{Cosine result by compare questions which not similar}\label{fig:Cosine result by compare questions which not similar}
+\end{figure}
+
 The picture below shows an example result from using cosine similarity. The input questions are
 {
 \XeTeXlinebreaklocale "th_TH"	
@@ -2105,12 +2202,32 @@ and
  'วิศวะคอมมีหลักสูตรอะไรบ้าง'. 
 }Both questions are similar around 85.73\%.
 \begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_cosine_example.png}}
-\caption{The example result of pairing two sentence by using cosine similarity}\label{fig:The example result of pairing two sentence by using cosine similarity}
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_cococo.png}}
+\caption{Cosine result by compare questions which similar}\label{fig:Cosine result by compare questions which similar}
 \end{figure}
-\subsection{Compare Performance of Siamese Neural Network with MaLSTM model and Cosine Similarity Example}
+
+In summaty overall result of our model can predict similar intent questions more accurately than cosine similarity but it is slower than cosine similarity.
+
 \section{Project Demo}
 % todo: Chat capture that we asked through messenger and reply answer from KM back
+This is our example chat response from user ask via KMUTT CPE Fanpage which our system bring the answer response from the knowledge management subsystem. Overall, the chatbot can answer the questions of users at a certain level. But there are still many questions that cannot reply to the user.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 10cm]{./img/ch4/ch4_demo1.jpg}}
+\caption{Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 1}\label{fig:Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 1}
+\end{figure}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 10cm]{./img/ch4/ch4_demo2.jpg}}
+\caption{Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 2}\label{fig:Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 2}
+\end{figure}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 10cm]{./img/ch4/ch4_demo3.jpg}}
+\caption{Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 3}\label{fig:Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 3}
+\end{figure}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 10cm]{./img/ch4/ch4_demo4.jpg}}
+\caption{Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 4}\label{fig:Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 4}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Conclusions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
