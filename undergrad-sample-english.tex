@@ -799,6 +799,7 @@ when knowledge management receives new data.
 This chapter demonstrates our plan and idea to be method or approach to reach the goal. In this chapter consists of system architecture, workload of each person, planning diagram such as use case, sequence diagram, etc., data management, design of key processing algorithms, and evaluation plans to evaluate our project.
 
 \section{System Architecture}
+\label{ch3_system_architecture}
 After planning and discussion with advisor, KMUTT CPE Chatbot System can be divide into 4 subsystems which consists of knowledge management subsystem, prediction model subsystem, chatbot subsystem, and storage subsystem
 \begin{figure}[h!]
 	\centering
@@ -1561,6 +1562,7 @@ To evaluate prediction model base on different criteria for example accuracy and
 \chapter{Implementation Results}
 
 \section{Problems}
+\label{ch4_problem}
 Before we get into the details of our project's outcomes, let us first go through some of the problems
 we encountered while integrating subsystem together. Because the results have changed a lot from our
 plan and it could make you confused if not understand the problem and how we solve it. There are 3 major
@@ -1814,14 +1816,32 @@ So, the model can still automate update the question from knowledge management
 but cannot automate train the model as we planned.
 
 \section{System Architecture}
-% todo: Describe change of system arichtecture
+From the problem as we describe in section~\ref*{ch4_problem}.
+There is some workflow that have change to solve the problem that we found.
+So, our system architecture that we describe in section~\ref*{ch3_system_architecture} have changed a lot.
+Figure~\ref*{fig:new_software_architecture} is our new system architecture.
 
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/new_software_architecture.png}}
+\caption{New system architecture of KMUTT CPE Chatbot System}
+\label{fig:new_software_architecture}
+\end{figure}
 
-\section{Workflow}
-% todo: Describe change of workflow
+There are 2 subsystems that have changed which are prediction model subsystem and chatbot subsystem.
 
-\subsection{The Sequence Diagram Workflow of Chat Message}
-%todo: Add updated sequence diagram workflow
+\begin{description}
+	\item [Prediction Model Subsystem]\hfill \\
+	In the new system architecture, the prediction model subsystem consists of cosine similarity model and
+	category model. Prediction model subsystem use category model to classify category of question and then
+	get all questions in that category before predict the question in cosine similarity model.
+	In addition, prediction model subsystem will automate query question from Backend API to store in local storage.
+	\item [Chatbot Subsystem]
+	\hfill \\
+	In the chatbot subsystem, the structure is almost same as section~\ref*{ch3_system_architecture} except NLG template.
+	We have removed NLG template because after integrate the subsystem together,
+	because the answer from knowledge management is readable and NLG template could change 
+	the context of the answer that will reply to questioner.
+\end{description}
 
 \section{Server Integration Setup}
 	\subsection{Virtual Machine}
