@@ -1924,6 +1924,7 @@ From others example from playing with model.The Input questions are
 Even the model can predict, but the overall performance of the model is quite not good. Because we think the model should return similar questions from MaLSTM more than 0.5 scores not 0.3 scores. We think that the problem comes from not enough data. If we can gather more dataset and have more cases about question pairs that are similar or not similar, especially not similar that we got less precision, we can increase our model's performance. Also we have to integrate all subsystem to be one system in the production environment.
 
 \subsection{Cosine Similarity Result}
+Due to the respone timeout in Dialogflow problem after integrate all subsytem together we have to reduce time response to make our system can reply the respone back to user by change deep neural network which is Siamese Neural Network with MaLSTM model to machine learning which is cosine similarity.
 \subsubsection{Cosine Similarity Training}
 \subsubsection{Cosine Similarity Evaluation}
 \subsubsection{Cosine Similarity Example}
