@@ -1792,8 +1792,17 @@ try using the cosine similarity instead. You can see the result of cosine simila
 at section~\ref*{} %todo: Add reference to cosine similarity
 
 \subsection{Budget Problem}
+From Chapter 3, we planned to use Apache Airflow to automate build and run on Google Cloud Platform.
+But after we checked the minimum price of platform that be able to run the model,
+the price is around 8385 Baht per month as you can see from Figure~\ref*{fig:model_pattern3}.
+It is too high budget for developing automate build and run.
 
-% todo: Show cost of the lowest budget for GCP price.
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/gcp_price.jpg}}
+\caption{The minimum price of Google Cloud Platform server with GPU}
+\label{fig:model_pattern3}
+\end{figure}
+
 \subsubsection{Solution of Budget Problem}
 % todo: Reduce scope.
 
