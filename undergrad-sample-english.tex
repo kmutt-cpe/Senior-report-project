@@ -1740,10 +1740,10 @@ We move the tokenization process of questions from knowledge management before p
 to when the questions are queried immediately as you can see from \ref*{fig:model_pattern3}
 
 \begin{figure}[!h]\centering
-	\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern3.png}}
-	\caption{The third implementation of chat workflow}
-	\label{fig:model_pattern3}
-	\end{figure}
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern3.png}}
+\caption{The third implementation of chat workflow}
+\label{fig:model_pattern3}
+\end{figure}
 
 After that we have tested time performance of the new workflow on each computer,
 the result is in Table~\ref*{tab:run_time_pattern3_table}.
@@ -1771,8 +1771,28 @@ After we have tested, we got the answer from knowledge management back after sen
 \end{table}
 
 \subsubsection{The Last Approach for Solving Response Timeout in Dialogflow Problem}
+After we discussed timeout problem and show how we solve the problem with our advisor,
+he suggests that we can improve time performance by reducing max sequence range or using
+cosine similarity model instead for better time performance.
+
+At first, we tried to reduce the max sequence which required to build the new model.
+But the model is not quite good enough as you can see between evaluation of new model
+(Figure~\ref{reduce_sequence_result}) and the first model that we have built
+(Figure~\ref{Classification report}). The precision of new model is higher than old
+one, but recall and F1-Score is very low.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/reduce_sequence_result.jpg}}
+\caption{Classification report of Siamese neural network with reduce max sequence}
+\label{fig:reduce_sequence_result}
+\end{figure}
+
+From the result above, we have to reject the reducing max sequence method and
+try using the cosine similarity instead. You can see the result of cosine similarity
+at section~\ref*{} %todo: Add reference to cosine similarity
 
 \subsection{Budget Problem}
+
 % todo: Show cost of the lowest budget for GCP price.
 \subsubsection{Solution of Budget Problem}
 % todo: Reduce scope.
