@@ -1795,6 +1795,7 @@ After we have tested, we got the answer from knowledge management back after sen
 			\fbox{\includegraphics[width=14cm]{./img/ch4/azure_vm.png}}
 			\caption{Virtual machine specification}\label{fig:Virtual machine specification}
 		\end{figure}
+\pagebreak
 	\subsection{Domain Name}
 		This is the domain name from github education package with nameservers config in name.com for able to use in Cloudflare.
 		\begin{figure}[!h]\centering
@@ -1802,11 +1803,14 @@ After we have tested, we got the answer from knowledge management back after sen
 			\caption{Domain name of the server}\label{fig:Domain name of the server}
 		\end{figure}
 	\subsection{Cloudflare}
+		\begin{flushleft}
 		After config the nameservers in name.com, so in the Cloudflare DNS must be config.
+		\end{flushleft}
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_home.png}}
 			\caption{Cloudflare homepage}\label{fig:Cloudflare homepage}
 		\end{figure}
+\pagebreak		
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_dns.png}}
 			\caption{Cloudflare DNS page}\label{fig:Cloudflare DNS page}
@@ -1816,10 +1820,13 @@ After we have tested, we got the answer from knowledge management back after sen
 			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_ssl_overview.png}}
 			\caption{Cloudflare ssl overview page}\label{fig:Cloudflare ssl overview page}
 		\end{figure}
+\pagebreak
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_ssl_origin.png}}
 			\caption{Cloudflare ssl origin page}\label{fig:Cloudflare ssl origin page}
 		\end{figure}
+	\subsection{Nginx}
+		Nginx is a web server that allow to map the application that run using port into http slash
 \section{Chatbot Subsystem Results}
 % todo: Update the work done
 Now our chatbot subsystem, we implemented in dialogflow which can classify greeting and understanding what is the questions. We also finished to implement SSL and DNS server on Cloudflare.
