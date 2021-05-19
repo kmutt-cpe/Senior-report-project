@@ -1819,30 +1819,62 @@ but cannot automate train the model as we planned.
 
 \section{Workflow}
 % todo: Describe change of workflow
-\subsubsection{The Sequence Diagram Workflow of Chat Message}
+
+\subsection{The Sequence Diagram Workflow of Chat Message}
 %todo: Add updated sequence diagram workflow
 
-
+\section{Server Integration Setup}
+	\subsection{Virtual Machine}
+		The virtual machine that use for the front-end website, backend-api to connect with dialogflow using free credit of student account in the microsoft azure.
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/azure_vm.png}}
+			\caption{Virtual machine specification}\label{fig:Virtual machine specification}
+		\end{figure}
+\pagebreak
+	\subsection{Domain Name}
+		This is the domain name from github education package with nameservers config in name.com for able to use in Cloudflare.
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/nameDotCom.png}}
+			\caption{Domain name of the server}\label{fig:Domain name of the server}
+		\end{figure}
+	\subsection{Cloudflare}
+		\begin{flushleft}
+		After config the nameservers in name.com, so in the Cloudflare DNS must be config.
+		\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_home.png}}
+			\caption{Cloudflare homepage}\label{fig:Cloudflare homepage}
+		\end{figure}
+\pagebreak		
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_dns.png}}
+			\caption{Cloudflare DNS page}\label{fig:Cloudflare DNS page}
+		\end{figure}
+		In the ssl mode, Full strict mode is selected in this ssl
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_ssl_overview.png}}
+			\caption{Cloudflare ssl overview page}\label{fig:Cloudflare ssl overview page}
+		\end{figure}
+\pagebreak
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_ssl_origin.png}}
+			\caption{Cloudflare ssl origin page}\label{fig:Cloudflare ssl origin page}
+		\end{figure}
+	\subsection{Nginx}
+		Nginx is a web server that allow to map the application that run using port into http slash
 \section{Chatbot Subsystem Results}
 % todo: Update the work done
-% Now our chatbot subsystem, we implemented in dialogflow which can classify greeting and understanding what is the questions. We also finished to implement SSL and DNS server on Cloudflare.
-
-% \begin{figure}[!h]\centering
-% \fbox{\includegraphics[width=14cm]{./img/ch4/ch4_1.png}}
-% \caption{Classification greeting messages and questions}\label{fig:Classification greeting messages and questions}
-% \end{figure}
-% \begin{figure}[!h]\centering
-% \fbox{\includegraphics[width=14cm]{./img/ch4/ch4_Cloudflare.jpg}}
-% \caption{The SSL and DNS server of KMUTT CPE chatbot system on Cloudflare}\label{fig:The SSL and DNS server of KMOTT CPE chatbot system on Cloudflare}
-% \end{figure}
-\subsection{Facebook Messenger}
-% todo: Detail of work/problem
+Now our chatbot subsystem, we implemented in dialogflow which can classify greeting and understanding what is the questions. We also finished to implement SSL and DNS server on Cloudflare.
 \subsection{Dialogflow}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/ch4_1_2.png}}
+\caption{Classification greeting messages and questions}\label{fig:Classification greeting messages and questions}
+\end{figure}
+\subsection{Facebook Messenger}
 % todo: What we have done with Dialogflow, problem of Dialogflow, and how we solve it.
 
-
 \section{Knowledge Management Results}
-\subsection{Use case}
+\subsection{Use Case}
 % todo: New Use case with more role for App Review
 \subsection{User Interface Design}
 % todo: UI design
@@ -1851,21 +1883,26 @@ but cannot automate train the model as we planned.
 
 
 \section{Storage Subsystem Results}
-% For storage subsystem, we have already prepared the environment and dependency and implemented the restful API and graphQL for all subsystems. Now our system can create, update, delete, and query category, subcategory, users, and FAQs.
-% \begin{figure}[!h]\centering
-% \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_2.png}}
-% \caption{GraphQL query FAQs by ID category from backend API}\label{fig:GraphQL query FAQs category from backend API}
-% \end{figure}
-% \begin{figure}[!h]\centering
-% \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_GetFAQ.jpg}}
-% \caption{GraphQL query FAQs from backend API}\label{fig:GraphQL query FAQs from backend API}
-% \end{figure}
-% \begin{figure}[!h]\centering
-% \fbox{\includegraphics[width= 14cm]{./img/ch4/chap4_get.jpg}}
-% \caption{The result from Rest API by using GET Method to query category}\label{fig:The result from Rest API by using GET Method to query category}
-% \end{figure}
+For storage subsystem, we have already prepared the environment and dependency and implemented the restful API and graphQL for all subsystems. Now our system can create, update, delete, and query category, subcategory, users, and FAQs.
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_2.png}}
+\caption{GraphQL query FAQs by ID category from backend API}\label{fig:GraphQL query FAQs category from backend API}
+\end{figure}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_GetFAQ.jpg}}
+\caption{GraphQL query FAQs from backend API}\label{fig:GraphQL query FAQs from backend API}
+\end{figure}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/chap4_get.jpg}}
+\caption{The result from Rest API by using GET Method to query category}\label{fig:The result from Rest API by using GET Method to query category}
+\end{figure}
 \subsection{Database}
 % todo: Add database table
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/Database Schema.png}}
+\caption{ER Diagram illustrates database schema.
+}\label{fig:ER Diagram illustrates database schema in result.}
+\end{figure}
 \subsection{Example of Implementation}
 % todo: Add some example of implementation e.g. api, graphql
 % !Ask ajarn that should input api document or not?
