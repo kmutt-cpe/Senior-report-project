@@ -1783,11 +1783,18 @@ still do not have enough time to response to Dialogflow before timeout.
 
 \section{Prediction Model Subsystem Results}
 % todo: Describe why we add logistic regression and cosine similarity and add some references to the problem. what are they used for?
-\subsection{Logistic Regression Result}
-\subsubsection{Logistic Regression Training}
-\subsubsection{Logistic Regression Evaluation}
-\subsubsection{Logistic Regression Example}
-
+\subsection{Category  Result}
+Due to our model is used to find the similarity of the questions asked by the user with all the questions in the database and selected question which has the highest similarity then return the answer. This method has taken a long time. So we decided to create a category model, a regression model, to classify questions from the user first. Which category is this question? Then compare user questions with questions in categories that the model can predict only.
+\subsubsection{Category Model Preprocessing Data}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_category_data.png}}
+\caption{Model Category Data}\label{fig:Model Category Data}
+\end{figure}
+\pagebreak
+\subsubsection{Category Model Training}
+\subsubsection{Category Model Evaluation}
+\subsubsection{Category Model Example}
+Model
 \subsection{Siamese Neural Network with MaLSTM Result}
 \subsubsection{Siamese Neural Network with MaLSTM Training}
 After preprocessing the data, we split the data into train, validate, and test data. Then separate the data into left inputs and right inputs, one for each side of MaLSTM. Then train the model with 100 epochs and use batch sizes 128. In addition to using early stops to prevent the model too overfitting and model checkpoint to save the model. Even our group set 100 epochs, but the model was trained only 17 epochs before stopping from early stop. Loss of training data is 0.4116 and loss of validation data is 0.4358. Also, accuracy of training data is 0.5487 and accuracy of validation data is 0.4358. Graphs below are the result from training.
