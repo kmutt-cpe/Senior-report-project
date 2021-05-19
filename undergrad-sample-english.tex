@@ -2109,6 +2109,83 @@ and
 \caption{The example result of pairing two sentence by using cosine similarity}\label{fig:The example result of pairing two sentence by using cosine similarity}
 \end{figure}
 \subsection{Compare Performance of Siamese Neural Network with MaLSTM model and Cosine Similarity Example}
+\subsubsection{Time Usage}
+
+\begin{table}[h]
+	\centering
+	\caption{Time usage for running the Siamese Neural Network with MaLSTM model}
+	\label{tab: Time usage Siamese Neural Network with MaLSTM model}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|}
+			\hline
+			\backslashbox{Computer name}{Time usage to predict each model} &Total time \\ \hline
+			Natthawat's PC & 15.4 s \\ \hline
+			Nathaphop's PC & 9.17 s \\ \hline
+			A-Square lab's computer & 1.88 s \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\caption{Time usage for running Cosine Similarity}
+	\label{tab: Time usage Cosine Similarity}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|}
+			\hline
+			\backslashbox{Computer name}{Time usage to predict each model} &Total time \\ \hline
+			Natthawat's PC & 629 ms \\ \hline
+			Nathaphop's PC & ... ms \\ \hline
+			A-Square lab's computer & 248 ms \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+Compare the time usage as you can see from the table. The cosine similarity is faster than Siamese Neural Network with MaLSTM model  
+\subsubsection{Accuracy}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_classfication_report_cosine.png}}
+\caption{Cosine Classification Report}\label{fig:Cosine Classification Report}
+\end{figure} 
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_5.png}}
+\caption{Classification report}\label{fig:Classification report}
+\end{figure}
+From both cassification report. The cosine similarity has got 32.9\% is less than Siamese Neural Network with MaLSTM that has got 52.7\%
+
+
+\subsubsection{Example questions of Siamese Neural Network with MaLSTM}
+From others example from playing with model.The Input questions are
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ วิศวะคอมเรียนเกี่ยวกับอะไรบ้าง’ }and 
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont ‘ วิศวะคอมมีเรียนหลักสูตรอะไรบ้าง’.}
+ Both questions are not similar and our model can predict both questions are not similar for 57.14\%
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_8.png}}
+\caption{Model result by compare questions which not similar}\label{fig:Model result by compare questions which not similar}
+\end{figure}
+
+
+\subsubsection{Example questions Cosine Similarity}
+From others example from playing with model.The Input questions are
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ วิศวะคอมเรียนเกี่ยวกับอะไรบ้าง’ }and 
+{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont ‘ วิศวะคอมมีเรียนหลักสูตรอะไรบ้าง’.}
+ Both questions are not similar but cosine similarity return both questions are similar for 81.09\%
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_cosine2.png}}
+\caption{Cosine result by compare questions which not similar}\label{fig:Cosine result by compare questions which not similar}
+\end{figure}
+
 \section{Project Demo}
 % todo: Chat capture that we asked through messenger and reply answer from KM back
 
