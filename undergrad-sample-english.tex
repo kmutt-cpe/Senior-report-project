@@ -2025,6 +2025,16 @@ We find the similarity by input user questions and all questions for each catego
 \end{figure}
 \pagebreak
 \subsubsection{Cosine Similarity Evaluation}
+The result from the cosine simiarity function is the real number from 0 to 1. We interpret both questions are similar (result = 1) if the  score is more than 0.3. If the score is less than 0.3, both questions are not similar (result = 0). We pick 0.3 to be a criterion for similar or not similar because want to compare the performance with the Siamese Neural Network with MaLSTM as the same criterion. In test data, we convert coulum ‘is duplicate’ from a similar score (0 to 1)  to binary (0 or 1) instead before evaluating.
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_cosine_confuse.png}}
+\caption{Cosine Confusion Metrix}\label{fig:Cosine Confusion Metrix}
+\end{figure} 
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_classfication_report_cosine.png}}
+\caption{Cosine Classification Report}\label{fig:Cosine Classification Report}
+\end{figure} 
+\pagebreak
 \subsubsection{Cosine Similarity Example}
 The picture below shows an example result from using cosine similarity. The input questions are
 {
@@ -2041,7 +2051,7 @@ and
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_cosine_example.png}}
 \caption{The example result of pairing two sentence by using cosine similarity}\label{fig:The example result of pairing two sentence by using cosine similarity}
 \end{figure}
-
+\subsection{Compare Performance of Siamese Neural Network with MaLSTM model and Cosine Similarity Example}
 \section{Project Demo}
 % todo: Chat capture that we asked through messenger and reply answer from KM back
 
