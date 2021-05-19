@@ -822,7 +822,7 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 	This subsystem consists of Facebook Messenger, Dialogflow, and NLG Template. Facebook Messenger is a chat platform where people can ask their question, and this platform will be connected to Dialogflow. Dialogflow will manage the chat flow and chat queue from Facebook Messenger and intent to message that the message is a question or common message like greeting. If the message is common message, Dialogflow will automatically replied with a common answer. But if it is a question, Dialogflow will send the question to the backend API to get the answer back.
 	\item [Storage Subsystem]
 	\hfill \\The storage subsystem is related to managing data and providing API for each subsystem.\\
-	Storage subsystem consists of a database and backend API. Our database is MySQL, and it keeps all data from each subsystem, either knowledge management subsystem or chatbot subsystem. But both subsystems need to save the data into the database through the backend API. The backend API provides the restful API and GraphQL for all subsystems to query, update, and delete data. Moreover, the back-end API provides an API to get a question from Dialogflow and manage the question in the queue to send a question to the prediction model and return an answer from knowledge management.
+	Storage subsystem consists of a database and backend API. Our database is MySQL, and it keeps all data from each subsystem, either knowledge management subsystem or chatbot subsystem. But both subsystems need to save the data into the database through the backend API. The backend API provides the restful API and GraphQL for all subsystems to query, update, and delete data. Moreover, the backend API provides an API to get a question from Dialogflow and manage the question in the queue to send a question to the prediction model and return an answer from knowledge management.
 \end{description}
 \section{System Requirements}
 	\subsection{Knowledge Management Subsystem}
@@ -1289,7 +1289,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 Figure~\ref*{fig:Sequence diagram workflow of chat message} illustrates the chat workflow starting from a question from questioner until reply answer in knowledge management back. When the questioner sends the message via Facebook Messenger, the message will be sent directly to Dialogflow.\\
 Dialogflow will manage the chat queue, save the meta of the questioner and message to the database, and then find the intended message to identify the message that it is a question or common message like a greeting message. If the message is common, Dialogflow will automatically be replied with a common message. But if it is a question, Dialogflow will send the message to the backend API to get the answer to reply.\\
 The backend API will manage the queue of questions from Dialogflow before sending it to the Siamese model. The Siamese model will pair the question from the questioner and all questions in FAQ, then return the related question to the Backend API.\\
-After the backend API gets a related question (or a predicted question), the back-end API will query the raw answer from the database and return to the Dialogflow. Dialogflow will change answers into human speech with an NLP template before replying to the questioner.
+After the backend API gets a related question (or a predicted question), the backend API will query the raw answer from the database and return to the Dialogflow. Dialogflow will change answers into human speech with an NLP template before replying to the questioner.
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/sequence diagram of chat message.jpg}
 	\caption{Sequence diagram workflow of chat message}\label{fig:Sequence diagram workflow of chat message}
@@ -1298,7 +1298,7 @@ After the backend API gets a related question (or a predicted question), the bac
 \pagebreak
 
 \subsection{The Sequence Diagram of Automate Build Model}
-Figure~\ref*{fig:Sequence diagram of automate building and deploy model} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
+Figure~\ref*{fig:Sequence diagram of automate building and deploy model} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the backend API, builds the model, and deploys on Google Cloud
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/sequence diagram of automate build model.jpg}
 	\caption{Sequence diagram of automate building and deploy model.}\label{fig:Sequence diagram of automate building and deploy model}
@@ -1845,18 +1845,28 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 
 \section{Server Integration Setup}
 	\subsection{Virtual Machine}
-		The virtual machine that use for the front-end website, backend-api to connect with dialogflow using free credit of student account in the microsoft azure.
+		\begin{flushleft}
+			The virtual machine that use for the front-end website, backend-api to connect with dialogflow. We have changed the provider from Google Cloud Platform into Microsoft Azure using free credit of student account.
+		\end{flushleft}
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/azure_vm.png}}
 			\caption{Virtual machine specification}\label{fig:Virtual machine specification}
 		\end{figure}
-\pagebreak
+	\pagebreak
+
+	\subsection{GitHub Actions}
+	\begin{flushleft}
+		GitHub Actions is automate all software workflows with world-class CI/CD. Build, test, and deploy code right from GitHub. Make code reviews, branch management, and issue triaging work the way I want.\cite{GitHub_Actions}
+		We use GitHub Actions instead of Kubernetes for the approach of automating deployments.
+	\end{flushleft}
+
 	\subsection{Domain Name}
 		This is the domain name from github education package with nameservers config in name.com for able to use in Cloudflare.
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/nameDotCom.png}}
 			\caption{Domain name of the server}\label{fig:Domain name of the server}
 		\end{figure}
+		\pagebreak	
 	\subsection{Cloudflare}
 		\begin{flushleft}
 		After config the nameservers in name.com, so in the Cloudflare DNS must be config.
@@ -1864,18 +1874,17 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_home.png}}
 			\caption{Cloudflare homepage}\label{fig:Cloudflare homepage}
-		\end{figure}
-\pagebreak		
+		\end{figure}	
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_dns.png}}
 			\caption{Cloudflare DNS page}\label{fig:Cloudflare DNS page}
 		\end{figure}
+		\pagebreak
 		In the ssl mode, Full strict mode is selected in this ssl
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_ssl_overview.png}}
 			\caption{Cloudflare ssl overview page}\label{fig:Cloudflare ssl overview page}
 		\end{figure}
-\pagebreak
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_ssl_origin.png}}
 			\caption{Cloudflare ssl origin page}\label{fig:Cloudflare ssl origin page}
@@ -1883,23 +1892,133 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 	\subsection{Nginx}
 		Nginx is a web server that allow to map the application that run using port into http slash
 \section{Chatbot Subsystem Results}
-% todo: Update the work done
-Now our chatbot subsystem, we implemented in dialogflow which can classify greeting and understanding what is the questions. We also finished to implement SSL and DNS server on Cloudflare.
-\subsection{Dialogflow}
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width=14cm]{./img/ch4/ch4_1_2.png}}
-\caption{Classification greeting messages and questions}\label{fig:Classification greeting messages and questions}
-\end{figure}
-\subsection{Facebook Messenger}
-% todo: What we have done with Dialogflow, problem of Dialogflow, and how we solve it.
+	% todo: Update the work done
+	Now our chatbot subsystem, we implemented in dialogflow which can classify greeting and understanding what is the questions.
+	\begin{figure}[!h]\centering
+		\fbox{\includegraphics[width=8cm]{./img/ch4/ch4_1_2.png}}
+		\caption{Classification greeting messages and questions}\label{fig:Classification greeting messages and questions success}
+	\end{figure}
+\pagebreak
+	\subsection{Dialogflow}
+		\begin{flushleft}
+			First of all we have to create the intent in the dialogflow to classify greeting and understanding what is the questions.
+		\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/dialogflow_intent.png}}
+			\caption{Dialogflow intent}\label{fig:Dialogflow intent}
+		\end{figure}
+\pagebreak
+		\begin{flushleft}
+			Integrate the dialogflow with the Facebook webhook. In dialogflow need verify token and page access token.
+		\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/dialogflow_integration_messenger.png}}
+			\caption{Dialogflow integration messenger}\label{fig:Dialogflow integration messenger}
+		\end{figure}
 
+		\begin{flushleft}
+			Then connect the Dialogflow with the backend.
+		\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/dialogflow_fullfillment.png}}
+			\caption{Dialogflow fullfillment}\label{fig:Dialogflow fullfillment}
+		\end{figure}
+\pagebreak
+	\subsection{Facebook Messenger}
+		% todo: facebook messenger detail
+		\begin{flushleft}
+			To create the Facebook chatbot, first of all we have to create the Facebook app
+		\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_developer_app.png}}
+			\caption{Facebook developer app}\label{fig:facebook developer app}
+		\end{figure}
+
+		\begin{flushleft}
+			Get started with must be added in basic settings. App icon, contact email, privacy policy URL, terms of service URL and business account.
+		\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_settings_basic_privacy_policy_and_term_of_service.png}}
+			\caption{Facebook settings basic privacy policy and term of service}\label{fig:facebook settings basic privacy policy and term of service}
+			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_settings_basic_business.png}}
+			\caption{Facebook settings basic business}\label{fig:Facebook settings basic business}
+		\end{figure}
+\pagebreak
+		\begin{flushleft}
+			Add the role of administrator for develop the Facebook app
+		\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_roles.png}}
+			\caption{Facebook roles}\label{fig:Facebook roles}
+		\end{figure}
+
+		\begin{flushleft}
+			After we prepare the prerequisite, we send the app review request in pages_messaging for two times. The first time send is to check the missing. 
+		\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_appreview_requests.png}}
+			\caption{Facebook appreview requests}\label{fig:Facebook appreview requests}
+		\end{figure}
+\pagebreak
+		\begin{flushleft}
+			Then we contact with the support and resubmit the Facebook app review
+		\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=6cm]{./img/ch4/facebook_support.png}}
+			\caption{Facebook support}\label{fig:Facebook support}
+		\end{figure}
+
+		\begin{flushleft}
+			At last we get approve in the pages_messaging
+		\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_appreview_requests_approve.png}}
+			\caption{facebook appreview requests approve}\label{fig:facebook appreview requests approve}
+			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_appreview_Permissions_and_Features.png}}
+			\caption{Facebook appreview Permissions and Features}\label{fig:Facebook appreview Permissions and Features}
+		\end{figure}
+		
+		\begin{flushleft}
+			And we integrate the Facebook with Dialogflow. In Facebok need verify token and callback URL.
+		\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_messenger_settings.png}}
+			\caption{Facebook messenger settings}\label{fig:Facebook messenger settings}
+		\end{figure}
 \section{Knowledge Management Results}
-\subsection{Use Case}
-% todo: New Use case with more role for App Review
-\subsection{User Interface Design}
-% todo: UI design
-\subsection{Implementation}
-% todo: Old UI design
+	\subsection{Use Case}
+	% todo: New Use case with more role for App Review
+	\subsection{User Interface Design}
+	% todo: UI design
+	\subsection{Implementation}
+	% todo: Old UI design
+	\subsection{Knowledge Management Evaluation}
+	\begin{table}[h]
+		\caption{Evaluation knowledge management table}
+		\label{tab:Evaluation knowledge management table}
+	\begin{adjustbox}{width=\textwidth}
+	\begin{tabular}{|p{0.3\linewidth}|p{0.2\linewidth}|p{0.5\linewidth}|p{0.1\linewidth}|}
+	\hline
+	\rowcolor[HTML]{C9DAF8} 
+	Features                             & Role                    & Function                           & Status \\ \hline
+										 & Admin                   & Login                              &        \\ \cline{2-4} 
+										 & Admin                   & Logout                             &        \\ \cline{2-4} 
+	\multirow{-3}{*}{Account}            & Admin                   & Edit profile                       &        \\ \hline
+										 &                         & Create new category                &        \\ \cline{3-4} 
+										 &                         & Remove category                    &        \\ \cline{3-4} 
+	\multirow{-3}{*}{Manage category}    & \multirow{-3}{*}{Admin} & Update category                    &        \\ \hline
+										 &                         & Create new subcategory in category &        \\ \cline{3-4} 
+										 &                         & Remove subcategory                 &        \\ \cline{3-4} 
+	\multirow{-3}{*}{Manage subcategory} & \multirow{-3}{*}{Admin} & Update subcategory                 &        \\ \hline
+										 &                         & Create new FAQ                     &        \\ \cline{3-4} 
+										 &                         & Remove FAQ                         &        \\ \cline{3-4} 
+	\multirow{-3}{*}{Manage FAQ}         & \multirow{-3}{*}{Admin} & Update FAQ                         &        \\ \hline
+										 &                         & Create new user                    &        \\ \cline{3-4} 
+										 &                         & Remove user                        &        \\ \cline{3-4} 
+	\multirow{-3}{*}{Manage   user}      & \multirow{-3}{*}{Admin} & Update user                        &        \\ \hline
+	\end{tabular}
+	\end{adjustbox}
+	\end{table}
 
 
 \section{Storage Subsystem Results}
