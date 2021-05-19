@@ -1788,13 +1788,54 @@ Due to our model is used to find the similarity of the questions asked by the us
 \subsubsection{Category Model Preprocessing Data}
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_category_data.png}}
-\caption{Model Category Data}\label{fig:Model Category Data}
+\caption{Model Category Example Data}\label{fig:Model Category Example Data}
 \end{figure}
 \pagebreak
+
+This is a FAQs of Computer Engineering questions which we gathering by ourself. Overall we have 177 questions we divided questions into 4 categories are Admission has 19 questions , FAQs has 36 questions, Enrollment has 40 questions and Curriculum has 82 questions then we use a deepcut to cut the word from the text we have read which is stored in a column called CPE questions. All data will be converted into a list of words in the CPE FAQs and change it to the bag of words (sparse matrix).
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_token_category.png}}
+\caption{The data after tokening}\label{fig:The data after tokening}
+\end{figure}
+\pagebreak
+We find all the words that appear first. And store it in the dictionary to convert the words that we found into index form, for example,{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ วิศวะคอม’ } will be changed to number 31, etc.
+Sometimes words  are used or appear more frequently in many questions and the words have less weight or less importance than words specific in the questions. So we weigth the less-weight words by using TfidfTransformer to reduce the text dimension using TruncatedSVD.
+In addition, we would like to predict the categories of the questions. We have to convert the categories of questions to binary (0,1) by pd.get dummies
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_sprase_metric.png}}
+\caption{Change it to the bag of words (sparse matrix)}\label{fig:Change it to the bag of words (sparse matrix)}
+\end{figure}
+
 \subsubsection{Category Model Training}
+We train Logistic Regression to predict to find question category of user question. We train all six models for each model will predict the questions for each category.
 \subsubsection{Category Model Evaluation}
+We want to see how accurate the question's category can predict or the model's accuracy by using 'cross val score' from the library called sci-kit learn.
+The 'cross val score' gets a predictor, which we use is Logistic Regression for the input X svd and output y for each column. Moreover we also use confusion metrix to evaluate our models.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_model_result.png}}
+\caption{Category Model Results}\label{fig:Category Model Results}
+\end{figure}
+We got accuracy 89.28\% from Admission category, 82.15\% from FAQs category, 92.02\% from Curriculum category and 79.67\% from Enrollments category.
+\pagebreak
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_category_confuse.png}}
+\caption{Confusion Metrix of Models}\label{fig:Confusion Metrix of Models}
+\end{figure}
+Each row is True label and each digit is Predicted label, we can see that most of mistakenly is economic curriculum category. 
 \subsubsection{Category Model Example}
-Model
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/example_category1.png}}
+\caption{The example input question for classifying category}\label{fig:The example input question for classifying category}
+\end{figure}
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/example_category2.png}}
+\caption{The example input question result}\label{fig:The example input question result}
+\end{figure}
+From the results we can predict categories quite accurately. 
 \subsection{Siamese Neural Network with MaLSTM Result}
 \subsubsection{Siamese Neural Network with MaLSTM Training}
 After preprocessing the data, we split the data into train, validate, and test data. Then separate the data into left inputs and right inputs, one for each side of MaLSTM. Then train the model with 100 epochs and use batch sizes 128. In addition to using early stops to prevent the model too overfitting and model checkpoint to save the model. Even our group set 100 epochs, but the model was trained only 17 epochs before stopping from early stop. Loss of training data is 0.4116 and loss of validation data is 0.4358. Also, accuracy of training data is 0.5487 and accuracy of validation data is 0.4358. Graphs below are the result from training.
