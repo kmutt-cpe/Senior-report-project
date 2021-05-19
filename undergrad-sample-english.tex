@@ -2017,7 +2017,8 @@ Even the model can predict, but the overall performance of the model is quite no
 Due to the respone timeout in Dialogflow problem after integrate all subsytem together we have to reduce time response to make our system can reply the respone back to user by change deep neural network which is Siamese Neural Network with MaLSTM model to machine learning which is cosine similarity that is the same method the find similiarity of user question and questions in database.
 \subsubsection{Cosine Similarity Preprocessing}
 We preprocessing the cosine silmilarity like the Siamese Neural Network with MaLSTM Evaluation that we tokenize text and covert text into lists of sequence as in the section \nameref{preprocessing cosine}
-\subsubsection{Cosine Similarity Training}
+\subsubsection{Cosine Similarity Parameter Setting}
+We find the similarity of user questions and all questions in the database by using 'cosine similarity' function from sklearn.metrics.pairwise library
 \subsubsection{Cosine Similarity Evaluation}
 \subsubsection{Cosine Similarity Example}
 
