@@ -1572,7 +1572,7 @@ which would then predict the question, as you can see from the Figure~\ref*{fig:
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_plan1.png}}
-\caption{Overview of the first plan of chat workflow}
+\caption{The first plan of chat workflow}
 \label{fig:chat_plan_1}
 \end{figure}
 
@@ -1583,7 +1583,7 @@ Figure~\ref*{fig:chat_plan_2}.
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_plan2.png}}
-\caption{Overview of the second plan of chat workflow}
+\caption{The second plan of chat workflow}
 \label{fig:chat_plan_2}
 \end{figure}
 
@@ -1594,11 +1594,13 @@ API to handle new Dialogflow intent. This method is too cumbersome.
 \subsubsection{Solution of Performance Problem}
 So, we solved this problem by creating logistic regression model, which we called it category model,
 to predict the category of question to get questions in that category before send to Siamese neural
-network model as you can see from the Figure~\ref*{fig:model_pattern1}.
+network model as you can see from the Figure~\ref*{fig:model_pattern1}. Then after backend API get the
+predicted question, backend API will query question and answer from knowledge management before
+return answer back to chatbot.
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern1.png}}
-\caption{Overview of the second plan of chat workflow}
+\caption{The first implementation of chat workflow}
 \label{fig:model_pattern1}
 \end{figure}
 
@@ -1620,7 +1622,7 @@ The status of Dialogflow is 'Deadline Exceeded'. It occurs when the response tim
 Google Assistant has limit timeout to 10 seconds) \cite{dialogflow_response_time}.
 
 First, we try to solve the problem by changing to a better computer to run the model.
-We tested the model on three different computers: Natthawat's PC, Nathaphop's PC, and A-Square lab's computer.
+We tested the model on 2 different computers: Natthawat's PC and Nathaphop's PC.
 Spec of each computer is in Table~\ref*{tab:computer_list}.
 
 %todo: Add computer spec
@@ -1632,9 +1634,8 @@ Spec of each computer is in Table~\ref*{tab:computer_list}.
 		\begin{tabular}{|l|l|l|l|}
 			\hline
 			\backslashbox{Computer name}{Hardware component} & Central processing unit (CPU) & Graphic processor unit (GPU) & Ram \\ \hline
-			Natthawat's PC &                                  &     &               \\ \hline
-			Nathaphop's PC & AMD Ryzen 7 3700X & NVIDIA Gefore RTX 3080 & DDR4 3200 32GB (16GBx2) \\ \hline
-			A-Square lab's computer &                                  &     &            \\ \hline
+			Natthawat's PC &  Intel i5-6500  & Geforce GTX 970 & DDR4 2133 16GB \\ \hline
+			Nathaphop's PC & AMD Ryzen 7 3700X & Geforce RTX 3080 & DDR4 3200 32GB \\ \hline
 		\end{tabular}
 	\end{adjustbox}
 \end{table}
@@ -1642,8 +1643,9 @@ Spec of each computer is in Table~\ref*{tab:computer_list}.
 However, after upgrading to a better computer, the problem still occurred.
 So, we measured the time of the category model and the Siamese neural network
 model that we tested on each computer to determine the time usage.
-The result is in Table~\ref*{tab:run_time_pattern1_table}.
-The time summation in each computer is greater than timeout response of Dialogflow.
+The result is in Table~\ref*{tab:run_time_pattern1_table}. The time summation of both computers are greater
+than timeout response of Dialogflow.
+
 
 \begin{table}[h]
 	\centering
@@ -1652,17 +1654,66 @@ The time summation in each computer is greater than timeout response of Dialogfl
 	\begin{adjustbox}{width=\textwidth}
 		\begin{tabular}{|l|l|l|l|}
 			\hline
-			\backslashbox{Computer name}{Time usage to predict each model} & Category model & Siamese neural network model & Time summation \\ \hline
-			Natthawat's PC &                              &                                       &    \\ \hline
-			Nathaphop's PC &                              &                                        &   \\ \hline
-			A-Square lab's computer &                              &                                &           \\ \hline
+			\backslashbox{Computer name}{Time usage to predict each model} & Time usage for category model & Time usage for Siamese neural network model & Total time \\ \hline
+			Natthawat's PC & 937 ms & 16.6 s  & 17.537 s \\ \hline
+			Nathaphop's PC & 897 ms & 11.7 s & 12.597 s \\ \hline
 		\end{tabular}
 	\end{adjustbox}
 \end{table}
 
-% todo: The problem occur when integrate the whole system together. Dialogflow have very short timeout.
-% todo: Add the performance image of pattern1.
+
+
+After that we want to find out which parts of code in Siamese neural network take a long
+time to implement. We divide our code and examine the time usage of each line and we
+discovered that the most time-consuming parts of the code are the time to tokenize the
+questions and the time to predict.
+
+From our record Natthawat's PC use 7.13 seconds to tokenize the word and 23 seconds to predict.
+Nathaphop's PC use 2.33 seconds to tokenize the word and 8.26 seconds to predict.
+Time usage of the rest of code is in nanoseconds unit, so it won't take long to implement.
+
 \subsubsection{The First Approach for Solving Response Timeout in Dialogflow Problem}
+The first approach we try to solve this problem is to increase the timeout of Dialogflow
+and decrease transmitted time. We are going to increase timeout of Dialogflow by using
+custom event in Dialogflow and decrease transmitted time by improving the chat workflow.
+
+According to our information, some people solve timeout response
+by returning the custom event in Dialogflow when it almost reaches the timeout response and
+creating a new intent in Dialogflow that will trigger when custom event is invoked from webhook API.
+This new intent will call back to the webhook API again, which is called follow up event, to get more timeout
+before return the message response back \cite{extend_webhook_intent}.
+Multiple follow up event can extend more timeout, but can have maximum 3 follow up event \cite{changing_intent_webhook}.
+We apply this method to our project to increase the maximum connection time to 10 seconds.
+
+Next, we try to improve chat workflow by integrating the category model and the Siamese neural network and
+providing the prediction model to contain all questions instead of passing them through the API. As a result
+of this change, the backend API only sends the input question to the prediction model once and then waits for
+the predicted question to return as you can see in Figure~\ref*{fig:model_pattern2}.
+
+The result of the improving chat workflow is in Table~\ref*{tab:run_time_pattern2_table}.
+Total time in each computer is not change too much from the previous one and
+still do not have enough time to response to Dialogflow before timeout.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern2.png}}
+\caption{The second implementation of chat workflow}
+\label{fig:model_pattern2}
+\end{figure}
+
+\begin{table}[h]
+	\centering
+	\caption{Time usage for running the models from workflow in Figure~\ref*{fig:model_pattern2}}
+	\label{tab:run_time_pattern2_table}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|}
+			\hline
+			\backslashbox{Computer name}{Time usage to predict each model} &Total time \\ \hline
+			Natthawat's PC & 22.6 s \\ \hline
+			Nathaphop's PC & 13.3 s \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
 \subsubsection{The Second Approach for Solving Response Timeout in Dialogflow Problem}
 \subsubsection{The Last Approach for Solving Response Timeout in Dialogflow Problem}
 
