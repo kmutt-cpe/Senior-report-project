@@ -1804,8 +1804,13 @@ It is too high budget for developing automate build and run.
 \end{figure}
 
 \subsubsection{Solution of Budget Problem}
-% todo: Reduce scope.
+Our group decided to reduce the scope of automate train model with Apache Airflow because of high budget.
+But does not mean the model will not be able to update the data inside the prediction model.
+Because we have run another thread to query and tokenize all questions,
+then replace new tokenized question with old one to update the questions.
 
+So, the model can still automate update the question from knowledge management
+but cannot automate train the model as we planned.
 
 \section{System Architecture}
 % todo: Describe change of system arichtecture
