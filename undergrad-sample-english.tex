@@ -2018,7 +2018,12 @@ Due to the respone timeout in Dialogflow problem after integrate all subsytem to
 \subsubsection{Cosine Similarity Preprocessing}
 We preprocessing the cosine silmilarity like the Siamese Neural Network with MaLSTM Evaluation that we tokenize text and covert text into lists of sequence as in the section \nameref{preprocessing cosine}
 \subsubsection{Cosine Similarity Parameter Setting}
-We find the similarity of user questions and all questions in the database by using 'cosine similarity' function from sklearn.metrics.pairwise library
+We find the similarity by input user questions and all questions for each category in the database by using 'cosine similarity' function from sklearn.metrics.pairwise library to find the similar of both two inputs
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 5cm]{./img/ch4/ch4_result_cosine.png}}
+\caption{The example result by using cosine similarity function}\label{fig:The example result by using cosine similarity function}
+\end{figure}
+\pagebreak
 \subsubsection{Cosine Similarity Evaluation}
 \subsubsection{Cosine Similarity Example}
 
