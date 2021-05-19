@@ -1783,7 +1783,7 @@ still do not have enough time to response to Dialogflow before timeout.
 
 \section{Prediction Model Subsystem Results}
 % todo: Describe why we add logistic regression and cosine similarity and add some references to the problem. what are they used for?
-\subsection{Category  Result}
+\subsection{Category Model Result}
 Due to our model is used to find the similarity of the questions asked by the user with all the questions in the database and selected question which has the highest similarity then return the answer. This method has taken a long time. So we decided to create a category model, a regression model, to classify questions from the user first. Which category is this question? Then compare user questions with questions in categories that the model can predict only.
 \subsubsection{Category Model Preprocessing Data}
 \begin{figure}[!h]\centering
@@ -1792,7 +1792,19 @@ Due to our model is used to find the similarity of the questions asked by the us
 \end{figure}
 \pagebreak
 
-This is a FAQs of Computer Engineering questions which we gathering by ourself. Overall we have 177 questions we divided questions into 4 categories are Admission has 19 questions , FAQs has 36 questions, Enrollment has 40 questions and Curriculum has 82 questions then we use a deepcut to cut the word from the text we have read which is stored in a column called CPE questions. All data will be converted into a list of words in the CPE FAQs and change it to the bag of words (sparse matrix).
+This is a FAQs of Computer Engineering questions which we gathering by ourself. Overall we have 177 questions we divided questions into 4 categories are Admission{
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ การรับเข้านักศึกษา’ } has 19 questions , FAQs {
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ คำถามทั่วไป’ }has 36 questions, Enrollment {
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ ลงทะเบียนเรียน’ }has 40 questions and Curriculum {
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ หลักสูตร’ }has 82 questions then we use a deepcut to cut the word from the text we have read which is stored in a column called CPE questions. All data will be converted into a list of words in the CPE FAQs and change it to the bag of words (sparse matrix).
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_token_category.png}}
 \caption{The data after tokening}\label{fig:The data after tokening}
@@ -1827,18 +1839,27 @@ We got accuracy 89.28\% from Admission category, 82.15\% from FAQs category, 92.
 \end{figure}
 Each row is True label and each digit is Predicted label, we can see that most of mistakenly is economic curriculum category. 
 \subsubsection{Category Model Example}
-For testing, in the example we input qustions to find what categories of this input question. We expected our model can predict this input question is in Curriculum category 
+For testing, in the example we input qustions {
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ วิศวคอมพิวเตอร์มีหลักสูตรอะไรบ้าง’ }to find what categories of this input question. We expected our model can predict this input question is in Curriculum category  {
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ หลักสูตร } 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/example_category1.png}}
 \caption{The example input question for classifying category}\label{fig:The example input question for classifying category}
 \end{figure}
-The model return all the value how the input question similar for each category and the we choose the max value to be catogry of the input question
+The model return all the value that how the input question similar for each category and the we choose the max value to be catogry of the input question
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/example_category2.png}}
 \caption{The example input question result}\label{fig:The example input question result}
 \end{figure}
 \pagebreak
-The max category is Curriculum which match with our expected result. So from the results we can predict categories quite accurately. 
+The max category is Curriculum {
+\XeTeXlinebreaklocale "th_TH"	
+\thaifont 
+ ‘ หลักสูตร } which match with our expected result. So from the results we can predict categories quite accurately. 
 \subsection{Siamese Neural Network with MaLSTM Result}
 \subsubsection{Siamese Neural Network with MaLSTM Training}
 After preprocessing the data, we split the data into train, validate, and test data. Then separate the data into left inputs and right inputs, one for each side of MaLSTM. Then train the model with 100 epochs and use batch sizes 128. In addition to using early stops to prevent the model too overfitting and model checkpoint to save the model. Even our group set 100 epochs, but the model was trained only 17 epochs before stopping from early stop. Loss of training data is 0.4116 and loss of validation data is 0.4358. Also, accuracy of training data is 0.5487 and accuracy of validation data is 0.4358. Graphs below are the result from training.
