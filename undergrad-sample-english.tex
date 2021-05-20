@@ -1880,6 +1880,19 @@ to be the domain to connect with Dialogflow.
 	\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_home.png}}
 	\caption{Cloudflare homepage}\label{fig:Cloudflare homepage}
 \end{figure}
+\pagebreak
+
+\subsection{CI/CD}
+We have the CI/CD for the deployment the front-end and back-end application. We planned to use Kubernetes to deploy the appliction, but we use the github repository and GitHub provided the tools to deploy using GitHub Actions. It is easier to in copy file and run the command to the vitual machine and we didn't want to scale up right now so GitHub Actions is the good option to go and it can be run autaomatically and manually.
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width=14cm]{./img/ch4/ci-cd-be.png}}
+	\caption{CI/CD for backend}\label{fig:ci-cd-be}
+\end{figure}
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width=14cm]{./img/ch4/ci-cd-fe.png}}
+	\caption{CI/CD for frontend}\label{fig:ci-cd-fe}
+\end{figure}
 
 \pagebreak
 \section{Chatbot Subsystem Results}
@@ -1945,14 +1958,13 @@ The remaining of intent is used to fix timeout problems as we describe in sectio
 		\fbox{\includegraphics[width=12cm]{./img/ch4/Use case version 2.png}}
 		\caption{Use case of KMUTT CPE Chatbot}\label{fig:Use case of KMUTT CPE Chatbot version2}
 	\end{figure}
-	\begin{flushleft}
+	%todo รอแก้เนื้อหาในนี้แหละ
 		We update roles in the use case diagram because of Facebook app review need the indicate to check knowledge management website. So in order to for the Facebook reviewer to check and test the knowledge management then we created the viewer roles. The roles that created after update is Moderator and viewer.
 		
 		Root user is the first user in the system then create the admin roles to take care of the system.
 		Root and admin has the same privilage that can create read update delete every thing.
 		Moderator can create read update delete only FAQ, category and subcategory. and can't don anything with user.
 		Viewer can view everything, but not user.
-	\end{flushleft}
 \pagebreak
 	\subsection{Use Case narrative}
 	% todo: make the use case narrative relate to the use case diagram
