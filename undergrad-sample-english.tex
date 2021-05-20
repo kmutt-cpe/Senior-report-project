@@ -3353,7 +3353,43 @@ button at the right bottom of page (No.1 on Figure A.18)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \appendix{Backend API Document}
 \noindent{\large\bf Backend API Document} \\
-%todo: Add backend API document.
+
+\begin{table}[h]
+	\centering
+	\caption{API Document}
+	\label{tab:api_document}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|l|l|l|}
+		\hline
+		Method 	& API 						& Description 				& Body 											 & Authorize Required \\ \hline
+		POST	& /api/km/auth/login 		& Login to the system 		& \{``username": string, ``password": string\} 		 & No \\ \hline
+		POST	& /api/km/auth/logout 		& Logout from the system 	& None 											 & No \\ \hline
+		POST	& /api/km/auth 				& Check the auth token 		& \{``username": string, ``password": string\} 		 & No \\ \hline
+		GET		& /api/km/user 				& Get all user 				& 												 & No \\ \hline
+		GET		& /api/km/user/\{:id\} 		& Get user by Id 			& 												 & No \\ \hline
+		PATCH	& /api/km/user 				& Update the user 			& \{``id": string, ``name": string, ``role": string\} & Yes \\ \hline
+		POST	& /api/km/user 				& Create the user 			& \{``username": string, ``password": string, ``name": string, ``role": string\} & Yes \\ \hline
+		DELETE	& /api/km/user 				& Delete the user 			& \{``id": string\} 								& No \\ \hline
+		GET		& /api/km/category 			& Get all category 			& 												& No \\ \hline
+		GET		& /api/km/category/\{:id\} 	& Get category by Id 		& 												& No \\ \hline
+		PATCH	& /api/km/category 			& Update the category 		& \{``id": string, ``category": string\}			& Yes \\ \hline
+		POST	& /api/km/category 			& Create the category 		& \{``category": string\} 							& Yes \\ \hline
+		DELETE	& /api/km/category 			& Delete the category 		& \{``id": string\} 								& Yes \\ \hline
+		GET		& /api/km/subcategory 		& Get all subcategory 		& 												& No \\ \hline
+		GET		& /api/km/subcategory/\{:id\} & Get subcategory by Id 	& 												& No \\ \hline
+		PATCH	& /api/km/subcategory 		& Update the subcategory 	& \{``id": string, ``subcategory": string\}			& Yes \\ \hline
+		POST	& /api/km/subcategory 		& Create the subcategory 	& \{``subcategory": string, ``category": string\} 	& Yes \\ \hline
+		DELETE	& /api/km/subcategory 		& Delete the subcategory 	& \{``id": string\} 								& Yes \\ \hline
+		GET		& /api/km/faq 				& Get all faq 				& 												& No \\ \hline
+		GET		& /api/km/faq/\{:id\} 		& Get faq by Id 			& 												& No \\ \hline
+		PATCH	& /api/km/faq 				& Update the faq 			& \{``id": string, ``question": string, ``answer": string, ``subcategoryId": string, ``lastEditorId": string\}			 & Yes \\ \hline
+		POST	& /api/km/faq 				& Create the faq 			& \{``question": string, ``answer": string, ``subcategoryId": string, ``lastEditorId": string\}	& Yes \\ \hline
+		DELETE	& /api/km/faq 				& Delete the faq 			& \{``id": string\} 								& Yes \\ \hline
+		GET		& /api/km/prediction-model 	& Get all the predict task 	& 												& Yes \\ \hline
+		POST	& /api/km/prediction-model 	& Create the predict task 	& \{``inputQuestion": string\}						& Yes \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
 
 % Next, we show how $\mathrm{Var}\{X_n\}$ can be determined.  Let
 % $C_{\lambda}(l)$ be the autocovariance function of $\lambda_n$.  The
