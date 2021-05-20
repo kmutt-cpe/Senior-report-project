@@ -1884,22 +1884,25 @@ to be the domain to connect with Dialogflow.
 \pagebreak
 \section{Chatbot Subsystem Results}
 \subsection{Dialogflow}
-We set the webhook for backend API and connection between
-Facebook Messenger and Line chat in Dialogflow already.
-Line chat is not in our scope project but our group use Line chat to be the developer platform.
-As a result in Figure~\ref*{fig:line_example}, the Dialogflow can send the message from chat
-in to backend API and return the answer back successfully.
+In Dialogflow, we've already configured the webhook for the backend API
+and the connection between Facebook Messenger and Line chat.
+
+Line chat is not part of our scope project,
+but our group used it as the developer platform.
+As a result, as shown in Figure~\ref*{fig:line_example},
+the Dialogflow can send the question from chat to the backend API and successfully return the answer.
 
 \begin{figure}[!h]\centering
 	\fbox{\includegraphics[width=8cm]{./img/ch4/ch4_line_example.jpg}}
 	\caption{Dialogflow integration messenger}\label{fig:line_example}
 \end{figure}
-In Dialogflow, there are only 4 intents as you can see from Figure~\ref*{fig:Dialogflow intent}.
-There are 2 main important intents which are\begin{itemize}
+In Dialogflow, there are only four intents as you can see from Figure~\ref*{fig:Dialogflow intent}.
+But there are 2 main important intents which are\begin{itemize}
 	\item Default Welcome Intent - This intent is a greeting intent to reply greeting message.
 	\item Default Fallback Intent - This intent is a intent that send the question to the backend API and waiting for answer.
 \end{itemize}
-For the rest of intent is used for fix the timeout problems as we describe in section~\ref*{response_timeout_problem_section}.
+
+The remaining of intent is used to fix timeout problems as we describe in section~\ref*{response_timeout_problem_section}.
 
 \begin{figure}[!h]\centering
 	\fbox{\includegraphics[width=14cm]{./img/ch4/dialogflow_intent.png}}
