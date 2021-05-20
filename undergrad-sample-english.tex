@@ -430,7 +430,7 @@ computer recognizes that the image is the image of flag, etc.
 
 \subsection{Recurrent Neural network (RNN)}
 RNN is a class of artificial neural networks, but the difference is there is a connection between
-each state to form a memory called “Internal memory” \cite{understand_rnn}. Unlike the feedforward
+each state to form a memory called “internal memory” \cite{understand_rnn}. Unlike the feedforward
 neural network, RNN can use the internal memory to process the input that is sequential data.
 
 \begin{figure}[!h] \centering
@@ -441,9 +441,9 @@ neural network, RNN can use the internal memory to process the input that is seq
   \label{fig:example_rnn} % Used for ref in paragraph
 \end{figure}
 
-Figure~\ref*{fig:example_rnn} the method that RNN uses to create the internal memory is
-creating a loop within it. Figure A is activated, gets the input $X_t$ in the state of time,
-and output value to the hidden layer. The loop allows the information to be passed into the
+From Figure~\ref*{fig:example_rnn}, the method that RNN uses to create the internal memory is
+creating a loop within it. When the block A is activated, it will get the input $X_t$ in the state of time,
+and pass the output value to the hidden layer. The loop allows the information to be passed into the
 next state. Therefore, the first input will affect the output in the last state.
 
 \begin{figure}[!h] \centering
@@ -455,10 +455,10 @@ next state. Therefore, the first input will affect the output in the last state.
 \end{figure}
 
 Inside the RNN layer, the methods are different for each type as you can see from Figure
-\ref*{fig:standard_rnn}, standard RNN method. It takes the output value from the previous
-state and then combines with the present state’s input. After combining the result will go
+\ref*{fig:standard_rnn}, \nameref*{fig:standard_rnn}. It takes the output value from the previous
+state and then combines with the present state from input. After combining the result will go
 to the nonlinear function, in this case is Tanh. Then the output from this state will be
-used in the later state. The figure above can transform into the formula below.
+used in the next state. The figure above can transform into the formula below.
 
 \[h_t = \Phi(Wx_t + Uh_{t-1})\]
 \begin{align*}
@@ -470,7 +470,7 @@ used in the later state. The figure above can transform into the formula below.
 &h(t-1) = \text{A hidden layer or output value of the last state.}
 \end{align*}
 
-Because of this method, many consider RNN to use whenever they need context from the past,
+Because of this method, many people consider RNN to use whenever they need context from the past,
 such as speech recognition, video analysis, and music composition.
 
 \subsection{Long Short-Term Memory (LSTM)}
