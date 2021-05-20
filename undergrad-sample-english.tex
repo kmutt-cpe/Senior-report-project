@@ -2272,66 +2272,159 @@ For the rest of intent is used for fix the timeout problems as we describe in se
 	\subsection{Implementation}
 	% todo: Old UI design
 	\subsubsection{Landing Pages}
-	\begin{figure}[!h]\centering
-		\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_landing_page.png}}
-		\caption{Home page}\label{fig:Home_page_done}
-	\end{figure}
-	\begin{flushleft}
-		Figure~\ref*{fig:Home_page_done} is a home page design of website which contains about features and detail about knowledge management. In this page there are menu bar on the top right which consist of home page, contact page (Figure~\ref*{fig:Contact_page_done}), and login page (Figure~\ref*{fig:Login_page_done}).
-	\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_landing_page.png}}
+			\caption{Home page}\label{fig:Home_page_done}
+		\end{figure}
+		\begin{flushleft}
+			Figure~\ref*{fig:Home_page_done} is a home page design of website which contains about features and detail about knowledge management. In this page there are menu bar on the top right which consist of home page, contact page (Figure~\ref*{fig:Contact_page_done}), and login page (Figure~\ref*{fig:Login_page_done}).
+		\end{flushleft}
 
-	\begin{figure}[!h]\centering
-		\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_contact_page.png}}
-		\caption{Contact page}\label{fig:Contact_page_done}
-	\end{figure}
-	\begin{flushleft}
-		Figure~\ref*{fig:Contact_page_done} is contact page which contains about member in team and our advisor. In this page there are menu bar on the top right which same as the home page (Figure~\ref*{fig:Home_page_done})
-	\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_contact_page.png}}
+			\caption{Contact page}\label{fig:Contact_page_done}
+		\end{figure}
+		\begin{flushleft}
+			Figure~\ref*{fig:Contact_page_done} is contact page which contains about member in team and our advisor. In this page there are menu bar on the top right which same as the home page (Figure~\ref*{fig:Home_page_done})
+		\end{flushleft}
 
-	\begin{figure}[!h]\centering
-		\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_login_page.png}}
-		\caption{Login page}\label{fig:Login_page_done}
-	\end{figure}
-	\begin{flushleft}
-		Figure~\ref*{fig:Login_page_done} is login page which contains only box to login in the center of page. Users can input their username and password to login to the system. If username and password are valid, it will redirect to question management (Figure~\ref*{fig:Category selection page in question management_done}). On the other hand, if username or password is invalid, the website will display error message and tell that username or password is not correct.
-	\end{flushleft}
-	\begin{figure}[!h]\centering
-		\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_category_selection_page_in_question_management.png}}
-		\caption{Category selection page in question management}\label{fig:Category selection page in question management_done}
-	\end{figure}
-	\begin{flushleft}
-		The first page of question management is category selection (Figure 4.4). When user login to the knowledge management or click ‘questions’ on the top right, it will redirect to category selection page. In this page contains only card boxes of category. When user can click on the category card, it will redirect to question list page (Figure~\ref*{fig:Login_page_done}) of that category.
-	\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_login_page.png}}
+			\caption{Login page}\label{fig:Login_page_done}
+		\end{figure}
+		\begin{flushleft}
+			Figure~\ref*{fig:Login_page_done} is login page which contains only box to login in the center of page. Users can input their username and password to login to the system. If username and password are valid, it will redirect to question management (Figure~\ref*{fig:Category selection page in question management_done}). On the other hand, if username or password is invalid, the website will display error message and tell that username or password is not correct.
+		\end{flushleft}
+
+	\subsubsection{Question Management}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_category_selection_page_in_question_management.png}}
+			\caption{Category selection page in question management}\label{fig:Category_selection_page_in_question_management_done}
+		\end{figure}
+		\begin{flushleft}
+			The first page of question management is category selection (Figure \ref*{fig:Category_selection_page_in_question_management_done}). When user login to the knowledge management or click ‘questions’ on the top right, it will redirect to category selection page. In this page contains only card boxes of category. When user click on the category card, it will redirect to question list page (Figure~\ref*{fig:Question_list_page_of_each_category_in_question_management_done}) of that category.
+		\end{flushleft}
 \pagebreak
-	\begin{figure}[!h]\centering
-		\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_question_list_page_of_each_catrgory_in_question_management.png}}
-		\caption{Question list page of each category in question management.}\label{fig:Question list page of each category in question management_done}
-	\end{figure}
-	\begin{flushleft}
-		Figure~\ref*{fig:Question list page of each category in question management_done} is the question list page of each category. It displays the question list in pagination. User can select page number and select number of questions in each page at the bottom below (No.1 on figure \ref*{fig:Question list page of each category in question management_done}).
-	\end{flushleft}
-	\begin{flushleft}
-		User can click create new question (No.2 on figure \ref*{fig:Question list page of each category in question management_done}) to add the new question to knowledge management. When user click on that button, it will redirect to create question page (Figure \ref*{fig:Edit question page in question manageement_done}). Also, user can click on the row of question (No.3 on figure 4.5) to redirect to question information page (Figure 4.6) to read the information such as question, answer, last editor, etc. In addition, user can search the question by typing on search box (No.4 on Figure 4.5)
-	\end{flushleft}
-	\begin{flushleft}
-		Figure~\ref*{fig:Question list page of each category in question management_done} is the question list page of each category. It displays the question list in pagination. User can select page number and select number of questions in each page at the bottom below (No.1 on figure \ref*{fig:Question list page of each category in question management_done}).
-	\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_question_list_page_of_each_catrgory_in_question_management.png}}
+			\caption{Question list page of each category in question management.}\label{fig:Question_list_page_of_each_category_in_question_management_done}
+		\end{figure}
+		\begin{flushleft}
+			Figure~\ref*{fig:Question_list_page_of_each_category_in_question_management_done} is the question list page of each category. It displays the question list in pagination. User can select page number and select number of questions in each page at the bottom below (No.1 on figure \ref*{fig:Question_list_page_of_each_category_in_question_management_done}).
+		\end{flushleft}
+		\begin{flushleft}
+			User can click create new question (No.2 on figure \ref*{fig:Question_list_page_of_each_category_in_question_management_done}) to add the new question to knowledge management. When user click on that button, it will redirect to create question page (Figure \ref*{fig:Create_question_page_in_question_management_done}). Also, user can click on the row of question (No.3 on figure \ref*{fig:Question_list_page_of_each_category_in_question_management_done}) to redirect to question information page (Figure \ref*{fig:Question_information_page_in_question_management_done}) to read the information such as question, answer, last editor, etc. In addition, user can search the question by typing on search box (No.4 on Figure \ref*{fig:Question_list_page_of_each_category_in_question_management_done})
+		\end{flushleft}
+		\begin{flushleft}
+			Also, user can click the pencil in action column (No.5 on Figure \ref*{fig:Question_list_page_of_each_category_in_question_management_done}) to edit information of question. When user click, it will redirect to edit question page (Figure \ref*{fig:Edit_question_page_in_question_manageement_done}). On the other hand, if user want to delete that question, user can click the red trash can in action column (No.5 on figure \ref*{fig:Question_list_page_of_each_category_in_question_management_done}). When click the red trash can, it will pop up the confirmation box to let user confirm of delete action.
+		\end{flushleft}
+		\begin{flushleft}
+			And last thing, user can click back button (No.6 on Figure \ref*{fig:Question_list_page_of_each_category_in_question_management_done}) to go back to category selection page (Figure \ref*{fig:Category_selection_page_in_question_management_done}).
+		\end{flushleft}
 
-	\begin{figure}[!h]\centering
-		\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_question_information_page_in_question_management.png}}
-		\caption{Question information page in question management.}\label{fig:Question information page in question management_done}
-	\end{figure}
-	\begin{flushleft}
-		Figure~\ref*{fig:Question information page in question management_done} is the question information. This page contains information of question (No.1 on Figure \ref*{fig:Question information page in question management_done}) and action buttons (No.2 on Figure \ref*{fig::Question information page in question management_done}).
-	\end{flushleft}
-	\begin{flushleft}
-		Figure~\ref*{fig:Question information page in question management_done} is the question information. This page contains information of question (No.1 on Figure \ref*{fig:Question information page in question management_done}) and action buttons (No.2 on Figure \ref*{fig::Question information page in question management_done}).
-	\end{flushleft}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_question_information_page_in_question_management.png}}
+			\caption{Question information page in question management.}\label{fig:Question_information_page_in_question_management_done}
+		\end{figure}
+		\begin{flushleft}
+			Figure~\ref*{fig:Question_information_page_in_question_management_done} is the question information. This page contains information of question (No.1 on Figure \ref*{fig:Question_information_page_in_question_management_done}) and action buttons (No.2 on Figure \ref*{fig:Question_information_page_in_question_management_done}).
+		\end{flushleft}
+		\begin{flushleft}
+			Information of question consists of question, category, subcategory, last editor, last edited time, and answer. While action buttons consist 2 buttons which are edit button and delete button. When user clicks edit button, it will redirect to edit question page (Figure \ref*{fig:Edit_question_page_in_question_manageement_done}). Also, when user clicks the delete button, it will pop up the confirmation box to let user confirm of delete action and redirect back to question list page (Figure \ref*{fig:Question_list_page_of_each_category_in_question_management_done}). And user can click back button on the top left (No.3 on Figure \ref*{fig:Question_information_page_in_question_management_done}) to go back to question list page (Figure \ref*{fig:Question_list_page_of_each_category_in_question_management_done}).
+		\end{flushleft}
 
-	\begin{figure}[!h]\centering
-		\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_edit_question_page_in_question_manageement.png}}
-		\caption{Edit question page in question manageement.}\label{fig:Edit question page in question manageement_done}
-	\end{figure} 
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_create_question_page_in_question_management.png}}
+			\caption{Create question page in question management.}\label{fig:Create_question_page_in_question_management_done}
+		\end{figure}
+		\begin{flushleft}
+			Figure~\ref*{fig:Question_information_page_in_question_management_done} is the create question page in question management. This page contains only input box at the center (No.1 on Figure \ref*{fig:Question_information_page_in_question_management_done}) and action button at the right bottom of page (No.2 on Figure \ref*{fig:Question_information_page_in_question_management_done}).
+		\end{flushleft}
+		\begin{flushleft}
+			Users need to input the question and answer in the input boxes and select category and subcategory in the drop-down boxes. After that user can decide to click create button to create new question. Also, if user want to cancel all create process, user can click cancel button, it will pop up the confirmation box for cancel action and redirect to question list page (Figure \ref*{fig:Question_list_page_of_each_category_in_question_management_done})
+		\end{flushleft}
+		
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_edit_question_page_in_question_manageement.png}}
+			\caption{Edit question page in question manageement.}\label{fig:Edit_question_page_in_question_manageement_done}
+		\end{figure}
+		\begin{flushleft}
+			Figure ~\ref*{fig:Edit_question_page_in_question_manageement_done} is the edit question page in question management. This page is almost as same as create question page (Figure \ref*{fig:Create_question_page_in_question_management_done}) except there are the information of question that has created before. User can edit information and save new information to the system by clicking save button at the right bottom of page (No.1 on Figure \ref*{fig:Edit_question_page_in_question_manageement_done}).
+		\end{flushleft}
+
+	\subsubsection{Category Management}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_category_list_page_in_category_management.png}}
+			\caption{Category list page in category management.}\label{fig:Category_list_page_in_category_management_done}
+		\end{figure}
+		\begin{flushleft}
+			Figure~\ref*{fig:Category_list_page_in_category_management_done} is the category list page of category management. It displays the category list in pagination. User can select page number and select number of categories in each page at the bottom below (No.1 on figure \ref*{fig:Category_list_page_in_category_management_done}).
+		\end{flushleft}
+		\begin{flushleft}
+			User can click create new category (No.2 on figure \ref*{fig:Category_list_page_in_category_management_done}) to add the new category to knowledge management. When user click on that button, it will pop-up create category (Figure \ref*{fig:Create_category_pop_up_in_category_management_done}). Also, user can click on the row of category (No.3 on figure \ref*{fig:Category_list_page_in_category_management_done}) to redirect to subcategory list page (Figure \ref*{fig:Edit_category_pop_up_in_category_management_done}) to show the subcategory of the category. In addition, user can search the category by typing on search box (No.4 on Figure \ref*{fig:Category_list_page_in_category_management_done})
+		\end{flushleft}
+		\begin{flushleft}
+			Also, user can click the pencil in action column (No.5 on Figure \ref*{fig:Category_list_page_in_category_management_done}) to edit category name. When user click, it will pop up to edit category (Figure \ref*{fig:Edit_category_pop_up_in_category_management_done}). On the other hand, if user want to delete that category, user can click the red trash can in action column (No.5 on figure \ref*{fig:Category_list_page_in_category_management_done}). When click the red trash can, it will pop up the confirmation box to let user confirm of delete action.
+		\end{flushleft}
+
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_create_category_pop_up_in_category_management.png}}
+			\caption{Create category pop up in category management.}\label{fig:Create_category_pop_up_in_category_management_done}
+		\end{figure}
+		\begin{flushleft}
+			Figure \ref*{fig:Create_category_pop_up_in_category_management_done} is the create category pop-up in category management. This pop-up contains only input box at the center (No.1 on Figure \ref*{fig:Create_category_pop_up_in_category_management_done}) and create button at the middle bottom of page (No.2 on Figure \ref*{fig:Create_category_pop_up_in_category_management_done}) and cross button at the top right for close pop-up (No.3 on Figure \ref*{fig:Create_category_pop_up_in_category_management_done}).
+		\end{flushleft}
+		\begin{flushleft}
+			Users need to input the category in the input boxes. After that user can decide to click create button to create new category. Also, if user want to cancel create process, user can click cross button to close pop-up.
+		\end{flushleft}
+
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_edit_category_pop_up_in_category_management.png}}
+			\caption{Edit category pop up in category management}\label{fig:Edit_category_pop_up_in_category_management_done}
+		\end{figure}
+		\begin{flushleft}
+			Figure \ref*{fig:Edit_category_pop_up_in_category_management_done} is the edit category name pop-up in category management. This pop-up contains only input box at the center (No.1 on Figure \ref*{fig:Edit_category_pop_up_in_category_management_done}) and save button at the middle bottom of page (No.2 on Figure \ref*{fig:Edit_category_pop_up_in_category_management_done}) and cross button at the top right for close pop-up (No.3 on Figure \ref*{fig:Edit_category_pop_up_in_category_management_done}).
+		\end{flushleft}
+		\begin{flushleft}
+			Users need to input the category in the input boxes. After that user can decide to click save button to edit category name. Also, if user want to cancel edit process, user can click cross button to close pop-up.
+		\end{flushleft}
+
+		\subsubsection{Subcategory Management}
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_subcategory_list_page_in_category_management.jpg}}
+			\caption{Subcategory list page in category management.}\label{fig:Subcategory_list_page_in_category_management_done}
+		\end{figure}
+		\begin{flushleft}
+			Figure \ref*{fig:Subcategory_list_page_in_category_management_done} is the subcategory list page of category management. It displays the subcategory list in pagination. User can select page number and select number of subcategories in each page at the bottom below (No.1 on figure \ref*{fig:Subcategory_list_page_in_category_management_done}).
+		\end{flushleft}
+		\begin{flushleft}
+			User can click create new subcategory (No.2 on figure \ref*{fig:Subcategory_list_page_in_category_management_done}) to add the new subcategory to knowledge management. When user click on that button, it will pop-up create subcategory (Figure \ref*{fig:Create_subcategory_list_page_in_category_management_done}). In addition, user can search the category by typing on search box (No.3 on Figure \ref*{fig:Subcategory_list_page_in_category_management_done})
+		\end{flushleft}
+		\begin{flushleft}
+			Also, user can click the pencil in action column (No.4 on Figure \ref*{fig:Subcategory_list_page_in_category_management_done}) to edit subcategory name. When user click, it will pop up to edit subcategory (Figure \ref*{fig:Edit_subcategory_list_page_in_category_management_done}). On the other hand, if user want to delete that category, user can click the red trash can in action column (No.4 on figure \ref*{fig:Subcategory_list_page_in_category_management_done}). When click the red trash can, it will pop up the confirmation box to let user confirm of delete action.
+		\end{flushleft}
+
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_create_subcategory_list_page_in_category_management.png}}
+			\caption{Create subcategory list page in category management.}\label{fig:Create_subcategory_list_page_in_category_management_done}
+		\end{figure}
+		\begin{flushleft}
+			Figure \ref*{fig:Create_subcategory_list_page_in_category_management_done} is the create subcategory pop-up in category management. This pop-up contains only input box at the center (No.1 on Figure \ref*{fig:Create_subcategory_list_page_in_category_management_done}) and create button at the middle bottom of page (No.2 on Figure \ref*{fig:Create_subcategory_list_page_in_category_management_done}) and cross button at the top right for close pop-up (No.3 on Figure \ref*{fig:Create_subcategory_list_page_in_category_management_done}).
+		\end{flushleft}
+		\begin{flushleft}
+			Users need to input the subcategory in the input boxes. After that user can decide to click create button to create new subcategory. Also, if user want to cancel create process, user can click cross button to close pop-up.
+		\end{flushleft}
+\pagebreak
+		\begin{figure}[!h]\centering
+			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_edit_subcategory_list_page_in_category_management.png}}
+			\caption{Edit subcategory list page in category management}\label{fig:Edit_subcategory_list_page_in_category_management_done}
+		\end{figure}
+		\begin{flushleft}
+			Figure \ref*{fig:Edit_subcategory_list_page_in_category_management_done} is the edit subcategory name pop-up in category management. This pop-up contains only input box at the center (No.1 on Figure \ref*{fig:Edit_subcategory_list_page_in_category_management_done}) and save button at the middle bottom of page (No.2 on Figure \ref*{fig:Edit_subcategory_list_page_in_category_management_done}) and cross button at the top right for close pop-up (No.3 on Figure \ref*{fig:Edit_subcategory_list_page_in_category_management_done}).
+		\end{flushleft}
+		\begin{flushleft}
+			Users need to input the category in the input boxes. After that user can decide to click save button to edit category name. Also, if user want to cancel edit process, user can click cross button to close pop-up.
+		\end{flushleft}	
 \subsubsection{User Management} 
 	\begin{figure}[!h]\centering
 		\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_user_list_page_in_user_management.jpg}}
