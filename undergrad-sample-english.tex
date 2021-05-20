@@ -815,13 +815,13 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 
 \begin{description}
 	\item [Knowledge Management Subsystem]
-	\hfill \\The knowledge management subsystem is related to knowledge management for the Computer Engineering department, allowing the staff to manage the FAQ. Also, FAQ from knowledge management will be the data for building the model.\\
+	\hfill \\The knowledge management subsystem is related to the knowledge management for the Computer Engineering department, allowing the staff to manage the FAQ. Also, FAQ from knowledge management will be the data for building the model.\\
 	This subsystem contains only web applications based on a web browser for KMUTT CPE staff. Our group will build the knowledge management web application by using the TypeScript language and React library. The web application also read and save to the database through the GraphQL gateway to backend API.
 	\item [Prediction Model Subsystem]
 	\hfill \\The prediction model subsystem is related to the chatbot's prediction model and includes the automated build model.\\
-	This subsystem consists of Apache Airflow and Siamese Neural Network. Apache Airflow is used to automate build the Siamese model. It will query all questions and answers from the backend API and build the model in a schedule. While Siamese Neural Network input as a sequence of questions from the questioner, then pair with the FAQ in knowledge management and then return the related question.
+	This subsystem consists of Apache Airflow and Siamese neural network. Apache Airflow is used to automate build the Siamese model. It will query all questions and answers from the backend API and build the model in a schedule. While Siamese neural network input as a sequence of questions from the questioner, then pair with the FAQ in knowledge management and then return the related question.
 	\item [Chatbot Subsystem]
-	\hfill \\Chatbot subsystem is related to the managing queue of chat from many users, chat flow and intent message.\\
+	\hfill \\Chatbot subsystem is related to the managing queue of chat from many users, chat flow, and intent message.\\
 	This subsystem consists of Facebook Messenger, Dialogflow, and NLG Template. Facebook Messenger is a chat platform where people can ask their question, and this platform will be connected to Dialogflow. Dialogflow will manage the chat flow and chat queue from Facebook Messenger and intent to message that the message is a question or common message like greeting. If the message is common message, Dialogflow will automatically replied with a common answer. But if it is a question, Dialogflow will send the question to the backend API to get the answer back.
 	\item [Storage Subsystem]
 	\hfill \\The storage subsystem is related to managing data and providing API for each subsystem.\\
