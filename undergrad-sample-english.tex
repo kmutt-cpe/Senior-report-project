@@ -1622,7 +1622,7 @@ comes from Dialogflow.
 \end{figure}
 
 As you can see from Figure~\ref*{fig:dialogflow_deadline_exceed}
-The status of Dialogflow is 'Deadline Exceeded'. It occurs when the response timeout of a webhook is exceeded
+The status of Dialogflow is ``Deadline Exceeded". It occurs when the response timeout of a webhook is exceeded
 \cite{dialogflow_time_out}. Dialogflow limits timeout for all webhook response only 5 seconds (Except response for
 Google Assistant has limit timeout to 10 seconds) \cite{dialogflow_response_time}.
 
@@ -2665,8 +2665,8 @@ In addition, we would like to predict the categories of the questions. We have t
 \subsubsection{Category Model Training}
 We train Logistic Regression to predict to find question category of user question. We train all six models for each model will predict the questions for each category.
 \subsubsection{Category Model Evaluation}
-We want to see how accurate the question's category can predict or the model's accuracy by using 'cross val score' from the library called sci-kit learn.
-The 'cross val score' gets a predictor, which we use is Logistic Regression for the input X svd and output y for each column. Moreover we also use confusion metrix to evaluate our models.
+We want to see how accurate the question's category can predict or the model's accuracy by using ``cross val score" from the library called sci-kit learn.
+The ``cross val score" gets a predictor, which we use is Logistic Regression for the input X svd and output y for each column. Moreover we also use confusion metrix to evaluate our models.
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_model_result.png}}
@@ -2735,12 +2735,12 @@ The picture below shows an example result from playing with the model. The Input
 {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
-'วิศวะคอมเรียนหลักสูตรอะไรบ้างคะ' }
+"วิศวะคอมเรียนหลักสูตรอะไรบ้างคะ" }
 and
 {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- 'วิศวะคอมมีหลักสูตรอะไรบ้าง'. 
+"วิศวะคอมมีหลักสูตรอะไรบ้าง". 
 }Both questions are similar and our model can predict both questions are similar for 83.33\%.
 
 \begin{figure}[!h]\centering
@@ -2758,7 +2758,7 @@ Due to the respone timeout in Dialogflow problem after integrate all subsytem to
 We preprocessing the cosine silmilarity like the Siamese Neural Network with MaLSTM Evaluation that we tokenize
 text and covert text into lists of sequence as in the section \ref*{preprocessing cosine}~\nameref*{preprocessing cosine}
 \subsubsection{Cosine Similarity Parameter Setting}
-We find the similarity by input user questions and all questions for each category in the database by using 'cosine similarity' function from sklearn.metrics.pairwise library to find the similar of both two inputs
+We find the similarity by input user questions and all questions for each category in the database by using ``cosine similarity" function from sklearn.metrics.pairwise library to find the similar of both two inputs
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 5cm]{./img/ch4/ch4_result_cosine.png}}
 \caption{The example result by using cosine similarity function}\label{fig:The example result by using cosine similarity function}
@@ -2781,12 +2781,12 @@ The picture below shows an example result from using cosine similarity. The inpu
 {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
-'ผมลงวิชาแล้วตารางสอบซ้อนทำยังไงดีครับ' }
+"ผมลงวิชาแล้วตารางสอบซ้อนทำยังไงดีครับ"}
 and
 {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- 'ตารางสอบซ้อนต้องอย่างไร'. 
+"ตารางสอบซ้อนต้องอย่างไร". 
 }Both questions are similar around 61.23\%.
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_coco.png}}
@@ -2857,12 +2857,12 @@ The picture below shows an example result from playing with the model. The Input
 {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
-'วิศวะคอมเรียนหลักสูตรอะไรบ้างคะ' }
+"วิศวะคอมเรียนหลักสูตรอะไรบ้างคะ"}
 and
 {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- 'วิศวะคอมมีหลักสูตรอะไรบ้าง'. 
+"วิศวะคอมมีหลักสูตรอะไรบ้าง". 
 }Both questions are similar and our model can predict both questions are similar for 83.33\%.
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_7.png}}
@@ -2891,12 +2891,12 @@ The picture below shows an example result from using cosine similarity. The inpu
 {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
-'วิศวะคอมเรียนหลักสูตรอะไรบ้างคะ' }
+"วิศวะคอมเรียนหลักสูตรอะไรบ้างคะ"}
 and
 {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- 'วิศวะคอมมีหลักสูตรอะไรบ้าง'. 
+"วิศวะคอมมีหลักสูตรอะไรบ้าง". 
 }Both questions are similar around 85.73\%.
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_cococo.png}}
