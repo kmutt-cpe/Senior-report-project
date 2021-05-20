@@ -1305,6 +1305,7 @@ Figure~\ref*{fig:Sequence diagram of automate building and deploy model} illustr
 \end{figure}
 
 \section{Database Schema}
+\label{ch2_database_schema}
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/Database Schema.jpg}
 	\caption{ER Diagram illustrates database schema.}\label{fig:ER Diagram illustrates database schema}
@@ -1414,9 +1415,9 @@ deletedAt       & Datetime & Used soft delete method   to be able to recover the
 Attribute         & Type     & Description                                                                                                 \\
 \rowcolor[HTML]{DEEAF6} 
 id (PK)           & Varchar  & Id of predict\_task table                                                                                   \\
-inputQuestion     & Varchar  & Subcategory of question                                                                                     \\
+inputQuestion     & Varchar  & Question that get from chat                                                                            \\
 \rowcolor[HTML]{DEEAF6} 
-predictedQuestion & Varchar  & Category of subcategory                                                                                     \\
+predictedQuestion & Varchar  & Question that the model predict                                                                             \\
 inputTime         & Datetime & Input time that the   question message go to compare in the prediction model                                \\
 \rowcolor[HTML]{DEEAF6} 
 outputTime        & Datetime & Output time from the prediction model                                                                       \\
@@ -2313,11 +2314,6 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 		\item Admin can see the updated list of users
 	\end{enumerate}
 
-	\subsection{User Interface Design}
-	\begin{flushleft}
-		It is in the appendix
-	\end{flushleft}
-
 	\subsection{Implementation}
 	% todo: Old UI design
 	\subsubsection{Landing Pages}
@@ -2415,35 +2411,140 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 	\end{adjustbox}
 	\end{table}
 
-
+\pagebreak
 \section{Storage Subsystem Results}
-For storage subsystem, we have already prepared the environment and dependency and implemented the restful API and graphQL for all subsystems. Now our system can create, update, delete, and query category, subcategory, users, and FAQs.
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_2.png}}
-\caption{GraphQL query FAQs by ID category from backend API}\label{fig:GraphQL query FAQs category from backend API}
-\end{figure}
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_GetFAQ.jpg}}
-\caption{GraphQL query FAQs from backend API}\label{fig:GraphQL query FAQs from backend API}
-\end{figure}
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 14cm]{./img/ch4/chap4_get.jpg}}
-\caption{The result from Rest API by using GET Method to query category}\label{fig:The result from Rest API by using GET Method to query category}
-\end{figure}
+For the storage subsystem, we have implemented and already deployed the backend API to the environment.
+The backend API provide API for all subsystem to connect and integrate all subsystem together such as
+chatbot subsystem to send the message from Dialoflow to keep in database and send question to predict,
+or prediction model subsystem to create predict task and play with the model.
+Also, we provided the GraphQL server to connect with the knowledge management website.
+
 \subsection{Database}
-% todo: Add database table
+We have designed the database schema in the section~\ref*{ch2_database_schema}~\nameref*{ch2_database_schema}.
+But after implementation, there are some schema in database that we have updated which are
+faq, predict\_task, fb\_message.
+
 \begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 14cm]{./img/ch4/Database Schema.png}}
+\fbox{\includegraphics[width= 14cm]{./img/ch4/update_db_schema.jpg}}
 \caption{ER Diagram illustrates database schema.
 }\label{fig:ER Diagram illustrates database schema in result.}
 \end{figure}
+
+\pagebreak
+\textbf{faq} - Frequently asked question that admin create through the knowledge management system.
+\begin{table}[ht]
+	\caption{FAQ entity description table.}
+	\label{tab:FAQ entity description table.}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{llp{0.5\linewidth}l}
+\rowcolor[HTML]{5B9BD5} 
+Attribute          & Type     & Description                                                                                                   \\
+\rowcolor[HTML]{DEEAF6} 
+id (PK)            & Varchar  & Id of faq table                                                                                               \\
+question           & Longtext  & Frequently asked   question                                                                                   \\
+\rowcolor[HTML]{DEEAF6} 
+answer             & Longtext  & Answer of the question                                                                                        \\
+lastEditorId (FK)  & Varchar  & Name of the account                                                                                        \\
+\rowcolor[HTML]{DEEAF6} 
+updatedDate		   & Datetime & Updated date of the frequently asked question 																\\
+subcategoryId (FK) & Varchar  & Subcategory of the question. Also, use this subcategory id to track   the category.                           \\
+\rowcolor[HTML]{DEEAF6} 
+createdAt          & Datetime & Created time of the row   data                                                                                \\
+updatedAt          & Datetime & Updated time of the row data                                                                                  \\
+\rowcolor[HTML]{DEEAF6} 
+deletedAt          & Datetime & Used soft delete method   to be able to recover the data. This column used to keep the deleted time of data
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\textbf{predict\_task} - Message that going to predict in prediction model. Used to keep log of question message and predict task.
+\begin{table}[ht]
+	\caption{Prediction model entity description table.}
+	\label{tab:Prediction model entity description table.}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{llp{0.6\linewidth}l}
+\rowcolor[HTML]{5B9BD5} 
+Attribute         & Type     & Description                                                                                                 \\
+\rowcolor[HTML]{DEEAF6} 
+id (PK)           & Varchar  & Id of predict\_task table                                                                                   \\
+inputQuestion     & Longtext  & Subcategory of question                                                                                     \\
+\rowcolor[HTML]{DEEAF6} 
+predictedQuestion & Longtext  & Question that predict from prediction model																	\\
+predictedCategory & Longtext  & Category that predict from prediction model                   												\\
+\rowcolor[HTML]{DEEAF6} 
+predictedQuestionId & Varchar  & Entity id of question that predict from prediction model													\\
+inputTimeQuestion      & Datetime & Time that input the question into prediction model							                                \\
+\rowcolor[HTML]{DEEAF6} 
+outputTimeQuestion      & Datetime & Time that output from the prediction model							                                \\
+inputTimeCategory      & Datetime & Time that input the question into category model (deprecated)							               \\
+\rowcolor[HTML]{DEEAF6} 
+outputTimeCategory      & Datetime & Time that output from the category model (deprecated)							               			\\
+status            & Enum     & Status of the task,   ‘NEW’, ‘IN\_PROCESS’, ‘SUCCESS’, ‘FAILED\_QUESTION’, ‘CANNOT\_FIND\_QUESTION’.        \\
+\rowcolor[HTML]{DEEAF6} 
+predictedAnswer  & Longtext & Answer that the we get after predict	\\
+questionAccuracy & Float & Accuracy of question after predict \\
+\rowcolor[HTML]{DEEAF6} 
+categoryAccuracy & Float & Accuracy of category after predict	\\
+createdAt         & Datetime & Created time of the row data                                                                                \\
+\rowcolor[HTML]{DEEAF6} 
+updatedAt         & Datetime & Updated time of the row data                                                                              \\
+deletedAt         & Datetime & Used soft delete method to be able to recover the data. This column   used to keep the deleted time of data
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\pagebreak
+\textbf{chat\_message} - Change from fb\_message to chat\_message. Keep the request log from Dialogflow.
+\begin{table}[ht]
+	\caption{Facebook webhook entity prediction table.}
+	\label{tab:Facebook webhook entity prediction table.}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{llp{0.6\linewidth}l}
+\rowcolor[HTML]{5B9BD5} 
+Attribute & Type     & Description                                                                                                 \\
+id (PK)   & Varchar  & Id of subcategory table                                                                                     \\
+\rowcolor[HTML]{DEEAF6} 
+responseId   & Varchar  & Response id from Dialogflow                                                                                   \\
+queryResult   & JSON  & Query result from Dialogflow                                                                                   \\
+\rowcolor[HTML]{DEEAF6} 
+originalDetectIntentRequest   & JSON  & original detect intent request from Dialogflow                                                                                   \\
+session   & Varchar  & session from Dialogflow                                                                                   \\
+\rowcolor[HTML]{DEEAF6} 
+createdAt & Datetime & Created time of the row data                                                                                \\
+updatedAt & Datetime & Updated time of the row   data                                                                              \\
+\rowcolor[HTML]{DEEAF6} 
+deletedAt & Datetime & Used soft delete method to be able to recover the data. This column   used to keep the deleted time of data
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\pagebreak
 \subsection{Example of Implementation}
-% todo: Add some example of implementation e.g. api, graphql
-% !Ask ajarn that should input api document or not?
+The Figure~\ref*{fig:GraphQL query FAQs category from backend API},
+Figure~\ref*{fig:GraphQL query FAQs from backend API},
+and Figure~\ref*{fig:The result from Rest API by using GET Method to query category}
+are example of the storage subsystem.
 
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_2.png}}
+\caption{GraphQL query FAQs by ID category from backend API}
+\label{fig:GraphQL query FAQs category from backend API}
+\end{figure}
 
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_GetFAQ.jpg}}
+\caption{GraphQL query FAQs from backend API}
+\label{fig:GraphQL query FAQs from backend API}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 14cm]{./img/ch4/chap4_get.jpg}}
+\caption{The result from Rest API by using GET Method to query category
+}\label{fig:The result from Rest API by using GET Method to query category}
+\end{figure}
+
+\pagebreak
 \section{Prediction Model Subsystem Results}
-% todo: Describe why we add logistic regression and cosine similarity and add some references to the problem. what are they used for?
 \subsection{Category Model Result}
 Due to our model is used to find the similarity of the questions asked by the user with all the questions in the database and selected question which has the highest similarity then return the answer. This method has taken a long time. So we decided to create a category model, a regression model, to classify questions from the user first. Which category is this question? Then compare user questions with questions in categories that the model can predict only.
 \subsubsection{Category Model Preprocessing Data}
