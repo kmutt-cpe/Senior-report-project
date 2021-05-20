@@ -1558,15 +1558,15 @@ To evaluate prediction model base on different criteria for example accuracy and
 
 \section{Problems}
 \label{ch4_problem}
-Before we get into the details of our project's outcomes, let us first go through some of the problems
-we encountered while integrating subsystem together. Because the results have changed a lot from our
-plan and it could make you confused if not understand the problem and how we solve it. There are 3 major
-problems that we want to describe first which are the performance problem, response time out in Dialogflow
-problem, and budget problem.
+Before deep down into the details of project's outcomes, let go through some of the problems
+that our group encountered while integrating subsystem together. Because the results have changed a lot from our
+plan and it could make the confusion if not understand the problem and how we solve it. There are 3 major
+problems which are the performance problem, response time out in Dialogflow problem, and budget problem.
+
 \subsection{Performance Problem}
-This problem was occurred when we want to integrate the system together. Initially, we decided to
-collect input questions from the chatbot and send it along with all questions to the prediction model,
-which would then predict the question, as you can see from the Figure~\ref*{fig:chat_plan_1}.
+This problem was occurred when we wanted to integrate the system together. Initially, we decided to
+get input questions from the chatbot and send it along with all questions to the prediction model
+as you can see from the Figure~\ref*{fig:chat_plan_1}.
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_plan1.png}}
@@ -1585,14 +1585,14 @@ Figure~\ref*{fig:chat_plan_2}.
 \label{fig:chat_plan_2}
 \end{figure}
 
-However, if we use the Dialogflow intent feature, users or KMUTT CPE staff must add a new intent
-if there is a new category of question in knowledge management, and we must implement the backend
+However, if we used the Dialogflow intent feature, users or KMUTT CPE staff must add a new intent
+when there is a new category of question in knowledge management, and we must implement the backend
 API to handle new Dialogflow intent. This method is too cumbersome.
 
 \subsubsection{Solution of Performance Problem}
 So, we solved this problem by creating logistic regression model, which we called it category model,
-to predict the category of question to get questions in that category before send to Siamese neural
-network model as you can see from the Figure~\ref*{fig:model_pattern1}. Then after backend API get the
+to predict the category of question. Then get questions in that category before send to Siamese neural
+network model as you can see from the Figure~\ref*{fig:model_pattern1}. After backend API get the
 predicted question, backend API will query question and answer from knowledge management before
 return answer back to chatbot.
 
@@ -1604,9 +1604,9 @@ return answer back to chatbot.
 
 \subsection{Response Timeout in Dialogflow Problem}
 \label{response_timeout_problem_section}
-After integrate all subsystem together, we want to know that our system work properly or not.
-So, to test the system, we asked a question in chat and waited for an answer response. But does not have
-any message reply back. We thoroughly examined the entire system until we determined that the issue
+After integrated all subsystem together, our group wanted to know that our system work properly or not.
+So, to test the system, we asked a question in chat and waited for an answer response. But did not have
+any message reply back. We throughly examined the entire system until we determined that the issue
 comes from Dialogflow.
 
 \begin{figure}[!h]\centering
@@ -1620,7 +1620,7 @@ The status of Dialogflow is ``Deadline Exceeded". It occurs when the response ti
 \cite{dialogflow_time_out}. Dialogflow limits timeout for all webhook response only 5 seconds (Except response for
 Google Assistant has limit timeout to 10 seconds) \cite{dialogflow_response_time}.
 
-First, we try to solve the problem by changing to a better computer to run the model.
+First, we tried to solve the problem by changing to a better computer to run the model.
 We tested the model on 2 different computers: Natthawat's PC and Nathaphop's PC.
 Spec of each computer is in Table~\ref*{tab:computer_list}.
 
@@ -1658,29 +1658,29 @@ than timeout response of Dialogflow.
 	\end{adjustbox}
 \end{table}
 
-After that we want to find out which parts of code in Siamese neural network take a long
-time to implement. We divide our code and examine the time usage of each line and we
+After that we wanted to find out which parts of code in Siamese neural network took a long
+time to implement. We divided our code and examined the time usage of each line and we
 discovered that the most time-consuming parts of the code are the time to tokenize the
 questions and the time to predict.
 
-From our record Natthawat's PC use 7.13 seconds to tokenize the word and 23 seconds to predict.
-Nathaphop's PC use 2.33 seconds to tokenize the word and 8.26 seconds to predict.
-Time usage of the rest of code is in nanoseconds unit, so it won't take long to implement.
+From our record, Natthawat's PC used 7.13 seconds to tokenize the word and 23 seconds to predict.
+Nathaphop's PC used 2.33 seconds to tokenize the word and 8.26 seconds to predict.
+Time usage of the rest of code is in nanoseconds unit, so it will not take long time to implement.
 
 \subsubsection{The First Approach for Solving Response Timeout in Dialogflow Problem}
-The first approach that we try to solve this problem is to increase the timeout of Dialogflow
-and decrease transmitted time. We are going to increase timeout of Dialogflow by using
+The first approach that we tried to solve this problem is to increase the timeout of Dialogflow
+and decrease transmitted time. We will increase timeout of Dialogflow by using
 custom event in Dialogflow and decrease transmitted time by improving the chat workflow.
 
-According to our information, some people solve timeout response
+According to our information, some people solved timeout response
 by returning the custom event in Dialogflow when it almost reaches the timeout response and
 creating a new intent in Dialogflow that will trigger when custom event is invoked from webhook API.
 This new intent will call back to the webhook API again, which is called follow up event, to get more timeout
 before return the message response back \cite{extend_webhook_intent}.
 Multiple follow up event can extend more timeout, but can have maximum 3 follow up event \cite{changing_intent_webhook}.
-We apply this method to our project to increase the maximum connection time to 10 seconds.
+We applied this method to our project to increase the maximum connection time to 10 seconds.
 
-Next, we try to improve chat workflow by integrating the category model and the Siamese neural network and
+Next, we tried to improve chat workflow by integrating the category model and the Siamese neural network, and
 providing the prediction model to contain all questions instead of passing them through the API. As a result
 of this change, the backend API only sends the input question to the prediction model once and then waits for
 the predicted question to return as you can see in Figure~\ref*{fig:model_pattern2}. And the result of the
@@ -1710,11 +1710,11 @@ still cannot response the answer to Dialogflow before timeout.
 
 \subsubsection{The Second Approach for Solving Response Timeout in Dialogflow Problem}
 From the previous approach, we just try to reduce transmitted time and increase timeout response of Dialogflow.
-But, still do not have enough time to response. So, we try another approach to address at the
+But, still did not have enough time to response. So, we tried another approach to address at the
 main problems as we mention in section~\ref*{response_timeout_problem_section}.
 We were finding the better computer to reduce run time and trying reduce time to tokenize.
 
-To use the better computer, we asked master student who take care A-Square lab's computer for running the model on computer
+To used the better computer, we asked master student who take care A-Square lab's computer for running the model on computer
 at A-Square lab. He created the new environment for us to running the model.
 The computer spec of A-Square lab is in Table~\ref*{tab:a_square_computer_spec}.
 
@@ -1731,10 +1731,10 @@ The computer spec of A-Square lab is in Table~\ref*{tab:a_square_computer_spec}.
 	\end{adjustbox}
 \end{table}
 
-After we can use the better performance computer, we also try reduce tokenize time.
+After we can used the better performance computer, we also tried to reduce tokenize time.
 Before the Siamese neural network model predict the similarity between questions,
 both questions need to tokenize first.
-We move the tokenization process of questions from knowledge management before put into the model
+We moved the tokenization process of questions from knowledge management before put into the model
 to when the questions are queried immediately as you can see from \ref*{fig:model_pattern3}
 
 \begin{figure}[!h]\centering
@@ -1746,7 +1746,7 @@ to when the questions are queried immediately as you can see from \ref*{fig:mode
 After that we have tested time performance of the new workflow on each computer,
 the result is in Table~\ref*{tab:run_time_pattern3_table}.
 Natthawat's PC is still unable to run before timeout.
-While Nathaphop's PC expectes to be able to run before reach the timeout.
+While Nathaphop's PC expected to be able to run before reach the timeout.
 However, after testing by running model on Nathaphop's PC and sending message through chat,
 we still cannot get any reply answer back. It could because some process inside backend API and transmitted data.
 For the time result of A-Square lab's computer, time usage to predict model is very faster than
@@ -1768,9 +1768,10 @@ After we have tested sending the question through chat, we got the answer from k
 	\end{adjustbox}
 \end{table}
 
+\pagebreak
 \subsubsection{The Last Approach for Solving Response Timeout in Dialogflow Problem}
-After we discussed timeout problem and show how we solve the problem with our advisor,
-he suggests that we can improve time performance by reducing max sequence range or using
+After we discussed timeout problem and show how we solve the problem with advisor,
+he suggested that we can improve time performance by reducing max sequence range or using
 cosine similarity model instead for better time performance.
 
 At first, we tried to reduce the max sequence which required to build the new model.
@@ -1785,20 +1786,20 @@ one, but recall and F1-Score is very low.
 \label{fig:reduce_sequence_result}
 \end{figure}
 
-From the result above, we have to reject the reducing max sequence method and
-try using the cosine similarity instead. You can see the result of cosine similarity
-at section~\ref*{ch4_cosine_similarity_result}
+From the result above, we had to reject the reducing max sequence method and
+tried using the cosine similarity instead. You can see the result of cosine similarity
+at section~\ref*{ch4_cosine_similarity_result}.
 
 \subsection{Budget Problem}
 From Chapter 3, we planned to use Apache Airflow to automate build and run on Google Cloud Platform.
 But after we checked the minimum price of platform that be able to run the model,
-the price is around 8385 Baht per month as you can see from Figure~\ref*{fig:model_pattern3}.
+the price is around 8385 Baht per month as you can see from Figure~\ref*{fig:min_gcp_price}.
 It is too high budget for developing automate build and run.
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width=14cm]{./img/ch4/problem/gcp_price.jpg}}
 \caption{The minimum price of Google Cloud Platform server with GPU}
-\label{fig:model_pattern3}
+\label{fig:min_gcp_price}
 \end{figure}
 
 \subsubsection{Solution of Budget Problem}
@@ -1807,7 +1808,7 @@ But does not mean the model will not be able to update the data inside the predi
 Because we have run another thread to query and tokenize all questions,
 then replace new tokenized question with old one to update the questions.
 
-So, the model can still automate update the question from knowledge management
+So, the model can still automated update the question from knowledge management
 but cannot automate train the model as we planned.
 
 \pagebreak
