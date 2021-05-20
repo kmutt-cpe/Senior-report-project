@@ -815,13 +815,13 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 
 \begin{description}
 	\item [Knowledge Management Subsystem]
-	\hfill \\The knowledge management subsystem is related to knowledge management for the Computer Engineering department, allowing the staff to manage the FAQ. Also, FAQ from knowledge management will be the data for building the model.\\
+	\hfill \\The knowledge management subsystem is related to the knowledge management for the Computer Engineering department, allowing the staff to manage the FAQ. Also, FAQ from knowledge management will be the data for building the model.\\
 	This subsystem contains only web applications based on a web browser for KMUTT CPE staff. Our group will build the knowledge management web application by using the TypeScript language and React library. The web application also read and save to the database through the GraphQL gateway to backend API.
 	\item [Prediction Model Subsystem]
 	\hfill \\The prediction model subsystem is related to the chatbot's prediction model and includes the automated build model.\\
-	This subsystem consists of Apache Airflow and Siamese Neural Network. Apache Airflow is used to automate build the Siamese model. It will query all questions and answers from the backend API and build the model in a schedule. While Siamese Neural Network input as a sequence of questions from the questioner, then pair with the FAQ in knowledge management and then return the related question.
+	This subsystem consists of Apache Airflow and Siamese neural network. Apache Airflow is used to automate build the Siamese model. It will query all questions and answers from the backend API and build the model in a schedule. While Siamese neural network input as a sequence of questions from the questioner, then pair with the FAQ in knowledge management and then return the related question.
 	\item [Chatbot Subsystem]
-	\hfill \\Chatbot subsystem is related to the managing queue of chat from many users, chat flow and intent message.\\
+	\hfill \\Chatbot subsystem is related to the managing queue of chat from many users, chat flow, and intent message.\\
 	This subsystem consists of Facebook Messenger, Dialogflow, and NLG Template. Facebook Messenger is a chat platform where people can ask their question, and this platform will be connected to Dialogflow. Dialogflow will manage the chat flow and chat queue from Facebook Messenger and intent to message that the message is a question or common message like greeting. If the message is common message, Dialogflow will automatically replied with a common answer. But if it is a question, Dialogflow will send the question to the backend API to get the answer back.
 	\item [Storage Subsystem]
 	\hfill \\The storage subsystem is related to managing data and providing API for each subsystem.\\
@@ -830,8 +830,8 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 \section{System Requirements}
 	\subsection{Knowledge Management Subsystem}
 	\begin{itemize}
-		\item Deploying new knowledge management for Computer Engineering department
-		\item KMUTT CPE Staff can create, update, read, and delete the FAQ in Knowledge management.
+		\item Deploying new knowledge management for computer engineering department
+		\item KMUTT CPE Staff can create, update, read, and delete the FAQ in knowledge management.
 		\item Knowledge management subsystem can save the data in the database through the storage subsystem.
 	\end{itemize}
 \emph{workload}
@@ -986,10 +986,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 	\item Admin clicks logout button      
 	\item Redirect to home page
 \end{enumerate}
-\underline{Postcondition}: 
-\begin{enumerate}[label={\arabic*.}]
-	\item Admin can access feature inside knowledge management
-\end{enumerate}
+\underline{Postcondition}: -
 
 \subsection{Edit Profile}
 \underline{Actor}: Admin\\
@@ -1004,7 +1001,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 \end{enumerate}
 \underline{Postcondition}: 
 \begin{enumerate}[label={\arabic*.}]
-	\item Admin can access feature inside knowledge management
+	\item Profile of admin is updated
 \end{enumerate}
 
 \subsection{Read category}
@@ -1133,7 +1130,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 \end{enumerate}
 \underline{Postcondition}: 
 \begin{enumerate}[label={\arabic*.}]
-	\item Admin can see the updated category list
+	\item Admin can see the updated subcategory list
 	\item Websites remove all of questions in that subcategory
 \end{enumerate}
 
@@ -1202,7 +1199,6 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 \underline{Postcondition}: 
 \begin{enumerate}[label={\arabic*.}]
 	\item Admin can see the updated question list
-	\item Websites contains new category
 \end{enumerate}
 
 \subsection{Read User}
@@ -1457,36 +1453,31 @@ deletedAt & Datetime & Used soft delete method to be able to recover the data. T
 \pagebreak
 
 \section{Data Management}
-\begin{flushleft}
-Due to the KMUTT CPE FAQ, Dataset had never existed before because the staff usually answer questions via the phone or answer by themself when someone came up to ask and via Facebook messenger that has not been recorded. So, we have to collect FAQ by ourselves, but the amount of data is too small and not enough to train the model. We tried to find another data set that is similar to the frequently asked questions. Our goal is to develop a model to detect text similarity between texts in the Thai language which means if we put the questions, the model can predict a similar question. So, we choose Pantip as a dataset because Pantip have a topic (Yellow color) and description (White color) related to the topic; that is why we choose Pantip as our data set.
-\end{flushleft}
+Due to the KMUTT CPE FAQ, dataset had never existed before because the staff usually answer questions via the phone or answer by themself when someone came up to ask and via Facebook Messenger that has not been recorded. So, we have to collect FAQ by ourselves, but the amount of data is too small and not enough to train the model. We tried to find another data set that is similar to the frequently asked questions. Our goal is to develop a model to detect text similarity between texts in the Thai language which means if we put the questions, the model can predict a similar question. So, we choose Pantip as a dataset because Pantip have a topic (Yellow color) and description (White color) related to the topic; that is why we choose Pantip as our data set.
 
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/Example Pantip Data.jpg}
-	\caption{Example Pantip Data}\label{fig:Example Pantip Data}
+	\caption{Example pantip data}\label{fig:Example Pantip Data}
 \end{figure}
 
-\begin{flushleft}
 Dataset: Use Selenium to gather all questions from Pantip and gathering FAQs from computer engineering by ourselves. (Selecting one tag from Pantip which is the university tag)
-\end{flushleft}
 
 \begin{itemize}
   \item id: The ID of the training set of a pair 
-  \item qid1, qid2: Unique ID of the question question1: Text for Question One
-  \item question2: Text for Question Two
-  \item is\_duplicate: 1 if question1 and question2 have the same meaning otherwise is 0
+  \item qid1, qid2: Unique ID of the question
+  \item question1: First question text
+  \item question2: Second question text
+  \item is\_duplicate: 1 if question1 and question2 have the same meaning. Otherwise, zero
 \end{itemize}
 
 \begin{figure}[!h]
-	\includegraphics[width=14cm]{img/ch3/Example Data from Pantip.jpg}
+	\includegraphics[width=14cm]{img/ch3/Example data from Pantip.jpg}
 	\caption{Example Data from Pantip}\label{fig:Example Data from Pantip}
 \end{figure}
 
-\begin{flushleft}
 In our project, we try to do the NLP process in Thai language by tokenizing a chunk of Thai text into desirable units and building our dictionary to train data from Pantip.\\
 \label{preprocessing cosine}
-Pre-processing data by trying to convert text it into lists of word indices or sequence. Then creating a function to remove specific characters and turn the word into embedding metric by word2vec a Thai vocabulary which is a dictionary that we build by ourselves and load by genism model where the keys are words (str) and values are the corresponding indices (a unique id as int).
-\end{flushleft}
+Pre-processing data by trying to convert text it into lists of word indices or sequence. Then creating a function to remove specific characters and turn the word into embedding metric by word2vec a Thai vocabulary which is a dictionary that we build by ourselves and load by Genism model where the keys are words (string) and values are the corresponding indices (a unique id as int).
 
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/After preprocessing data by word2vec.jpg}
@@ -1494,9 +1485,8 @@ Pre-processing data by trying to convert text it into lists of word indices or s
 \end{figure}
 
 \section{Design of key processing algorithms}
-\begin{flushleft}
-In the prediction model subsystem, we split our data into “left” and “right” inputs (one for each side of the MaLSTM) and Pad all the word number sequences with zeros. We also create a two thousand validation dataset to measure our model using the scikit learns train\_test\_split function. It can help to keeps the distribution of the label between the datasets by default.
-\end{flushleft}
+In the prediction model, we split our data into “left” and “right” inputs (one for each side of the MaLSTM) and pad all the word number sequences with zeros. We also create a two thousand validation dataset to measure our model using the Scikit learns train\_test\_split function. It can help to keeps the distribution of the label between the datasets by default.
+
 
 \pagebreak
 
@@ -1505,25 +1495,21 @@ In the prediction model subsystem, we split our data into “left” and “righ
 	\caption{The architecture of Siamese neural network with MaLSTM for learning similarity}\label{fig:The architecture of Siamese neural network with MaLSTM for learning similarity}
 \end{figure}
 
-\begin{flushleft}
 Two vectors hold the semantic meaning of each question and put them through the defined similarity function, since having an exponent of a negative the output. The prediction will return between 0 and 1. (1 refers to maximum similarity, and 0 refers to minimum similarity).\\
  Input to the network is zero-padded sequences of word indices. These inputs are vectors of fixed length, where the first zeros are being ignored, and the nonzero is indices that uniquely identify words. Those vectors are fed into the embedding layer. This layer looks up the corresponding embedding for each word and encapsulates all of them into a matrix. This matrix represents the given text as a series of embeddings.\\
 Prepare from the pre-processing process, which are two embedded matrices representing a candidate of two related questions and create the helper function for the similarity estimate of the LSTMs outputs. Then feed them into the LSTM, and the final state of the LSTM for each question is a 50-dimensional vector then, train the model with 25 epochs and use batch sizes 64. We trained the model to capture the semantic meaning of the question, and the optimizer that we choose is the Adadelta optimizer and uses gradient clipping to avoid the exploding gradient problem.
-\end{flushleft}
 
 \begin{figure}[!h]
-	\includegraphics[width=14cm]{img/ch3/Model Summary.jpg}
+	\includegraphics[width=14cm]{img/ch3/Model summary.jpg}
 	\caption{Model Summary}\label{fig:Model Summary}
 \end{figure}
 
 \pagebreak
 
-\section{Evaluation plans}
+\section{Evaluation Plans}
 \begin{itemize}
-  \item Overall requirements
-\begin{flushleft}
+  \item Overall requirements\\
 Our system can reply and answer the question from people who asked via Facebook Messenger automatically. In addition to satisfying score and comment from people who have used.
-\end{flushleft}
 
   \item Knowledge Management
 \begin{table}[h]
