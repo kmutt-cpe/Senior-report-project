@@ -2392,10 +2392,39 @@ by using Apache Airflow. But we have implemented code to let prediction model st
 question to predict from backend API autaomatically.
 
 \section{Future Works}
-\subsubsection{}
-\subsubsection{}
-\subsubsection{}
-\subsubsection{}
+\subsection{Using Siamese Neural Network}
+The problems of the better evaluation result of cosine similarity and time performance in Dialogflow,
+it makes us to use cosine similarity model instead of Siamese neural network model.
+
+From our research, Siamese neural network should be intepret the similarity between pair of questions
+better than cosine similarity. But from the evaluation results of both models, it differently from what we think.
+The evaluation result of Siamese neural network model is worse than the cosine simiarity model.
+The problem comes from not enough data to train the Siamese neural network.
+If we have more data to train the Siamese neural network, we could improve the performance of the model.
+
+As we describe the problem in section~\ref*{ch5_timeout_dialogflow}, there is timeout in Dialogflow problem.
+In the future, if we have the better resources to run the model faster and remove the constraint of time,
+we will be able to use the Siamese neural network model instead of cosine similarity.
+
+\subsection{Automated Build the model}
+We had decided to remove the automated build model from our planned in Chapter 2
+due to the high cost of using the Google Cloud Platform.
+However, if we have enough budget or a server with the same performance
+as what we used to build and train our model in the future,
+we might implement the automated build model.
+
+\subsection{Responsive Knowldge Management Website}
+Currently the knowledge management is not a responsive website and we have not plan to build the reponsive website.
+It could have the problem if user use website on the phone.
+So, we have to put the responsive website of the knowledge management to be future plan.
+
+\subsection{Ticket System}
+A ticket system is typically a system that stores issues or questions from users that have yet to be resolved
+and user can answer or solve the ticket through the ticket system.
+We can apply the ticket system to the knowledge management to store the question that model predict
+with low accuracy value, and let CPE staff answer in the ticket system instead.
+Furthermore, we could use the ticket system to easily get the data from user or
+automatically create the frequently asked question in knowledge management.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
