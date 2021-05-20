@@ -822,7 +822,7 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 	This subsystem consists of Facebook Messenger, Dialogflow, and NLG Template. Facebook Messenger is a chat platform where people can ask their question, and this platform will be connected to Dialogflow. Dialogflow will manage the chat flow and chat queue from Facebook Messenger and intent to message that the message is a question or common message like greeting. If the message is common message, Dialogflow will automatically replied with a common answer. But if it is a question, Dialogflow will send the question to the backend API to get the answer back.
 	\item [Storage Subsystem]
 	\hfill \\The storage subsystem is related to managing data and providing API for each subsystem.\\
-	Storage subsystem consists of a database and backend API. Our database is MySQL, and it keeps all data from each subsystem, either knowledge management subsystem or chatbot subsystem. But both subsystems need to save the data into the database through the backend API. The backend API provides the restful API and GraphQL for all subsystems to query, update, and delete data. Moreover, the backend API provides an API to get a question from Dialogflow and manage the question in the queue to send a question to the prediction model and return an answer from knowledge management.
+	Storage subsystem consists of a database and backend API. Our database is MySQL, and it keeps all data from each subsystem, either knowledge management subsystem or chatbot subsystem. But both subsystems need to save the data into the database through the backend API. The backend API provides the restful API and GraphQL for all subsystems to query, update, and delete data. Moreover, the back-end API provides an API to get a question from Dialogflow and manage the question in the queue to send a question to the prediction model and return an answer from knowledge management.
 \end{description}
 \section{System Requirements}
 	\subsection{Knowledge Management Subsystem}
@@ -1289,7 +1289,7 @@ Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE sta
 Figure~\ref*{fig:Sequence diagram workflow of chat message} illustrates the chat workflow starting from a question from questioner until reply answer in knowledge management back. When the questioner sends the message via Facebook Messenger, the message will be sent directly to Dialogflow.\\
 Dialogflow will manage the chat queue, save the meta of the questioner and message to the database, and then find the intended message to identify the message that it is a question or common message like a greeting message. If the message is common, Dialogflow will automatically be replied with a common message. But if it is a question, Dialogflow will send the message to the backend API to get the answer to reply.\\
 The backend API will manage the queue of questions from Dialogflow before sending it to the Siamese model. The Siamese model will pair the question from the questioner and all questions in FAQ, then return the related question to the Backend API.\\
-After the backend API gets a related question (or a predicted question), the backend API will query the raw answer from the database and return to the Dialogflow. Dialogflow will change answers into human speech with an NLP template before replying to the questioner.
+After the backend API gets a related question (or a predicted question), the back-end API will query the raw answer from the database and return to the Dialogflow. Dialogflow will change answers into human speech with an NLP template before replying to the questioner.
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/sequence diagram of chat message.jpg}
 	\caption{Sequence diagram workflow of chat message}\label{fig:Sequence diagram workflow of chat message}
@@ -1298,7 +1298,7 @@ After the backend API gets a related question (or a predicted question), the bac
 \pagebreak
 
 \subsection{The Sequence Diagram of Automate Build Model}
-Figure~\ref*{fig:Sequence diagram of automate building and deploy model} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the backend API, builds the model, and deploys on Google Cloud
+Figure~\ref*{fig:Sequence diagram of automate building and deploy model} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/sequence diagram of automate build model.jpg}
 	\caption{Sequence diagram of automate building and deploy model.}\label{fig:Sequence diagram of automate building and deploy model}
@@ -1845,28 +1845,18 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 
 \section{Server Integration Setup}
 	\subsection{Virtual Machine}
-		\begin{flushleft}
-			The virtual machine that use for the front-end website, backend-api to connect with dialogflow. We have changed the provider from Google Cloud Platform into Microsoft Azure using free credit of student account.
-		\end{flushleft}
+		The virtual machine that use for the front-end website, backend-api to connect with dialogflow using free credit of student account in the microsoft azure.
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/azure_vm.png}}
 			\caption{Virtual machine specification}\label{fig:Virtual machine specification}
 		\end{figure}
-	\pagebreak
-
-	\subsection{GitHub Actions}
-	\begin{flushleft}
-		GitHub Actions is automate all software workflows with world-class CI/CD. Build, test, and deploy code right from GitHub. Make code reviews, branch management, and issue triaging work the way I want.\cite{GitHub_Actions}
-		We use GitHub Actions instead of Kubernetes for the approach of automating deployments.
-	\end{flushleft}
-
+\pagebreak
 	\subsection{Domain Name}
 		This is the domain name from github education package with nameservers config in name.com for able to use in Cloudflare.
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/nameDotCom.png}}
 			\caption{Domain name of the server}\label{fig:Domain name of the server}
 		\end{figure}
-		\pagebreak	
 	\subsection{Cloudflare}
 		\begin{flushleft}
 		After config the nameservers in name.com, so in the Cloudflare DNS must be config.
@@ -1874,17 +1864,18 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_home.png}}
 			\caption{Cloudflare homepage}\label{fig:Cloudflare homepage}
-		\end{figure}	
+		\end{figure}
+\pagebreak		
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_dns.png}}
 			\caption{Cloudflare DNS page}\label{fig:Cloudflare DNS page}
 		\end{figure}
-		\pagebreak
 		In the ssl mode, Full strict mode is selected in this ssl
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_ssl_overview.png}}
 			\caption{Cloudflare ssl overview page}\label{fig:Cloudflare ssl overview page}
 		\end{figure}
+\pagebreak
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_ssl_origin.png}}
 			\caption{Cloudflare ssl origin page}\label{fig:Cloudflare ssl origin page}
@@ -2782,13 +2773,272 @@ automatically create the frequently asked question in knowledge management.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% Appendix %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \appendix{First appendix title}
-% \noindent{\large\bf Put appropriate topic here} \\
+ \appendix{User Interface Design}
+ \noindent{\large\bf User Interface Design (Prototype)} \\
 
-% This is where you put hardware circuit diagrams, detailed experimental data in tables or source codes, etc.. \\ \bigskip
+ This section is UI design of knowledge management web to draft the feature that should 
+contains in website and review the knowledge management contains all necessary features. \\ \bigskip
+ \indent{\large\bf Landing page} 
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/Artboard 1logo2.jpg}}
+\caption{Home page}\label{fig:Home page}
+\end{figure}\\
+Figure A.1 is a home page design of website which contains about features and detail 
+about knowledge management. In this page there are menu bar on the top right which consist 
+of home page, contact page (Figure A.2), and login page (Figure A.3). 
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/Artboard 1 copy 2logo2.jpg}}
+\caption{Cotract page}\label{fig:Cotract page}
+\end{figure}\\
+Figure A.2 is contact page which contains about member in team and our advisor. In 
+this page there are menu bar on the top right which same as the home page (Figure A.1).\\
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/Artboard 1 copylogo2.jpg}}
+\caption{Login page}\label{fig:Login page}
+\end{figure}\\
+Figure A.3 is login page which contains only box to login in the center of page. Users 
+can input their username and password to login to the system. If username and password are 
+valid, it will redirect to question management (Figure A.4). On the other hand, if username 
+or password is invalid, the website will display error message and tell that username or 
+password is not correct.
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/Artboard 1 copy 3logo2.jpg}}
+\caption{Category selection page in question management.
+}\label{fig:Category selection page in question management.
+}
+\end{figure}\\
+
+The first page of question management is category selection (Figure A.4). When user 
+login to the knowledge management or click ‘questions’ on the top right, it will redirect to 
+category selection page. In this page contains only card boxes of category. When user can 
+click on the category card, it will redirect to question list page (Figure A.5) of that category.
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/question list.jpg}}
+\caption{Question list page of each category in question management.
+}\label{fig:Question list page of each category in question management.
+}
+\end{figure}\\
+
+Figure A.5 is the question list page of each category. It displays the question list in 
+pagination. User can select page number and select number of questions in each page at the 
+bottom below (No.1 on figure A.5)
+
+User can click create new question (No.2 on figure A.5) to add the new question to 
+knowledge management. When user click on that button, it will redirect to create question 
+page (Figure 4.7). Also, user can click on the row of question (No.3 on figure A.5) to redirect 
+to question information page (Figure 4.6) to read the information such as question, answer, 
+last editor, etc. In addition, user can search the question by typing on search box (No.4 on 
+Figure A.5)
+Also, user can click the pencil in action column (No.5 on Figure 4.5) to edit 
+information of question. When user click, it will redirect to edit question page (Figure A.8). 
+On the other hand, if user want to delete that question, user can click the red trash can in 
+action column (No.5 on figure A.8). When click the red trash can, it will pop up the 
+confirmation box to let user confirm of delete action.
+And last thing, user can click back button (No.6 on Figure 4.5) to go back to category 
+selection page (Figure A.4)
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/question information.jpg}}
+\caption{Question information page in question management.
+}\label{fig:Question information page in question management.
+}
+\end{figure}
+
+Figure A.6 is the question information. This page contains information of question 
+(No.1 on Figure A.6) and action buttons (No.2 on Figure A.6).
+Information of question consists of question, category, subcategory, last editor, last 
+edited time, and answer. While action buttons consist 2 buttons which are edit button and 
+delete button. When user clicks edit button, it will redirect to edit question page (Figure A.8). 
+Also, when user clicks the delete button, it will pop up the confirmation box to let user 
+confirm of delete action and redirect back to question list page (Figure A.5). And user can 
+click back button on the top left (No.3 on Figure 4.6) to go back to question list page (Figure 
+A.5)
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/create question.jpg}}
+\caption{Create question page in question management.
+}\label{fig:Create question page in question management.
+}
+\end{figure}
+Figure A.7 is the create question page in question management. This page contains 
+only input box at the center (No.1 on Figure A.7) and action button at the right bottom of 
+page (No.2 on Figure A.7).
+Users need to input the question and answer in the input boxes and select category 
+and subcategory in the drop-down boxes. After that user can decide to click create button to 
+create new question. Also, if user want to cancel all create process, user can click cancel 
+button, it will pop up the confirmation box for cancel action and redirect to question list page 
+(Figure A.5)
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/edit question.jpg}}
+\caption{Edit question page in question management
+}\label{fig:Edit question page in question management
+}
+\end{figure}
+
+Figure A.8 is the edit question page in question management. This page is almost as 
+same as create question page (Figure A.7) except there are the information of question that 
+has create before. User can edit information and save new information to the system by 
+clicking save button at the right bottom of page (No.1 on Figure A.8)\\
+
+ \noindent{\large\bf Category Management} \\
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/category management.jpg}}
+\caption{Category list page in category management
+}\label{fig:Category list page in category management
+}
+\end{figure} \\
+Figure A.9 is the category list page of category management. It displays the category
+list in pagination. User can select page number and select number of categories in each page 
+at the bottom below (No.1 on figure A.9).
+User can click create new category (No.2 on figure A.9) to add the new category to 
+knowledge management. When user click on that button, it will pop-up create category
+(Figure A.10). Also, user can click on the row of category (No.3 on figure 4.9) to redirect to 
+subcategory list page (Figure A.11) to show the subcategory of the category. In addition, 
+user can search the category by typing on search box (No.4 on Figure A.9)
+Also, user can click the pencil in action column (No.5 on Figure A.9) to edit category
+name. When user click, it will pop up to edit category (Figure A.11). On the other hand, if 
+user want to delete that category, user can click the red trash can in action column (No.5 on 
+figure A.9). When click the red trash can, it will pop up the confirmation box to let user 
+confirm of delete action.\\
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/create cate.jpg}}
+\caption{Create category pop up in category management.
+}\label{fig:Create category pop up in category management.
+}
+\end{figure}
+
+Figure A.10 is the create category pop-up in category management. This pop-up
+contains only input box at the center (No.1 on Figure A.10) and create button at the middle 
+bottom of page (No.2 on Figure A.10) and cross button at the top right for close pop-up (No.3 
+on Figure A.10).
+Users need to input the category in the input boxes. After that user can decide to 
+click create button to create new category. Also, if user want to cancel create process, user 
+can click cross button to close pop-up \\
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/Edit cat.jpg}}
+\caption{Edit category pop-up in category management.
+}\label{fig:Edit category pop-up in category management.
+}
+\end{figure}
+
+Figure A.11 is the edit category name pop-up in category management. This pop-up 
+contains only input box at the center (No.1 on Figure A.11) and save button at the middle 
+bottom of page (No.2 on Figure A.11) and cross button at the top right for close pop-up (No.3
+on Figure A.11).
+Users need to input the category in the input boxes. After that user can decide to 
+click save button to edit category name. Also, if user want to cancel edit process, user can 
+click cross button to close pop-up.\\
+
+ \noindent{\large\bf Subcategory Management} 
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/Sub cat.jpg}}
+\caption{Subcategory list page in category management.
+}\label{fig:Subcategory list page in category management.
+}
+\end{figure} \\
+
+Figure A.12 is the subcategory list page of category management. It displays the 
+subcategory list in pagination. User can select page number and select number of 
+subcategories in each page at the bottom below (No.1 on figure A.12).
+User can click create new subcategory (No.2 on figure A.12) to add the new 
+subcategory to knowledge management. When user click on that button, it will pop-up create 
+subcategory (Figure A.13). In addition, user can search the category by typing on search box 
+(No.3 on Figure A.12)
+Also, user can click the pencil in action column (No.4 on Figure A.12) to edit 
+subcategory name. When user click, it will pop up to edit subcategory (Figure 4.14). On the 
+other hand, if user want to delete that category, user can click the red trash can in action 
+column (No.4 on figure A.12). When click the red trash can, it will pop up the confirmation 
+box to let user confirm of delete action. \\
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/create sub.jpg}}
+\caption{Create subcategory list page in category management.
+}\label{fig:Create subcategory list page in category management.
+}
+\end{figure} \\
+Figure A.13 is the create subcategory pop-up in category management. This pop-up 
+contains only input box at the center (No.1 on Figure A.13) and create button at the middle 
+bottom of page (No.2 on Figure 4.13) and cross button at the top right for close pop-up (No.3 
+on Figure A.13).
+Users need to input the subcategory in the input boxes. After that user can decide to 
+click create button to create new subcategory. Also, if user want to cancel create process, 
+user can click cross button to close pop-up. \\
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/edit sub na.jpg}}
+\caption{Edit subcategory list page in category management.
+}\label{fig:Edit subcategory list page in category management.
+}
+\end{figure} \\
+
+Figure A.14 is the edit subcategory name pop-up in category management. This pop-up contains only input box at the center (No.1 on Figure A.11) and save button at the middle 
+bottom of page (No.2 on Figure A.11) and cross button at the top right for close pop-up (No.3 
+on Figure A.14).
+Users need to input the category in the input boxes. After that user can decide to 
+click save button to edit category name. Also, if user want to cancel edit process, user can 
+click cross button to close pop-up.
 
 
+ \indent{\large\bf User Management} \\
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/user list.jpg}}
+\caption{User list page in user management.
+}\label{fig:User list page in user management.
+}
+\end{figure} \\
 
+Figure A.15 is the user list page of user management. It displays the user list in 
+pagination. User can select page number and select number of users in each page at the 
+bottom below (No.1 on figure A.15).
+User can click create new user (No.2 on figure A.15) to add the new user to 
+knowledge management. When user click on that button, it will redirect to create user page 
+(Figure A.16). Also, user can click on the row of user (No.3 on figure A.15) to redirect to 
+user information page (Figure A.17) to read the information such as role, username and 
+name. In addition, user can search the question by typing on search box (No.4 on Figure 
+A.15)
+Also, user can click the pencil in action column (No.5 on Figure A.15) to edit 
+information of user. When user click, it will redirect to edit user page (Figure A.18). On the 
+other hand, if user want to delete that user, user can click the red trash can in action column 
+(No.5 on figure A.15). When click the red trash can, it will pop up the confirmation box to 
+let user confirm of delete action. \\
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/create user.jpg}}
+\caption{Create user page in user management.
+}\label{fig:Create user page in user management.
+}
+\end{figure} \\
+
+Figure A.16 is the create user page in user management. This page contains only 
+input box at the center (No.1 on Figure A.7) and action button at the right bottom of page 
+(No.2 on Figure A.7).
+Users need to input the username, password, confirm password and name. After that 
+user can decide to click create button to create new question. Also, if user want to cancel all 
+create process, user can click cancel button, it will pop up the confirmation box for cancel 
+action and redirect to question list page (Figure 4.15) \\
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/user info.jpg}}
+\caption{User information page in user management.
+}\label{fig:User information page in user management.
+}
+\end{figure} \\
+
+Figure 4.17 is the user information. This page contains information of user (No.1 on 
+Figure 4.17) and action buttons (No.2 on Figure 4.17).
+Information of user consists of role, username and name. While action buttons 
+consist 2 buttons which are edit button and delete button. When user clicks edit button, it 
+will redirect to edit user page (Figure 4.18). Also, when user clicks the delete button, it will 
+pop up the confirmation box to let user confirm of delete action and redirect back to user list 
+page (Figure 4.15). And user can click back button on the top left (No.3 on Figure 4.17) to 
+go back to user list page (Figure 4.15). \\
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width= 12cm]{./img/UI Design/edit info.jpg}}
+\caption{Edit information page in user management.
+}\label{fig:Edit information page in user management.
+}
+\end{figure} \\
+
+Figure 4.18 is the edit user page in user management. This page is almost as same as 
+create user page (Figure 4.16) except there are the information of user that has create before. 
+User can edit user information and save new information to the system by clicking save 
+button at the right bottom of page (No.1 on Figure 4.18)
 % This appendix describes two static allocation methods for fGn (or fBm)
 % traffic. Here, $\lambda$ and $C$ are respectively the traffic arrival
 % rate and the service rate per dimensionless time step. Their unit are
