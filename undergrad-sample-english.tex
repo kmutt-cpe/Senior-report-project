@@ -1859,21 +1859,23 @@ front-end and backend API.
 
 \pagebreak
 \subsection{SSL Domain Name}
-We have to explained that we set the SSL domain name because
-Dialogflow required the SSL domain. So, we started from get
-the domain name from GitHub education package 
-with nameservers config as you can see from Figure~\ref*{fig:Domain name of the server}.
+We have to explain that we set the SSL domain name because Dialogflow required it.
+So, we started from getting the domain name from the GitHub education package with
+nameservers config as you can see from Figure~\ref*{fig:Domain name of the server}.
+
 \begin{figure}[!h]\centering
 	\fbox{\includegraphics[width=14cm]{./img/ch4/nameDotCom.png}}
 	\caption{Domain name of the server}\label{fig:Domain name of the server}
 \end{figure}
-Then after we get the domain name, we need to set SSL.
-We used Cloudflare to set SSL for our domain name as you can see from Figure~\ref*{fig:Cloudflare homepage}.
-After that we map SSL domain name to the Azure server for Dialogflow webhook.
 
-In Dialogflow, it required SSL domain name for connect webhook. %todo: find cite for SSL Domain
+After we have the domain name, we set up SSL with Cloudflare,
+as shown in Figure~\ref*{fig:Cloudflare homepage},
+and map the SSL domain name to the Azure server for the Dialogflow webhook.
+
+In Dialogflow, it required SSL domain name for connect webhook \cite{dialogflow_webhook_requirement}.
 So, we use Cloudflare to set SSL of the domain name that we derived
 to be the domain to connect with Dialogflow.
+
 \begin{figure}[!h]\centering
 	\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_home.png}}
 	\caption{Cloudflare homepage}\label{fig:Cloudflare homepage}
@@ -1882,22 +1884,25 @@ to be the domain to connect with Dialogflow.
 \pagebreak
 \section{Chatbot Subsystem Results}
 \subsection{Dialogflow}
-We set the webhook for backend API and connection between
-Facebook Messenger and Line chat in Dialogflow already.
-Line chat is not in our scope project but our group use Line chat to be the developer platform.
-As a result in Figure~\ref*{fig:line_example}, the Dialogflow can send the message from chat
-in to backend API and return the answer back successfully.
+In Dialogflow, we've already configured the webhook for the backend API
+and the connection between Facebook Messenger and Line chat.
+
+Line chat is not part of our scope project,
+but our group used it as the developer platform.
+As a result, as shown in Figure~\ref*{fig:line_example},
+the Dialogflow can send the question from chat to the backend API and successfully return the answer.
 
 \begin{figure}[!h]\centering
 	\fbox{\includegraphics[width=8cm]{./img/ch4/ch4_line_example.jpg}}
 	\caption{Dialogflow integration messenger}\label{fig:line_example}
 \end{figure}
-In Dialogflow, there are only 4 intents as you can see from Figure~\ref*{fig:Dialogflow intent}.
-There are 2 main important intents which are\begin{itemize}
+In Dialogflow, there are only four intents as you can see from Figure~\ref*{fig:Dialogflow intent}.
+But there are 2 main important intents which are\begin{itemize}
 	\item Default Welcome Intent - This intent is a greeting intent to reply greeting message.
 	\item Default Fallback Intent - This intent is a intent that send the question to the backend API and waiting for answer.
 \end{itemize}
-For the rest of intent is used for fix the timeout problems as we describe in section~\ref*{response_timeout_problem_section}.
+
+The remaining of intent is used to fix timeout problems as we describe in section~\ref*{response_timeout_problem_section}.
 
 \begin{figure}[!h]\centering
 	\fbox{\includegraphics[width=14cm]{./img/ch4/dialogflow_intent.png}}
@@ -2270,7 +2275,10 @@ For the rest of intent is used for fix the timeout problems as we describe in se
 	\end{enumerate}
 
 	\subsection{Implementation}
-	% todo: Old UI design
+	This section is the implementation of the knowledge management website.
+	For the user interface design that have designed in the first semester,
+	we have put it in the Appendix A.
+
 	\subsubsection{Landing Pages}
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_landing_page.png}}
@@ -2491,8 +2499,8 @@ button at the right bottom of page (No.1 on Figure \ref*{fig:ui_edit_information
 
 \pagebreak
 \section{Storage Subsystem Results}
-%todo นายพูดถึงbackend api มากกว่าพูดถึงstorage แล้ว
-For the storage subsystem, we have implemented and already deployed the backend API to the environment.
+\subsection{Backend API}
+We have already implemented and deployed the backend API to the environment.
 The backend API provide API for all subsystem to connect and integrate all subsystem together such as
 chatbot subsystem to send the message from Dialoflow to keep in database and send question to predict,
 or prediction model subsystem to create predict task and play with the model.
