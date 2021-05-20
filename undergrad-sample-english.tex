@@ -2370,12 +2370,26 @@ So, we are going to summarize our problems and how we solved them,
 as well as which features or problems are the future works of our project.
 
 \section{Problems and Solutions}
-\subsubsection{}
-\subsubsection{}
-\subsubsection{}
-\subsubsection{}
+\subsection{Performance Problem}
+This problems we realized when we were going to integrate the subsystem together.
+The time performance to predict question from user and all question from knowledge management
+will take a long time. So, we solve tihs problem by create the Logistic Regression model,
+which we called category model, to classify the question and get only questions in that
+category to predict instead of every questions in knowledge management
 
+\subsection{Timeout in Dialogflow}
+\label{ch5_timeout_dialogflow}
+After integrated the subsystem together and tested by sending the question through chat.
+It should replied the answer from knowledge management back.
+But it was not have any answer reply back. This problem came from timeout in Dialogflow.
+We solve this problem by adding more timeout with the event in Dialogflow, improving the
+chat workflow, using better computer,
+and changing from Siamese neural network model to cosine similarity instead.
 
+\subsection{High Budget}
+From the high budget of Google Cloud Platform, we have to reduce our scope about automate build model
+by using Apache Airflow. But we have implemented code to let prediction model still can update the
+question to predict from backend API autaomatically.
 
 \section{Future Works}
 \subsubsection{}
