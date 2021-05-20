@@ -499,7 +499,7 @@ state \cite{manhattan_lstm, what_is_embedding_matrix}. Using a LSTM to read in w
 input sentence and employs final hidden state as a vector representation for each sentence.
 The similarities among these representations are employed as predictors of semantic similarity.
 
-\subsection{The architecture of Siamese Neural Network}
+\subsection{The Architecture of Siamese Neural Network}
 \begin{figure}[!h]
   \centering
   \setlength{\fboxrule}{0.2mm}
@@ -945,7 +945,7 @@ After planning and discussion with advisor, KMUTT CPE Chatbot System can be divi
 
 \pagebreak
 
-\section{Use case diagram}
+\section{Use Case Diagram}
 Figure ~\ref*{fig:use case diagram} shows the main things that the KMUTT CPE staff and questioner can do with the KMUTT CPE Chatbot System. Knowledge management is used by KMUTT CPE staff only.
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/use case diagram.jpg}
@@ -1816,6 +1816,7 @@ then replace new tokenized question with old one to update the questions.
 So, the model can still automate update the question from knowledge management
 but cannot automate train the model as we planned.
 
+\pagebreak
 \section{System Architecture}
 From the problem as we describe in section~\ref*{ch4_problem}.
 There is some workflow that have change to solve the problem that we found.
@@ -1845,138 +1846,92 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 \end{description}
 
 \section{Server Integration Setup}
-	\subsection{Virtual Machine}
-		The virtual machine that use for the front-end website, backend-api to connect with dialogflow using free credit of student account in the microsoft azure.
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/azure_vm.png}}
-			\caption{Virtual machine specification}\label{fig:Virtual machine specification}
-		\end{figure}
+\subsection{Virtual Machine}
+We use free credit of student account in the Microsoft Azure to get
+the virtual machine for deploying our front-end website and backend API.
+In addition, we run the Nginx server to map the application that run in
+different port in server to HTTP path to let another client can access the
+front-end and backend API.
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width=14cm]{./img/ch4/azure_vm.png}}
+	\caption{Virtual machine specification}\label{fig:Virtual machine specification}
+\end{figure}
+
 \pagebreak
-	\subsection{Domain Name}
-		This is the domain name from github education package with nameservers config in name.com for able to use in Cloudflare.
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/nameDotCom.png}}
-			\caption{Domain name of the server}\label{fig:Domain name of the server}
-		\end{figure}
-	\subsection{Cloudflare}
-		\begin{flushleft}
-		After config the nameservers in name.com, so in the Cloudflare DNS must be config.
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_home.png}}
-			\caption{Cloudflare homepage}\label{fig:Cloudflare homepage}
-		\end{figure}
-\pagebreak		
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_dns.png}}
-			\caption{Cloudflare DNS page}\label{fig:Cloudflare DNS page}
-		\end{figure}
-		In the ssl mode, Full strict mode is selected in this ssl
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_ssl_overview.png}}
-			\caption{Cloudflare ssl overview page}\label{fig:Cloudflare ssl overview page}
-		\end{figure}
+\subsection{SSL Domain Name}
+We have to explained that we set the SSL domain name because
+Dialogflow required the SSL domain. So, we started from get
+the domain name from GitHub education package 
+with nameservers config as you can see from Figure~\ref*{fig:Domain name of the server}.
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width=14cm]{./img/ch4/nameDotCom.png}}
+	\caption{Domain name of the server}\label{fig:Domain name of the server}
+\end{figure}
+Then after we get the domain name, we need to set SSL.
+We used Cloudflare to set SSL for our domain name as you can see from Figure~\ref*{fig:Cloudflare homepage}.
+After that we map SSL domain name to the Azure server for Dialogflow webhook.
+
+In Dialogflow, it required SSL domain name for connect webhook. %todo: find cite for SSL Domain
+So, we use Cloudflare to set SSL of the domain name that we derived
+to be the domain to connect with Dialogflow.
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_home.png}}
+	\caption{Cloudflare homepage}\label{fig:Cloudflare homepage}
+\end{figure}
+
 \pagebreak
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_ssl_origin.png}}
-			\caption{Cloudflare ssl origin page}\label{fig:Cloudflare ssl origin page}
-		\end{figure}
-	\subsection{Nginx}
-		Nginx is a web server that allow to map the application that run using port into http slash
 \section{Chatbot Subsystem Results}
-	% todo: Update the work done
-	Now our chatbot subsystem, we implemented in dialogflow which can classify greeting and understanding what is the questions.
+\subsection{Dialogflow}
+We set the webhook for backend API and connection between
+Facebook Messenger and Line chat in Dialogflow already.
+Line chat is not in our scope project but our group use Line chat to be the developer platform.
+As a result in Figure~\ref*{fig:line_example}, the Dialogflow can send the message from chat
+in to backend API and return the answer back successfully.
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width=8cm]{./img/ch4/ch4_line_example.jpg}}
+	\caption{Dialogflow integration messenger}\label{fig:line_example}
+\end{figure}
+In Dialogflow, there are only 4 intents as you can see from Figure~\ref*{fig:Dialogflow intent}.
+There are 2 main important intents which are\begin{itemize}
+	\item Default Welcome Intent - This intent is a greeting intent to reply greeting message.
+	\item Default Fallback Intent - This intent is a intent that send the question to the backend API and waiting for answer.
+\end{itemize}
+For the rest of intent is used for fix the timeout problems as we describe in section~\ref*{response_timeout_problem_section}.
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width=14cm]{./img/ch4/dialogflow_intent.png}}
+	\caption{Dialogflow intent}\label{fig:Dialogflow intent}
+\end{figure}
+
+\pagebreak
+\subsection{Facebook Messenger}
+	There are several requirements and processes which must be
+	provided to Facebook in order to request the App Review for page messaging,
+	allow the application to connect with chat of page.
+	The major problem that we found for App Review requirement is
+	the application that going to request for App Review need to completed development and 
+	the reviewer can check and test the application \cite{before_you_submit}.
+	This indicates that the knowledge management website must be finished and
+	implement user roles, which is increase from our plan,
+	in order for the Facebook reviewer to check and test the knowledge management.
+
+	Our group has sent the App Review request 2 times. At the first time we forgot to specify the
+	language constraints and some example, so it made Facebook reviewer claimed that
+	cannot access to our application. But after receiving assistance from Facebook App Review,
+	we have completed the App Review of CPE @ KMUTT fanpage in the second request
+	as you can see the result in Figure~\ref*{fig:app_review_approved}.
+
 	\begin{figure}[!h]\centering
-		\fbox{\includegraphics[width=8cm]{./img/ch4/ch4_1_2.png}}
-		\caption{Classification greeting messages and questions}\label{fig:Classification greeting messages and questions success}
+		\fbox{\includegraphics[width=6cm]{./img/ch4/facebook_support.png}}
+		\caption{Facebook support}\label{fig:Facebook support}
 	\end{figure}
-\pagebreak
-	\subsection{Dialogflow}
-		\begin{flushleft}
-			First of all we have to create the intent in the dialogflow to classify greeting and understanding what is the questions.
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/dialogflow_intent.png}}
-			\caption{Dialogflow intent}\label{fig:Dialogflow intent}
-		\end{figure}
-\pagebreak
-		\begin{flushleft}
-			Integrate the dialogflow with the Facebook webhook. In dialogflow need verify token and page access token.
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/dialogflow_integration_messenger.png}}
-			\caption{Dialogflow integration messenger}\label{fig:Dialogflow integration messenger}
-		\end{figure}
 
-		\begin{flushleft}
-			Then connect the Dialogflow with the backend.
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/dialogflow_fullfillment.png}}
-			\caption{Dialogflow fullfillment}\label{fig:Dialogflow fullfillment}
-		\end{figure}
-\pagebreak
-	\subsection{Facebook Messenger}
-		% todo: facebook messenger detail
-		\begin{flushleft}
-			In computer engineering department doesn't create the Facebook app before so first of all we have to create the Facebook app for developing the Facebook chatbot
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_developer_app.png}}
-			\caption{Facebook developer app}\label{fig:facebook developer app}
-		\end{figure}
+	\begin{figure}[!h]\centering
+		\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_appreview_requests_approve.png}}
+		\caption{Facebook App Review request approved}\label{fig:app_review_approved}
+	\end{figure}
 
-		\begin{flushleft}
-			Get started with must be added in basic settings. App icon, contact email, privacy policy URL, terms of service URL and business account.
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_settings_basic_privacy_policy_and_term_of_service.png}}
-			\caption{Facebook settings basic privacy policy and term of service}\label{fig:facebook settings basic privacy policy and term of service}
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_settings_basic_business.png}}
-			\caption{Facebook settings basic business}\label{fig:Facebook settings basic business}
-		\end{figure}
-\pagebreak
-		\begin{flushleft}
-			Add the role of administrator for develop the Facebook app
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_roles.png}}
-			\caption{Facebook roles}\label{fig:Facebook roles}
-		\end{figure}
-
-		\begin{flushleft}
-			After we prepare the prerequisite, we send the app review request in pages\_messaging for two times. The first time send is to check the missing. 
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_appreview_requests.png}}
-			\caption{Facebook appreview requests}\label{fig:Facebook appreview requests}
-		\end{figure}
-\pagebreak
-		\begin{flushleft}
-			Then we contact with the support and resubmit the Facebook app review
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=6cm]{./img/ch4/facebook_support.png}}
-			\caption{Facebook support}\label{fig:Facebook support}
-		\end{figure}
-
-		\begin{flushleft}
-			At last we get approve in the pages\_messaging
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_appreview_requests_approve.png}}
-			\caption{facebook appreview requests approve}\label{fig:facebook appreview requests approve}
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_appreview_Permissions_and_Features.png}}
-			\caption{Facebook appreview Permissions and Features}\label{fig:Facebook appreview Permissions and Features}
-		\end{figure}
-\pagebreak
-		\begin{flushleft}
-			And we integrate the Facebook with Dialogflow. In Facebok need verify token and callback URL.
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_messenger_settings.png}}
-			\caption{Facebook messenger settings}\label{fig:Facebook messenger settings}
-		\end{figure}
 \pagebreak
 \section{Knowledge Management Results}
 	\subsection{Use Case diagram}
@@ -2714,7 +2669,7 @@ and
 \caption{The example result of pairing two sentence by using cosine similarity}\label{fig:The example result of pairing two sentence by using cosine similarity}
 \end{figure}
 
-\subsection{Compare Performance of Siamese Neural Network with MaLSTM model and Cosine Similarity Example}
+\subsection{Comparison between Siamese Neural Network with MaLSTM model and Cosine Similarity}
 \subsubsection{Time Usage}
 
 \begin{table}[h]
@@ -2826,9 +2781,10 @@ and
 
 In summaty overall result of our model can predict similar intent questions more accurately than cosine similarity but it is slower than cosine similarity.
 
+\pagebreak
 \section{Project Demo}
 \label{ch4_project_demo}
-% todo: Chat capture that we asked through messenger and reply answer from KM back
+% todo: Swap side of the chat capture.
 This is our example chat response from user ask via KMUTT CPE Fanpage which our system bring the answer response from the knowledge management subsystem. Overall, the chatbot can answer the questions of users at a certain level. But there are still many questions that cannot reply to the user.
 
 \begin{figure}[!h]\centering
@@ -3270,8 +3226,9 @@ button at the right bottom of page (No.1 on Figure 4.18)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%% The 2nd appendix %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \appendix{Second appendix title}
-% \noindent{\large\bf Put appropriate topic here} \\
+\appendix{Backend API Document}
+\noindent{\large\bf Backend API Document} \\
+%todo: Add backend API document.
 
 % Next, we show how $\mathrm{Var}\{X_n\}$ can be determined.  Let
 % $C_{\lambda}(l)$ be the autocovariance function of $\lambda_n$.  The
