@@ -1859,21 +1859,23 @@ front-end and backend API.
 
 \pagebreak
 \subsection{SSL Domain Name}
-We have to explained that we set the SSL domain name because
-Dialogflow required the SSL domain. So, we started from get
-the domain name from GitHub education package 
-with nameservers config as you can see from Figure~\ref*{fig:Domain name of the server}.
+We have to explain that we set the SSL domain name because Dialogflow required it.
+So, we started from getting the domain name from the GitHub education package with
+nameservers config as you can see from Figure~\ref*{fig:Domain name of the server}.
+
 \begin{figure}[!h]\centering
 	\fbox{\includegraphics[width=14cm]{./img/ch4/nameDotCom.png}}
 	\caption{Domain name of the server}\label{fig:Domain name of the server}
 \end{figure}
-Then after we get the domain name, we need to set SSL.
-We used Cloudflare to set SSL for our domain name as you can see from Figure~\ref*{fig:Cloudflare homepage}.
-After that we map SSL domain name to the Azure server for Dialogflow webhook.
 
-In Dialogflow, it required SSL domain name for connect webhook. %todo: find cite for SSL Domain
+After we have the domain name, we set up SSL with Cloudflare,
+as shown in Figure~\ref*{fig:Cloudflare homepage},
+and map the SSL domain name to the Azure server for the Dialogflow webhook.
+
+In Dialogflow, it required SSL domain name for connect webhook \cite{dialogflow_webhook_requirement}.
 So, we use Cloudflare to set SSL of the domain name that we derived
 to be the domain to connect with Dialogflow.
+
 \begin{figure}[!h]\centering
 	\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_home.png}}
 	\caption{Cloudflare homepage}\label{fig:Cloudflare homepage}
