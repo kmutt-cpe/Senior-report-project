@@ -1845,44 +1845,40 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 \end{description}
 
 \section{Server Integration Setup}
-	\subsection{Virtual Machine}
-		The virtual machine that use for the front-end website, backend-api to connect with dialogflow using free credit of student account in the microsoft azure.
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/azure_vm.png}}
-			\caption{Virtual machine specification}\label{fig:Virtual machine specification}
-		\end{figure}
+\subsection{Virtual Machine}
+We use free credit of student account in the Microsoft Azure to get
+the virtual machine for deploying our front-end website and backend API.
+In addition, we run the Nginx server to map the application that run in
+different port in server to HTTP path to let another client can access the
+front-end and backend API.
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width=14cm]{./img/ch4/azure_vm.png}}
+	\caption{Virtual machine specification}\label{fig:Virtual machine specification}
+\end{figure}
+
 \pagebreak
-	\subsection{Domain Name}
-		This is the domain name from github education package with nameservers config in name.com for able to use in Cloudflare.
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/nameDotCom.png}}
-			\caption{Domain name of the server}\label{fig:Domain name of the server}
-		\end{figure}
-	\subsection{Cloudflare}
-		\begin{flushleft}
-		After config the nameservers in name.com, so in the Cloudflare DNS must be config.
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_home.png}}
-			\caption{Cloudflare homepage}\label{fig:Cloudflare homepage}
-		\end{figure}
-\pagebreak		
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_dns.png}}
-			\caption{Cloudflare DNS page}\label{fig:Cloudflare DNS page}
-		\end{figure}
-		In the ssl mode, Full strict mode is selected in this ssl
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_ssl_overview.png}}
-			\caption{Cloudflare ssl overview page}\label{fig:Cloudflare ssl overview page}
-		\end{figure}
+\subsection{SSL Domain Name}
+We have to explained that we set the SSL domain name because
+Dialogflow required the SSL domain. So, we started from get
+the domain name from GitHub education package 
+with nameservers config as you can see from Figure~\ref*{fig:Domain name of the server}.
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width=14cm]{./img/ch4/nameDotCom.png}}
+	\caption{Domain name of the server}\label{fig:Domain name of the server}
+\end{figure}
+Then after we get the domain name, we need to set SSL.
+We used Cloudflare to set SSL for our domain name as you can see from Figure~\ref*{fig:Cloudflare homepage}.
+After that we map SSL domain name to the Azure server for Dialogflow webhook.
+
+In Dialogflow, it required SSL domain name for connect webhook. %todo: find cite for SSL Domain
+So, we use Cloudflare to set SSL of the domain name that we derived
+to be the domain to connect with Dialogflow.
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_home.png}}
+	\caption{Cloudflare homepage}\label{fig:Cloudflare homepage}
+\end{figure}
+
 \pagebreak
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/cloudflare_ssl_origin.png}}
-			\caption{Cloudflare ssl origin page}\label{fig:Cloudflare ssl origin page}
-		\end{figure}
-	\subsection{Nginx}
-		Nginx is a web server that allow to map the application that run using port into http slash
 \section{Chatbot Subsystem Results}
 	% todo: Update the work done
 	Now our chatbot subsystem, we implemented in dialogflow which can classify greeting and understanding what is the questions.
