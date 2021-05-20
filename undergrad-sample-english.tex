@@ -1816,6 +1816,7 @@ then replace new tokenized question with old one to update the questions.
 So, the model can still automate update the question from knowledge management
 but cannot automate train the model as we planned.
 
+\pagebreak
 \section{System Architecture}
 From the problem as we describe in section~\ref*{ch4_problem}.
 There is some workflow that have change to solve the problem that we found.
@@ -1880,99 +1881,57 @@ to be the domain to connect with Dialogflow.
 
 \pagebreak
 \section{Chatbot Subsystem Results}
-	% todo: Update the work done
-	Now our chatbot subsystem, we implemented in dialogflow which can classify greeting and understanding what is the questions.
+\subsection{Dialogflow}
+We set the webhook for backend API and connection between
+Facebook Messenger and Line chat in Dialogflow already.
+Line chat is not in our scope project but our group use Line chat to be the developer platform.
+As a result in Figure~\ref*{fig:line_example}, the Dialogflow can send the message from chat
+in to backend API and return the answer back successfully.
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width=8cm]{./img/ch4/ch4_line_example.jpg}}
+	\caption{Dialogflow integration messenger}\label{fig:line_example}
+\end{figure}
+In Dialogflow, there are only 4 intents as you can see from Figure~\ref*{fig:Dialogflow intent}.
+There are 2 main important intents which are\begin{itemize}
+	\item Default Welcome Intent - This intent is a greeting intent to reply greeting message.
+	\item Default Fallback Intent - This intent is a intent that send the question to the backend API and waiting for answer.
+\end{itemize}
+For the rest of intent is used for fix the timeout problems as we describe in section~\ref*{response_timeout_problem_section}.
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width=14cm]{./img/ch4/dialogflow_intent.png}}
+	\caption{Dialogflow intent}\label{fig:Dialogflow intent}
+\end{figure}
+
+\pagebreak
+\subsection{Facebook Messenger}
+	There are several requirements and processes which must be
+	provided to Facebook in order to request the App Review for page messaging,
+	allow the application to connect with chat of page.
+	The major problem that we found for App Review requirement is
+	the application that going to request for App Review need to completed development and 
+	the reviewer can check and test the application \cite{before_you_submit}.
+	This indicates that the knowledge management website must be finished and
+	implement user roles, which is increase from our plan,
+	in order for the Facebook reviewer to check and test the knowledge management.
+
+	Our group has sent the App Review request 2 times. At the first time we forgot to specify the
+	language constraints and some example, so it made Facebook reviewer claimed that
+	cannot access to our application. But after receiving assistance from Facebook App Review,
+	we have completed the App Review of CPE @ KMUTT fanpage in the second request
+	as you can see the result in Figure~\ref*{fig:app_review_approved}.
+
 	\begin{figure}[!h]\centering
-		\fbox{\includegraphics[width=8cm]{./img/ch4/ch4_1_2.png}}
-		\caption{Classification greeting messages and questions}\label{fig:Classification greeting messages and questions success}
+		\fbox{\includegraphics[width=6cm]{./img/ch4/facebook_support.png}}
+		\caption{Facebook support}\label{fig:Facebook support}
 	\end{figure}
-\pagebreak
-	\subsection{Dialogflow}
-		\begin{flushleft}
-			First of all we have to create the intent in the dialogflow to classify greeting and understanding what is the questions.
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/dialogflow_intent.png}}
-			\caption{Dialogflow intent}\label{fig:Dialogflow intent}
-		\end{figure}
-\pagebreak
-		\begin{flushleft}
-			Integrate the dialogflow with the Facebook webhook. In dialogflow need verify token and page access token.
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/dialogflow_integration_messenger.png}}
-			\caption{Dialogflow integration messenger}\label{fig:Dialogflow integration messenger}
-		\end{figure}
 
-		\begin{flushleft}
-			Then connect the Dialogflow with the backend.
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/dialogflow_fullfillment.png}}
-			\caption{Dialogflow fullfillment}\label{fig:Dialogflow fullfillment}
-		\end{figure}
-\pagebreak
-	\subsection{Facebook Messenger}
-		% todo: facebook messenger detail
-		\begin{flushleft}
-			In computer engineering department doesn't create the Facebook app before so first of all we have to create the Facebook app for developing the Facebook chatbot
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_developer_app.png}}
-			\caption{Facebook developer app}\label{fig:facebook developer app}
-		\end{figure}
+	\begin{figure}[!h]\centering
+		\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_appreview_requests_approve.png}}
+		\caption{Facebook App Review request approved}\label{fig:app_review_approved}
+	\end{figure}
 
-		\begin{flushleft}
-			Get started with must be added in basic settings. App icon, contact email, privacy policy URL, terms of service URL and business account.
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_settings_basic_privacy_policy_and_term_of_service.png}}
-			\caption{Facebook settings basic privacy policy and term of service}\label{fig:facebook settings basic privacy policy and term of service}
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_settings_basic_business.png}}
-			\caption{Facebook settings basic business}\label{fig:Facebook settings basic business}
-		\end{figure}
-\pagebreak
-		\begin{flushleft}
-			Add the role of administrator for develop the Facebook app
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_roles.png}}
-			\caption{Facebook roles}\label{fig:Facebook roles}
-		\end{figure}
-
-		\begin{flushleft}
-			After we prepare the prerequisite, we send the app review request in pages\_messaging for two times. The first time send is to check the missing. 
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_appreview_requests.png}}
-			\caption{Facebook appreview requests}\label{fig:Facebook appreview requests}
-		\end{figure}
-\pagebreak
-		\begin{flushleft}
-			Then we contact with the support and resubmit the Facebook app review
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=6cm]{./img/ch4/facebook_support.png}}
-			\caption{Facebook support}\label{fig:Facebook support}
-		\end{figure}
-
-		\begin{flushleft}
-			At last we get approve in the pages\_messaging
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_appreview_requests_approve.png}}
-			\caption{facebook appreview requests approve}\label{fig:facebook appreview requests approve}
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_appreview_Permissions_and_Features.png}}
-			\caption{Facebook appreview Permissions and Features}\label{fig:Facebook appreview Permissions and Features}
-		\end{figure}
-\pagebreak
-		\begin{flushleft}
-			And we integrate the Facebook with Dialogflow. In Facebok need verify token and callback URL.
-		\end{flushleft}
-		\begin{figure}[!h]\centering
-			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_messenger_settings.png}}
-			\caption{Facebook messenger settings}\label{fig:Facebook messenger settings}
-		\end{figure}
 \pagebreak
 \section{Knowledge Management Results}
 	\subsection{Use Case diagram}
@@ -2822,6 +2781,7 @@ and
 
 In summaty overall result of our model can predict similar intent questions more accurately than cosine similarity but it is slower than cosine similarity.
 
+\pagebreak
 \section{Project Demo}
 \label{ch4_project_demo}
 % todo: Chat capture that we asked through messenger and reply answer from KM back
