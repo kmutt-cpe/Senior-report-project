@@ -1927,7 +1927,7 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 	\subsection{Facebook Messenger}
 		% todo: facebook messenger detail
 		\begin{flushleft}
-			To create the Facebook chatbot, first of all we have to create the Facebook app
+			In computer engineering department doesn't create the Facebook app before so first of all we have to create the Facebook app for developing the Facebook chatbot
 		\end{flushleft}
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_developer_app.png}}
@@ -1977,7 +1977,7 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_appreview_Permissions_and_Features.png}}
 			\caption{Facebook appreview Permissions and Features}\label{fig:Facebook appreview Permissions and Features}
 		\end{figure}
-		
+\pagebreak
 		\begin{flushleft}
 			And we integrate the Facebook with Dialogflow. In Facebok need verify token and callback URL.
 		\end{flushleft}
@@ -1985,11 +1985,348 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 			\fbox{\includegraphics[width=14cm]{./img/ch4/facebook_messenger_settings.png}}
 			\caption{Facebook messenger settings}\label{fig:Facebook messenger settings}
 		\end{figure}
+\pagebreak
 \section{Knowledge Management Results}
-	\subsection{Use Case}
+	\subsection{Use Case diagram}
 	% todo: New Use case with more role for App Review
+	\begin{figure}[!h]\centering
+		\fbox{\includegraphics[width=12cm]{./img/ch4/Use case version 2.png}}
+		\caption{Use case of KMUTT CPE Chatbot}\label{fig:Use case of KMUTT CPE Chatbot version2}
+	\end{figure}
+\pagebreak
+	\subsection{Use Case narrative}
+	% todo: make the use case narrative relate to the use case diagram
+	\subsubsection{Login}
+	\underline{Actor}: Root, Admin, Moderator and Viewer\\
+	\underline{Goal}: Every roles can login to the system\\
+	\underline{Precondition}: Register username and password by root user\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Every roles inputs valid username and password in input box        
+		\item Every roles clicks login button
+		\item Redirect to question management page
+	\end{enumerate}
+	\underline{Extension a}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Every roles inputs invalid username or password in input box        
+		\item Every roles clicks login button
+		\item Website displays the error message of incorrect username or password
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Every roles can access feature inside knowledge management
+	\end{enumerate}
+
+	\subsubsection{Logout}
+	\underline{Actor}: Root, Admin, Moderator and Viewer\\
+	\underline{Goal}: Every roles can logout from the system\\
+	\underline{Precondition}: Every roles need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Every roles click logout button      
+		\item Redirect to login page
+	\end{enumerate}
+	\underline{Postcondition}: -
+
+	\subsubsection{Edit Profile}
+	\underline{Actor}: Root, Admin, Moderator and Viewer\\
+	\underline{Goal}: Every roles can edit their profile\\
+	\underline{Precondition}: Every roles need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Every roles clicks edit profile       
+		\item Redirect to edit profile page
+		\item Every roles edits their own profile such as name or password
+		\item Every roles clicks save and confirm the edit action
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Every roles can access feature inside knowledge management
+	\end{enumerate}
+
+	\subsubsection{Read category}
+	\underline{Actor}: Root, Admin, Moderator and Viewer\\
+	\underline{Goal}: Every roles can read category data\\
+	\underline{Precondition}: Every roles need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Every roles go to category management page      
+		\item Every roles can read all categories
+	\end{enumerate}
+	\underline{Postcondition}: -
+
+	\subsubsection{Create Category}
+	\underline{Actor}: Root, Admin and Moderator\\
+	\underline{Goal}: Root, Admin and Moderator can create category data\\
+	\underline{Precondition}: Root, Admin and Moderator need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator go to category management page
+		\item Root, Admin and Moderator click create category button
+		\item Root, Admin and Moderator input category name in input box
+		\item Root, Admin and Moderator click create button
+		\item Root, Admin and Moderator confirm create action
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator can see the updated category list and can select category when manage the question
+		\item Websites contains new category
+	\end{enumerate}
+
+	\subsubsection{Edit Category}
+	\underline{Actor}: Root, Admin and Moderator\\
+	\underline{Goal}: Root, Admin and Moderator can edit category data\\
+	\underline{Precondition}: Root, Admin and Moderator need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator go to category management page
+		\item Root, Admin and Moderator click edit category button
+		\item Root, Admin and Moderator edit category name
+		\item Root, Admin and Moderator click save button
+		\item Root, Admin and Moderator confirm edit action
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator can see the updated category list
+		\item Websites update the category
+	\end{enumerate}
+
+	\subsubsection{Remove Category}
+	\underline{Actor}: Root, Admin and Moderator\\
+	\underline{Goal}: Root, Admin and Moderator can remove category\\
+	\underline{Precondition}: Root, Admin and Moderator need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator go to category management page
+		\item Root, Admin and Moderator click remove category button
+		\item Root, Admin and Moderator confirm remove action
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator can see the updated category list
+		\item Websites remove that category, subcategories, and questions inside that category
+	\end{enumerate}
+
+	\subsubsection{Read Subcategory}
+	\underline{Actor}: Root, Admin and Moderator\\
+	\underline{Goal}: Root, Admin and Moderator can read subcategory data in each category\\
+	\underline{Precondition}: Root, Admin and Moderator need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator go to category management page
+		\item Root, Admin and Moderator click to category that interested
+		\item Root, Admin and Moderator can read all subcategories inside that category
+	\end{enumerate}
+	\underline{Postcondition}: -
+
+	\subsubsection{Create Subcategory}
+	\underline{Actor}: Root, Admin and Moderator\\
+	\underline{Goal}: Root, Admin and Moderator can create subcategory\\
+	\underline{Precondition}: Root, Admin and Moderator need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator go to category management page
+		\item Root, Admin and Moderator click to the category that want to add a new subcategory
+		\item Root, Admin and Moderator click create new subcategory button
+		\item Root, Admin and Moderator input subcategory name in input box
+		\item Root, Admin and Moderator click create button
+		\item Root, Admin and Moderator confirm create action
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator can see the updated subcategory list and can select subcategory when manage the question
+		\item Websites contains new subcategory
+	\end{enumerate}
+
+	\subsubsection{Edit Subcategory}
+	\underline{Actor}: Root, Admin and Moderator\\
+	\underline{Goal}: Root, Admin and Moderator can edit subcategory\\
+	\underline{Precondition}: Root, Admin and Moderator need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator goes to category management page
+		\item Root, Admin and Moderator clicks category that have subcategory that want to edit
+		\item Root, Admin and Moderator clicks edit subcategory button
+		\item Root, Admin and Moderator edits subcategory name
+		\item Root, Admin and Moderator clicks save button
+		\item Root, Admin and Moderator confirm edit action
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator can see the updated subcategory list
+		\item Websites update the subcategory
+	\end{enumerate}
+
+	\subsubsection{Remove Subcategory}
+	\underline{Actor}: Root, Admin and Moderator\\
+	\underline{Goal}: Root, Admin and Moderator can remove subcategory\\
+	\underline{Precondition}: Root, Admin and Moderator need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator go to category management page
+		\item Root, Admin and Moderator click category that have subcategory that want to remove
+		\item Root, Admin and Moderator click remove subcategory button
+		\item Root, Admin and Moderator confirm delete action
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator can see the updated category list
+		\item Websites remove all of questions in that subcategory
+	\end{enumerate}
+
+	\subsubsection{Read FAQ}
+	\underline{Actor}: Root, Admin and Moderator\\
+	\underline{Goal}: Root, Admin and Moderator can read question in knowledge management\\
+	\underline{Precondition}: Root, Admin and Moderator need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator go to question management page
+		\item Root, Admin and Moderator select the category of question that want to read
+		\item Root, Admin and Moderator can see the list of questions and can click to the question that want to read
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator can see information of that question, consists of question, answer, category, subcategory, last editor, and last updated.
+	\end{enumerate}
+
+	\subsubsection{Create FAQ}
+	\underline{Actor}: Root, Admin and Moderator\\
+	\underline{Goal}: Root, Admin and Moderator can create question in knowledge management\\
+	\underline{Precondition}: Root, Admin and Moderator need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator goes to question management page
+		\item Root, Admin and Moderator clicks to create new question
+		\item Root, Admin and Moderator selects category and subcategory
+		\item Root, Admin and Moderator inputs question and answer
+		\item Root, Admin and Moderator clicks create button
+		\item Root, Admin and Moderator confirm create action
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator can see the updated question list
+	\end{enumerate}
+
+	\subsubsection{Edit FAQ}
+	\underline{Actor}: Root, Admin and Moderator\\
+	\underline{Goal}: Root, Admin and Moderator can edit question in knowledge management\\
+	\underline{Precondition}: Root, Admin and Moderator need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator goes to question management page
+		\item Root, Admin and Moderator selects the category of question that want to edit
+		\item Root, Admin and Moderator selects the question that wants to edit
+		\item Root, Admin and Moderator edits the question
+		\item Root, Admin and Moderator click saves
+		\item Root, Admin and Moderator confirm edit action
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Root, Admin and Moderator can see the updated question list
+	\end{enumerate}
+
+	\subsubsection{Remove FAQ}
+	\underline{Actor}: Admin\\
+	\underline{Goal}: Admin can remove question in knowledge management\\
+	\underline{Precondition}: Admin need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Admin goes to question management page
+		\item Admin selects the category of question that want to remove
+		\item Admin selects the question that wants to remove
+		\item Admin confirm delete action
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Admin can see the updated question list
+		\item Websites contains new category
+	\end{enumerate}
+
+	\subsubsection{Read User}
+	\underline{Actor}: Admin\\
+	\underline{Goal}: Admin can read user information in knowledge management\\
+	\underline{Precondition}: Admin need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Admin goes to user management page
+		\item Admin can see the list of users and can click user that want to read information
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Admin can read information of that user.
+	\end{enumerate}
+
+	\subsubsection{Create User}
+	\underline{Actor}: Admin\\
+	\underline{Goal}: Admin can create new user account\\
+	\underline{Precondition}: Admin need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Admin goes to user management page
+		\item Admin clicks create new user button
+		\item Admin input username that doesn’t exist in the system
+		\item Admin input password, and confirmed password
+		\item Admin input name of the user
+		\item Admin clicks create user and confirm create action
+	\end{enumerate}
+	\underline{Extension a}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Admin goes to user management page
+		\item Admin clicks create new user button
+		\item Admin input username that already exists in the system
+		\item Admin input password, and confirmed password
+		\item Admin input name of the user
+		\item Admin clicks create
+		\item Websites display error message of user have already exists
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Admin can see the updated list of users
+		\item Should not create the username that already exists in the system
+	\end{enumerate}
+
+	\subsubsection{Edit User}
+	\underline{Actor}: Admin\\
+	\underline{Goal}: Admin can create new user account\\
+	\underline{Precondition}: Admin need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Admin goes to user management page
+		\item Admin clicks edit button on the account that want to edit
+		\item Admin edits password or name
+		\item Admin click saves and confirm edit action
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Admin can see the updated list of users
+	\end{enumerate}
+
+	\subsubsection{Remove User}
+	\underline{Actor}: Admin\\
+	\underline{Goal}: Admin can remove user account\\
+	\underline{Precondition}: Admin need to login to the system first\\
+	\underline{Main Success Scenario}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Admin goes to user management page
+		\item Admin clicks remove button on the account that want to remove
+		\item Admin click confirm remove action
+	\end{enumerate}
+	\underline{Extension a}:
+	\begin{enumerate}[label={\arabic*.}]
+		\item Admin goes to user management page
+		\item Admin clicks remove button on the own account
+		\item Website display error message causes from delete own account
+	\end{enumerate}
+	\underline{Postcondition}: 
+	\begin{enumerate}[label={\arabic*.}]
+		\item Admin can see the updated list of users
+	\end{enumerate}
+
 	\subsection{User Interface Design}
-	% todo: UI design
+	\begin{flushleft}
+		It is in the appendix
+	\end{flushleft}
+
 	\subsection{Implementation}
 	% todo: Old UI design
 	\subsection{Knowledge Management Evaluation}
@@ -2001,21 +2338,21 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 	\hline
 	\rowcolor[HTML]{C9DAF8} 
 	Features                             & Role                    & Function                           & Status \\ \hline
-										 & Admin                   & Login                              &        \\ \cline{2-4} 
-										 & Admin                   & Logout                             &        \\ \cline{2-4} 
-	\multirow{-3}{*}{Account}            & Admin                   & Edit profile                       &        \\ \hline
-										 &                         & Create new category                &        \\ \cline{3-4} 
-										 &                         & Remove category                    &        \\ \cline{3-4} 
-	\multirow{-3}{*}{Manage category}    & \multirow{-3}{*}{Admin} & Update category                    &        \\ \hline
-										 &                         & Create new subcategory in category &        \\ \cline{3-4} 
-										 &                         & Remove subcategory                 &        \\ \cline{3-4} 
-	\multirow{-3}{*}{Manage subcategory} & \multirow{-3}{*}{Admin} & Update subcategory                 &        \\ \hline
-										 &                         & Create new FAQ                     &        \\ \cline{3-4} 
-										 &                         & Remove FAQ                         &        \\ \cline{3-4} 
-	\multirow{-3}{*}{Manage FAQ}         & \multirow{-3}{*}{Admin} & Update FAQ                         &        \\ \hline
-										 &                         & Create new user                    &        \\ \cline{3-4} 
-										 &                         & Remove user                        &        \\ \cline{3-4} 
-	\multirow{-3}{*}{Manage   user}      & \multirow{-3}{*}{Admin} & Update user                        &        \\ \hline
+										 & Admin                   & Login                              & Done   \\ \cline{2-4} 
+										 & Admin                   & Logout                             & Done   \\ \cline{2-4} 
+	\multirow{-3}{*}{Account}            & Admin                   & Edit profile                       & Done   \\ \hline
+										 &                         & Create new category                & Done   \\ \cline{3-4} 
+										 &                         & Remove category                    & Done   \\ \cline{3-4} 
+	\multirow{-3}{*}{Manage category}    & \multirow{-3}{*}{Admin} & Update category                    & Done   \\ \hline
+										 &                         & Create new subcategory in category & Done   \\ \cline{3-4} 
+										 &                         & Remove subcategory                 & Done   \\ \cline{3-4} 
+	\multirow{-3}{*}{Manage subcategory} & \multirow{-3}{*}{Admin} & Update subcategory                 & Done   \\ \hline
+										 &                         & Create new FAQ                     & Done   \\ \cline{3-4} 
+										 &                         & Remove FAQ                         & Done   \\ \cline{3-4} 
+	\multirow{-3}{*}{Manage FAQ}         & \multirow{-3}{*}{Admin} & Update FAQ                         & Done   \\ \hline
+										 &                         & Create new user                    & Done   \\ \cline{3-4} 
+										 &                         & Remove user                        & Done   \\ \cline{3-4} 
+	\multirow{-3}{*}{Manage   user}      & \multirow{-3}{*}{Admin} & Update user                        & Done   \\ \hline
 	\end{tabular}
 	\end{adjustbox}
 	\end{table}
