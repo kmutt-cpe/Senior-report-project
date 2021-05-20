@@ -1780,8 +1780,8 @@ cosine similarity model instead for better time performance.
 
 At first, we tried to reduce the max sequence which required to build the new model.
 But the model is not quite good enough as you can see between evaluation of new model
-(Figure~\ref{reduce_sequence_result}) and the first model that we have built
-(Figure~\ref{Classification report}). The precision of new model is higher than old
+(Figure~\ref*{fig:reduce_sequence_result}) and the first model that we have built
+(Figure~\ref*{fig:Classification report}). The precision of new model is higher than old
 one, but recall and F1-Score is very low.
 
 \begin{figure}[!h]\centering
@@ -1792,7 +1792,7 @@ one, but recall and F1-Score is very low.
 
 From the result above, we have to reject the reducing max sequence method and
 try using the cosine similarity instead. You can see the result of cosine similarity
-at section~\ref*{} %todo: Add reference to cosine similarity
+at section~\ref*{ch4_cosine_similarity_result}
 
 \subsection{Budget Problem}
 From Chapter 3, we planned to use Apache Airflow to automate build and run on Google Cloud Platform.
@@ -2128,6 +2128,7 @@ The max category is Curriculum {
  ‘ หลักสูตร } which match with our expected result. So from the results we can predict categories quite accurately. 
 \subsection{Siamese Neural Network with MaLSTM Result}
 \subsubsection{Siamese Neural Network with MaLSTM Training}
+\label{siamese_result}
 After preprocessing the data, we split the data into train, validate, and test data. Then separate the data into left inputs and right inputs, one for each side of MaLSTM. Then train the model with 100 epochs and use batch sizes 128. In addition to using early stops to prevent the model too overfitting and model checkpoint to save the model. Even our group set 100 epochs, but the model was trained only 17 epochs before stopping from early stop. Loss of training data is 0.4116 and loss of validation data is 0.4358. Also, accuracy of training data is 0.5487 and accuracy of validation data is 0.4358. Graphs below are the result from training.
 
 \begin{figure}[!h]\centering
@@ -2176,9 +2177,11 @@ and
 Even the model can predict, but the overall performance of the model is quite not good. Because we think the model should return similar questions from MaLSTM more than 0.5 scores not 0.3 scores. We think that the problem comes from not enough data. If we can gather more dataset and have more cases about question pairs that are similar or not similar, especially not similar that we got less precision, we can increase our model's performance. Also we have to integrate all subsystem to be one system in the production environment.
 
 \subsection{Cosine Similarity Result}
+\label{ch4_cosine_similarity_result}
 Due to the respone timeout in Dialogflow problem after integrate all subsytem together we have to reduce time response to make our system can reply the respone back to user by change deep neural network which is Siamese Neural Network with MaLSTM model to machine learning which is cosine similarity that is the same method the find similiarity of user question and questions in database.
 \subsubsection{Cosine Similarity Preprocessing}
-We preprocessing the cosine silmilarity like the Siamese Neural Network with MaLSTM Evaluation that we tokenize text and covert text into lists of sequence as in the section \nameref{preprocessing cosine}
+We preprocessing the cosine silmilarity like the Siamese Neural Network with MaLSTM Evaluation that we tokenize
+text and covert text into lists of sequence as in the section \ref*{preprocessing cosine}~\nameref*{preprocessing cosine}
 \subsubsection{Cosine Similarity Parameter Setting}
 We find the similarity by input user questions and all questions for each category in the database by using 'cosine similarity' function from sklearn.metrics.pairwise library to find the similar of both two inputs
 \begin{figure}[!h]\centering
@@ -2358,11 +2361,11 @@ From our objective, building a chatbot that can answer the question about comput
 and integrating chatbot system with the production environment, it becomes CPE KMUTT Chatbot System.
 We have created the system that chatbot can bring the question from Facebook Messenger of CPE @ KMUTT page
 to predict the question, get the answer from knowledge management, and return it back to chat successfully
-as you can see from the section~\ref*{ch4_project_demo}. % todo: Add to demo ref
+as you can see from the section~\ref*{ch4_project_demo}.
 From the result, we have reached our objective to build the chatbot system already.
 
 We have specified our scopes and designed our work to achieve our objective in the first semester.
-However, when we implemented it, it did not go as expected, as we described in Chapter 4.
+However, when we implemented it, it did not go as expected as we described in Chapter 4.
 We encountered several problems and constraints, and we attempted to solve them in many ways.
 Unfortunately, some problems have too many constraints or are out of our scopes,
 and we must place them in the future work.
