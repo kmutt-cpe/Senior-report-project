@@ -474,7 +474,7 @@ Because of this method, many people consider RNN to use whenever they need conte
 such as speech recognition, video analysis, and music composition.
 
 \subsection{Long Short-Term Memory (LSTM)}
-Like RNN the Long Short-Term Memory network is also a recurrent neural network but with
+The Long Short-Term Memory network is also a recurrent neural network but with
 different architecture designs \cite{understand_rnn}, as seen in Figure~\ref*{fig:lstm_arch_design}.
 LSTM is specifically used to avoid the long-term dependency problem or the vanishing gradient.
 
@@ -490,7 +490,7 @@ The core idea of LSTM is the cell state, the horizontal line that goes between e
 cell state is like a bridge to carry out information from the first state throughout the model.
 Besides the ability to carry information, LSTM can also manipulate the cell state by adding gates
 that interact with the cell state. Each gate can alter the information on cell state like
-forgetting some data or to determine which information needs to be remembered. 
+to forget some data or to determine which information needs to be remembered. 
 
 \subsection{MaLSTM Similarity Function}
 \[\exp(-\|h^{(left)} - h^{(right)}\|1)\]
