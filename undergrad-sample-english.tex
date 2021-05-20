@@ -582,7 +582,7 @@ every day, Run Job B at 8:00 am, once a week on Sunday. Job is called DAGs
 (Directed Acyclic Graphs) in Airflow is a web UI for us to monitor Task Failure
 that occurred, or Duration Time caused by each work.
 
-\subsection{Chatbot System}
+\subsection{Chatbot Subsystem}
 \subsubsection{Dialogflow}
 Dialogflow is a chatbot builder from Google which provide flexible integration to many platforms,
 unique to Natural Language Processing, or NLP \cite{dialogflow}. Which means that chatbot can
@@ -1780,8 +1780,8 @@ cosine similarity model instead for better time performance.
 
 At first, we tried to reduce the max sequence which required to build the new model.
 But the model is not quite good enough as you can see between evaluation of new model
-(Figure~\ref{reduce_sequence_result}) and the first model that we have built
-(Figure~\ref{Classification report}). The precision of new model is higher than old
+(Figure~\ref*{fig:reduce_sequence_result}) and the first model that we have built
+(Figure~\ref*{fig:Classification report}). The precision of new model is higher than old
 one, but recall and F1-Score is very low.
 
 \begin{figure}[!h]\centering
@@ -1792,7 +1792,7 @@ one, but recall and F1-Score is very low.
 
 From the result above, we have to reject the reducing max sequence method and
 try using the cosine similarity instead. You can see the result of cosine similarity
-at section~\ref*{} %todo: Add reference to cosine similarity
+at section~\ref*{ch4_cosine_similarity_result}
 
 \subsection{Budget Problem}
 From Chapter 3, we planned to use Apache Airflow to automate build and run on Google Cloud Platform.
@@ -2128,6 +2128,7 @@ The max category is Curriculum {
  ‘ หลักสูตร } which match with our expected result. So from the results we can predict categories quite accurately. 
 \subsection{Siamese Neural Network with MaLSTM Result}
 \subsubsection{Siamese Neural Network with MaLSTM Training}
+\label{siamese_result}
 After preprocessing the data, we split the data into train, validate, and test data. Then separate the data into left inputs and right inputs, one for each side of MaLSTM. Then train the model with 100 epochs and use batch sizes 128. In addition to using early stops to prevent the model too overfitting and model checkpoint to save the model. Even our group set 100 epochs, but the model was trained only 17 epochs before stopping from early stop. Loss of training data is 0.4116 and loss of validation data is 0.4358. Also, accuracy of training data is 0.5487 and accuracy of validation data is 0.4358. Graphs below are the result from training.
 
 \begin{figure}[!h]\centering
@@ -2176,9 +2177,11 @@ and
 Even the model can predict, but the overall performance of the model is quite not good. Because we think the model should return similar questions from MaLSTM more than 0.5 scores not 0.3 scores. We think that the problem comes from not enough data. If we can gather more dataset and have more cases about question pairs that are similar or not similar, especially not similar that we got less precision, we can increase our model's performance. Also we have to integrate all subsystem to be one system in the production environment.
 
 \subsection{Cosine Similarity Result}
+\label{ch4_cosine_similarity_result}
 Due to the respone timeout in Dialogflow problem after integrate all subsytem together we have to reduce time response to make our system can reply the respone back to user by change deep neural network which is Siamese Neural Network with MaLSTM model to machine learning which is cosine similarity that is the same method the find similiarity of user question and questions in database.
 \subsubsection{Cosine Similarity Preprocessing}
-We preprocessing the cosine silmilarity like the Siamese Neural Network with MaLSTM Evaluation that we tokenize text and covert text into lists of sequence as in the section \nameref{preprocessing cosine}
+We preprocessing the cosine silmilarity like the Siamese Neural Network with MaLSTM Evaluation that we tokenize
+text and covert text into lists of sequence as in the section \ref*{preprocessing cosine}~\nameref*{preprocessing cosine}
 \subsubsection{Cosine Similarity Parameter Setting}
 We find the similarity by input user questions and all questions for each category in the database by using 'cosine similarity' function from sklearn.metrics.pairwise library to find the similar of both two inputs
 \begin{figure}[!h]\centering
@@ -2328,6 +2331,7 @@ and
 In summaty overall result of our model can predict similar intent questions more accurately than cosine similarity but it is slower than cosine similarity.
 
 \section{Project Demo}
+\label{ch4_project_demo}
 % todo: Chat capture that we asked through messenger and reply answer from KM back
 This is our example chat response from user ask via KMUTT CPE Fanpage which our system bring the answer response from the knowledge management subsystem. Overall, the chatbot can answer the questions of users at a certain level. But there are still many questions that cannot reply to the user.
 
@@ -2353,14 +2357,77 @@ This is our example chat response from user ask via KMUTT CPE Fanpage which our 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Conclusions}
 
-This chapter is optional for proposal and progress reports but 
-is required for the final report.
+From our objective, building a chatbot that can answer the question about computer engineering department
+and integrating chatbot system with the production environment, it becomes CPE KMUTT Chatbot System.
+We have created the system that chatbot can bring the question from Facebook Messenger of CPE @ KMUTT page
+to predict the question, get the answer from knowledge management, and return it back to chat successfully
+as you can see from the section~\ref*{ch4_project_demo}.
+From the result, we have reached our objective to build the chatbot system already.
+
+We have specified our scopes and designed our work to achieve our objective in the first semester.
+However, when we implemented it, it did not go as expected as we described in Chapter 4.
+We encountered several problems and constraints, and we attempted to solve them in many ways.
+Unfortunately, some problems have too many constraints or are out of our scopes,
+and we must place them in the future work.
+So, we are going to summarize our problems and how we solved them,
+as well as which features or problems are the future works of our project.
 
 \section{Problems and Solutions}
-State your problems and how you fixed them.
+\subsection{Performance Problem}
+This problems we realized when we were going to integrate the subsystem together.
+The time performance to predict question from user and all question from knowledge management
+will take a long time. So, we solve tihs problem by create the Logistic Regression model,
+which we called category model, to classify the question and get only questions in that
+category to predict instead of every questions in knowledge management
+
+\subsection{Timeout in Dialogflow}
+\label{ch5_timeout_dialogflow}
+After integrated the subsystem together and tested by sending the question through chat.
+It should replied the answer from knowledge management back.
+But it was not have any answer reply back. This problem came from timeout in Dialogflow.
+We solve this problem by adding more timeout with the event in Dialogflow, improving the
+chat workflow, using better computer,
+and changing from Siamese neural network model to cosine similarity instead.
+
+\subsection{High Budget}
+From the high budget of Google Cloud Platform, we have to reduce our scope about automate build model
+by using Apache Airflow. But we have implemented code to let prediction model still can update the
+question to predict from backend API autaomatically.
 
 \section{Future Works}
-What could be done in the future to make your projects better.
+\subsection{Using Siamese Neural Network}
+The problems of the better evaluation result of cosine similarity and time performance in Dialogflow,
+it makes us to use cosine similarity model instead of Siamese neural network model.
+
+From our research, Siamese neural network should be intepret the similarity between pair of questions
+better than cosine similarity. But from the evaluation results of both models, it differently from what we think.
+The evaluation result of Siamese neural network model is worse than the cosine simiarity model.
+The problem comes from not enough data to train the Siamese neural network.
+If we have more data to train the Siamese neural network, we could improve the performance of the model.
+
+As we describe the problem in section~\ref*{ch5_timeout_dialogflow}, there is timeout in Dialogflow problem.
+In the future, if we have the better resources to run the model faster and remove the constraint of time,
+we will be able to use the Siamese neural network model instead of cosine similarity.
+
+\subsection{Automated Build the model}
+We had decided to remove the automated build model from our planned in Chapter 2
+due to the high cost of using the Google Cloud Platform.
+However, if we have enough budget or a server with the same performance
+as what we used to build and train our model in the future,
+we might implement the automated build model.
+
+\subsection{Responsive Knowldge Management Website}
+Currently the knowledge management is not a responsive website and we have not plan to build the reponsive website.
+It could have the problem if user use website on the phone.
+So, we have to put the responsive website of the knowledge management to be future plan.
+
+\subsection{Ticket System}
+A ticket system is typically a system that stores issues or questions from users that have yet to be resolved
+and user can answer or solve the ticket through the ticket system.
+We can apply the ticket system to the knowledge management to store the question that model predict
+with low accuracy value, and let CPE staff answer in the ticket system instead.
+Furthermore, we could use the ticket system to easily get the data from user or
+automatically create the frequently asked question in knowledge management.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
