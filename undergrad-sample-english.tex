@@ -1927,6 +1927,7 @@ The remaining of intent is used to fix timeout problems as we describe in sectio
 
 \pagebreak
 \subsection{Facebook Messenger}
+\label{fb_messenger}
 	There are several requirements and processes which must be
 	provided to Facebook in order to request the App Review for page messaging,
 	allow the application to connect with chat of page.
@@ -1956,18 +1957,25 @@ The remaining of intent is used to fix timeout problems as we describe in sectio
 \pagebreak
 \section{Knowledge Management Results}
 	\subsection{Use Case diagram}
-	% todo: New Use case with more role for App Review
+	From our scope to have only role of user, which is admin, it changed into 4 roles instead.
+	Because of the App Review in Facebook required to access and test our application
+	as we mentioned in section~\ref*{fb_messenger}.
+	So, we have to update our use case as you can see in Figure~{fig:Use case of KMUTT CPE Chatbot version2}
+
 	\begin{figure}[!h]\centering
 		\fbox{\includegraphics[width=12cm]{./img/ch4/Use case version 2.png}}
 		\caption{Use case of KMUTT CPE Chatbot}\label{fig:Use case of KMUTT CPE Chatbot version2}
 	\end{figure}
-	%todo รอแก้เนื้อหาในนี้แหละ
-		We update roles in the use case diagram because of Facebook app review need the indicate to check knowledge management website. So in order to for the Facebook reviewer to check and test the knowledge management then we created the viewer roles. The roles that created after update is Moderator and viewer.
-		
-		Root user is the first user in the system then create the admin roles to take care of the system.
-		Root and admin has the same privilage that can create read update delete every thing.
-		Moderator can create read update delete only FAQ, category and subcategory. and can't don anything with user.
-		Viewer can view everything, but not user.
+
+
+		Now, role in knowledge management has incread to 4 roles instead, which consists of
+		root, admin, moderator, and viewer.
+		Root and admin, both roles same privilage to the knowledge management
+		with are can create, read, update, delete the question, category, subcategory, and user.
+		Next, moderator role can only create, read, update, and delete only question, category, and subcategory.
+		And the last role, viewer, can only view question, category, and subcategory.
+		In addition, we provided the viewer role for Facebook reviewer for App Review request.
+
 \pagebreak
 
 	\subsection{Implementation}
