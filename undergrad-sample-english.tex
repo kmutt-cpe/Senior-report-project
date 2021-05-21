@@ -2427,6 +2427,7 @@ After preprocessing the data, we split the data into train, validate, and test d
 \end{figure}
 
 \subsubsection{Siamese Neural Network with MaLSTM Evaluation}
+\label{siamese_evaluation}
 The result from the model is the real number from 0 to 1. We interpret both questions are similar (result = 1) if the model predicted score is more than 0.3. If the model predicted score is less than 0.3, both questions are not similar (result = 0). We pick 0.3 to be a criterion for similar or not similar because we have picked 0.6 and 0.5 already but accuracy is very low. After the model predicts the test data, we convert from a similar score (0 to 1)  to binary (0 or 1) instead before evaluating. As you can see in the training topic, we use accuracy and loss to be the main criteria to evaluate the model while training. But in this process we will also use accuracy, precision, and F1-score to evaluate the model. The picture below is the result after evaluating the model with test data.
 
 \begin{figure}[!h]\centering
@@ -2553,6 +2554,7 @@ The cosine similarity has got 32.9\% is less than Siamese Neural Network with Ma
 
 
 \subsubsection{Example questions of Siamese Neural Network with MaLSTM}
+\label{example_siamese_compare}
 From others example from playing with model.The Input questions are
 {
 \XeTeXlinebreaklocale "th_TH"	
@@ -2564,7 +2566,7 @@ From others example from playing with model.The Input questions are
  Both questions are not similar and our model can predict both questions are not similar for 57.14\%
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_8.png}}
-\caption{Model result by compare questions which not similar}\label{fig:Model result by compare questions which not similar}
+\caption{Siamese neural network model predict not similar question result}\label{fig:Model result by compare questions which not similar}
 \end{figure}
 
 The picture below shows an example result from playing with the model. The Input questions are
@@ -2580,12 +2582,13 @@ and
 }Both questions are similar and our model can predict both questions are similar for 83.33\%.
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_7.png}}
-\caption{Model result by compare questions which similar}\label{fig:Model result by compare questions which similar}
+\caption{Siamese neural network model predict similar question result}\label{fig:Model result by compare questions which similar}
 \end{figure}
 
 
 
 \subsubsection{Example questions Cosine Similarity}
+\label{example_cosine_compare}
 From others example from playing with model. The Input questions are
 {
 \XeTeXlinebreaklocale "th_TH"	
@@ -2598,7 +2601,7 @@ From others example from playing with model. The Input questions are
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_cosine2_2.png}}
-\caption{Cosine result by compare questions which not similar}\label{fig:Cosine result by compare questions which not similar}
+\caption{Cosine similarity model predict not similar question result}\label{fig:Cosine result by compare questions which not similar}
 \end{figure}
 
 The picture below shows an example result from using cosine similarity. The input questions are
@@ -2614,11 +2617,15 @@ and
 }Both questions are similar around 85.73\%.
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_cococo.png}}
-\caption{Cosine result by compare questions which similar}\label{fig:Cosine result by compare questions which similar}
+\caption{Cosine similarity model predict similar question result}\label{fig:Cosine result by compare questions which similar}
 \end{figure}
 \label{evaluation prediction}
-The evaluation result of the Siamese neural network model is better than the cosine similarity because the aim of this prediction of this project wants to classify the intent of both questions as similar or not similar. From the example, the model can classify intent which is not similar better than cosine similarity, and the model able to classify the similar intent of the question well to a certain extent but still not good as cosine similarity. However, As the aim of the prediction of the project is to classify both similar and not similar intent, Therefore the saimese neural netwoek model can both predict similar and not similar intent better than cosine similarity which can't classify not similar intent. In summary this is why Siamese neural network model is better than cosine. But the overall performance of the model is not good. The problem comes from not enough CPE questions data to train the Siamese neural network.
-If we have more CPE questions data to train the Siamese neural network, we could improve the model's performance is not good. Due to the problem of Timeout. The response time for replying answer to the model used is slower than cosine similarity. The project has to used cosine similarity, although the evaluation of the cosine result is less than the siamese neural network model. 
+The evaluation result of the Siamese neural network model is better than the cosine similarity because the aim of this prediction model subsystem wants to classify the intent of both questions are similar or not similar. 
+From the section~\ref*{example_siamese_compare} and section~\ref*{example_cosine_compare},
+The Siamese neural network model can classify intent better than cosine similarity as you can see when Siamese neural network predict the questions that are not simiar can give the better value than the Cosine similarity. But if the questions is similar, both models can use to predict and give with the high value of similarity.
+So, Siamese neural network can perform better result than cosine similarity. But in the speed performance it slower than cosine similarity. In the future, if there is more questions to predict, the problem of timeout exceed in Dialogflow could occured again. Therefore, our group decided to use cosine similarity instead of Siamese neural network.
+
+Moreover, if we have more CPE questions data to train the Siamese neural network and better resoucrces, we could improve the model's evaluation result to as it should be without time constraint.
 
 \pagebreak
 \section{Project Demo}
@@ -2682,19 +2689,15 @@ and changing from Siamese neural network model to cosine similarity instead.
 \subsection{High Budget}
 From the high budget of Google Cloud Platform, we have to reduce our scope about automate build model
 by using Apache Airflow. But we have implemented code to let prediction model still can update the
-question to predict from backend API autaomatically.
-to
+question to predict from backend API automatically.
+
 \section{Future Works}
 \subsection{Using Siamese Neural Network}
+Currently, our group used the cosine similarity instead of Siamese neural network, even the Siamese neural network is better, because of the time constraint. In the future, if we have better computer, we could remove the time constraint and use Siamese neural network.
 
-
-From the evaluation results of both models ~\ref*{evaluation prediction}.
-The evaluation result of Siamese neural network model is better than the cosine simiarity model. Due  the aim of the prediction of the project is to classify both similar and not similar intent, Therefore the saimese neural netwoek model can both predict similar and not similar intent better than cosine similarity which can't classify not similar intent. In summary this is why Siamese neural network model is better than cosine. But the overall performance of the model is not good. The problem comes from not enough CPE questions data to train the Siamese neural network.
-If we have more CPE questions data to train the Siamese neural network, we could improve the model's performance.
-
-As we describe the problem in section~\ref*{ch5_timeout_dialogflow}, there is timeout in Dialogflow problem.
-In the future, if we have the better resources to run the model faster and remove the constraint of time,
-we will be able to use the Siamese neural network model instead of cosine similarity.
+\subsection{Getting More Data}
+From the evaluation result of Siamese neural network in section~\ref*{siamese_evaluation},
+in the future we could improve the model evaluation to be better if we have more data to train.
 
 \subsection{Automated Build the Model}
 We had decided to remove the automated build model from our planned in Chapter 2
