@@ -2691,9 +2691,8 @@ it makes us to use cosine similarity model instead of Siamese neural network mod
 
 From our research, Siamese neural network should be intepret the similarity between pair of questions
 better than cosine similarity. But from the evaluation results of both models, it differently from what we think.
-The evaluation result of Siamese neural network model is worse than the cosine simiarity model.
-The problem comes from not enough data to train the Siamese neural network.
-If we have more data to train the Siamese neural network, we could improve the performance of the model.
+The evaluation result of Siamese neural network model is better than the cosine simiarity model. The model able to classify the intent of the question well to a certain extent but the response time for replying user of the model is slower than cosine similarity. Overall performance of the model is not good. The problem comes from not enough CPE questions data to train the Siamese neural network.
+If we have more CPE questions data to train the Siamese neural network, we could improve the performance of the model.
 
 As we describe the problem in section~\ref*{ch5_timeout_dialogflow}, there is timeout in Dialogflow problem.
 In the future, if we have the better resources to run the model faster and remove the constraint of time,
