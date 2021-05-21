@@ -65,7 +65,7 @@
 \def\thaidepartment{วิศวกรรมคอมพิวเตอร์} 
 \def\thaifaculty{วิศวกรรมศาสตร์}
  
-\def\appendixnames{Appendix} % todo: Select Appendices or Appendix
+\def\appendixnames{Appendix}
 
 \def\thaiworktype{ปริญญานิพนธ์} %  Project or research project % 
 \def\thaidisstitleone{ระบบแชทบอทภาควิชาวิศวกรรมคอมพิวเตอร์ มจธ.}
@@ -505,7 +505,7 @@ The similarities among these representations are employed as predictors of seman
   \setlength{\fboxrule}{0.2mm}
   \setlength{\fboxsep}{0.5cm}
   \fbox{\includegraphics[width=14cm]{./img/ch2/siamese_arch.png}}
-  \caption{Sample Siamese Neural Networks architecture}
+  \caption{Sample Siamese neural networks architecture}
   \label{fig:siamese_arch}
 \end{figure}
 Siamese Neural Networks is a type of neural network that contains multiple instances of the
@@ -799,11 +799,16 @@ when knowledge management receives new data.
 \chapter{Proposed Work}
 
 \section{Introduction}
-This chapter demonstrates our plan and idea to be method or approach to reach the goal. In this chapter consists of system architecture, workload of each person, planning diagram such as use case, sequence diagram, etc., data management, design of key processing algorithms, and evaluation plans to evaluate our project.
+This chapter demonstrates our plan and idea to be method or approach to reach the goal.
+In this chapter consists of system architecture, workload of each person, planning diagram such as
+use case, sequence diagram, data management, design of key processing algorithms, and evaluation plans to evaluate our project.
 
 \section{System Architecture}
 \label{ch3_system_architecture}
-After planning and discussion with advisor, KMUTT CPE Chatbot System can be divide into 4 subsystems which consists of knowledge management subsystem, prediction model subsystem, chatbot subsystem, and storage subsystem
+After planned and dicussed with advisor, KMUTT CPE Chatbot System can be divided into 4 subsystems
+which consists of knowledge management subsystem
+ prediction model subsystem, chatbot subsystem, and storage subsystem
+
 \begin{figure}[h!]
 	\centering
 	\setlength{\fboxrule}{0.2mm}
@@ -1553,15 +1558,15 @@ To evaluate prediction model base on different criteria for example accuracy and
 
 \section{Problems}
 \label{ch4_problem}
-Before we get into the details of our project's outcomes, let us first go through some of the problems
-we encountered while integrating subsystem together. Because the results have changed a lot from our
-plan and it could make you confused if not understand the problem and how we solve it. There are 3 major
-problems that we want to describe first which are the performance problem, response time out in Dialogflow
-problem, and budget problem.
+Before deep down into the details of project's outcomes, let go through some of the problems
+that our group encountered while integrating subsystem together. Because the results have changed a lot from our
+plan and it could make the confusion if not understand the problem and how we solve it. There are 3 major
+problems which are the performance problem, response time out in Dialogflow problem, and budget problem.
+
 \subsection{Performance Problem}
-This problem was occurred when we want to integrate the system together. Initially, we decided to
-collect input questions from the chatbot and send it along with all questions to the prediction model,
-which would then predict the question, as you can see from the Figure~\ref*{fig:chat_plan_1}.
+This problem was occurred when we wanted to integrate the system together. Initially, we decided to
+get input questions from the chatbot and send it along with all questions to the prediction model
+as you can see from the Figure~\ref*{fig:chat_plan_1}.
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_plan1.png}}
@@ -1580,14 +1585,14 @@ Figure~\ref*{fig:chat_plan_2}.
 \label{fig:chat_plan_2}
 \end{figure}
 
-However, if we use the Dialogflow intent feature, users or KMUTT CPE staff must add a new intent
-if there is a new category of question in knowledge management, and we must implement the backend
+However, if we used the Dialogflow intent feature, users or KMUTT CPE staff must add a new intent
+when there is a new category of question in knowledge management, and we must implement the backend
 API to handle new Dialogflow intent. This method is too cumbersome.
 
 \subsubsection{Solution of Performance Problem}
 So, we solved this problem by creating logistic regression model, which we called it category model,
-to predict the category of question to get questions in that category before send to Siamese neural
-network model as you can see from the Figure~\ref*{fig:model_pattern1}. Then after backend API get the
+to predict the category of question. Then get questions in that category before send to Siamese neural
+network model as you can see from the Figure~\ref*{fig:model_pattern1}. After backend API get the
 predicted question, backend API will query question and answer from knowledge management before
 return answer back to chatbot.
 
@@ -1599,9 +1604,9 @@ return answer back to chatbot.
 
 \subsection{Response Timeout in Dialogflow Problem}
 \label{response_timeout_problem_section}
-After integrate all subsystem together, we want to know that our system work properly or not.
-So, to test the system, we asked a question in chat and waited for an answer response. But does not have
-any message reply back. We thoroughly examined the entire system until we determined that the issue
+After integrated all subsystem together, our group wanted to know that our system work properly or not.
+So, to test the system, we asked a question in chat and waited for an answer response. But did not have
+any message reply back. We throughly examined the entire system until we determined that the issue
 comes from Dialogflow.
 
 \begin{figure}[!h]\centering
@@ -1615,7 +1620,7 @@ The status of Dialogflow is ``Deadline Exceeded". It occurs when the response ti
 \cite{dialogflow_time_out}. Dialogflow limits timeout for all webhook response only 5 seconds (Except response for
 Google Assistant has limit timeout to 10 seconds) \cite{dialogflow_response_time}.
 
-First, we try to solve the problem by changing to a better computer to run the model.
+First, we tried to solve the problem by changing to a better computer to run the model.
 We tested the model on 2 different computers: Natthawat's PC and Nathaphop's PC.
 Spec of each computer is in Table~\ref*{tab:computer_list}.
 
@@ -1653,29 +1658,29 @@ than timeout response of Dialogflow.
 	\end{adjustbox}
 \end{table}
 
-After that we want to find out which parts of code in Siamese neural network take a long
-time to implement. We divide our code and examine the time usage of each line and we
+After that we wanted to find out which parts of code in Siamese neural network took a long
+time to implement. We divided our code and examined the time usage of each line and we
 discovered that the most time-consuming parts of the code are the time to tokenize the
 questions and the time to predict.
 
-From our record Natthawat's PC use 7.13 seconds to tokenize the word and 23 seconds to predict.
-Nathaphop's PC use 2.33 seconds to tokenize the word and 8.26 seconds to predict.
-Time usage of the rest of code is in nanoseconds unit, so it won't take long to implement.
+From our record, Natthawat's PC used 7.13 seconds to tokenize the word and 23 seconds to predict.
+Nathaphop's PC used 2.33 seconds to tokenize the word and 8.26 seconds to predict.
+Time usage of the rest of code is in nanoseconds unit, so it will not take long time to implement.
 
 \subsubsection{The First Approach for Solving Response Timeout in Dialogflow Problem}
-The first approach that we try to solve this problem is to increase the timeout of Dialogflow
-and decrease transmitted time. We are going to increase timeout of Dialogflow by using
+The first approach that we tried to solve this problem is to increase the timeout of Dialogflow
+and decrease transmitted time. We will increase timeout of Dialogflow by using
 custom event in Dialogflow and decrease transmitted time by improving the chat workflow.
 
-According to our information, some people solve timeout response
+According to our information, some people solved timeout response
 by returning the custom event in Dialogflow when it almost reaches the timeout response and
 creating a new intent in Dialogflow that will trigger when custom event is invoked from webhook API.
 This new intent will call back to the webhook API again, which is called follow up event, to get more timeout
 before return the message response back \cite{extend_webhook_intent}.
 Multiple follow up event can extend more timeout, but can have maximum 3 follow up event \cite{changing_intent_webhook}.
-We apply this method to our project to increase the maximum connection time to 10 seconds.
+We applied this method to our project to increase the maximum connection time to 10 seconds.
 
-Next, we try to improve chat workflow by integrating the category model and the Siamese neural network and
+Next, we tried to improve chat workflow by integrating the category model and the Siamese neural network, and
 providing the prediction model to contain all questions instead of passing them through the API. As a result
 of this change, the backend API only sends the input question to the prediction model once and then waits for
 the predicted question to return as you can see in Figure~\ref*{fig:model_pattern2}. And the result of the
@@ -1705,11 +1710,11 @@ still cannot response the answer to Dialogflow before timeout.
 
 \subsubsection{The Second Approach for Solving Response Timeout in Dialogflow Problem}
 From the previous approach, we just try to reduce transmitted time and increase timeout response of Dialogflow.
-But, still do not have enough time to response. So, we try another approach to address at the
+But, still did not have enough time to response. So, we tried another approach to address at the
 main problems as we mention in section~\ref*{response_timeout_problem_section}.
 We were finding the better computer to reduce run time and trying reduce time to tokenize.
 
-To use the better computer, we asked master student who take care A-Square lab's computer for running the model on computer
+To used the better computer, we asked master student who take care A-Square lab's computer for running the model on computer
 at A-Square lab. He created the new environment for us to running the model.
 The computer spec of A-Square lab is in Table~\ref*{tab:a_square_computer_spec}.
 
@@ -1726,10 +1731,10 @@ The computer spec of A-Square lab is in Table~\ref*{tab:a_square_computer_spec}.
 	\end{adjustbox}
 \end{table}
 
-After we can use the better performance computer, we also try reduce tokenize time.
+After we can used the better performance computer, we also tried to reduce tokenize time.
 Before the Siamese neural network model predict the similarity between questions,
 both questions need to tokenize first.
-We move the tokenization process of questions from knowledge management before put into the model
+We moved the tokenization process of questions from knowledge management before put into the model
 to when the questions are queried immediately as you can see from \ref*{fig:model_pattern3}
 
 \begin{figure}[!h]\centering
@@ -1741,7 +1746,7 @@ to when the questions are queried immediately as you can see from \ref*{fig:mode
 After that we have tested time performance of the new workflow on each computer,
 the result is in Table~\ref*{tab:run_time_pattern3_table}.
 Natthawat's PC is still unable to run before timeout.
-While Nathaphop's PC expectes to be able to run before reach the timeout.
+While Nathaphop's PC expected to be able to run before reach the timeout.
 However, after testing by running model on Nathaphop's PC and sending message through chat,
 we still cannot get any reply answer back. It could because some process inside backend API and transmitted data.
 For the time result of A-Square lab's computer, time usage to predict model is very faster than
@@ -1763,9 +1768,10 @@ After we have tested sending the question through chat, we got the answer from k
 	\end{adjustbox}
 \end{table}
 
+\pagebreak
 \subsubsection{The Last Approach for Solving Response Timeout in Dialogflow Problem}
-After we discussed timeout problem and show how we solve the problem with our advisor,
-he suggests that we can improve time performance by reducing max sequence range or using
+After we discussed timeout problem and show how we solve the problem with advisor,
+he suggested that we can improve time performance by reducing max sequence range or using
 cosine similarity model instead for better time performance.
 
 At first, we tried to reduce the max sequence which required to build the new model.
@@ -1780,20 +1786,20 @@ one, but recall and F1-Score is very low.
 \label{fig:reduce_sequence_result}
 \end{figure}
 
-From the result above, we have to reject the reducing max sequence method and
-try using the cosine similarity instead. You can see the result of cosine similarity
-at section~\ref*{ch4_cosine_similarity_result}
+From the result above, we had to reject the reducing max sequence method and
+tried using the cosine similarity instead. You can see the result of cosine similarity
+at section~\ref*{ch4_cosine_similarity_result}.
 
 \subsection{Budget Problem}
 From Chapter 3, we planned to use Apache Airflow to automate build and run on Google Cloud Platform.
 But after we checked the minimum price of platform that be able to run the model,
-the price is around 8385 Baht per month as you can see from Figure~\ref*{fig:model_pattern3}.
+the price is around 8385 Baht per month as you can see from Figure~\ref*{fig:min_gcp_price}.
 It is too high budget for developing automate build and run.
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width=14cm]{./img/ch4/problem/gcp_price.jpg}}
 \caption{The minimum price of Google Cloud Platform server with GPU}
-\label{fig:model_pattern3}
+\label{fig:min_gcp_price}
 \end{figure}
 
 \subsubsection{Solution of Budget Problem}
@@ -1802,14 +1808,14 @@ But does not mean the model will not be able to update the data inside the predi
 Because we have run another thread to query and tokenize all questions,
 then replace new tokenized question with old one to update the questions.
 
-So, the model can still automate update the question from knowledge management
+So, the model can still automated update the question from knowledge management
 but cannot automate train the model as we planned.
 
 \pagebreak
 \section{System Architecture}
-From the problem as we describe in section~\ref*{ch4_problem}.
-There is some workflow that have change to solve the problem that we found.
-So, our system architecture that we describe in section~\ref*{ch3_system_architecture} have changed a lot.
+From the problem as we described in section~\ref*{ch4_problem}.
+There is some workflow that have changed to solve the problem that we found.
+So, our system architecture that we described in section~\ref*{ch3_system_architecture} have changed a lot.
 Figure~\ref*{fig:new_software_architecture} is our new system architecture.
 
 \begin{figure}[!h]\centering
@@ -1836,7 +1842,7 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 
 \section{Server Integration Setup}
 \subsection{Virtual Machine}
-We use free credit of student account in the Microsoft Azure to get
+We used free credit of student account in the Microsoft Azure to get
 the virtual machine for deploying our front-end website and backend API.
 In addition, we run the Nginx server to map the application that run in
 different port in server to HTTP path to let another client can access the
@@ -1857,12 +1863,12 @@ nameservers config as you can see from Figure~\ref*{fig:Domain name of the serve
 	\caption{Domain name of the server}\label{fig:Domain name of the server}
 \end{figure}
 
-After we have the domain name, we set up SSL with Cloudflare,
+After we had the domain name, we set up SSL with Cloudflare,
 as shown in Figure~\ref*{fig:Cloudflare homepage},
-and map the SSL domain name to the Azure server for the Dialogflow webhook.
+and mapped the SSL domain name to the Azure server for the Dialogflow webhook.
 
 In Dialogflow, it required SSL domain name for connect webhook \cite{dialogflow_webhook_requirement}.
-So, we use Cloudflare to set SSL of the domain name that we derived
+So, we used Cloudflare to set SSL of the domain name that we derived
 to be the domain to connect with Dialogflow.
 
 \begin{figure}[!h]\centering
@@ -1872,21 +1878,29 @@ to be the domain to connect with Dialogflow.
 \pagebreak
 
 \subsection{CI/CD}
-We have the CI/CD for the deployment the front-end and back-end application. We planned to use Kubernetes to deploy the appliction, but we use the github repository and GitHub provided the tools to deploy using GitHub Actions. It is easier to in copy file and run the command to the vitual machine and we didn't want to scale up right now so GitHub Actions is the good option to go and it can be run autaomatically and manually.
+At first, we planned to set up the CI/CD with the Kubernetes.
+But while implementation, we used GitHub to be repository hosting.
+After that we studied tools that GitHub provided to use.
+In GitHub has tools for CI/CD which is GitHub Actions and
+it is enough to set up pipeline for our project.
+So, we have changed tools for CI/CD from Kubernetes to GitHub Actions instead.
+In addition, we have set CI/CD for backend API and knowledge management to
+automate build and deploy to server already.
+
 \begin{figure}[!h]\centering
 	\fbox{\includegraphics[width=14cm]{./img/ch4/ci-cd-be.png}}
-	\caption{CI/CD for backend}\label{fig:ci-cd-be}
+	\caption{Workflow log of backend API in GitHub Actions}\label{fig:ci-cd-be}
 \end{figure}
 
 \begin{figure}[!h]\centering
 	\fbox{\includegraphics[width=14cm]{./img/ch4/ci-cd-fe.png}}
-	\caption{CI/CD for frontend}\label{fig:ci-cd-fe}
+	\caption{Workflow log of knowledge management website in GitHub Actions}\label{fig:ci-cd-fe}
 \end{figure}
 
 \pagebreak
 \section{Chatbot Subsystem Results}
 \subsection{Dialogflow}
-In Dialogflow, we've already configured the webhook for the backend API
+In Dialogflow, we had already set the webhook for the backend API
 and the connection between Facebook Messenger and Line chat.
 
 Line chat is not part of our scope project,
@@ -1913,6 +1927,7 @@ The remaining of intent is used to fix timeout problems as we describe in sectio
 
 \pagebreak
 \subsection{Facebook Messenger}
+\label{fb_messenger}
 	There are several requirements and processes which must be
 	provided to Facebook in order to request the App Review for page messaging,
 	allow the application to connect with chat of page.
@@ -1942,18 +1957,25 @@ The remaining of intent is used to fix timeout problems as we describe in sectio
 \pagebreak
 \section{Knowledge Management Results}
 	\subsection{Use Case diagram}
-	% todo: New Use case with more role for App Review
+	From our scope to have only role of user, which is admin, it changed into 4 roles instead.
+	Because of the App Review in Facebook required to access and test our application
+	as we mentioned in section~\ref*{fb_messenger}.
+	So, we have to update our use case as you can see in Figure~{fig:Use case of KMUTT CPE Chatbot version2}
+
 	\begin{figure}[!h]\centering
 		\fbox{\includegraphics[width=12cm]{./img/ch4/Use case version 2.png}}
 		\caption{Use case of KMUTT CPE Chatbot}\label{fig:Use case of KMUTT CPE Chatbot version2}
 	\end{figure}
-	%todo รอแก้เนื้อหาในนี้แหละ
-		We update roles in the use case diagram because of Facebook app review need the indicate to check knowledge management website. So in order to for the Facebook reviewer to check and test the knowledge management then we created the viewer roles. The roles that created after update is Moderator and viewer.
-		
-		Root user is the first user in the system then create the admin roles to take care of the system.
-		Root and admin has the same privilage that can create read update delete every thing.
-		Moderator can create read update delete only FAQ, category and subcategory. and can't don anything with user.
-		Viewer can view everything, but not user.
+
+
+		Now, role in knowledge management has incread to 4 roles instead, which consists of
+		root, admin, moderator, and viewer.
+		Root and admin, both roles same privilage to the knowledge management
+		with are can create, read, update, delete the question, category, subcategory, and user.
+		Next, moderator role can only create, read, update, and delete only question, category, and subcategory.
+		And the last role, viewer, can only view question, category, and subcategory.
+		In addition, we provided the viewer role for Facebook reviewer for App Review request.
+
 \pagebreak
 
 	\subsection{Implementation}
@@ -2323,30 +2345,29 @@ Due to our model is used to find the similarity of the questions asked by the us
 \end{figure}
 \pagebreak
 
-This is a FAQs of Computer Engineering questions which we gathering by ourself. Overall we have 177 questions we divided questions into 4 categories are Admission{
+This is a FAQs of computer engineering questions which we gathering by ourself. Overall we have 177 questions we divided questions into 4 categories are admission{
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- ‘ การรับเข้านักศึกษา’ } has 19 questions , FAQs {
+ ‘การรับเข้านักศึกษา’ } has 19 questions , FAQs {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- ‘ คำถามทั่วไป’ }has 36 questions, Enrollment {
+ ‘คำถามทั่วไป’ }has 36 questions, enrollment {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- ‘ ลงทะเบียนเรียน’ }has 40 questions and Curriculum {
+ ‘ลงทะเบียนเรียน’ }has 40 questions and curriculum {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- ‘ หลักสูตร’ }has 82 questions then we use a deepcut to cut the word from the text we have read which is stored in a column called CPE questions. All data will be converted into a list of words in the CPE FAQs and change it to the bag of words (sparse matrix).
+ ‘หลักสูตร’ }has 82 questions then we use a deepcut to cut the word from the text we have read which is stored in a column called CPE questions. All data will be converted into a list of words in the CPE FAQs and change it to the bag of words (sparse matrix).
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_token_category.png}}
 \caption{The data after tokening}\label{fig:The data after tokening}
 \end{figure}
-\pagebreak
 We find all the words that appear first. And store it in the dictionary to convert the words that we found into index form, for example,{
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- ‘ วิศวะคอม’ } will be changed to number 31, etc.
+ ‘วิศวะคอม’ } will be changed to number 31, etc.
 Sometimes words  are used or appear more frequently in many questions and the words have less weight or less importance than words specific in the questions. So we weigth the less-weight words by using TfidfTransformer to reduce the text dimension using TruncatedSVD.
-In addition, we would like to predict the categories of the questions. We have to convert the categories of questions to binary (0,1) by pd.get dummies
+In addition, we would like to predict the categories of the questions. We have to convert the categories of questions to binary (0,1) by pd.get\_dummies
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_sprase_metric.png}}
 \caption{Change it to the bag of words (sparse matrix)}\label{fig:Change it to the bag of words (sparse matrix)}
@@ -2355,12 +2376,12 @@ In addition, we would like to predict the categories of the questions. We have t
 \subsubsection{Category Model Training}
 We train Logistic Regression to predict to find question category of user question. We train all six models for each model will predict the questions for each category.
 \subsubsection{Category Model Evaluation}
-We want to see how accurate the question's category can predict or the model's accuracy by using ``cross val score" from the library called sci-kit learn.
-The ``cross val score" gets a predictor, which we use is Logistic Regression for the input X svd and output y for each column. Moreover we also use confusion metrix to evaluate our models.
+We want to see how accurate the question's category can predict or the model's accuracy by using ``cross\_val\_score" from the library called sci-kit learn.
+The ``cross\_val\_score" gets a predictor, which we use is Logistic Regression for the input X svd and output y for each column. Moreover we also use confusion matrix to evaluate our models.
 
 \begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_model_result.png}}
-\caption{Category Model Results}\label{fig:Category Model Results}
+\fbox{\includegraphics[width= 10cm]{./img/ch4/ch4_model_result.png}}
+\caption{Category model results}\label{fig:Category Model Results}
 \end{figure}
 We got accuracy 89.28\% from Admission category, 82.15\% from FAQs category, 92.02\% from Curriculum category and 79.67\% from Enrollments category.
 \pagebreak
@@ -2373,10 +2394,10 @@ Each row is True label and each digit is Predicted label, we can see that most o
 For testing, in the example we input qustions {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- ‘ วิศวคอมพิวเตอร์มีหลักสูตรอะไรบ้าง’ }to find what categories of this input question. We expected our model can predict this input question is in Curriculum category  {
+ ‘วิศวคอมพิวเตอร์มีหลักสูตรอะไรบ้าง’ }to find what categories of this input question. We expected our model can predict this input question is in Curriculum category  {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- ‘ หลักสูตร } 
+ ‘หลักสูตร } 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/example_category1.png}}
 \caption{The example input question for classifying category}\label{fig:The example input question for classifying category}
@@ -2390,7 +2411,7 @@ The model return all the value that how the input question similar for each cate
 The max category is Curriculum {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- ‘ หลักสูตร } which match with our expected result. So from the results we can predict categories quite accurately. 
+ ‘หลักสูตร } which match with our expected result. So from the results we can predict categories quite accurately. 
 \subsection{Siamese Neural Network with MaLSTM Result}
 \subsubsection{Siamese Neural Network with MaLSTM Training}
 \label{siamese_result}
@@ -2398,23 +2419,24 @@ After preprocessing the data, we split the data into train, validate, and test d
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_3.png}}
-\caption{Model accuracy}\label{fig:Model accuracy}
+\caption{Siamese neural network model accuracy}\label{fig:siam_acc}
 \end{figure}
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_4.png}}
-\caption{Model loss}\label{fig:Model loss}
+\caption{Siamese neural network model loss}\label{fig:siam_loss}
 \end{figure}
 
 \subsubsection{Siamese Neural Network with MaLSTM Evaluation}
+\label{siamese_evaluation}
 The result from the model is the real number from 0 to 1. We interpret both questions are similar (result = 1) if the model predicted score is more than 0.3. If the model predicted score is less than 0.3, both questions are not similar (result = 0). We pick 0.3 to be a criterion for similar or not similar because we have picked 0.6 and 0.5 already but accuracy is very low. After the model predicts the test data, we convert from a similar score (0 to 1)  to binary (0 or 1) instead before evaluating. As you can see in the training topic, we use accuracy and loss to be the main criteria to evaluate the model while training. But in this process we will also use accuracy, precision, and F1-score to evaluate the model. The picture below is the result after evaluating the model with test data.
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_5.png}}
-\caption{Classification report}\label{fig:Classification report}
+\caption{Siamese neural network classification report}\label{fig:siam_classification_report}
 \end{figure}
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_6.png}}
-\caption{Confusion matrix}\label{fig:Confusion matrix}
+\caption{Siamese neural network confusion matrix}\label{fig:siam_confusion_matrix}
 \end{figure}
 
 The accuracy after evaluating with test data is 0.527. From the confusion matrix and classification report, the overall model performs accuracy with 52.7\%. There are two classes and we got class o with less precision around 25\%. but we have got class 1 with high precision with 76\%.
@@ -2435,7 +2457,7 @@ and
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_7.png}}
-\caption{Model result by compare questions which similar}\label{fig:Model result by compare questions which similar}
+\caption{Model result by compare questions which similar}\label{fig:siam_example}
 \end{figure}
 
 
@@ -2451,18 +2473,18 @@ text and covert text into lists of sequence as in the section \ref*{preprocessin
 We find the similarity by input user questions and all questions for each category in the database by using ``cosine similarity" function from sklearn.metrics.pairwise library to find the similar of both two inputs
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 5cm]{./img/ch4/ch4_result_cosine.png}}
-\caption{The example result by using cosine similarity function}\label{fig:The example result by using cosine similarity function}
+\caption{The example result by using cosine similarity function}\label{fig:cosine_result}
 \end{figure}
 \pagebreak
 \subsubsection{Cosine Similarity Evaluation}
 The result from the cosine simiarity function is the real number from 0 to 1. We interpret both questions are similar (result = 1) if the  score is more than 0.3. If the score is less than 0.3, both questions are not similar (result = 0). We pick 0.3 to be a criterion for similar or not similar because want to compare the performance with the Siamese Neural Network with MaLSTM as the same criterion. In test data, we convert coulum ‘is duplicate’ from a similar score (0 to 1)  to binary (0 or 1) instead before evaluating.
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_cosine_confuse.png}}
-\caption{Cosine Confusion Metrix}\label{fig:Cosine Confusion Metrix}
+\caption{Cosine similarity confusion matrix}\label{fig:Cosine Confusion Metrix}
 \end{figure} 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_classfication_report_cosine.png}}
-\caption{Cosine Classification Report}\label{fig:Cosine Classification Report}
+\caption{Cosine similarity classification report}\label{fig:Cosine Classification Report}
 \end{figure} 
 \pagebreak
 
@@ -2480,7 +2502,7 @@ and
 }Both questions are similar around 61.23\%.
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_coco.png}}
-\caption{The example result of pairing two sentence by using cosine similarity}\label{fig:The example result of pairing two sentence by using cosine similarity}
+\caption{The example result of pairing two sentence by using cosine similarity}\label{fig:cosine_example}
 \end{figure}
 
 \subsection{Comparison between Siamese Neural Network with MaLSTM model and Cosine Similarity}
@@ -2515,32 +2537,36 @@ and
 		\end{tabular}
 	\end{adjustbox}
 \end{table}
-Compare the time usage as you can see from the table. The cosine similarity is faster than Siamese Neural Network with MaLSTM model  
+Compare the time usage as you can see from the table.
+The cosine similarity is faster than Siamese neural network with MaLSTM model  
+
 \subsubsection{Accuracy}
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_classfication_report_cosine.png}}
-\caption{Cosine Classification Report}\label{fig:Cosine Classification Report}
+\caption{Cosine similarity classification report}\label{fig:Cosine Classification Report}
 \end{figure} 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_5.png}}
-\caption{Classification report}\label{fig:Classification report}
+\caption{Siamese neural network classification report}
 \end{figure}
-From both cassification report. The cosine similarity has got 32.9\% is less than Siamese Neural Network with MaLSTM that has got 52.7\%
+From both cassification reports.
+The cosine similarity has got 32.9\% is less than Siamese Neural Network with MaLSTM that has got 52.7\%
 
 
 \subsubsection{Example questions of Siamese Neural Network with MaLSTM}
+\label{example_siamese_compare}
 From others example from playing with model.The Input questions are
 {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- ‘ วิศวะคอมเรียนเกี่ยวกับอะไรบ้าง’ }and 
+ ‘วิศวะคอมเรียนเกี่ยวกับอะไรบ้าง’ }and 
 {
 \XeTeXlinebreaklocale "th_TH"	
-\thaifont ‘ วิศวะคอมมีเรียนหลักสูตรอะไรบ้าง’.}
+\thaifont ‘วิศวะคอมมีเรียนหลักสูตรอะไรบ้าง’.}
  Both questions are not similar and our model can predict both questions are not similar for 57.14\%
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_8.png}}
-\caption{Model result by compare questions which not similar}\label{fig:Model result by compare questions which not similar}
+\caption{Siamese neural network model predict not similar question result}\label{fig:Model result by compare questions which not similar}
 \end{figure}
 
 The picture below shows an example result from playing with the model. The Input questions are
@@ -2556,25 +2582,26 @@ and
 }Both questions are similar and our model can predict both questions are similar for 83.33\%.
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_7.png}}
-\caption{Model result by compare questions which similar}\label{fig:Model result by compare questions which similar}
+\caption{Siamese neural network model predict similar question result}\label{fig:Model result by compare questions which similar}
 \end{figure}
 
 
 
 \subsubsection{Example questions Cosine Similarity}
-From others example from playing with model.The Input questions are
+\label{example_cosine_compare}
+From others example from playing with model. The Input questions are
 {
 \XeTeXlinebreaklocale "th_TH"	
 \thaifont 
- ‘ วิศวะคอมเรียนเกี่ยวกับอะไรบ้าง’ }and 
+ ‘วิศวะคอมเรียนเกี่ยวกับอะไรบ้าง’ }and 
 {
 \XeTeXlinebreaklocale "th_TH"	
-\thaifont ‘ วิศวะคอมมีเรียนหลักสูตรอะไรบ้าง’.}
+\thaifont ‘วิศวะคอมมีเรียนหลักสูตรอะไรบ้าง’.}
  Both questions are not similar but cosine similarity return both questions are similar for 81.09\%
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_cosine2_2.png}}
-\caption{Cosine result by compare questions which not similar}\label{fig:Cosine result by compare questions which not similar}
+\caption{Cosine similarity model predict not similar question result}\label{fig:Cosine result by compare questions which not similar}
 \end{figure}
 
 The picture below shows an example result from using cosine similarity. The input questions are
@@ -2590,32 +2617,42 @@ and
 }Both questions are similar around 85.73\%.
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 14cm]{./img/ch4/ch4_cococo.png}}
-\caption{Cosine result by compare questions which similar}\label{fig:Cosine result by compare questions which similar}
+\caption{Cosine similarity model predict similar question result}\label{fig:Cosine result by compare questions which similar}
 \end{figure}
+\label{evaluation prediction}
+The evaluation result of the Siamese neural network model is better than the cosine similarity because the aim of this prediction model subsystem wants to classify the intent of both questions are similar or not similar. 
+From the section~\ref*{example_siamese_compare} and section~\ref*{example_cosine_compare},
+The Siamese neural network model can classify intent better than cosine similarity as you can see when Siamese neural network predict the questions that are not simiar can give the better value than the Cosine similarity. But if the questions is similar, both models can use to predict and give with the high value of similarity.
+So, Siamese neural network can perform better result than cosine similarity. But in the speed performance it slower than cosine similarity. In the future, if there is more questions to predict, the problem of timeout exceed in Dialogflow could occured again. Therefore, our group decided to use cosine similarity instead of Siamese neural network.
 
-In summaty overall result of our model can predict similar intent questions more accurately than cosine similarity but it is slower than cosine similarity.
+Moreover, if we have more CPE questions data to train the Siamese neural network and better resoucrces, we could improve the model's evaluation result to as it should be without time constraint.
 
 \pagebreak
 \section{Project Demo}
 \label{ch4_project_demo}
-% todo: Swap side of the chat capture.
-This is our example chat response from user ask via KMUTT CPE Fanpage which our system bring the answer response from the knowledge management subsystem. Overall, the chatbot can answer the questions of users at a certain level. But there are still many questions that cannot reply to the user.
+
+This is example of our chatbot system that predict and get the answer
+from knowledge management, Figure~\ref*{fig:km_question_example},
+to reply via Facebook Messenger as you can see in Figure~\ref*{fig:demo_chat_correct}.
 
 \begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 10cm]{./img/ch4/ch4_demo1.jpg}}
-\caption{Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 1}\label{fig:Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 1}
+\fbox{\includegraphics[width= 10cm]{./img/ch4/example_question_km.jpg}}
+\caption{Example of question in knowledge management}\label{fig:km_question_example}
 \end{figure}
+
 \begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 10cm]{./img/ch4/ch4_demo2.jpg}}
-\caption{Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 2}\label{fig:Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 2}
+\fbox{\includegraphics[width= 8cm]{./img/ch4/ch4_demo_correct.jpg}}
+\caption{Example demo of KMUTT CPE Chatbot system that reply to user via Facebook correct}
+\label{fig:demo_chat_correct}
 \end{figure}
+
+But there are still many questions that cannot reply message to the user
+as you can see from the Figure~\ref*{fig:demo_chat_wrong}.
+
 \begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 10cm]{./img/ch4/ch4_demo3.jpg}}
-\caption{Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 3}\label{fig:Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 3}
-\end{figure}
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 10cm]{./img/ch4/ch4_demo4.jpg}}
-\caption{Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 4}\label{fig:Example demo of KMUTT CPE Chatbot system that reply to user via Facebook 4}
+\fbox{\includegraphics[width= 8cm]{./img/ch4/ch4_demo_wrong.jpg}}
+\caption{Example demo of KMUTT CPE Chatbot system that reply to user via Facebook wrong}
+\label{fig:demo_chat_wrong}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2629,14 +2666,8 @@ We have created the system that chatbot can bring the question from Facebook Mes
 to predict the question, get the answer from knowledge management, and return it back to chat successfully
 as you can see from the section~\ref*{ch4_project_demo}.
 From the result, we have reached our objective to build the chatbot system already.
-
-We have specified our scopes and designed our work to achieve our objective in the first semester.
-However, when we implemented it, it did not go as expected as we described in Chapter 4.
-We encountered several problems and constraints, and we attempted to solve them in many ways.
-Unfortunately, some problems have too many constraints or are out of our scopes,
-and we must place them in the future work.
-So, we are going to summarize our problems and how we solved them,
-as well as which features or problems are the future works of our project.
+But there is still room for improvement in order
+for the chatbot to reply answer with a low error rate before it can used with the CPE production environment.
 
 \section{Problems and Solutions}
 \subsection{Performance Problem}
@@ -2658,22 +2689,15 @@ and changing from Siamese neural network model to cosine similarity instead.
 \subsection{High Budget}
 From the high budget of Google Cloud Platform, we have to reduce our scope about automate build model
 by using Apache Airflow. But we have implemented code to let prediction model still can update the
-question to predict from backend API autaomatically.
+question to predict from backend API automatically.
 
 \section{Future Works}
 \subsection{Using Siamese Neural Network}
-The problems of the better evaluation result of cosine similarity and time performance in Dialogflow,
-it makes us to use cosine similarity model instead of Siamese neural network model.
+Currently, our group used the cosine similarity instead of Siamese neural network, even the Siamese neural network is better, because of the time constraint. In the future, if we have better computer, we could remove the time constraint and use Siamese neural network.
 
-From our research, Siamese neural network should be intepret the similarity between pair of questions
-better than cosine similarity. But from the evaluation results of both models, it differently from what we think.
-The evaluation result of Siamese neural network model is worse than the cosine simiarity model.
-The problem comes from not enough data to train the Siamese neural network.
-If we have more data to train the Siamese neural network, we could improve the performance of the model.
-
-As we describe the problem in section~\ref*{ch5_timeout_dialogflow}, there is timeout in Dialogflow problem.
-In the future, if we have the better resources to run the model faster and remove the constraint of time,
-we will be able to use the Siamese neural network model instead of cosine similarity.
+\subsection{Getting More Data}
+From the evaluation result of Siamese neural network in section~\ref*{siamese_evaluation},
+in the future we could improve the model evaluation to be better if we have more data to train.
 
 \subsection{Automated Build the Model}
 We had decided to remove the automated build model from our planned in Chapter 2
