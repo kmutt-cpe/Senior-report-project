@@ -1777,7 +1777,7 @@ cosine similarity model instead for better time performance.
 At first, we tried to reduce the max sequence which required to build the new model.
 But the model is not quite good enough as you can see between evaluation of new model
 (Figure~\ref*{fig:reduce_sequence_result}) and the first model that we have built
-(Figure~\ref*{fig:Classification report}). The precision of new model is higher than old
+(Figure~\ref*{fig:siam_classification_report}). The precision of new model is higher than old
 one, but recall and F1-Score is very low.
 
 \begin{figure}[!h]\centering
@@ -1793,7 +1793,7 @@ at section~\ref*{ch4_cosine_similarity_result}.
 \subsection{Budget Problem}
 From Chapter 3, we planned to use Apache Airflow to automate build and run on Google Cloud Platform.
 But after we checked the minimum price of platform that be able to run the model,
-the price is around 8385 Baht per month as you can see from Figure~\ref*{fig:min_gcp_price}.
+the price is around 8, 385 Baht per month as you can see from Figure~\ref*{fig:min_gcp_price}.
 It is too high budget for developing automate build and run.
 
 \begin{figure}[!h]\centering
