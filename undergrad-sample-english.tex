@@ -2655,6 +2655,31 @@ as you can see from the Figure~\ref*{fig:demo_chat_wrong}.
 \label{fig:demo_chat_wrong}
 \end{figure}
 
+\pagebreak
+\section{System Evaluation}
+\label{system_evaluation}
+After checking that the chatbot can work properly, we sent the Line account with connected with our chatbot system to other people for testing. Twenty-one people test our chatbot and give the feedback through the survey. 71.4\% of people are students from the computer engineering department, and 28.6\% are not from the computer engineering department.
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width= 10cm]{./img/ch4/survey-result/chatbot_quality.jpg}}
+	\caption{Asking how well the chatbot can answer}
+	\label{fig:chatbot_quality}
+\end{figure}
+
+From asking how well the chatbot can answer (Figure~\ref*{fig:chatbot_quality}), 81 \% said that the chatbot answered some questions correctly, 14.3 \% said that the chatbot answered questions mostly correct, and only 4.8 \% said that chatbot did not answer any question correctly. Thus, our chatbot can currently answer only some questions.
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width= 10cm]{./img/ch4/survey-result/chatbot_speed.jpg}}
+	\caption{Asking users to score the chatbot's response time from 1 to 5}
+	\label{fig:chatbot_speed}
+\end{figure}
+
+The next question asked users to score the chatbot's response time on a scale from 1 to 5 (Figure~\ref*{fig:chatbot_speed}), with 1 being very slow and 5 being very fast. 42.9 \% gave four scores, 28.6 \% gave three scores, 19 \% gave five scores, and only 9.5 \% gave two scores.
+
+Next, we have asked which questions the chatbot can answer and which questions the chatbot cannot answer. Many people said that chatbot could answer tuition fees, scholarships, subjects in the first year, documents, and curriculum each year. Currently, the questions that chatbot cannot answer are mostly not in knowledge management. But there are some questions in knowledge management that the chatbot still cannot answer such as questions about withdrawal subject, internship, sick leave, admission, and work-integrated learning (WIL).
+
+From the survey, we can evaluate our chatbot that can answer only some questions about tuition fee, scholarship, subject in the first year, document, and curriculum each year.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Conclusions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2667,7 +2692,7 @@ to predict the question, get the answer from knowledge management, and return it
 as you can see from the section~\ref*{ch4_project_demo}.
 From the result, we have reached our objective to build the chatbot system already.
 But there is still room for improvement in order
-for the chatbot to reply answer with a low error rate before it can used with the CPE production environment.
+for the chatbot to reply answer with a low error rate and from system evaluation in section~\ref*{system_evaluation} before it can used with the CPE production environment.
 
 \section{Problems and Solutions}
 \subsection{Performance Problem}
@@ -3129,8 +3154,54 @@ button at the right bottom of page (No.1 on Figure A.18)
 % Consequently, the MVA technique suffers from the need of prior
 % knowledge traffic parameters.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% The 3rd appendix %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix{System Evaluation Survey}
+\noindent{\large\bf System Evaluation Survey}
 
+% Reset 
+\renewcommand{\thefigure}{C\arabic{figure}}
+\setcounter{figure}{0}
 
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width= 10cm]{./img/ch4/survey-result/gender.jpg}}
+	\caption{Gender of users}
+\end{figure}
 
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width= 10cm]{./img/ch4/survey-result/education_level.jpg}}
+	\caption{Educational level of user}
+\end{figure}
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width= 10cm]{./img/ch4/survey-result/related_to_cpe.jpg}}
+	\caption{Relation between user and computer engineering department of KMUTT}
+\end{figure}
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width= 10cm]{./img/ch4/survey-result/chatbot_quality.jpg}}
+	\caption{Asking how well the chatbot can answer}
+\end{figure}
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width= 10cm]{./img/ch4/survey-result/chatbot_speed.jpg}}
+	\caption{Asking users to score the chatbot's response time from 1 to 5}
+\end{figure}
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width= 5cm]{./img/ch4/survey-result/chatbot_can_answer.jpg}}
+	\caption{Example of question that chatbot can answer from user}
+\end{figure}
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width= 5cm]{./img/ch4/survey-result/chatbot_cannot_answer.jpg}}
+	\caption{Example of question that chatbot cannot answer from user}
+\end{figure}
+
+\begin{figure}[!h]\centering
+	\fbox{\includegraphics[width= 5cm]{./img/ch4/survey-result/suggestion.jpg}}
+	\caption{Suggestion from user}
+\end{figure}
 
 \end{document}
