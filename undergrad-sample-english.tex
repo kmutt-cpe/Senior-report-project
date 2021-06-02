@@ -536,7 +536,7 @@ Figure~\ref*{fig:ch3_tools} is an overview of tools that are used in KMUTT CPE C
   \setlength{\fboxrule}{0.2mm}
   \setlength{\fboxsep}{0.5cm}
   \fbox{\includegraphics[width=14cm]{./img/ch2/tools.png}}
-  \caption{All tools that are used in KMUTT CPE Chatbot System.}
+  \caption{All tools that are used in KMUTT CPE Chatbot System}
   \label{fig:ch3_tools}
 \end{figure}
 
@@ -604,7 +604,7 @@ through insiders and outsiders, they prefer to use the Facebook Messenger platfo
   \setlength{\fboxrule}{0.2mm}
   \setlength{\fboxsep}{0.5cm}
   \fbox{\includegraphics[width=14cm]{./img/ch2/result_survey.png}}
-  \caption{The result of our survey from 108 people about chat platform.}
+  \caption{The result of our survey from 108 people about chat platform}
   \label{fig:ch3_result_survey}
 \end{figure}
 
@@ -734,7 +734,7 @@ This paper is about implement the multi-level virtual front office as you can se
   \fbox{\includegraphics[width=14cm]{./img/ch2/literature_review_self_learning_chatbot.png}}
   \caption{Functional schema of Automated Self-Learning Chatbot Initially Built as a FAQs
   Database Information Retrieval System: Multi-level and Intelligent Universal Virtual
-  Front-Office Implement Neural Networks.}
+  Front-Office Implement Neural Networks}
   \label{fig:ch3_lr_self_learning_chatbot}
 \end{figure}
 
@@ -757,7 +757,7 @@ from database and send answer back to the user.
   \fbox{\includegraphics[width=10cm]{./img/ch2/literature_review_activity_diagram_chatbot.png}}
   \caption{Activity Diagram of Self-Learning Algorithm of Automated Self-Learning Chatbot
   Initially Built as a FAQs Database Information Retrieval System: Multi-level and Intelligent
-  Universal Virtual Front-Office Implement Neural Networks.}
+  Universal Virtual Front-Office Implement Neural Networks}
   \label{fig:ch3_lr_activity_dg_self_learning_chatbot}
 \end{figure}
 
@@ -782,7 +782,7 @@ the CPE staff have to answer by themselves (Table~\ref*{table:ch3_solution_compa
   \centering
   \fbox{\includegraphics[width=15cm]{./img/ch2/solution_compare.jpg}}
   \captionof{table}{Compare KMUTT CPE chatbot with the existing solution which is the CPE
-  staff have to answer by themselves.}
+  staff have to answer by themselves}
   \label{table:ch3_solution_compare}
 \end{figure}
 
@@ -1305,14 +1305,14 @@ After the backend API gets a related question (or a predicted question), the bac
 Figure~\ref*{fig:Sequence diagram of automate building and deploy model} illustrates the workflow of automating build prediction models. Apache Airflow automatically gets the question from the back-end API, builds the model, and deploys on Google Cloud
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/sequence diagram of automate build model.jpg}
-	\caption{Sequence diagram of automate building and deploy model.}\label{fig:Sequence diagram of automate building and deploy model}
+	\caption{Sequence diagram of automate building and deploy model}\label{fig:Sequence diagram of automate building and deploy model}
 \end{figure}
 
 \section{Database Schema}
 \label{ch2_database_schema}
 \begin{figure}[!h]
 	\includegraphics[width=14cm]{img/ch3/Database Schema.jpg}
-	\caption{ER Diagram illustrates database schema.}\label{fig:ER Diagram illustrates database schema}
+	\caption{ER Diagram illustrates database schema}\label{fig:ER Diagram illustrates database schema}
 \end{figure}
 
 \pagebreak
@@ -1320,7 +1320,7 @@ Figure~\ref*{fig:Sequence diagram of automate building and deploy model} illustr
 \textbf{user} - User that can access knowledge management system.
 
 \begin{table}[ht]
-	\caption{User entity description table.}
+	\caption{User entity description table}
 	\label{tab:User entity description table}
 \begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.6\linewidth}l}
@@ -1344,8 +1344,8 @@ deletedAt & Datetime & Used soft delete method   to be able to recover the data.
 
 \textbf{faq} - Frequently asked question that admin create through the knowledge management system.
 \begin{table}[ht]
-	\caption{FAQ entity description table.}
-	\label{tab:FAQ entity description table.}
+	\caption{FAQ entity description table}
+	\label{tab:FAQ entity description table}
 \begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.5\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1368,8 +1368,8 @@ deletedAt          & Datetime & Used soft delete method   to be able to recover 
 
 \textbf{category} - Category of the question.
 \begin{table}[ht]
-	\caption{Category entity description table.}
-	\label{tab:Category entity description table.}
+	\caption{Category entity description table}
+	\label{tab:Category entity description table}
 \begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1390,8 +1390,8 @@ deletedAt & Datetime & Used soft delete method to be able to recover the data. T
 
 \textbf{subcategory} - Subcategory of the question.
 \begin{table}[ht]
-	\caption{Subcategory entity description table.}
-	\label{tab:Subcategory entity description table.}
+	\caption{Subcategory entity description table}
+	\label{tab:Subcategory entity description table}
 \begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1411,8 +1411,8 @@ deletedAt       & Datetime & Used soft delete method   to be able to recover the
 
 \textbf{predict\_task} - Message that going to predict in prediction model. Used to keep log of question message and predict task.
 \begin{table}[ht]
-	\caption{Prediction model entity description table.}
-	\label{tab:Prediction model entity description table.}
+	\caption{Prediction model entity description table}
+	\label{tab:Prediction model entity description table}
 \begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1437,8 +1437,8 @@ deletedAt         & Datetime & Used soft delete method to be able to recover the
 
 \textbf{fb\_message} - Message from Facebook webhook. Used to keep log of question message and predict task.
 \begin{table}[ht]
-	\caption{Facebook webhook entity prediction table.}
-	\label{tab:Facebook webhook entity prediction table.}
+	\caption{Facebook webhook entity prediction table}
+	\label{tab:Facebook webhook entity prediction table}
 \begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -1564,9 +1564,7 @@ plan and it could make the confusion if not understand the problem and how we so
 problems which are the performance problem, response time out in Dialogflow problem, and budget problem.
 
 \subsection{Performance Problem}
-This problem was occurred when we wanted to integrate the system together. Initially, we decided to
-get input questions from the chatbot and send it along with all questions to the prediction model
-as you can see from the Figure~\ref*{fig:chat_plan_1}.
+This problem was occurred when we wanted to integrate the system together. Initially, we planned to get input questions from the chatbot and send it along with all questions to the prediction model as you can see from the Figure~\ref*{fig:chat_plan_1}.
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_plan1.png}}
@@ -1575,7 +1573,7 @@ as you can see from the Figure~\ref*{fig:chat_plan_1}.
 \end{figure}
 
 We realized immediately that it would take a long time to deliver and predict all questions.
-Then we were going to use Dialogflow's intent feature to classify the question and filter
+So, we have changed from first plan to use Dialogflow's intent feature to classify the question and filter
 only some questions in that category to prediction model as you can see from
 Figure~\ref*{fig:chat_plan_2}.
 
@@ -1585,7 +1583,7 @@ Figure~\ref*{fig:chat_plan_2}.
 \label{fig:chat_plan_2}
 \end{figure}
 
-However, if we used the Dialogflow intent feature, users or KMUTT CPE staff must add a new intent
+However, after we have tried the Dialogflow intent feature, users or KMUTT CPE staff must add a new intent
 when there is a new category of question in knowledge management, and we must implement the backend
 API to handle new Dialogflow intent. This method is too cumbersome.
 
@@ -1726,7 +1724,7 @@ The computer spec of A-Square lab is in Table~\ref*{tab:a_square_computer_spec}.
 		\begin{tabular}{|l|l|l|l|}
 			\hline
 			\backslashbox{Computer name}{Hardware component} & Central processing unit (CPU) & Graphic processor unit (GPU) & Ram \\ \hline
-			A-Square lab's computer &  Ryzen 5 6500x  & Geforce RTX 3060 Ti & DDR4 3200 32GB \\ \hline
+			A-Square lab's computer &  Ryzen 5 5600x  & Geforce RTX 3060 Ti & DDR4 3200 32GB \\ \hline
 		\end{tabular}
 	\end{adjustbox}
 \end{table}
@@ -1769,7 +1767,7 @@ After we have tested sending the question through chat, we got the answer from k
 \end{table}
 
 \pagebreak
-\subsubsection{The Last Approach for Solving Response Timeout in Dialogflow Problem}
+\subsubsection{The Final Solution for Solving Response Timeout in Dialogflow Problem}
 After we discussed timeout problem and show how we solve the problem with advisor,
 he suggested that we can improve time performance by reducing max sequence range or using
 cosine similarity model instead for better time performance.
@@ -2005,7 +2003,7 @@ The remaining of intent is used to fix timeout problems as we describe in sectio
 			\caption{Login page}\label{fig:Login_page_done}
 		\end{figure}
 		\begin{flushleft}
-			Figure~\ref*{fig:Login_page_done} is login page which contains only box to login in the center of page. Users can input their username and password to login to the system. If username and password are valid, it will redirect to question management (Figure~\ref*{fig:Category selection page in question management_done}). On the other hand, if username or password is invalid, the website will display error message and tell that username or password is not correct.
+			Figure~\ref*{fig:Login_page_done} is login page which contains only box to login in the center of page. Users can input their username and password to login to the system. If username and password are valid, it will redirect to question management (Figure~\ref*{fig:Category_selection_page_in_question_management_done}). On the other hand, if username or password is invalid, the website will display error message and tell that username or password is not correct.
 		\end{flushleft}
 
 	\subsubsection{Question Management}
@@ -2019,7 +2017,7 @@ The remaining of intent is used to fix timeout problems as we describe in sectio
 \pagebreak
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_question_list_page_of_each_catrgory_in_question_management.png}}
-			\caption{Question list page of each category in question management.}\label{fig:Question_list_page_of_each_category_in_question_management_done}
+			\caption{Question list page of each category in question management}\label{fig:Question_list_page_of_each_category_in_question_management_done}
 		\end{figure}
 		\begin{flushleft}
 			Figure~\ref*{fig:Question_list_page_of_each_category_in_question_management_done} is the question list page of each category. It displays the question list in pagination. User can select page number and select number of questions in each page at the bottom below (No.1 on figure \ref*{fig:Question_list_page_of_each_category_in_question_management_done}).
@@ -2036,7 +2034,7 @@ The remaining of intent is used to fix timeout problems as we describe in sectio
 
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_question_information_page_in_question_management.png}}
-			\caption{Question information page in question management.}\label{fig:Question_information_page_in_question_management_done}
+			\caption{Question information page in question management}\label{fig:Question_information_page_in_question_management_done}
 		\end{figure}
 		\begin{flushleft}
 			Figure~\ref*{fig:Question_information_page_in_question_management_done} is the question information. This page contains information of question (No.1 on Figure \ref*{fig:Question_information_page_in_question_management_done}) and action buttons (No.2 on Figure \ref*{fig:Question_information_page_in_question_management_done}).
@@ -2047,7 +2045,7 @@ The remaining of intent is used to fix timeout problems as we describe in sectio
 
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_create_question_page_in_question_management.png}}
-			\caption{Create question page in question management.}\label{fig:Create_question_page_in_question_management_done}
+			\caption{Create question page in question management}\label{fig:Create_question_page_in_question_management_done}
 		\end{figure}
 		\begin{flushleft}
 			Figure~\ref*{fig:Question_information_page_in_question_management_done} is the create question page in question management. This page contains only input box at the center (No.1 on Figure \ref*{fig:Question_information_page_in_question_management_done}) and action button at the right bottom of page (No.2 on Figure \ref*{fig:Question_information_page_in_question_management_done}).
@@ -2081,7 +2079,7 @@ The remaining of intent is used to fix timeout problems as we describe in sectio
 
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_create_category_pop_up_in_category_management.png}}
-			\caption{Create category pop up in category management.}\label{fig:Create_category_pop_up_in_category_management_done}
+			\caption{Create category pop up in category management}\label{fig:Create_category_pop_up_in_category_management_done}
 		\end{figure}
 		\begin{flushleft}
 			Figure \ref*{fig:Create_category_pop_up_in_category_management_done} is the create category pop-up in category management. This pop-up contains only input box at the center (No.1 on Figure \ref*{fig:Create_category_pop_up_in_category_management_done}) and create button at the middle bottom of page (No.2 on Figure \ref*{fig:Create_category_pop_up_in_category_management_done}) and cross button at the top right for close pop-up (No.3 on Figure \ref*{fig:Create_category_pop_up_in_category_management_done}).
@@ -2104,7 +2102,7 @@ The remaining of intent is used to fix timeout problems as we describe in sectio
 		\subsubsection{Subcategory Management}
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_subcategory_list_page_in_category_management.jpg}}
-			\caption{Subcategory list page in category management.}\label{fig:Subcategory_list_page_in_category_management_done}
+			\caption{Subcategory list page in category management}\label{fig:Subcategory_list_page_in_category_management_done}
 		\end{figure}
 		\begin{flushleft}
 			Figure \ref*{fig:Subcategory_list_page_in_category_management_done} is the subcategory list page of category management. It displays the subcategory list in pagination. User can select page number and select number of subcategories in each page at the bottom below (No.1 on figure \ref*{fig:Subcategory_list_page_in_category_management_done}).
@@ -2118,7 +2116,7 @@ The remaining of intent is used to fix timeout problems as we describe in sectio
 
 		\begin{figure}[!h]\centering
 			\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_create_subcategory_list_page_in_category_management.png}}
-			\caption{Create subcategory list page in category management.}\label{fig:Create_subcategory_list_page_in_category_management_done}
+			\caption{Create subcategory list page in category management}\label{fig:Create_subcategory_list_page_in_category_management_done}
 		\end{figure}
 		\begin{flushleft}
 			Figure \ref*{fig:Create_subcategory_list_page_in_category_management_done} is the create subcategory pop-up in category management. This pop-up contains only input box at the center (No.1 on Figure \ref*{fig:Create_subcategory_list_page_in_category_management_done}) and create button at the middle bottom of page (No.2 on Figure \ref*{fig:Create_subcategory_list_page_in_category_management_done}) and cross button at the top right for close pop-up (No.3 on Figure \ref*{fig:Create_subcategory_list_page_in_category_management_done}).
@@ -2140,7 +2138,7 @@ The remaining of intent is used to fix timeout problems as we describe in sectio
 \subsubsection{User Management} 
 	\begin{figure}[!h]\centering
 		\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_user_list_page_in_user_management.jpg}}
-		\caption{User list page in user management.}\label{fig:ui_user_list_page_in_user_management_done}
+		\caption{User list page in user management}\label{fig:ui_user_list_page_in_user_management_done}
 	\end{figure}
 
 
@@ -2148,7 +2146,7 @@ Figure  \ref*{fig:ui_user_list_page_in_user_management_done} is the user list pa
 
 \begin{figure}[!h]\centering
 		\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_create_user_page_in_user_management.jpg}}
-		\caption{Create user page in user management.}\label{fig:ui_create_user_page_in_user_management_done}
+		\caption{Create user page in user management}\label{fig:ui_create_user_page_in_user_management_done}
 	\end{figure}
 Figure \ref*{fig:ui_create_user_page_in_user_management_done} is the create user page in user management. This page contains only 
 input box at the center (No.1 on Figure \ref*{fig:ui_create_user_page_in_user_management_done}) and action button at the right bottom of page 
@@ -2159,14 +2157,14 @@ create process, user can click cancel button, it will pop up the confirmation bo
 action and redirect to question list page (Figure \ref*{fig:ui_user_list_page_in_user_management_done})
 \begin{figure}[!h]\centering
 		\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_user_information_page-in_user_management.jpg}}
-		\caption{User information page in user management.}\label{fig:ui_user_information_page-in_user_management_done}
+		\caption{User information page in user management}\label{fig:ui_user_information_page-in_user_management_done}
 	\end{figure}
 
 Figure \ref*{fig:ui_user_information_page-in_user_management_done} is the user information. This page contains information about a user (No.1 on Figure  \ref*{fig:ui_user_information_page-in_user_management_done}) and action buttons (No.2 on Figure  \ref*{fig:ui_user_information_page-in_user_management_done}). Information of the user consists of role, username, and name. At the same time, action buttons consist of two buttons: the edit button and the delete button. When a user clicks the edit button, it will redirect to the edit user page (Figure 4.18). Also, when the user clicks the delete button, it will pop up the confirmation box to let the user confirm the delete action and redirect it back to the user list page (Figure  \ref*{fig:ui_user_list_page_in_user_management_done}). And user can click the back button on the top left (No.3 on Figure  \ref*{fig:ui_user_information_page-in_user_management_done}) to go back to the user list page (Figure  \ref*{fig:ui_user_list_page_in_user_management_done}).
 
 \begin{figure}[!h]\centering
 		\fbox{\includegraphics[width= 14cm]{./img/ch4/realUI/ui_edit_information_page_in_user_management.jpg}}
-		\caption{Edit information page in user management.}\label{fig:ui_edit_information_page_in_user_management_done}
+		\caption{Edit information page in user management}\label{fig:ui_edit_information_page_in_user_management_done}
 	\end{figure}
 Figure \ref*{fig:ui_edit_information_page_in_user_management_done} is the edit user page in user management. This page is almost as same as 
 create user page (Figure \ref*{fig:ui_create_user_page_in_user_management_done}) except there are the information of user that has create before. 
@@ -2224,8 +2222,8 @@ faq, predict\_task, fb\_message.
 \pagebreak
 \textbf{faq} - Frequently asked question that admin create through the knowledge management system.
 \begin{table}[ht]
-	\caption{FAQ entity description table.}
-	\label{tab:FAQ entity description table.}
+	\caption{FAQ entity description table}
+	\label{tab:FAQ entity description table}
 \begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.5\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -2250,8 +2248,8 @@ deletedAt          & Datetime & Used soft delete method   to be able to recover 
 
 \textbf{predict\_task} - Message that going to predict in prediction model. Used to keep log of question message and predict task.
 \begin{table}[ht]
-	\caption{Prediction model entity description table.}
-	\label{tab:Prediction model entity description table.}
+	\caption{Prediction model entity description table}
+	\label{tab:Prediction model entity description table}
 \begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -2287,8 +2285,8 @@ deletedAt         & Datetime & Used soft delete method to be able to recover the
 \pagebreak
 \textbf{chat\_message} - Change from fb\_message to chat\_message. Keep the request log from Dialogflow.
 \begin{table}[ht]
-	\caption{Facebook webhook entity prediction table.}
-	\label{tab:Facebook webhook entity prediction table.}
+	\caption{Facebook webhook entity prediction table}
+	\label{tab:Facebook webhook entity prediction table}
 \begin{adjustbox}{width=\textwidth}
 \begin{tabular}{llp{0.6\linewidth}l}
 \rowcolor[HTML]{5B9BD5} 
@@ -2760,76 +2758,82 @@ automatically create the frequently asked question in knowledge management.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% Appendix %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- \appendix{User Interface Design}
- \noindent{\large\bf User Interface Design (Prototype)} \\
+\appendix{User Interface Design}
+\noindent{\large\bf User Interface Design (Prototype)} \\
 
- This section is UI design of knowledge management web to draft the feature that should 
-contains in website and review the knowledge management contains all necessary features. \\ \bigskip
- \indent{\large\bf Landing page} 
+This section is UI design of knowledge management web to draft the feature that should 
+contains in website and review the knowledge management contains all necessary features.
+
+\indent{\large\bf Landing page} 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/Artboard 1logo2.jpg}}
 \caption{Home page}\label{fig:Home page}
-\end{figure}\\
-Figure ~\ref*{fig:Home page} is a home page design of website which contains about features and detail 
+\end{figure}
+
+Figure~\ref*{fig:Home page} is a home page design of website which contains about features and detail 
 about knowledge management. In this page there are menu bar on the top right which consist 
-of home page, contact page (Figure ~\ref*{fig:Cotract page}), and login page (Figure ~\ref*{fig:Login page}). 
+of home page, contact page (Figure~\ref*{fig:Contract page}), and login page (Figure~\ref*{fig:Login page}). 
+
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/Artboard 1 copy 2logo2.jpg}}
-\caption{Cotract page}\label{fig:Cotract page}
-\end{figure}\\
+\caption{Contract page}\label{fig:Contract page}
+\end{figure}
 
 Figure A.2 is contact page which contains about member in team and our advisor. In 
-this page there are menu bar on the top right which same as the home page (Figure A.1).\\
+this page there are menu bar on the top right which same as the home page (Figure A.1).
+
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/Artboard 1 copylogo2.jpg}}
 \caption{Login page}\label{fig:Login page}
-\end{figure}\\
+\end{figure}
+
 Figure A.3 is login page which contains only box to login in the center of page. Users 
 can input their username and password to login to the system. If username and password are 
 valid, it will redirect to question management (Figure A.4). On the other hand, if username 
 or password is invalid, the website will display error message and tell that username or 
 password is not correct.
+
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/Artboard 1 copy 3logo2.jpg}}
-\caption{Category selection page in question management.
-}\label{fig:Category selection page in question management.
-}
-\end{figure}\\
+\caption{Category selection page in question management}
+\label{fig:Category selection page in question management}
+\end{figure}
 
 The first page of question management is category selection (Figure A.4). When user 
 login to the knowledge management or click ‘questions’ on the top right, it will redirect to 
 category selection page. In this page contains only card boxes of category. When user can 
 click on the category card, it will redirect to question list page (Figure A.5) of that category.
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width= 12cm]{./img/UI Design/question list.jpg}}
-\caption{Question list page of each category in question management.
-}\label{fig:Question list page of each category in question management.
-}
-\end{figure}\\
+
+\begin{figure}[!h]
+	\centering
+	\fbox{\includegraphics[width= 12cm]{./img/UI Design/question list.jpg}}
+	\caption{Question list page of each category in question management}
+	\label{fig:Question list page of each category in question management}
+\end{figure}
 
 Figure A.5 is the question list page of each category. It displays the question list in 
 pagination. User can select page number and select number of questions in each page at the 
-bottom below (No.1 on figure A.5)
+bottom below (No.1 on Figure A.5)
 
-User can click create new question (No.2 on figure A.5) to add the new question to 
+User can click create new question (No.2 on Figure A.5) to add the new question to 
 knowledge management. When user click on that button, it will redirect to create question 
-page (Figure 4.7). Also, user can click on the row of question (No.3 on figure A.5) to redirect 
+page (Figure 4.7). Also, user can click on the row of question (No.3 on Figure A.5) to redirect 
 to question information page (Figure 4.6) to read the information such as question, answer, 
 last editor, etc. In addition, user can search the question by typing on search box (No.4 on 
 Figure A.5)
+
 Also, user can click the pencil in action column (No.5 on Figure 4.5) to edit 
 information of question. When user click, it will redirect to edit question page (Figure A.8). 
 On the other hand, if user want to delete that question, user can click the red trash can in 
-action column (No.5 on figure A.8). When click the red trash can, it will pop up the 
+action column (No.5 on Figure A.8). When click the red trash can, it will pop up the 
 confirmation box to let user confirm of delete action.
 And last thing, user can click back button (No.6 on Figure 4.5) to go back to category 
 selection page (Figure A.4)
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/question information.jpg}}
-\caption{Question information page in question management.
-}\label{fig:Question information page in question management.
-}
+\caption{Question information page in question management}
+\label{fig:Question information page in question management}
 \end{figure}
 
 Figure A.6 is the question information. This page contains information of question 
@@ -2844,10 +2848,10 @@ A.5)
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/create question.jpg}}
-\caption{Create question page in question management.
-}\label{fig:Create question page in question management.
-}
+\caption{Create question page in question management}
+\label{fig:Create question page in question management}
 \end{figure}
+
 Figure A.7 is the create question page in question management. This page contains 
 only input box at the center (No.1 on Figure A.7) and action button at the right bottom of 
 page (No.2 on Figure A.7).
@@ -2856,29 +2860,30 @@ and subcategory in the drop-down boxes. After that user can decide to click crea
 create new question. Also, if user want to cancel all create process, user can click cancel 
 button, it will pop up the confirmation box for cancel action and redirect to question list page 
 (Figure A.5)
+
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/edit question.jpg}}
-\caption{Edit question page in question management
-}\label{fig:Edit question page in question management
-}
+\caption{Edit question page in question management}
+\label{fig:Edit question page in question management}
 \end{figure}
 
 Figure A.8 is the edit question page in question management. This page is almost as 
 same as create question page (Figure A.7) except there are the information of question that 
 has create before. User can edit information and save new information to the system by 
-clicking save button at the right bottom of page (No.1 on Figure A.8)\\
+clicking save button at the right bottom of page (No.1 on Figure A.8)
 
- \noindent{\large\bf Category Management} \\
+\pagebreak
+\noindent{\large\bf Category Management}
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/category management.jpg}}
-\caption{Category list page in category management
-}\label{fig:Category list page in category management
-}
-\end{figure} \\
+\caption{Category list page in category management}
+\label{fig:Category list page in category management}
+\end{figure}
+
 Figure A.9 is the category list page of category management. It displays the category
 list in pagination. User can select page number and select number of categories in each page 
-at the bottom below (No.1 on figure A.9).
-User can click create new category (No.2 on figure A.9) to add the new category to 
+at the bottom below (No.1 on Figure A.9).
+User can click create new category (No.2 on Figure A.9) to add the new category to 
 knowledge management. When user click on that button, it will pop-up create category
 (Figure A.10). Also, user can click on the row of category (No.3 on figure 4.9) to redirect to 
 subcategory list page (Figure A.11) to show the subcategory of the category. In addition, 
@@ -2887,12 +2892,12 @@ Also, user can click the pencil in action column (No.5 on Figure A.9) to edit ca
 name. When user click, it will pop up to edit category (Figure A.11). On the other hand, if 
 user want to delete that category, user can click the red trash can in action column (No.5 on 
 figure A.9). When click the red trash can, it will pop up the confirmation box to let user 
-confirm of delete action.\\
+confirm of delete action.
+
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/create cate.jpg}}
-\caption{Create category pop up in category management.
-}\label{fig:Create category pop up in category management.
-}
+\caption{Create category pop up in category management}
+\label{fig:Create category pop up in category management}
 \end{figure}
 
 Figure A.10 is the create category pop-up in category management. This pop-up
@@ -2901,12 +2906,12 @@ bottom of page (No.2 on Figure A.10) and cross button at the top right for close
 on Figure A.10).
 Users need to input the category in the input boxes. After that user can decide to 
 click create button to create new category. Also, if user want to cancel create process, user 
-can click cross button to close pop-up \\
+can click cross button to close pop-up
+
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/Edit cat.jpg}}
-\caption{Edit category pop-up in category management.
-}\label{fig:Edit category pop-up in category management.
-}
+\caption{Edit category pop-up in category management}
+\label{fig:Edit category pop-up in category management}
 \end{figure}
 
 Figure A.11 is the edit category name pop-up in category management. This pop-up 
@@ -2915,47 +2920,48 @@ bottom of page (No.2 on Figure A.11) and cross button at the top right for close
 on Figure A.11).
 Users need to input the category in the input boxes. After that user can decide to 
 click save button to edit category name. Also, if user want to cancel edit process, user can 
-click cross button to close pop-up.\\
+click cross button to close pop-up.
 
- \noindent{\large\bf Subcategory Management} 
+\pagebreak
+\noindent{\large\bf Subcategory Management} 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/Sub cat.jpg}}
-\caption{Subcategory list page in category management.
-}\label{fig:Subcategory list page in category management.
-}
-\end{figure} \\
+\caption{Subcategory list page in category management}
+\label{fig:Subcategory list page in category management}
+\end{figure}
 
 Figure A.12 is the subcategory list page of category management. It displays the 
 subcategory list in pagination. User can select page number and select number of 
-subcategories in each page at the bottom below (No.1 on figure A.12).
-User can click create new subcategory (No.2 on figure A.12) to add the new 
+subcategories in each page at the bottom below (No.1 on Figure A.12).
+User can click create new subcategory (No.2 on Figure A.12) to add the new 
 subcategory to knowledge management. When user click on that button, it will pop-up create 
 subcategory (Figure A.13). In addition, user can search the category by typing on search box 
 (No.3 on Figure A.12)
 Also, user can click the pencil in action column (No.4 on Figure A.12) to edit 
 subcategory name. When user click, it will pop up to edit subcategory (Figure A.14). On the 
 other hand, if user want to delete that category, user can click the red trash can in action 
-column (No.4 on figure A.12). When click the red trash can, it will pop up the confirmation 
-box to let user confirm of delete action. \\
+column (No.4 on Figure A.12). When click the red trash can, it will pop up the confirmation 
+box to let user confirm of delete action.
+
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/create sub.jpg}}
-\caption{Create subcategory list page in category management.
-}\label{fig:Create subcategory list page in category management.
-}
-\end{figure} \\
+\caption{Create subcategory list page in category management}
+\label{fig:Create subcategory list page in category management}
+\end{figure}
+
 Figure A.13 is the create subcategory pop-up in category management. This pop-up 
 contains only input box at the center (No.1 on Figure A.13) and create button at the middle 
 bottom of page (No.2 on Figure 4.13) and cross button at the top right for close pop-up (No.3 
 on Figure A.13).
 Users need to input the subcategory in the input boxes. After that user can decide to 
 click create button to create new subcategory. Also, if user want to cancel create process, 
-user can click cross button to close pop-up. \\
+user can click cross button to close pop-up.
+
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/edit sub na.jpg}}
-\caption{Edit subcategory list page in category management.
-}\label{fig:Edit subcategory list page in category management.
-}
-\end{figure} \\
+\caption{Edit subcategory list page in category management}
+\label{fig:Edit subcategory list page in category management}
+\end{figure}
 
 Figure A.14 is the edit subcategory name pop-up in category management. This pop-up contains only input box at the center (No.1 on Figure A.11) and save button at the middle 
 bottom of page (No.2 on Figure A.11) and cross button at the top right for close pop-up (No.3 
@@ -2964,35 +2970,34 @@ Users need to input the category in the input boxes. After that user can decide 
 click save button to edit category name. Also, if user want to cancel edit process, user can 
 click cross button to close pop-up.
 
-
- \indent{\large\bf User Management} \\
+\pagebreak
+\indent{\large\bf User Management}
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/user list.jpg}}
-\caption{User list page in user management.
-}\label{fig:User list page in user management.
-}
-\end{figure} \\
+\caption{User list page in user management}
+\label{fig:User list page in user management}
+\end{figure}
 
 Figure A.15 is the user list page of user management. It displays the user list in 
 pagination. User can select page number and select number of users in each page at the 
-bottom below (No.1 on figure A.15).
-User can click create new user (No.2 on figure A.15) to add the new user to 
+bottom below (No.1 on Figure A.15).
+User can click create new user (No.2 on Figure A.15) to add the new user to 
 knowledge management. When user click on that button, it will redirect to create user page 
-(Figure A.16). Also, user can click on the row of user (No.3 on figure A.15) to redirect to 
+(Figure A.16). Also, user can click on the row of user (No.3 on Figure A.15) to redirect to 
 user information page (Figure A.17) to read the information such as role, username and 
 name. In addition, user can search the question by typing on search box (No.4 on Figure 
 A.15)
 Also, user can click the pencil in action column (No.5 on Figure A.15) to edit 
 information of user. When user click, it will redirect to edit user page (Figure A.18). On the 
 other hand, if user want to delete that user, user can click the red trash can in action column 
-(No.5 on figure A.15). When click the red trash can, it will pop up the confirmation box to 
-let user confirm of delete action. \\
+(No.5 on Figure A.15). When click the red trash can, it will pop up the confirmation box to 
+let user confirm of delete action.
+
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/create user.jpg}}
-\caption{Create user page in user management.
-}\label{fig:Create user page in user management.
-}
-\end{figure} \\
+\caption{Create user page in user management}
+\label{fig:Create user page in user management}
+\end{figure}
 
 Figure A.16 is the create user page in user management. This page contains only 
 input box at the center (No.1 on Figure A.16) and action button at the right bottom of page 
@@ -3000,13 +3005,13 @@ input box at the center (No.1 on Figure A.16) and action button at the right bot
 Users need to input the username, password, confirm password and name. After that 
 user can decide to click create button to create new question. Also, if user want to cancel all 
 create process, user can click cancel button, it will pop up the confirmation box for cancel 
-action and redirect to question list page (Figure A.15) \\
+action and redirect to question list page (Figure A.15)
+
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/user info.jpg}}
-\caption{User information page in user management.
-}\label{fig:User information page in user management.
-}
-\end{figure} \\
+\caption{User information page in user management}
+\label{fig:User information page in user management}
+\end{figure}
 
 Figure A.17 is the user information. This page contains information of user (No.1 on 
 Figure A.17) and action buttons (No.2 on Figure A.17).
@@ -3015,13 +3020,13 @@ consist 2 buttons which are edit button and delete button. When user clicks edit
 will redirect to edit user page (Figure A.18). Also, when user clicks the delete button, it will 
 pop up the confirmation box to let user confirm of delete action and redirect back to user list 
 page (Figure A.15). And user can click back button on the top left (No.3 on Figure A.17) to 
-go back to user list page (Figure A.15). \\
+go back to user list page (Figure A.15).
+
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width= 12cm]{./img/UI Design/edit info.jpg}}
-\caption{Edit information page in user management.
-}\label{fig:Edit information page in user management.
-}
-\end{figure} \\
+\caption{Edit information page in user management}
+\label{fig:Edit information page in user management}
+\end{figure}
 
 Figure A.18 is the edit user page in user management. This page is almost as same as 
 create user page (Figure A.16) except there are the information of user that has create before. 
@@ -3095,7 +3100,7 @@ button at the right bottom of page (No.1 on Figure A.18)
 
 \begin{table}[h]
 	\centering
-	\caption{API Document}
+	\caption{API document}
 	\label{tab:api_document}
 	\begin{adjustbox}{width=\textwidth}
 		\begin{tabular}{|l|l|l|l|l|}
