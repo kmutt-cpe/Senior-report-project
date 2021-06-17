@@ -489,13 +489,13 @@ for example Zero or One-shot learning tasks. They work in parallel and are respo
 representations for the input and producing better vector representations by measuring similarities between vectors.
 
 \subsection{Logistic Regression}
-Logistic regression is a classification algorithm.
+Logistic Regression is a classification algorithm.
 It is used to predict a binary outcome based on a set of independent variables.
-Logistic regression is named for the function. It is a sigmoid function.
+Logistic Regression is named for the function. It is a sigmoid function.
 It used at the core of the method, the logistic function is
 \[\frac{1}{1 + e^-value}\]
 Where e is the base of the natural logarithms and value is the actual numerical value that you want to transform \cite{lg}.
-Logistic regression uses an equation as the representation, very much like linear regression. Input values (x) are combined linearly using weights or coefficient values (referred to as the Greek capital letter Beta) to predict an output value (y). A key difference from linear regression is that the output value being modeled is a binary values (0 or 1) rather than a numeric value.
+Logistic Regression uses an equation as the representation, very much like linear regression. Input values (x) are combined linearly using weights or coefficient values (referred to as the Greek capital letter Beta) to predict an output value (y). A key difference from linear regression is that the output value being modeled is a binary values (0 or 1) rather than a numeric value.
 \subsection{Cosine Similarity}
 Let x and y be two vectors for comparison. Using the cosine measure as a similarity function
 \[sin(x,y) = \frac{xy}{||x||||y||}\]
@@ -2424,7 +2424,7 @@ when there is a new category of question in knowledge management, and we must im
 API to handle new Dialogflow intent. This method is too cumbersome.
 
 \subsubsection{Solution of Performance Problem}
-So, we solved this problem by creating logistic regression model, which we called it category model,
+So, we solved this problem by creating Logistic Regression model, which we called it category model,
 to predict the category of question. Then get questions in that category before send to Siamese neural
 network model as you can see from the Figure~\ref*{fig:model_pattern1}. After backend API get the
 predicted question, backend API will query question and answer from knowledge management before
@@ -2662,7 +2662,7 @@ for the chatbot to reply answer with a low error rate and from system evaluation
 
 \section{Problems and Solutions}
 \subsection{Performance Problem}
-The problem persists since our group integrates the system. Therefore, predicting user questions with all questions from knowledge management took a long time. So, our group solved this problem by creating the category model, which is the logistic regression model, to classify the user's question into a category before finding a similar question from the respective category in the knowledge management which the model predicted for reducing the time usage of the model prediction.
+The problem persists since our group integrates the system. Therefore, predicting user questions with all questions from knowledge management took a long time. So, our group solved this problem by creating the category model, which is the Logistic Regression model, to classify the user's question into a category before finding a similar question from the respective category in the knowledge management which the model predicted for reducing the time usage of the model prediction.
 
 \subsection{Timeout in Dialogflow}
 \label{ch5_timeout_dialogflow}
