@@ -244,25 +244,10 @@ thank you.
 \chapter{Introduction}
 
 \section{Problem Statement and Approach} 
-Many companies and organizations confront with lag of answer the question online. Lag in answering question
-because they have a lot of work to do and unmanageable work that goes to the staff, leading in a less interactive organization
-department and contact person. Computer Engineering department confront of this problem too. Computer Engineering
-staff has a lot of work to do. When people ask Computer Engineering Fanpage, it takes a long time
-to answer.\\
-The lag in answering the question can be solved by using a chatbot, there are many types of chatbots, the most common of which is
-rule-based chatbots, which are used to lead a user through to offer choices and asks for data. This type of chatbot has its
-own set of questions and answers, and it simply waits for questions that match with the pattern to answer to user. Ruled-based chatbot
-is good at survey. The next type of chatbot is a chatbot that many companies use and will be used in the
-Computer Engineering department which is AI chatbot. AI chatbot is a chatbot that can study the 
-conversation history log and able to predict the question from the user, then choose the answer that match
-to the question most. AI chatbot can answer like natural language and flexible context.\\
-After consulting with the staff that take care of answering the question in Computer
-Engineering department, they said that the questions from outsiders and insiders are mostly the same
-and some information is out of date due to frequently updated information, which leads to human error
-that give an incorrect answer as well as some rare information may take a long time to find
-the answer. The staff said that it would be better if they can reduce their workload from answering the
-questions. So, we are going to create chatbot system that staff can manage knowledge of chatbot to solve
-problems of workload and reduce time to answer the question.
+Many companies and organizations confront with lagging behind answering the question online. Lagging behind answering question because they have a lot of work to do and unmanageable work that goes to the staff, leading in a less interactive organization department and contact person. Computer Engineering department confront of this problem too. Computer Engineering staff has a lot of work to do. When people ask Computer Engineering Fanpage, it takes a long time to answer.\\
+The lagging behind answering the question can be solved by using a chatbot, there are many types of chatbots, the most common of which is rule-based chatbots, which are used to lead a user through to offer choices and asks for data. This type of chatbot has its own set of questions and answers, and it simply waits for questions that match with the pattern to answer to user. Ruled-based chatbot is good at survey. The next type of chatbot is a chatbot that many companies use and will be used in the Computer Engineering department which is AI chatbot. AI chatbot is a chatbot that can study the conversation history log and able to predict the question from the user, then choose the answer that match to the question most. AI chatbot can answer like natural language and flexible context.\\
+After consulting with the staff that take care of answering the question in Computer Engineering department, they said that the questions from outsiders and insiders are mostly the same and some information is out of date due to frequently updated information, which leads to human error that give an incorrect answer as well as some rare information may take a long time to find
+the answer. The staff said that it would be better if they can reduce their workload from answering the questions. So, we are going to create chatbot system that staff can manage knowledge of chatbot to solve problems of workload and reduce time to answer the question.
 
 \section{Objectives}
 \begin{itemize}
@@ -1556,265 +1541,10 @@ To evaluate prediction model base on different criteria for example accuracy and
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Implementation Results}
 
-\section{Problems}
-\label{ch4_problem}
-Before deep down into the details of project's outcomes, let go through some of the problems
-that our group encountered while integrating subsystem together. Because the results have changed a lot from our
-plan and it could make the confusion if not understand the problem and how we solve it. There are 3 major
-problems which are the performance problem, response time out in Dialogflow problem, and budget problem.
+Before deep down into the details of project's results, let us provide a brief overview of the problem and what has changed. There are 3 major problems which are the performance problem, response time out in Dialogflow problem, and budget problem. The performance problem caused us to implement another model which is category model to predict the category of question before predict the similarity of questions. The response time out in Dialogflow problem caused us to change from Siamese Neural network model to cosine similarity model. And budget problem caused us to reduce scope of automate build model. The detail of problems is in section~\ref*{ch4_problem}.
 
-\subsection{Performance Problem}
-This problem was occurred when we wanted to integrate the system together. Initially, we planned to get input questions from the chatbot and send it along with all questions to the prediction model as you can see from the Figure~\ref*{fig:chat_plan_1}.
 
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_plan1.png}}
-\caption{The first plan of chat workflow}
-\label{fig:chat_plan_1}
-\end{figure}
-
-We realized immediately that it would take a long time to deliver and predict all questions.
-So, we have changed from first plan to use Dialogflow's intent feature to classify the question and filter
-only some questions in that category to prediction model as you can see from
-Figure~\ref*{fig:chat_plan_2}.
-
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_plan2.png}}
-\caption{The second plan of chat workflow}
-\label{fig:chat_plan_2}
-\end{figure}
-
-However, after we have tried the Dialogflow intent feature, users or KMUTT CPE staff must add a new intent
-when there is a new category of question in knowledge management, and we must implement the backend
-API to handle new Dialogflow intent. This method is too cumbersome.
-
-\subsubsection{Solution of Performance Problem}
-So, we solved this problem by creating logistic regression model, which we called it category model,
-to predict the category of question. Then get questions in that category before send to Siamese neural
-network model as you can see from the Figure~\ref*{fig:model_pattern1}. After backend API get the
-predicted question, backend API will query question and answer from knowledge management before
-return answer back to chatbot.
-
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern1.png}}
-\caption{The first implementation of chat workflow}
-\label{fig:model_pattern1}
-\end{figure}
-
-\subsection{Response Timeout in Dialogflow Problem}
-\label{response_timeout_problem_section}
-After integrated all subsystem together, our group wanted to know that our system work properly or not.
-So, to test the system, we asked a question in chat and waited for an answer response. But did not have
-any message reply back. We throughly examined the entire system until we determined that the issue
-comes from Dialogflow.
-
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width=14cm]{./img/ch4/problem/dialogflow_time_out.jpg}}
-\caption{Deadline Exceeded in Dialogflow}
-\label{fig:dialogflow_deadline_exceed}
-\end{figure}
-
-As you can see from Figure~\ref*{fig:dialogflow_deadline_exceed}
-The status of Dialogflow is ``Deadline Exceeded". It occurs when the response timeout of a webhook is exceeded
-\cite{dialogflow_time_out}. Dialogflow limits timeout for all webhook response only 5 seconds (Except response for
-Google Assistant has limit timeout to 10 seconds) \cite{dialogflow_response_time}.
-
-First, we tried to solve the problem by changing to a better computer to run the model.
-We tested the model on 2 different computers: Natthawat's PC and Nathaphop's PC.
-Spec of each computer is in Table~\ref*{tab:computer_list}.
-
-\begin{table}[h]
-	\centering
-	\caption{Computer spec table}
-	\label{tab:computer_list}
-	\begin{adjustbox}{width=\textwidth}
-		\begin{tabular}{|l|l|l|l|}
-			\hline
-			\backslashbox{Computer name}{Hardware component} & Central processing unit (CPU) & Graphic processor unit (GPU) & Ram \\ \hline
-			Natthawat's PC &  Intel i5-6500  & Geforce GTX 970 & DDR4 2133 16GB \\ \hline
-			Nathaphop's PC & AMD Ryzen 7 3700X & Geforce RTX 3080 & DDR4 3200 32GB \\ \hline
-		\end{tabular}
-	\end{adjustbox}
-\end{table}
-	
-However, after upgrading to a better computer, the problem still occurred.
-So, we measured the time of the category model and the Siamese neural network
-model that we tested on each computer to determine the time usage.
-The result is in Table~\ref*{tab:run_time_pattern1_table}. The time summation of both computers are greater
-than timeout response of Dialogflow.
-
-\begin{table}[h]
-	\centering
-	\caption{Time usage for running the models from workflow in Figure~\ref*{fig:model_pattern1}}
-	\label{tab:run_time_pattern1_table}
-	\begin{adjustbox}{width=\textwidth}
-		\begin{tabular}{|l|l|l|l|}
-			\hline
-			\backslashbox{Computer name}{Time usage to predict each model} & Time usage for category model & Time usage for Siamese neural network model & Total time \\ \hline
-			Natthawat's PC & 937 ms & 16.6 s  & 17.537 s \\ \hline
-			Nathaphop's PC & 897 ms & 11.7 s & 12.597 s \\ \hline
-		\end{tabular}
-	\end{adjustbox}
-\end{table}
-
-After that we wanted to find out which parts of code in Siamese neural network took a long
-time to implement. We divided our code and examined the time usage of each line and we
-discovered that the most time-consuming parts of the code are the time to tokenize the
-questions and the time to predict.
-
-From our record, Natthawat's PC used 7.13 seconds to tokenize the word and 23 seconds to predict.
-Nathaphop's PC used 2.33 seconds to tokenize the word and 8.26 seconds to predict.
-Time usage of the rest of code is in nanoseconds unit, so it will not take long time to implement.
-
-\subsubsection{The First Approach for Solving Response Timeout in Dialogflow Problem}
-The first approach that we tried to solve this problem is to increase the timeout of Dialogflow
-and decrease transmitted time. We will increase timeout of Dialogflow by using
-custom event in Dialogflow and decrease transmitted time by improving the chat workflow.
-
-According to our information, some people solved timeout response
-by returning the custom event in Dialogflow when it almost reaches the timeout response and
-creating a new intent in Dialogflow that will trigger when custom event is invoked from webhook API.
-This new intent will call back to the webhook API again, which is called follow up event, to get more timeout
-before return the message response back \cite{extend_webhook_intent}.
-Multiple follow up event can extend more timeout, but can have maximum 3 follow up event \cite{changing_intent_webhook}.
-We applied this method to our project to increase the maximum connection time to 10 seconds.
-
-Next, we tried to improve chat workflow by integrating the category model and the Siamese neural network, and
-providing the prediction model to contain all questions instead of passing them through the API. As a result
-of this change, the backend API only sends the input question to the prediction model once and then waits for
-the predicted question to return as you can see in Figure~\ref*{fig:model_pattern2}. And the result of the
-improving chat workflow is in Table~\ref*{tab:run_time_pattern2_table}.
-Total time in each computer is not change too much from the previous one and
-still cannot response the answer to Dialogflow before timeout.
-
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern2.png}}
-\caption{The second implementation of chat workflow}
-\label{fig:model_pattern2}
-\end{figure}
-
-\begin{table}[h]
-	\centering
-	\caption{Time usage for running the models from workflow in Figure~\ref*{fig:model_pattern2}}
-	\label{tab:run_time_pattern2_table}
-	\begin{adjustbox}{width=\textwidth}
-		\begin{tabular}{|l|l|}
-			\hline
-			\backslashbox{Computer name}{Time usage to predict each model} &Total time \\ \hline
-			Natthawat's PC & 22.6 s \\ \hline
-			Nathaphop's PC & 13.3 s \\ \hline
-		\end{tabular}
-	\end{adjustbox}
-\end{table}
-
-\subsubsection{The Second Approach for Solving Response Timeout in Dialogflow Problem}
-From the previous approach, we just try to reduce transmitted time and increase timeout response of Dialogflow.
-But, still did not have enough time to response. So, we tried another approach to address at the
-main problems as we mention in section~\ref*{response_timeout_problem_section}.
-We were finding the better computer to reduce run time and trying reduce time to tokenize.
-
-To used the better computer, we asked master student who take care A-Square lab's computer for running the model on computer
-at A-Square lab. He created the new environment for us to running the model.
-The computer spec of A-Square lab is in Table~\ref*{tab:a_square_computer_spec}.
-
-\begin{table}[h]
-	\centering
-	\caption{Computer spec at A-Square lab}
-	\label{tab:a_square_computer_spec}
-	\begin{adjustbox}{width=\textwidth}
-		\begin{tabular}{|l|l|l|l|}
-			\hline
-			\backslashbox{Computer name}{Hardware component} & Central processing unit (CPU) & Graphic processor unit (GPU) & Ram \\ \hline
-			A-Square lab's computer &  Ryzen 5 5600x  & Geforce RTX 3060 Ti & DDR4 3200 32GB \\ \hline
-		\end{tabular}
-	\end{adjustbox}
-\end{table}
-
-After we can used the better performance computer, we also tried to reduce tokenize time.
-Before the Siamese neural network model predict the similarity between questions,
-both questions need to tokenize first.
-We moved the tokenization process of questions from knowledge management before put into the model
-to when the questions are queried immediately as you can see from \ref*{fig:model_pattern3}
-
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern3.png}}
-\caption{The third implementation of chat workflow}
-\label{fig:model_pattern3}
-\end{figure}
-
-After that we have tested time performance of the new workflow on each computer,
-the result is in Table~\ref*{tab:run_time_pattern3_table}.
-Natthawat's PC is still unable to run before timeout.
-While Nathaphop's PC expected to be able to run before reach the timeout.
-However, after testing by running model on Nathaphop's PC and sending message through chat,
-we still cannot get any reply answer back. It could because some process inside backend API and transmitted data.
-For the time result of A-Square lab's computer, time usage to predict model is very faster than
-Natthawat's PC and Nathaphop's PC.
-After we have tested sending the question through chat, we got the answer from knowledge management back.
-
-\begin{table}[h]
-	\centering
-	\caption{Time usage for running the models from workflow in Figure~\ref*{fig:model_pattern3}}
-	\label{tab:run_time_pattern3_table}
-	\begin{adjustbox}{width=\textwidth}
-		\begin{tabular}{|l|l|}
-			\hline
-			\backslashbox{Computer name}{Time usage to predict each model} &Total time \\ \hline
-			Natthawat's PC & 15.4 s \\ \hline
-			Nathaphop's PC & 9.17 s \\ \hline
-			A-Square lab's computer & 1.88 s \\ \hline
-		\end{tabular}
-	\end{adjustbox}
-\end{table}
-
-\pagebreak
-\subsubsection{The Final Solution for Solving Response Timeout in Dialogflow Problem}
-After we discussed timeout problem and show how we solve the problem with advisor,
-he suggested that we can improve time performance by reducing max sequence range or using
-cosine similarity model instead for better time performance.
-
-At first, we tried to reduce the max sequence which required to build the new model.
-But the model is not quite good enough as you can see between evaluation of new model
-(Figure~\ref*{fig:reduce_sequence_result}) and the first model that we have built
-(Figure~\ref*{fig:siam_classification_report}). The precision of new model is higher than old
-one, but recall and F1-Score is very low.
-
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width=14cm]{./img/ch4/problem/reduce_sequence_result.jpg}}
-\caption{Classification report of Siamese neural network with reduce max sequence}
-\label{fig:reduce_sequence_result}
-\end{figure}
-
-From the result above, we had to reject the reducing max sequence method and
-tried using the cosine similarity instead. You can see the result of cosine similarity
-at section~\ref*{ch4_cosine_similarity_result}.
-
-\subsection{Budget Problem}
-From Chapter 3, we planned to use Apache Airflow to automate build and run on Google Cloud Platform.
-But after we checked the minimum price of platform that be able to run the model,
-the price is around 8, 385 Baht per month as you can see from Figure~\ref*{fig:min_gcp_price}.
-It is too high budget for developing automate build and run.
-
-\begin{figure}[!h]\centering
-\fbox{\includegraphics[width=14cm]{./img/ch4/problem/gcp_price.jpg}}
-\caption{The minimum price of Google Cloud Platform server with GPU}
-\label{fig:min_gcp_price}
-\end{figure}
-
-\subsubsection{Solution of Budget Problem}
-Our group decided to reduce the scope of automate train model with Apache Airflow because of high budget.
-But does not mean the model will not be able to update the data inside the prediction model.
-Because we have run another thread to query and tokenize all questions,
-then replace new tokenized question with old one to update the questions.
-
-So, the model can still automated update the question from knowledge management
-but cannot automate train the model as we planned.
-
-\pagebreak
-\section{System Architecture}
-From the problem as we described in section~\ref*{ch4_problem}.
-There is some workflow that have changed to solve the problem that we found.
-So, our system architecture that we described in section~\ref*{ch3_system_architecture} have changed a lot.
-Figure~\ref*{fig:new_software_architecture} is our new system architecture.
+As we mentioned the problem, there is some workflow that have changed to solve the problem. So, our system architecture that we described in section~\ref*{ch3_system_architecture} have changed many things. Figure~\ref*{fig:new_software_architecture} is our new system architecture.
 
 \begin{figure}[!h]\centering
 \fbox{\includegraphics[width=14cm]{./img/ch4/new_software_architecture.png}}
@@ -1838,6 +1568,9 @@ There are 2 subsystems that have changed which are prediction model subsystem an
 	the context of the answer that will reply to questioner.
 \end{description}
 
+In terms of project results, we have developed a knowledge management website, backend API, prediction models (Siamese neural network model and cosine similarity model), server integration to automate deployment, and make an App Review of CPE @ KMUTT fanpage to connect Facebook Messenger with our system.
+
+\pagebreak
 \section{Server Integration Setup}
 \subsection{Virtual Machine}
 We used free credit of student account in the Microsoft Azure to get
@@ -2463,9 +2196,9 @@ Even the model can predict, but the overall performance of the model is quite no
 
 \subsection{Cosine Similarity Result}
 \label{ch4_cosine_similarity_result}
-Due to the respone timeout in Dialogflow problem after integrate all subsytem together we have to reduce time response to make our system can reply the respone back to user by change deep neural network which is Siamese Neural Network with MaLSTM model to machine learning which is cosine similarity that is the same method the find similiarity of user question and questions in database.
+Due to the respone timeout in Dialogflow problem we have to reduce time response to make our system can reply the respone back to user by change deep neural network which is Siamese neural network with MaLSTM model to machine learning which is cosine similarity that is the same method the find similiarity of user question and questions in database.
 \subsubsection{Cosine Similarity Preprocessing}
-We preprocessing the cosine silmilarity like the Siamese Neural Network with MaLSTM Evaluation that we tokenize
+We preprocessing the cosine silmilarity like the Siamese neural network with MaLSTM Evaluation that we tokenize
 text and covert text into lists of sequence as in the section \ref*{preprocessing cosine}~\nameref*{preprocessing cosine}
 \subsubsection{Cosine Similarity Parameter Setting}
 We find the similarity by input user questions and all questions for each category in the database by using ``cosine similarity" function from sklearn.metrics.pairwise library to find the similar of both two inputs
@@ -2678,6 +2411,257 @@ Next, we have asked which questions the chatbot can answer and which questions t
 
 From the survey, we can evaluate our chatbot that can answer only some questions about tuition fee, scholarship, subject in the first year, document, and curriculum each year.
 
+\section{Problems}
+\label{ch4_problem}
+As we mentioned at the started of the chapter, there are 3 major problems, which are the performance problem, response time out in Dialogflow problem, and budget problem, that makes us to changed our planned.
+
+\subsection{Performance Problem}
+This problem was occurred when we wanted to integrate the system together. Initially, we planned to get input questions from the chatbot and send it along with all questions to the prediction model as you can see from the Figure~\ref*{fig:chat_plan_1}.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_plan1.png}}
+\caption{The first plan of chat workflow}
+\label{fig:chat_plan_1}
+\end{figure}
+
+We realized immediately that it would take a long time to deliver and predict all questions.
+So, we have changed from first plan to use Dialogflow's intent feature to classify the question and filter
+only some questions in that category to prediction model as you can see from
+Figure~\ref*{fig:chat_plan_2}.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_plan2.png}}
+\caption{The second plan of chat workflow}
+\label{fig:chat_plan_2}
+\end{figure}
+
+However, after we have tried the Dialogflow intent feature, users or KMUTT CPE staff must add a new intent
+when there is a new category of question in knowledge management, and we must implement the backend
+API to handle new Dialogflow intent. This method is too cumbersome.
+
+\subsubsection{Solution of Performance Problem}
+So, we solved this problem by creating logistic regression model, which we called it category model,
+to predict the category of question. Then get questions in that category before send to Siamese neural
+network model as you can see from the Figure~\ref*{fig:model_pattern1}. After backend API get the
+predicted question, backend API will query question and answer from knowledge management before
+return answer back to chatbot.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern1.png}}
+\caption{The first implementation of chat workflow}
+\label{fig:model_pattern1}
+\end{figure}
+
+\subsection{Response Timeout in Dialogflow Problem}
+\label{response_timeout_problem_section}
+After integrated all subsystem together, our group wanted to know that our system work properly or not.
+So, to test the system, we asked a question in chat and waited for an answer response. But did not have
+any message reply back. We throughly examined the entire system until we determined that the issue
+comes from Dialogflow.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/dialogflow_time_out.jpg}}
+\caption{Deadline Exceeded in Dialogflow}
+\label{fig:dialogflow_deadline_exceed}
+\end{figure}
+
+As you can see from Figure~\ref*{fig:dialogflow_deadline_exceed}
+The status of Dialogflow is ``Deadline Exceeded". It occurs when the response timeout of a webhook is exceeded
+\cite{dialogflow_time_out}. Dialogflow limits timeout for all webhook response only 5 seconds (Except response for
+Google Assistant has limit timeout to 10 seconds) \cite{dialogflow_response_time}.
+
+First, we tried to solve the problem by changing to a better computer to run the model.
+We tested the model on 2 different computers: Natthawat's PC and Nathaphop's PC.
+Spec of each computer is in Table~\ref*{tab:computer_list}.
+
+\begin{table}[h]
+	\centering
+	\caption{Computer spec table}
+	\label{tab:computer_list}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			\backslashbox{Computer name}{Hardware component} & Central processing unit (CPU) & Graphic processor unit (GPU) & Ram \\ \hline
+			Natthawat's PC &  Intel i5-6500  & Geforce GTX 970 & DDR4 2133 16GB \\ \hline
+			Nathaphop's PC & AMD Ryzen 7 3700X & Geforce RTX 3080 & DDR4 3200 32GB \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+	
+However, after upgrading to a better computer, the problem still occurred.
+So, we measured the time of the category model and the Siamese neural network
+model that we tested on each computer to determine the time usage.
+The result is in Table~\ref*{tab:run_time_pattern1_table}. The time summation of both computers are greater
+than timeout response of Dialogflow.
+
+\begin{table}[h]
+	\centering
+	\caption{Time usage for running the models from workflow in Figure~\ref*{fig:model_pattern1}}
+	\label{tab:run_time_pattern1_table}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			\backslashbox{Computer name}{Time usage to predict each model} & Time usage for category model & Time usage for Siamese neural network model & Total time \\ \hline
+			Natthawat's PC & 937 ms & 16.6 s  & 17.537 s \\ \hline
+			Nathaphop's PC & 897 ms & 11.7 s & 12.597 s \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+After that we wanted to find out which parts of code in Siamese neural network took a long
+time to implement. We divided our code and examined the time usage of each line and we
+discovered that the most time-consuming parts of the code are the time to tokenize the
+questions and the time to predict.
+
+From our record, Natthawat's PC used 7.13 seconds to tokenize the word and 23 seconds to predict.
+Nathaphop's PC used 2.33 seconds to tokenize the word and 8.26 seconds to predict.
+Time usage of the rest of code is in nanoseconds unit, so it will not take long time to implement.
+
+\subsubsection{The First Approach for Solving Response Timeout in Dialogflow Problem}
+The first approach that we tried to solve this problem is to increase the timeout of Dialogflow
+and decrease transmitted time. We will increase timeout of Dialogflow by using
+custom event in Dialogflow and decrease transmitted time by improving the chat workflow.
+
+According to our information, some people solved timeout response
+by returning the custom event in Dialogflow when it almost reaches the timeout response and
+creating a new intent in Dialogflow that will trigger when custom event is invoked from webhook API.
+This new intent will call back to the webhook API again, which is called follow up event, to get more timeout
+before return the message response back \cite{extend_webhook_intent}.
+Multiple follow up event can extend more timeout, but can have maximum 3 follow up event \cite{changing_intent_webhook}.
+We applied this method to our project to increase the maximum connection time to 10 seconds.
+
+Next, we tried to improve chat workflow by integrating the category model and the Siamese neural network, and
+providing the prediction model to contain all questions instead of passing them through the API. As a result
+of this change, the backend API only sends the input question to the prediction model once and then waits for
+the predicted question to return as you can see in Figure~\ref*{fig:model_pattern2}. And the result of the
+improving chat workflow is in Table~\ref*{tab:run_time_pattern2_table}.
+Total time in each computer is not change too much from the previous one and
+still cannot response the answer to Dialogflow before timeout.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern2.png}}
+\caption{The second implementation of chat workflow}
+\label{fig:model_pattern2}
+\end{figure}
+
+\begin{table}[h]
+	\centering
+	\caption{Time usage for running the models from workflow in Figure~\ref*{fig:model_pattern2}}
+	\label{tab:run_time_pattern2_table}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|}
+			\hline
+			\backslashbox{Computer name}{Time usage to predict each model} &Total time \\ \hline
+			Natthawat's PC & 22.6 s \\ \hline
+			Nathaphop's PC & 13.3 s \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+\subsubsection{The Second Approach for Solving Response Timeout in Dialogflow Problem}
+From the previous approach, we just try to reduce transmitted time and increase timeout response of Dialogflow.
+But, still did not have enough time to response. So, we tried another approach to address at the
+main problems as we mention in section~\ref*{response_timeout_problem_section}.
+We were finding the better computer to reduce run time and trying reduce time to tokenize.
+
+To used the better computer, we asked master student who take care A-Square lab's computer for running the model on computer
+at A-Square lab. He created the new environment for us to running the model.
+The computer spec of A-Square lab is in Table~\ref*{tab:a_square_computer_spec}.
+
+\begin{table}[h]
+	\centering
+	\caption{Computer spec at A-Square lab}
+	\label{tab:a_square_computer_spec}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			\backslashbox{Computer name}{Hardware component} & Central processing unit (CPU) & Graphic processor unit (GPU) & Ram \\ \hline
+			A-Square lab's computer &  Ryzen 5 5600x  & Geforce RTX 3060 Ti & DDR4 3200 32GB \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+After we can used the better performance computer, we also tried to reduce tokenize time.
+Before the Siamese neural network model predict the similarity between questions,
+both questions need to tokenize first.
+We moved the tokenization process of questions from knowledge management before put into the model
+to when the questions are queried immediately as you can see from \ref*{fig:model_pattern3}
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/model_pattern3.png}}
+\caption{The third implementation of chat workflow}
+\label{fig:model_pattern3}
+\end{figure}
+
+After that we have tested time performance of the new workflow on each computer,
+the result is in Table~\ref*{tab:run_time_pattern3_table}.
+Natthawat's PC is still unable to run before timeout.
+While Nathaphop's PC expected to be able to run before reach the timeout.
+However, after testing by running model on Nathaphop's PC and sending message through chat,
+we still cannot get any reply answer back. It could because some process inside backend API and transmitted data.
+For the time result of A-Square lab's computer, time usage to predict model is very faster than
+Natthawat's PC and Nathaphop's PC.
+After we have tested sending the question through chat, we got the answer from knowledge management back.
+
+\begin{table}[h]
+	\centering
+	\caption{Time usage for running the models from workflow in Figure~\ref*{fig:model_pattern3}}
+	\label{tab:run_time_pattern3_table}
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|}
+			\hline
+			\backslashbox{Computer name}{Time usage to predict each model} &Total time \\ \hline
+			Natthawat's PC & 15.4 s \\ \hline
+			Nathaphop's PC & 9.17 s \\ \hline
+			A-Square lab's computer & 1.88 s \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+\pagebreak
+\subsubsection{The Final Solution for Solving Response Timeout in Dialogflow Problem}
+After we discussed timeout problem and show how we solve the problem with advisor,
+he suggested that we can improve time performance by reducing max sequence range or using
+cosine similarity model instead for better time performance.
+
+At first, we tried to reduce the max sequence which required to build the new model.
+But the model is not quite good enough as you can see between evaluation of new model
+(Figure~\ref*{fig:reduce_sequence_result}) and the first model that we have built
+(Figure~\ref*{fig:siam_classification_report}). The precision of new model is higher than old
+one, but recall and F1-Score is very low.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/reduce_sequence_result.jpg}}
+\caption{Classification report of Siamese neural network with reduce max sequence}
+\label{fig:reduce_sequence_result}
+\end{figure}
+
+From the result above, we had to reject the reducing max sequence method and
+tried using the cosine similarity instead. You can see the result of cosine similarity
+at section~\ref*{ch4_cosine_similarity_result}.
+
+\subsection{Budget Problem}
+From Chapter 3, we planned to use Apache Airflow to automate build and run on Google Cloud Platform.
+But after we checked the minimum price of platform that be able to run the model,
+the price is around 8, 385 Baht per month as you can see from Figure~\ref*{fig:min_gcp_price}.
+It is too high budget for developing automate build and run.
+
+\begin{figure}[!h]\centering
+\fbox{\includegraphics[width=14cm]{./img/ch4/problem/gcp_price.jpg}}
+\caption{The minimum price of Google Cloud Platform server with GPU}
+\label{fig:min_gcp_price}
+\end{figure}
+
+\subsubsection{Solution of Budget Problem}
+Our group decided to reduce the scope of automate train model with Apache Airflow because of high budget.
+But does not mean the model will not be able to update the data inside the prediction model.
+Because we have run another thread to query and tokenize all questions,
+then replace new tokenized question with old one to update the questions.
+
+So, the model can still automated update the question from knowledge management
+but cannot automate train the model as we planned.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% Conclusions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2718,7 +2702,7 @@ question to predict from backend API automatically.
 \subsection{Using Siamese Neural Network}
 Currently, our group used the cosine similarity instead of Siamese neural network, even the Siamese neural network is better, because of the time constraint. In the future, if we have better computer, we could remove the time constraint and use Siamese neural network.
 
-\subsection{Getting More Data}
+\subsection{Acquiring More Data}
 From the evaluation result of Siamese neural network in section~\ref*{siamese_evaluation},
 in the future we could improve the model evaluation to be better if we have more data to train.
 
