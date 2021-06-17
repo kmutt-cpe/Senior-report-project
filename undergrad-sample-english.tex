@@ -2662,11 +2662,7 @@ for the chatbot to reply answer with a low error rate and from system evaluation
 
 \section{Problems and Solutions}
 \subsection{Performance Problem}
-This problems we realized when we were going to integrate the subsystem together.
-The time performance to predict question from user and all question from knowledge management
-will take a long time. So, we solve tihs problem by create the Logistic Regression model,
-which we called category model, to classify the question and get only questions in that
-category to predict instead of every questions in knowledge management
+The problem persists since our group integrates the system. Therefore, predicting user questions with all questions from knowledge management took a long time. So, our group solved this problem by creating the category model, which is the logistic regression model, to classify the user's question into a category before finding a similar question from the respective category in the knowledge management which the model predicted for reducing the time usage of the model prediction.
 
 \subsection{Timeout in Dialogflow}
 \label{ch5_timeout_dialogflow}
